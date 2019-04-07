@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/AppStyle.Widget.BaseSectionItem"
+        android:layout_marginTop="12dp"
+        android:clickable="false"
+        android:orientation="horizontal"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp">
+
+        <cn.imengya.wheelview.WheelView
+            android:id="@+id/wheel_view_alarm_am_pm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <cn.imengya.wheelview.WheelView
+            android:id="@+id/wheel_view_alarm_hour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+        <cn.imengya.wheelview.WheelView
+            android:id="@+id/wheel_view_alarm_minute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <com.github.kilnn.wristband2.sample.widget.SectionGroup
+        style="@style/AppStyle.Widget.SectionGroup"
+        android:layout_marginTop="12dp">
+
+        <com.github.kilnn.wristband2.sample.widget.SectionItem
+            android:id="@+id/section_item_alarm_repeat"
+            style="@style/AppStyle.Widget.SectionItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:sectionItemText="@string/ds_alarm_repeat_never"
+            app:sectionItemTitle="@string/ds_alarm_repeat"
+            app:sectionItemType="type_text"/>
+
+        <com.github.kilnn.wristband2.sample.widget.SectionItem
+            android:id="@+id/section_item_alarm_label"
+            style="@style/AppStyle.Widget.SectionItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:sectionItemTitle="@string/ds_alarm_label"
+            app:sectionItemType="type_text"/>
+
+    </com.github.kilnn.wristband2.sample.widget.SectionGroup>
+
+    <RelativeLayout
+        android:id="@+id/rl_alarm_delete"
+        style="@style/AppStyle.Widget.BaseSectionItem"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/ds_alarm_delete"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+            android:textColor="#ff0000"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

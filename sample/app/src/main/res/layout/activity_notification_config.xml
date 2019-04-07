@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/cb_phone_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_phone_call"/>
+
+            <CheckBox
+                android:id="@+id/cb_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_sms"/>
+
+            <CheckBox
+                android:id="@+id/cb_qq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_qq"/>
+
+            <CheckBox
+                android:id="@+id/cb_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_wechat"/>
+
+            <CheckBox
+                android:id="@+id/cb_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_facebook"/>
+
+            <CheckBox
+                android:id="@+id/cb_twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_twitter"/>
+
+            <CheckBox
+                android:id="@+id/cb_linkedin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_linkedin"/>
+
+            <CheckBox
+                android:id="@+id/cb_instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_instagram"/>
+
+            <CheckBox
+                android:id="@+id/cb_pinterest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_pinterest"/>
+
+            <CheckBox
+                android:id="@+id/cb_whatsapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_whatsapp"/>
+
+            <CheckBox
+                android:id="@+id/cb_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_line"/>
+
+            <CheckBox
+                android:id="@+id/cb_facebook_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_facebook_msg"/>
+
+            <CheckBox
+                android:id="@+id/cb_kakaotalk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_kakaotalk"/>
+
+            <CheckBox
+                android:id="@+id/cb_skype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_skype"/>
+
+            <CheckBox
+                android:id="@+id/cb_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_email"/>
+
+            <CheckBox
+                android:id="@+id/cb_telegram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_telegram"/>
+
+            <CheckBox
+                android:id="@+id/cb_viber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_viber"/>
+
+            <CheckBox
+                android:id="@+id/cb_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_calendar"/>
+
+            <CheckBox
+                android:id="@+id/cb_others"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notification_config_others"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

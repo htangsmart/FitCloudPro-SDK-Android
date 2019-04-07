@@ -1,0 +1,175 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">sample</string>
+
+    <string name="action_prompt">Hint</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_sure">Sure</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_close">Close</string>
+    <string name="action_stop_scan">Stop Scan</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_add">Add</string>
+
+    <string name="operation_failed">Failed</string>
+    <string name="operation_success">Success</string>
+
+    <string name="dialog_msg_location_feature">Scanning Bluetooth needs to turn on the location function to use，turn on or turn off?</string>
+    <string name="permission_dialog_title">Hint</string>
+    <string name="permission_dialog_rationale_sure">Grant Permissions</string>
+    <string name="permission_dialog_rationale_cancel">Refuse</string>
+    <string name="permission_dialog_setting_message">Some of the permissions we need are rejected by you or the system  errors to cause the application to fail, please manually authorize the "Settings" page, otherwise the feature will not work properly.</string>
+    <string name="permission_dialog_setting_sure">To set</string>
+    <string name="permission_dialog_setting_cancel">Cancel</string>
+    <string name="permission_dialog_rationale_location">If  you do not have permission to locate, you may not be able to scan and connect the bracelet properly.</string>
+    <string name="permission_dialog_rationale_storage">If you do not have permissions to read and write file, you may not be able to access files.</string>
+    <string name="permission_dialog_rationale_camera">If you do not have permission to take photos, you may not be able to use the camera function.</string>
+
+    <string name="action_connect">Connect</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="state_connecting">Connecting&#8230;</string>
+    <string name="state_connect_failed">Connect Failed</string>
+    <string name="state_connect_success">Connect Success</string>
+    <string name="state_active_disconnect">Active disconnect</string>
+    <string name="state_passive_disconnect">Passive disconnect</string>
+    <string name="toast_device_disconnected">Device Disconnected</string>
+
+    <string name="clear_bind">Clear Bond</string>
+    <string name="dialog_clear_bind_title">Clear User Bond State</string>
+    <string name="dialog_clear_bind_msg">
+        The user bond state is a local variable cache in SharedPreferences. \
+        It decides what mode, bind or login to use when connecting the wristband. \
+        More information see also the develop document in Github. \
+
+        Are you sure to clear the user bond state?
+    </string>
+
+    <string name="op1">1.Configs</string>
+    <string name="op2">2.Alarm</string>
+    <string name="op3">3.Notification</string>
+    <string name="op4">4.Wristband Active Message</string>
+    <string name="op5">5.Real time data</string>
+    <string name="op6">6.Sync data</string>
+    <string name="op7">7.DFU</string>
+    <string name="op8">8.Simple Command</string>
+
+    <string name="configs_version_info">1.Wristband Version Info</string>
+    <string name="configs_notification">2.Notification Config</string>
+    <string name="configs_blood_pressure">3.Blood Pressure Config</string>
+    <string name="configs_drink_water">4.Drink Water Config</string>
+    <string name="configs_function">5.Function Config</string>
+    <string name="configs_healthy">6.Healthy Monitor Config</string>
+    <string name="configs_sedentary">7.Sedentary Config</string>
+    <string name="configs_page">8.Page Config</string>
+    <string name="configs_turn_wrist_lighting">9.Turn Wrist Lighting Config</string>
+
+    <string name="notification_config_phone_call">Call alert</string>
+    <string name="notification_config_sms">SMS</string>
+    <string name="notification_config_qq">QQ</string>
+    <string name="notification_config_wechat">WeChat</string>
+    <string name="notification_config_facebook">Facebook</string>
+    <string name="notification_config_twitter">Twitter</string>
+    <string name="notification_config_linkedin">Linkedin</string>
+    <string name="notification_config_instagram">Instagram</string>
+    <string name="notification_config_pinterest">Pinterest</string>
+    <string name="notification_config_whatsapp">WhatsApp</string>
+    <string name="notification_config_line">Line</string>
+    <string name="notification_config_facebook_msg">Facebook Messenger</string>
+    <string name="notification_config_kakaotalk">Kakao Talk</string>
+    <string name="notification_config_skype">Skype</string>
+    <string name="notification_config_email">Email</string>
+    <string name="notification_config_telegram">Telegram</string>
+    <string name="notification_config_viber">Viber</string>
+    <string name="notification_config_calendar">Calendar</string>
+    <string name="notification_config_others">Others App</string>
+
+    <string name="page_config_suggest">Because of the special UI of the wristband, it is not recommended to configure the page.</string>
+    <string-array name="page_names">
+        <item>Time</item>
+        <item>Steps</item>
+        <item>Distance</item>
+        <item>Calories</item>
+        <item>Sleep</item>
+        <item>Heart rate</item>
+        <item>Oxygen</item>
+        <item>Blood pressure</item>
+        <item>Weather</item>
+        <item>Find Phone</item>
+        <item>ID</item>
+        <item>StopWatch</item>
+    </string-array>
+
+    <string name="tip_load_error">Load failed, click reload</string>
+    <string name="tip_simple">Too simple.No examples are needed.!!!</string>
+
+    <string name="ds_alarm_opened_count"><xliff:g id="params">%1$d</xliff:g> alarm clocks have been turned on</string>
+    <string name="ds_alarm_no_data">No alarm clock</string>
+    <string name="ds_alarm_limit_count">Can only add 5 alarm clocks</string>
+    <string name="ds_alarm_delete">Delete</string>
+    <string name="ds_alarm_delete_message">Are you sure to delete the alarm clock?</string>
+    <string name="ds_alarm_repeat">Repeat</string>
+    <string name="ds_alarm_repeat_every_day">Everyday</string>
+    <string name="ds_alarm_repeat_never">Once</string>
+    <string name="ds_alarm_repeat_workdays">Weekday</string>
+    <string name="ds_alarm_repeat_weekends">Weekend</string>
+    <string name="ds_alarm_label">Label</string>
+
+    <string name="ds_alarm_list">Alarm List</string>
+    <string name="ds_alarm_am">A.M</string>
+    <string name="ds_alarm_pm">P.M</string>
+    <string name="ds_alarm_add">Add Alarm Clock</string>
+    <string name="ds_alarm_edit">Edit Alarm Clock</string>
+
+    <string name="ds_alarm_repeat_00">Monday</string>
+    <string name="ds_alarm_repeat_01">Tuesday</string>
+    <string name="ds_alarm_repeat_02">Wednesday</string>
+    <string name="ds_alarm_repeat_03">Thursday</string>
+    <string name="ds_alarm_repeat_04">Friday</string>
+    <string name="ds_alarm_repeat_05">Saturday</string>
+    <string name="ds_alarm_repeat_06">Sunday</string>
+    <string name="ds_alarm_repeat_00_simple">Mon</string>
+    <string name="ds_alarm_repeat_01_simple">Tue</string>
+    <string name="ds_alarm_repeat_02_simple">Wed</string>
+    <string name="ds_alarm_repeat_03_simple">Thu</string>
+    <string name="ds_alarm_repeat_04_simple">Fri</string>
+    <string name="ds_alarm_repeat_05_simple">Sat</string>
+    <string name="ds_alarm_repeat_06_simple">Sun</string>
+
+    <string name="camera_control">Camera control</string>
+
+    <string name="real_time_data_start">Start</string>
+    <string name="real_time_data_stop">Stop</string>
+    <string name="heart_rate_value">Heart rate:<xliff:g id="params">%1$d</xliff:g></string>
+    <string name="oxygen_value">Oxygen:<xliff:g id="params">%1$d</xliff:g></string>
+    <string name="blood_pressure_value">Blood pressure:<xliff:g id="params1">%1$d</xliff:g>   <xliff:g id="params2">%2$d</xliff:g></string>
+    <string name="respiratory_rate_value">Respiratory rate:<xliff:g id="params">%1$d</xliff:g></string>
+
+    <string name="check_remote_update">Check Remote DFU file</string>
+    <string name="select_local_update">Select Local DFU File</string>
+
+    <!--Dfu State-->
+    <string name="dfu_state_dfu_file">Prepare file &#8230;</string>
+    <string name="dfu_state_dfu_mode">Enter DFU &#8230;</string>
+    <string name="dfu_state_dfu_device">Searching &#8230;</string>
+    <string name="dfu_state_dfu_process">Prepare &#8230;</string>
+
+    <!--Dfu Progress-->
+    <string name="dfu_progress_start">Upgrading &#8230;</string>
+    <string name="dfu_progress_completed">Upgrade completed</string>
+    <string name="dfu_success">DFU succeed</string>
+    <string name="dfu_failed">DFU failed</string>
+    <string name="percentage"><xliff:g id="params">%1$s</xliff:g>%%</string>
+
+    <string name="ble_not_support">Your device doesn\'t support Bluetooth 4.0</string>
+    <string name="bt_not_open">Bluetooth is not on</string>
+    <string name="device_disconnected">Device disconnected</string>
+    <string name="dfu_error_file_format">DFU file format error</string>
+    <string name="dfu_error_file_not_exist">DFU file doesn\'t exist</string>
+    <string name="dfu_error_file_download">Firmware download failed</string>
+    <string name="dfu_error_enter_dfu_failed">Device fails to enter DFU mode</string>
+    <string name="dfu_error_low_battery">Low battery.Device fails to enter DFU mode</string>
+    <string name="dfu_error_service_not_ready">DFU is not ready</string>
+    <string name="dfu_error_scan_failed">Failed to start search</string>
+    <string name="dfu_error_device_not_found">Device not found</string>
+
+</resources>

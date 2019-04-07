@@ -1,0 +1,175 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">sample</string>
+
+    <string name="action_prompt">提示</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_sure">确认</string>
+    <string name="action_scan">扫描</string>
+    <string name="action_close">关闭</string>
+    <string name="action_stop_scan">停止扫描</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_add">添加</string>
+
+    <string name="operation_failed">操作失败</string>
+    <string name="operation_success">操作成功</string>
+
+    <string name="dialog_msg_location_feature">蓝牙扫描需要开启定位功能才能正常使用，是否开启？</string>
+    <string name="permission_dialog_title">提示</string>
+    <string name="permission_dialog_rationale_sure">授予权限</string>
+    <string name="permission_dialog_rationale_cancel">拒绝</string>
+    <string name="permission_dialog_setting_message">我们需要的一些权限被您拒绝或者系统发生错误导致申请失败，请您到设置页面手动授权，否则功能无法正常使用</string>
+    <string name="permission_dialog_setting_sure">去设置</string>
+    <string name="permission_dialog_setting_cancel">取消</string>
+    <string name="permission_dialog_rationale_location">如果没有定位权限，您可能无法正常的扫描和连接手环。</string>
+    <string name="permission_dialog_rationale_storage">如果没有文件读写权限，您可能无法读写和选择文件。</string>
+    <string name="permission_dialog_rationale_camera">如果没有拍照权限，您可能无法使用拍照功能。</string>
+
+    <string name="action_connect">连接</string>
+    <string name="action_disconnect">断开连接</string>
+    <string name="state_connecting">连接中&#8230;</string>
+    <string name="state_connect_failed">连接失败</string>
+    <string name="state_connect_success">连接成功</string>
+    <string name="state_active_disconnect">主动断开连接</string>
+    <string name="state_passive_disconnect">被动断开连接</string>
+    <string name="toast_device_disconnected">设备未连接</string>
+
+    <string name="clear_bind">清除绑定</string>
+    <string name="dialog_clear_bind_title">清除用户绑定状态</string>
+    <string name="dialog_clear_bind_msg">
+        用户绑定状态是一个缓存在SharedPreferences的本地变量。\
+        它决定在连接手环时，使用何种模式，绑定或者登陆。\
+        更多的信息请参考Github上的开发文档。\
+
+       确定要清除用户绑定状态吗？
+    </string>
+
+    <string name="op1">1.手环配置</string>
+    <string name="op2">2.闹钟</string>
+    <string name="op3">3.消息通知</string>
+    <string name="op4">4.手环主动消息</string>
+    <string name="op5">5.实时数据</string>
+    <string name="op6">6.同步数据</string>
+    <string name="op7">7.DFU</string>
+    <string name="op8">8.简单指令</string>
+
+    <string name="configs_version_info">1.手环版本信息</string>
+    <string name="configs_notification">2.通知配置</string>
+    <string name="configs_blood_pressure">3.血压配置</string>
+    <string name="configs_drink_water">4.喝水提醒配置</string>
+    <string name="configs_function">5.功能配置</string>
+    <string name="configs_healthy">6.健康监测配置</string>
+    <string name="configs_sedentary">7.久坐提醒配置</string>
+    <string name="configs_page">8.页面配置</string>
+    <string name="configs_turn_wrist_lighting">9.翻腕亮屏配置</string>
+
+    <string name="notification_config_phone_call">电话提醒</string>
+    <string name="notification_config_sms">短信提醒</string>
+    <string name="notification_config_qq">QQ</string>
+    <string name="notification_config_wechat">WeChat</string>
+    <string name="notification_config_facebook">Facebook</string>
+    <string name="notification_config_twitter">Twitter</string>
+    <string name="notification_config_linkedin">Linkedin</string>
+    <string name="notification_config_instagram">Instagram</string>
+    <string name="notification_config_pinterest">Pinterest</string>
+    <string name="notification_config_whatsapp">WhatsApp</string>
+    <string name="notification_config_line">Line</string>
+    <string name="notification_config_facebook_msg">Facebook Messenger</string>
+    <string name="notification_config_kakaotalk">Kakao Talk</string>
+    <string name="notification_config_skype">Skype</string>
+    <string name="notification_config_email">Email</string>
+    <string name="notification_config_telegram">Telegram</string>
+    <string name="notification_config_viber">Viber</string>
+    <string name="notification_config_calendar">Calendar</string>
+    <string name="notification_config_others">其他APP</string>
+
+    <string name="page_config_suggest">由于手环UI特殊性，不建议设置页面配置</string>
+    <string-array name="page_names">
+        <item>时间</item>
+        <item>步数</item>
+        <item>距离</item>
+        <item>卡路里</item>
+        <item>睡眠</item>
+        <item>心率</item>
+        <item>血氧</item>
+        <item>血压</item>
+        <item>天气</item>
+        <item>查找手机</item>
+        <item>ID</item>
+        <item>秒表</item>
+    </string-array>
+
+    <string name="tip_load_error">加载失败，点击重新加载</string>
+    <string name="tip_simple">太简单了，需要个毛的例子啊！！！</string>
+
+    <string name="ds_alarm_opened_count">开启<xliff:g id="params">%1$d</xliff:g>个闹钟</string>
+    <string name="ds_alarm_no_data">暂无闹钟</string>
+    <string name="ds_alarm_limit_count">最多只能添加5个闹钟</string>
+    <string name="ds_alarm_delete">删除闹钟</string>
+    <string name="ds_alarm_delete_message">确定要删除该闹钟吗？</string>
+    <string name="ds_alarm_repeat">重复</string>
+    <string name="ds_alarm_repeat_every_day">每天</string>
+    <string name="ds_alarm_repeat_never">永不</string>
+    <string name="ds_alarm_repeat_workdays">工作日</string>
+    <string name="ds_alarm_repeat_weekends">周末</string>
+    <string name="ds_alarm_label">标签</string>
+
+    <string name="ds_alarm_list">闹钟列表</string>
+    <string name="ds_alarm_am">上午</string>
+    <string name="ds_alarm_pm">下午</string>
+    <string name="ds_alarm_add">添加闹钟</string>
+    <string name="ds_alarm_edit">编辑闹钟</string>
+
+    <string name="ds_alarm_repeat_00">周一</string>
+    <string name="ds_alarm_repeat_01">周二</string>
+    <string name="ds_alarm_repeat_02">周三</string>
+    <string name="ds_alarm_repeat_03">周四</string>
+    <string name="ds_alarm_repeat_04">周五</string>
+    <string name="ds_alarm_repeat_05">周六</string>
+    <string name="ds_alarm_repeat_06">周日</string>
+    <string name="ds_alarm_repeat_00_simple">周一</string>
+    <string name="ds_alarm_repeat_01_simple">周二</string>
+    <string name="ds_alarm_repeat_02_simple">周三</string>
+    <string name="ds_alarm_repeat_03_simple">周四</string>
+    <string name="ds_alarm_repeat_04_simple">周五</string>
+    <string name="ds_alarm_repeat_05_simple">周六</string>
+    <string name="ds_alarm_repeat_06_simple">周日</string>
+
+    <string name="camera_control">拍照控制</string>
+
+    <string name="real_time_data_start">开始</string>
+    <string name="real_time_data_stop">结束</string>
+    <string name="heart_rate_value">心率:<xliff:g id="params">%1$d</xliff:g></string>
+    <string name="oxygen_value">血氧:<xliff:g id="params">%1$d</xliff:g></string>
+    <string name="blood_pressure_value">血压:<xliff:g id="params1">%1$d</xliff:g>   <xliff:g id="params2">%2$d</xliff:g></string>
+    <string name="respiratory_rate_value">呼吸频率:<xliff:g id="params">%1$d</xliff:g></string>
+
+    <string name="check_remote_update">检查远程DFU文件</string>
+    <string name="select_local_update">选择本地DFU文件</string>
+
+    <!--Dfu State-->
+    <string name="dfu_state_dfu_file">准备文件 &#8230;</string>
+    <string name="dfu_state_dfu_mode">进入DFU &#8230;</string>
+    <string name="dfu_state_dfu_device">搜索 &#8230;</string>
+    <string name="dfu_state_dfu_process">准备 &#8230;</string>
+
+    <!--Dfu Progress-->
+    <string name="dfu_progress_start">升级中 &#8230;</string>
+    <string name="dfu_progress_completed">升级完成</string>
+    <string name="dfu_success">DFU成功</string>
+    <string name="dfu_failed">DFU失败</string>
+    <string name="percentage"><xliff:g id="params">%1$s</xliff:g>%%</string>
+
+    <string name="ble_not_support">您的设备不支持蓝牙4.0</string>
+    <string name="bt_not_open">蓝牙未开启</string>
+    <string name="device_disconnected">设备断开连接</string>
+    <string name="dfu_error_file_format">DFU文件格式错误</string>
+    <string name="dfu_error_file_not_exist">DFU文件不存在</string>
+    <string name="dfu_error_file_download">固件下载失败</string>
+    <string name="dfu_error_enter_dfu_failed">设备进入DFU模式失败</string>
+    <string name="dfu_error_low_battery">电量不足.设备进入DFU模式失败</string>
+    <string name="dfu_error_service_not_ready">DFU服务未就绪</string>
+    <string name="dfu_error_scan_failed">开始扫描失败</string>
+    <string name="dfu_error_device_not_found">设备未发现</string>
+
+</resources>

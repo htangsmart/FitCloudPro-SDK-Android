@@ -1,0 +1,61 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.github.kilnn.wristband2.sample">
+
+    <!--In most cases, you need to ensure that the device supports BLE.-->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true"/>
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <!--Android 6.0 and above. Bluetooth scanning requires one of the following two permissions. You need to apply at run time.-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!--Optional. If your app need dfu function.-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!--Others-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ConnectActivity"/>
+
+        <activity android:name=".configs.ConfigsActivity"/>
+        <activity android:name=".configs.NotificationConfigActivity"/>
+        <activity android:name=".configs.PageConfigActivity"/>
+
+        <activity android:name=".alarm.AlarmListActivity"/>
+        <activity android:name=".alarm.AlarmDetailActivity"/>
+        <activity android:name=".alarm.AlarmRepeatActivity"/>
+
+        <activity android:name=".activemsg.ActiveMsgActivity"/>
+        <activity android:name=".activemsg.CameraControlActivity"/>
+
+        <activity android:name=".realtimedata.RealTimeDataActivity"/>
+
+        <activity android:name=".dfu.DfuActivity"/>
+    </application>
+
+</manifest>

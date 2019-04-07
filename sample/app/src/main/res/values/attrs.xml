@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SectionItem">
+        <!--Item的类型-->
+        <attr name="sectionItemType">
+            <!--默认的类型，拥有 标题、副标题和向右的指向图标-->
+            <flag name="type_default" value="0x0"/>
+            <!--在最右边有一个描述的文字-->
+            <flag name="type_text" value="0x1"/>
+            <!--在最右边有一个icon-->
+            <flag name="type_icon" value="0x2"/>
+            <!--在最右边有Switch-->
+            <flag name="type_switch" value="0x3"/>
+            <!--自定义布局，需要使用sectionItemCustomLayout指定一个子布局-->
+            <flag name="type_custom" value="0x4"/>
+        </attr>
+
+        <!--
+        标题设置（所有itemType都有此属性）
+        -->
+        <attr name="sectionItemTitle" format="string|reference"/>
+        <attr name="sectionItemTitleColor" format="color|reference"/>
+        <attr name="sectionItemTitleSize" format="dimension|reference"/>
+        <attr name="sectionItemTitleTextAppearance" format="reference"/>
+        <attr name="sectionItemTitleDrawableStart" format="reference"/>
+        <attr name="sectionItemTitleDrawableEnd" format="reference"/>
+        <attr name="sectionItemTitleDrawablePadding" format="dimension|reference"/>
+
+        <!--
+        副标题设置（所有itemType都有此属性）
+        -->
+        <attr name="sectionItemSubTitle" format="string|reference"/>
+        <attr name="sectionItemSubTitleColor" format="color|reference"/>
+        <attr name="sectionItemSubTitleSize" format="dimension|reference"/>
+        <attr name="sectionItemSubTitleTextAppearance" format="reference"/>
+
+        <!--
+        向右的指向图标（所有itemType都有此属性）
+        -->
+        <attr name="sectionItemIndicator" format="reference"/>
+
+        <!--
+        文字设置（itemType为text有此属性）
+        -->
+        <attr name="sectionItemText" format="string|reference"/>
+        <attr name="sectionItemTextColor" format="color|reference"/>
+        <attr name="sectionItemTextSize" format="dimension|reference"/>
+        <attr name="sectionItemTextAppearance" format="reference"/>
+        <attr name="sectionItemTextDrawableStart" format="reference"/>
+        <attr name="sectionItemTextDrawableEnd" format="reference"/>
+        <attr name="sectionItemTextDrawablePadding" format="dimension|reference"/>
+
+        <!--
+        icon设置（itemType为icon或者text_icon 有此属性）
+        -->
+        <attr name="sectionItemIcon" format="reference"/>
+
+        <!--
+        Custom
+        -->
+        <attr name="sectionItemCustomLayout" format="reference"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="SectionGroup">
+        <!--
+        分隔线的设置
+        -->
+        <attr name="sectionGroupDividerPaddingStart" format="dimension|reference"/>
+        <attr name="sectionGroupDividerPaddingEnd" format="dimension|reference"/>
+    </declare-styleable>
+
+</resources>
