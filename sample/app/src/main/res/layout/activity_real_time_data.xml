@@ -5,93 +5,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_heart_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_oxygen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_blood_pressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_respiratory_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
-        android:id="@+id/heart_rate_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="gone">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/heart_rate_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/heart_rate_btn"
+        <CheckBox
+            android:id="@+id/cb_heart_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/real_time_data_start"/>
+            android:text="@string/heart_rate"/>
+
+        <CheckBox
+            android:id="@+id/cb_oxygen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/oxygen"/>
+
+        <CheckBox
+            android:id="@+id/cb_blood_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blood_pressure"/>
+
+        <CheckBox
+            android:id="@+id/cb_respiratory_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/respiratory_rate"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/oxygen_layout"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_test_healthy"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="gone">
+        android:text="@string/real_time_data_start"/>
 
-        <TextView
-            android:id="@+id/oxygen_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/oxygen_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/real_time_data_start"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/blood_pressure_layout"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="gone">
+        android:layout_height="1dp"
+        android:background="#AAAAAA"/>
 
-        <TextView
-            android:id="@+id/blood_pressure_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/blood_pressure_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/real_time_data_start"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/respiratory_rate_layout"
+    <TextView
+        android:id="@+id/tv_ecg_sample"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_ecg_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_test_ecg"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/respiratory_rate_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/respiratory_rate_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/real_time_data_start"/>
-
-    </LinearLayout>
-
+        android:text="@string/real_time_data_start"/>
 
 </LinearLayout>

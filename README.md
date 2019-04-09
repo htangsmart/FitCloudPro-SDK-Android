@@ -148,7 +148,7 @@ BluetoothDevice getConnectedDevice();
 使用`getRxBleDevice`,`getConnectedAddress`,`getConnectedDevice`可以获取正在连接或者已经连接的设备。
 
 
-> connect方法中参数isBindOrLogin, 即选择连接手环时，是使用绑定模式，还是登陆模式。绑定和登录两者有一些差别，对于一个新的用户，第一次连接手环时，你需要选择绑定操作。绑定成功之后，下一次连接手环时，你需要选择登录操作。
+> 注意：connect方法中参数isBindOrLogin, 即选择连接手环时，是使用绑定模式，还是登陆模式。绑定和登录两者有一些差别，对于一个新的用户，第一次连接手环时，你需要选择绑定操作。绑定成功之后，下一次连接手环时，你需要选择登录操作。
 
 > 如果手环当前绑定的用户ID是1000，那么当你尝试使用ID为1001的用户进行登录时，登录会失败。某个用户是否绑定过，SDK内部并没有记录，你需要自己去处理这个逻辑。
 
@@ -310,10 +310,44 @@ MSG_TAKE_PHOTO;
 SDK支持多种实时数据的测试，但是是否有效，还要取决于手环是否有该项功能模块。使用`WristbandVersion`检测手环中该功能模块是否存在，在进行某个实时数据的测量。
 
 #### 6.5.1、心率，血氧，血压，呼吸频率
+使用`WristbandManager#openHealthyRealTimeData(int healthyType)`启动测量。但是在启动之前，你需要检测`WristbandVersion`中是否支持此模块，对应关系如下：
+```
+WristbandVersion#isHeartRateEnabled() --> WristbandManager#HEALTHY_TYPE_HEART_RATE
+WristbandVersion#isOxygenEnabled() --> WristbandManager#HEALTHY_TYPE_OXYGEN
+WristbandVersion#isBloodPressureEnabled() --> WristbandManager#HEALTHY_TYPE_BLOOD_PRESSURE
+WristbandVersion#isRespiratoryRateEnabled() --> WristbandManager#HEALTHY_TYPE_RESPIRATORY_RATE
+```
+你可以启动单个测量，如使用`HEALTHY_TYPE_HEART_RATE`，也可以同时启动
+多个测量，如`HEALTHY_TYPE_HEART_RATE|HEALTHY_TYPE_OXYGEN`。
+
+启动测量后，你可以主动结束测量(Disposable#dispose())，或者等一段时间(约2分钟)，手环也会自动结束，请注意测量结束的处理，具体参考sample工程。
+
+> 注意：测量返回结果可能包含无效的数据值。如启动了心率测量，返回结果中心率值有可能为0，所以你需要过滤掉无效的数据，并且其他值未开启测量的值，如血氧可能不为0，但是不具备参考意义。
 
 #### 6.5.2、心电
+使用`WristbandManager#openHealthyRealTimeDataopenEcgRealTimeData()`启动心电测量。启动测量后，返回的第一包数据为采样率，之后的数据为心电值。
+```
+EcgData mEcgData = null;
 
-
+mWristbandManager.openEcgRealTimeData()
+     .subscribe(new Consumer<int[]>() {
+         @Override
+         public void accept(int[] ints) throws Exception {
+             if (mEcgData == null) {//This is the first packet
+                 mEcgData = new EcgData();
+                 mEcgData.setItems(new ArrayList<Integer>(1000));
+                 if (ints.length == 1) {//Sample packet
+                     mEcgData.setSample(ints[0]);
+                 } else {//Error packet, may be lost the sample packet.
+                     mEcgData.setSample(EcgData.DEFAULT_SAMPLE);//Set a default sample
+                     mEcgData.getItems().addAll(intsAsList(ints));//Add this ecg data
+                 }
+             } else {
+                 mEcgData.getItems().addAll(intsAsList(ints));//Add this ecg data
+             }
+         }
+     });
+```
 
 ### 6.6、数据同步
 待完成

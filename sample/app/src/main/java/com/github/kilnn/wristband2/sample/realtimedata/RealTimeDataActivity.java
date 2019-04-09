@@ -1,200 +1,264 @@
 package com.github.kilnn.wristband2.sample.realtimedata;
 
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+import com.github.kilnn.wristband2.sample.BaseActivity;
+import com.github.kilnn.wristband2.sample.R;
+import com.htsmart.wristband2.WristbandApplication;
+import com.htsmart.wristband2.WristbandManager;
+import com.htsmart.wristband2.bean.HealthyDataResult;
+import com.htsmart.wristband2.bean.WristbandConfig;
+import com.htsmart.wristband2.bean.WristbandVersion;
+import com.htsmart.wristband2.bean.data.EcgData;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by Kilnn on 16-10-26.
  * <p>
- * en:Because the hardware may be different, so you should request and check the wristband config
+ * en:Because the hardware may be different, so you should request and check the WristbandVersion
  * before using real time testing.
  * </p>
  * <p>
- * zh-rCN:因为不同的手环可能硬件模块不一样，所以在开始实时测量之前，请先获取并检测手环的配置。
+ * zh-rCN:因为不同的手环可能硬件模块不一样，所以在开始实时测量之前，请先获取并检测WristbandVersion。
  * </p>
  */
-public class RealTimeDataActivity extends AppCompatActivity {
+public class RealTimeDataActivity extends BaseActivity {
 
-//    private WristbandManager mWristbandManager = WristbandApplication.getWristbandManager();
-//
-//    @Override
-//    protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_real_time_data);
-//        initView();
-//        mDevicePerformer.addPerformerListener(mPerformerListener);
-//        mDevicePerformer.cmd_requestWristbandConfig();
-//    }
-//
-//    private TextView mHeartRateTv;
-//    private TextView mOxygenTv;
-//    private TextView mBloodPressureTv;
-//    private TextView mRespiratoryRateTv;
-//
-//    private Button mHeartRateBtn;
-//    private Button mOxygenBtn;
-//    private Button mBloodPressureBtn;
-//    private Button mRespiratoryRateBtn;
-//
-//
-//    private boolean mHeartRateStarted = false;
-//    private boolean mOxygenStarted = false;
-//    private boolean mBloodPressureStarted = false;
-//    private boolean mRespiratoryRateStarted = false;
-//
-//    private void initView() {
-//        mHeartRateTv =  findViewById(R.id.heart_rate_tv);
-//        mOxygenTv = findViewById(R.id.oxygen_tv);
-//        mBloodPressureTv =  findViewById(R.id.blood_pressure_tv);
-//        mRespiratoryRateTv = findViewById(R.id.respiratory_rate_tv);
-//
-//        mHeartRateBtn = findViewById(R.id.heart_rate_btn);
-//        mHeartRateBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!mHeartRateStarted) {
-//                    mDevicePerformer.openHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_HEART_RATE);
-//                } else {
-//                    mDevicePerformer.closeHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_HEART_RATE);
-//                }
-//            }
-//        });
-//
-//        mOxygenBtn =  findViewById(R.id.oxygen_btn);
-//        mOxygenBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!mOxygenStarted) {
-//                    mDevicePerformer.openHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_OXYGEN);
-//                } else {
-//                    mDevicePerformer.closeHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_OXYGEN);
-//                }
-//            }
-//        });
-//
-//        mBloodPressureBtn =  findViewById(R.id.blood_pressure_btn);
-//        mBloodPressureBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!mBloodPressureStarted) {
-//                    mDevicePerformer.openHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_BLOOD_PRESSURE);
-//                } else {
-//                    mDevicePerformer.closeHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_BLOOD_PRESSURE);
-//                }
-//            }
-//        });
-//
-//        mRespiratoryRateBtn =findViewById(R.id.respiratory_rate_btn);
-//        mRespiratoryRateBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (!mRespiratoryRateStarted) {
-//                    mDevicePerformer.openHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_RESPIRATORY_RATE);
-//                } else {
-//                    mDevicePerformer.closeHealthyRealTimeData(IDevicePerformer.HEALTHY_TYPE_RESPIRATORY_RATE);
-//                }
-//            }
-//        });
-//    }
-//
-//    private SimplePerformerListener mPerformerListener = new SimplePerformerListener() {
-//        @Override
-//        public void onResponseWristbandConfig(WristbandConfig config) {
-//            WristbandVersion version = config.getWristbandVersion();
-//            if (version.isHeartRateEnabled()) {
-//                findViewById(R.id.heart_rate_layout).setVisibility(View.VISIBLE);
-//                mHeartRateTv.setText(getString(R.string.heart_rate_value, 0));
-//            }
-//
-//            if (version.isOxygenEnabled()) {
-//                findViewById(R.id.oxygen_layout).setVisibility(View.VISIBLE);
-//                mOxygenTv.setText(getString(R.string.oxygen_value, 0));
-//            }
-//
-//            if (version.isBloodPressureEnabled()) {
-//                findViewById(R.id.blood_pressure_layout).setVisibility(View.VISIBLE);
-//                mBloodPressureTv.setText(getString(R.string.blood_pressure_value, 0, 0));
-//            }
-//
-//            if (version.isRespiratoryRateEnabled()) {
-//                findViewById(R.id.respiratory_rate_layout).setVisibility(View.VISIBLE);
-//                mRespiratoryRateTv.setText(getString(R.string.respiratory_rate_value, 0));
-//            }
-//        }
-//
-//        @Override
-//        public void onOpenHealthyRealTimeData(int healthyType, boolean success) {
-//            if (success) {
-//                switch (healthyType) {
-//                    case IDevicePerformer.HEALTHY_TYPE_HEART_RATE:
-//                        mHeartRateStarted = true;
-//                        mHeartRateBtn.setText(R.string.real_time_data_stop);
-//                        break;
-//
-//                    case IDevicePerformer.HEALTHY_TYPE_OXYGEN:
-//                        mOxygenStarted = true;
-//                        mOxygenBtn.setText(R.string.real_time_data_stop);
-//                        break;
-//
-//                    case IDevicePerformer.HEALTHY_TYPE_BLOOD_PRESSURE:
-//                        mBloodPressureStarted = true;
-//                        mBloodPressureBtn.setText(R.string.real_time_data_stop);
-//                        break;
-//
-//                    case IDevicePerformer.HEALTHY_TYPE_RESPIRATORY_RATE:
-//                        mRespiratoryRateStarted = true;
-//                        mRespiratoryRateBtn.setText(R.string.real_time_data_stop);
-//                        break;
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void onCloseHealthyRealTimeData(int healthyType) {
-//            switch (healthyType) {
-//                case IDevicePerformer.HEALTHY_TYPE_HEART_RATE:
-//                    mHeartRateStarted = false;
-//                    mHeartRateBtn.setText(R.string.real_time_data_start);
-//                    break;
-//
-//                case IDevicePerformer.HEALTHY_TYPE_OXYGEN:
-//                    mOxygenStarted = false;
-//                    mOxygenBtn.setText(R.string.real_time_data_start);
-//                    break;
-//
-//                case IDevicePerformer.HEALTHY_TYPE_BLOOD_PRESSURE:
-//                    mBloodPressureStarted = false;
-//                    mBloodPressureBtn.setText(R.string.real_time_data_start);
-//                    break;
-//
-//                case IDevicePerformer.HEALTHY_TYPE_RESPIRATORY_RATE:
-//                    mRespiratoryRateStarted = false;
-//                    mRespiratoryRateBtn.setText(R.string.real_time_data_start);
-//                    break;
-//            }
-//        }
-//
-//        @Override
-//        public void onResultHealthyRealTimeData(int heartRate, int oxygen, int diastolicPressure, int systolicPressure, int respiratoryRate) {
-//            if (heartRate != 0) {
-//                mHeartRateTv.setText(getString(R.string.heart_rate_value, heartRate));
-//            }
-//
-//            if (oxygen != 0) {
-//                mOxygenTv.setText(getString(R.string.oxygen_value, oxygen));
-//            }
-//
-//            if (diastolicPressure != 0 && systolicPressure != 0) {
-//                mBloodPressureTv.setText(getString(R.string.blood_pressure_value, diastolicPressure, systolicPressure));
-//            }
-//            if (respiratoryRate != 0) {
-//                mRespiratoryRateTv.setText(getString(R.string.respiratory_rate_value, respiratoryRate));
-//            }
-//        }
-//    };
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mDevicePerformer.removePerformerListener(mPerformerListener);
-//    }
+    private WristbandManager mWristbandManager = WristbandApplication.getWristbandManager();
+    private WristbandConfig mWristbandConfig;
+
+    private TextView mTvHeartRate;
+    private TextView mTvOxygen;
+    private TextView mTvBloodPressure;
+    private TextView mTvRespiratoryRate;
+    private CheckBox mCbHeartRate;
+    private CheckBox mCbOxygen;
+    private CheckBox mCbBloodPressure;
+    private CheckBox mCbRespiratoryRate;
+    private Button mBtnTestHealthy;
+
+    private TextView mTvEcgSample;
+    private TextView mTvEcgValue;
+    private Button mBtnTestEcg;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_real_time_data);
+        mWristbandConfig = mWristbandManager.getWristbandConfig();
+        initView();
+    }
+
+    private void initView() {
+        mTvHeartRate = findViewById(R.id.tv_heart_rate);
+        mTvOxygen = findViewById(R.id.tv_oxygen);
+        mTvBloodPressure = findViewById(R.id.tv_blood_pressure);
+        mTvRespiratoryRate = findViewById(R.id.tv_respiratory_rate);
+
+        mCbHeartRate = findViewById(R.id.cb_heart_rate);
+        mCbOxygen = findViewById(R.id.cb_oxygen);
+        mCbBloodPressure = findViewById(R.id.cb_blood_pressure);
+        mCbRespiratoryRate = findViewById(R.id.cb_respiratory_rate);
+
+        mBtnTestHealthy = findViewById(R.id.btn_test_healthy);
+        mBtnTestHealthy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleHealthyTesting();
+            }
+        });
+
+        if (mWristbandConfig != null) {
+            WristbandVersion version = mWristbandConfig.getWristbandVersion();
+            mCbHeartRate.setVisibility(version.isHeartRateEnabled() ? View.VISIBLE : View.GONE);
+            mCbOxygen.setVisibility(version.isOxygenEnabled() ? View.VISIBLE : View.GONE);
+            mCbBloodPressure.setVisibility(version.isBloodPressureEnabled() ? View.VISIBLE : View.GONE);
+            mCbRespiratoryRate.setVisibility(version.isRespiratoryRateEnabled() ? View.VISIBLE : View.GONE);
+        }
+
+
+        mTvEcgSample = findViewById(R.id.tv_ecg_sample);
+        mTvEcgValue = findViewById(R.id.tv_ecg_value);
+        mBtnTestEcg = findViewById(R.id.btn_test_ecg);
+        mBtnTestEcg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleEcgTesting();
+            }
+        });
+    }
+
+    private Disposable mTestingHealthyDisposable;
+
+    private void toggleHealthyTesting() {
+        if (mTestingHealthyDisposable != null && !mTestingHealthyDisposable.isDisposed()) {
+            //结束测量
+            mTestingHealthyDisposable.dispose();
+        } else {
+            if (!mWristbandManager.isConnected()) {
+                toast(R.string.device_disconnected);
+                return;
+            } else if (mWristbandManager.isSyncingData()) {
+                toast(R.string.device_sync_data_busy);
+                return;
+            } else if (mWristbandConfig == null) {
+                toast("mWristbandConfig=null");
+                return;
+            }
+            int healthyType = 0;
+            if (mCbHeartRate.getVisibility() == View.VISIBLE && mCbHeartRate.isChecked()) {
+                healthyType |= WristbandManager.HEALTHY_TYPE_HEART_RATE;
+                Log.e("RealTimeData", "Add HeartRate Test");
+            }
+            if (mCbOxygen.getVisibility() == View.VISIBLE && mCbOxygen.isChecked()) {
+                healthyType |= WristbandManager.HEALTHY_TYPE_OXYGEN;
+                Log.e("RealTimeData", "Add Oxygen Test");
+            }
+            if (mCbBloodPressure.getVisibility() == View.VISIBLE && mCbBloodPressure.isChecked()) {
+                healthyType |= WristbandManager.HEALTHY_TYPE_BLOOD_PRESSURE;
+                Log.e("RealTimeData", "Add BloodPressure Test");
+            }
+            if (mCbRespiratoryRate.getVisibility() == View.VISIBLE && mCbRespiratoryRate.isChecked()) {
+                healthyType |= WristbandManager.HEALTHY_TYPE_RESPIRATORY_RATE;
+                Log.e("RealTimeData", "Add RespiratoryRate Test");
+            }
+            if (healthyType == 0) {
+                toast("healthyType=0");
+                return;
+            }
+            //开始测量
+            mTestingHealthyDisposable = mWristbandManager
+                    .openHealthyRealTimeData(healthyType)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe(new Consumer<Disposable>() {
+                        @Override
+                        public void accept(Disposable disposable) throws Exception {
+                            mBtnTestHealthy.setText(R.string.real_time_data_stop);
+                        }
+                    })
+                    .doOnTerminate(new Action() {
+                        @Override
+                        public void run() throws Exception {
+                            mBtnTestHealthy.setText(R.string.real_time_data_start);
+                        }
+                    })
+                    .doOnDispose(new Action() {
+                        @Override
+                        public void run() throws Exception {
+                            mBtnTestHealthy.setText(R.string.real_time_data_start);
+                        }
+                    })
+                    .subscribe(new Consumer<HealthyDataResult>() {
+                        @Override
+                        public void accept(HealthyDataResult result) throws Exception {
+                            mTvHeartRate.setText(getString(R.string.heart_rate_value, result.getHeartRate()));
+                            mTvOxygen.setText(getString(R.string.oxygen_value, result.getOxygen()));
+                            mTvBloodPressure.setText(getString(R.string.blood_pressure_value, result.getDiastolicPressure(), result.getSystolicPressure()));
+                            mTvRespiratoryRate.setText(getString(R.string.respiratory_rate_value, result.getRespiratoryRate()));
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Log.w("RealTimeData", "RealTimeData", throwable);
+                        }
+                    });
+        }
+    }
+
+    private Disposable mTestingEcgDisposable;
+    private EcgData mEcgData;
+
+    private void toggleEcgTesting() {
+        if (mTestingEcgDisposable != null && !mTestingEcgDisposable.isDisposed()) {
+            //结束测量
+            mTestingEcgDisposable.dispose();
+        } else {
+            if (!mWristbandManager.isConnected()) {
+                toast(R.string.device_disconnected);
+                return;
+            } else if (mWristbandManager.isSyncingData()) {
+                toast(R.string.device_sync_data_busy);
+                return;
+            } else if (mWristbandConfig == null) {
+                toast("mWristbandConfig=null");
+                return;
+            } else if (!mWristbandConfig.getWristbandVersion().isEcgEnabled()) {
+                toast("isEcgEnabled=false");
+                return;
+            }
+            mEcgData = null;
+            //开始测量
+            mTestingEcgDisposable = mWristbandManager
+                    .openEcgRealTimeData()
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe(new Consumer<Disposable>() {
+                        @Override
+                        public void accept(Disposable disposable) throws Exception {
+                            mBtnTestEcg.setText(R.string.real_time_data_stop);
+                        }
+                    })
+                    .doOnTerminate(new Action() {
+                        @Override
+                        public void run() throws Exception {
+                            mBtnTestEcg.setText(R.string.real_time_data_start);
+                        }
+                    })
+                    .doOnDispose(new Action() {
+                        @Override
+                        public void run() throws Exception {
+                            mBtnTestEcg.setText(R.string.real_time_data_start);
+                        }
+                    })
+                    .subscribe(new Consumer<int[]>() {
+                        @Override
+                        public void accept(int[] ints) throws Exception {
+                            if (mEcgData == null) {//This is the first packet
+                                mEcgData = new EcgData();
+                                mEcgData.setItems(new ArrayList<Integer>(1000));
+                                if (ints.length == 1) {//Sample packet
+                                    mEcgData.setSample(ints[0]);
+                                    mTvEcgSample.setText(getString(R.string.ecg_sample, mEcgData.getSample()));
+                                } else {//Error packet, may be lost the sample packet.
+                                    mEcgData.setSample(EcgData.DEFAULT_SAMPLE);//Set a default sample
+                                    mEcgData.getItems().addAll(intsAsList(ints));//Add this ecg data
+
+                                    mTvEcgSample.setText(getString(R.string.ecg_sample, mEcgData.getSample()));
+                                    mTvEcgValue.setText(getString(R.string.ecg_value, Arrays.toString(ints)));
+                                }
+                            } else {
+                                mEcgData.getItems().addAll(intsAsList(ints));//Add this ecg data
+                                mTvEcgValue.setText(getString(R.string.ecg_value, Arrays.toString(ints)));
+                            }
+
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Log.w("RealTimeData", "RealTimeData", throwable);
+                        }
+                    });
+        }
+    }
+
+    private static List<Integer> intsAsList(int[] values) {
+        List<Integer> list = new ArrayList<>(values.length);
+        for (int i = 0; i < values.length; i++) {
+            list.add(values[i]);
+        }
+        return list;
+    }
 }
