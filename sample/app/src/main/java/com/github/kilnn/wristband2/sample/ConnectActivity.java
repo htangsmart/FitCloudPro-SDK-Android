@@ -22,6 +22,7 @@ import com.github.kilnn.wristband2.sample.mock.DbMock;
 import com.github.kilnn.wristband2.sample.mock.User;
 import com.github.kilnn.wristband2.sample.mock.UserMock;
 import com.github.kilnn.wristband2.sample.realtimedata.RealTimeDataActivity;
+import com.github.kilnn.wristband2.sample.syncdata.SyncDataActivity;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.ConnectionError;
@@ -217,7 +218,7 @@ public class ConnectActivity extends BaseActivity {
      * 6.Sync data
      */
     public void sync_data(View view) {
-        //TODO
+        startActivity(new Intent(this, SyncDataActivity.class));
     }
 
     /**

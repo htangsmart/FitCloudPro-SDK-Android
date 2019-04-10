@@ -179,4 +179,13 @@
     <string name="dfu_error_device_not_found">设备未发现</string>
 
     <string name="device_sync_data_busy">正在同步数据，不能进行该操作</string>
+    <string name="sync_data">同步数据</string>
+    <string name="sync_data_state_failed_disconnected">同步失败，设备断开连接</string>
+    <string name="sync_data_state_failed_checking_ecg">同步失败，设备正在检测心电</string>
+    <string name="sync_data_state_failed_saving_ecg">同步失败，设备正在保存心电</string>
+    <string name="sync_data_state_failed_unknown">同步失败，未知原因</string>
+    <string name="sync_data_state_start">同步开始</string>
+    <string name="sync_data_state_progress">同步进度:<xliff:g id="params">%1$d</xliff:g>%%</string>
+    <string name="sync_data_state_success">同步成功</string>
+
 </resources>

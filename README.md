@@ -273,7 +273,7 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 通过`WristbandManager#setAlarmList(@Nullable List<WristbandAlarm> alarmList)`来设置闹钟。需要注意的是，你必须同时设置所有你希望保存的闹钟，所以这里需要传入的是一个List。如果只设置一个闹钟，那么其他的闹钟信息将全部丢失。
 
 ### 6.3、消息通知
-使用`WristbandManager# sendWristbandNotification(WristbandNotification notification) `可以对手环发送消息通知.
+使用`WristbandManager#sendWristbandNotification(WristbandNotification notification) `可以对手环发送消息通知.
 
 `WristbandNotification`为发送给手环的消息实体。你可以给手环发送多种不同的消息通知，如QQ，微信，Facebook等。具体的参考JavaDoc文档。
 
@@ -325,7 +325,7 @@ WristbandVersion#isRespiratoryRateEnabled() --> WristbandManager#HEALTHY_TYPE_RE
 > 注意：测量返回结果可能包含无效的数据值。如启动了心率测量，返回结果中心率值有可能为0，所以你需要过滤掉无效的数据，并且其他值未开启测量的值，如血氧可能不为0，但是不具备参考意义。
 
 #### 6.5.2、心电
-使用`WristbandManager#openHealthyRealTimeDataopenEcgRealTimeData()`启动心电测量。启动测量后，返回的第一包数据为采样率，之后的数据为心电值。
+如果`WristbandVersion#isEcgEnabled()`为true，那么代表手环支持心电测量，使用`WristbandManager#openHealthyRealTimeDataopenEcgRealTimeData()`就启动心电测量。启动测量后，返回的第一包数据为采样率，之后的数据为心电值。
 ```
 EcgData mEcgData = null;
 
@@ -350,7 +350,113 @@ mWristbandManager.openEcgRealTimeData()
 ```
 
 ### 6.6、数据同步
-待完成
+数据同步功能指获取手环上存储的各个不同功能模块的数据，获取成功后，手环上将删除这些数据(除了当天总数据)。
+SDK支持同步的数据如下：
+```
+SyncDataParser#TYPE_STEP
+SyncDataParser#TYPE_SLEEP
+SyncDataParser#TYPE_HEART_RATE
+SyncDataParser#TYPE_OXYGEN
+SyncDataParser#TYPE_BLOOD_PRESSURE
+SyncDataParser#TYPE_RESPIRATORY_RATE
+SyncDataParser#TYPE_SPORT
+SyncDataParser#TYPE_ECG
+SyncDataParser#TYPE_TOTAL_DATA
+```
+其中步数和睡眠是必定存在的，其他功能模块则取决于手环是否支持。使用`WristbandVersion`可以检测手环中该功能模块是否存在。
+
+使用`WristbandManager#syncData()`同步数据，此方法将获取到原始的byte数据，根据不同的数据类型，使用`SyncDataParser`中的解析方法获取到各模块数据。
+```
+mWristbandManager
+    .syncData()
+    .observeOn(Schedulers.io(), true)
+    .flatMapCompletable(new Function<SyncDataRaw, CompletableSource>() {
+        @Override
+        public CompletableSource apply(SyncDataRaw syncDataRaw) throws Exception {
+            if (syncDataRaw.getDataType() == SyncDataParser.TYPE_HEART_RATE) {
+                List<HeartRateData> datas = SyncDataParser.parserHeartRateData(syncDataRaw.getDatas());
+                if (datas != null && datas.size() > 0) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_BLOOD_PRESSURE) {
+                List<BloodPressureData> datas = SyncDataParser.parserBloodPressureData(syncDataRaw.getDatas());
+                if (datas != null && datas.size() > 0) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_OXYGEN) {
+                List<OxygenData> datas = SyncDataParser.parserOxygenData(syncDataRaw.getDatas());
+                if (datas != null && datas.size() > 0) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_SLEEP) {
+                List<SleepData> sleepDataList = SyncDataParser.parserSleepData(syncDataRaw.getDatas());
+                if (sleepDataList != null && sleepDataList.size() > 0) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_SPORT) {
+                List<SportData> datas = SyncDataParser.parserSportData(syncDataRaw.getDatas(), syncDataRaw.getConfig());
+                if (datas != null && datas.size() > 0) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_STEP) {
+                List<StepData> datas = SyncDataParser.parserStepData(syncDataRaw.getDatas());
+                if (datas != null && datas.size() > 0) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_ECG) {
+                EcgData ecgData = SyncDataParser.parserEcgData(syncDataRaw.getDatas());
+                if (ecgData != null) {
+                    //TODO save data
+                }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TOTAL_DATA) {
+                TodayTotalData data = SyncDataParser.parserTotalData(syncDataRaw.getDatas());
+                //TODO save data
+            }
+            return Completable.complete();
+        }
+    })
+    .subscribe(new Action() {
+        @Override
+        public void run() throws Exception {
+            Log.d("Sync", "Sync Data Success");
+        }
+    }, new Consumer<Throwable>() {
+        @Override
+        public void accept(Throwable throwable) throws Exception {
+            Log.e("Sync", "Sync Data Failed", throwable);
+        }
+    });
+
+```
+使用`WristbandManager#observerSyncDataState()`可以监听同步的状态。也可以使用`WristbandManager#isSyncingData()`简单判断是否正在同步。
+```
+mWristbandManager.observerSyncDataState()
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe(new Consumer<Integer>() {
+        @Override
+        public void accept(Integer integer) throws Exception {
+            if (integer == null) return;
+            if (integer < 0) {//failed
+                if (integer == WristbandManager.SYNC_STATE_FAILED_DISCONNECTED) {
+                    mTvSyncState.setText(R.string.sync_data_state_failed_disconnected);
+                } else if (integer == WristbandManager.SYNC_STATE_FAILED_CHECKING_ECG) {
+                    mTvSyncState.setText(R.string.sync_data_state_failed_checking_ecg);
+                } else if (integer == WristbandManager.SYNC_STATE_FAILED_SAVING_ECG) {
+                    mTvSyncState.setText(R.string.sync_data_state_failed_saving_ecg);
+                } else /*if(integer == WristbandManager.SYNC_STATE_FAILED_UNKNOWN)*/ {
+                    mTvSyncState.setText(R.string.sync_data_state_failed_unknown);
+                }
+            } else if (integer == WristbandManager.SYNC_STATE_START) {
+                mTvSyncState.setText(R.string.sync_data_state_start);
+            } else if (integer == WristbandManager.SYNC_STATE_SUCCESS) {
+                mTvSyncState.setText(R.string.sync_data_state_success);
+            } else {
+                mTvSyncState.setText(getString(R.string.sync_data_state_progress, integer));
+            }
+        }
+    });
+```
+
 
 ### 6.7、DFU升级
 使用DfuManager可以对手表硬件进行升级。DfuManager所完成的工作如下：

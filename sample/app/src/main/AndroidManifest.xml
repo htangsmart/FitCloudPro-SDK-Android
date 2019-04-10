@@ -55,6 +55,8 @@
 
         <activity android:name=".realtimedata.RealTimeDataActivity"/>
 
+        <activity android:name=".syncdata.SyncDataActivity"/>
+
         <activity android:name=".dfu.DfuActivity"/>
     </application>
 

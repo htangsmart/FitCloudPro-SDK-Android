@@ -179,4 +179,13 @@
     <string name="dfu_error_device_not_found">Device not found</string>
 
     <string name="device_sync_data_busy">Sync data, unable to perform this operation</string>
+    <string name="sync_data">Sync Data</string>
+    <string name="sync_data_state_failed_disconnected">Sync Failed. Device disconnected</string>
+    <string name="sync_data_state_failed_checking_ecg">Sync Failed. Device checking ecg</string>
+    <string name="sync_data_state_failed_saving_ecg">Sync Failed. Device saving ecg</string>
+    <string name="sync_data_state_failed_unknown">Sync Failed. Unknown</string>
+    <string name="sync_data_state_start">Sync Start</string>
+    <string name="sync_data_state_progress">Sync Progress:<xliff:g id="params">%1$d</xliff:g>%%</string>
+    <string name="sync_data_state_success">Sync Success</string>
+
 </resources>
