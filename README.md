@@ -499,19 +499,11 @@ mWristbandManager.observerSyncDataState()
 `WristbandManager#userUnBind()`，解除绑定后，下次连接时需要使用Bind模式。参考 `五、连接设备`
 
 #### 6.8.9、设置语言
-`WristbandManager#setLanguage(byte languageType)`，
-```
-0x01 简体中文
-0x02 繁体中文
-0x03 英语
-0x04 德语
-0x05 俄语
-0x06 西班牙语
-0x07 葡萄牙语
-0x08 法语
-0x09 日语
-0xff 如果不是上面9种语言，设置为0xff
-```
+`WristbandManager#setLanguage(byte languageType)`，具体语言类型参考如下：
+![LanguageType](LanguageType.png)
+
+可以使用'Utils.getSystemLanguageType(Context context)'获取当前系统语言类型。
+
 
 #### 6.8.10、设置天气
 `WristbandManager#setWeather(int currentTemperature, int lowTemperature, int highTemperature, int weatherCode, String city)`，
