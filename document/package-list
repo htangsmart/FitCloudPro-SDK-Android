@@ -5,3 +5,4 @@ com.htsmart.wristband2.bean.data
 com.htsmart.wristband2.dfu
 com.htsmart.wristband2.exceptions
 com.htsmart.wristband2.packet
+com.htsmart.wristband2.utils

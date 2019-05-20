@@ -324,6 +324,8 @@ WristbandVersion#isRespiratoryRateEnabled() --> WristbandManager#HEALTHY_TYPE_RE
 
 > 注意：测量返回结果可能包含无效的数据值。如启动了心率测量，返回结果中心率值有可能为0，所以你需要过滤掉无效的数据，并且其他值未开启测量的值，如血氧可能不为0，但是不具备参考意义。
 
+`WristbandManager#openHealthyRealTimeData(int healthyType)`默认测量时间为2分钟，可以使用`WristbandManager#openHealthyRealTimeData(int healthyType,int minute)`自定义测量时间，自定义时间限制为1-255分钟。
+
 #### 6.5.2、心电
 如果`WristbandVersion#isEcgEnabled()`为true，那么代表手环支持心电测量，使用`WristbandManager#openHealthyRealTimeDataopenEcgRealTimeData()`就启动心电测量。启动测量后，返回的第一包数据为采样率，之后的数据为心电值。
 ```
