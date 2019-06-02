@@ -14,6 +14,63 @@
         android:id="@+id/btn_sync"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="clickSync"
         android:text="@string/sync_data"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="#FFAAAAAA"/>
+
+    <Button
+        android:id="@+id/btn_view_heart_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewHeartRate"
+        android:text="@string/view_heart_rate_data"/>
+
+    <Button
+        android:id="@+id/btn_view_oxygen_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewOxygen"
+        android:text="@string/view_oxygen_data"/>
+
+    <Button
+        android:id="@+id/btn_view_blood_pressure_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewBloodPressure"
+        android:text="@string/view_blood_pressure_data"/>
+
+    <Button
+        android:id="@+id/btn_view_respiratory_rate_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewRespiratoryRate"
+        android:text="@string/view_respiratory_rate_data"/>
+
+    <Button
+        android:id="@+id/btn_view_sleep_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewSleep"
+        android:text="@string/view_sleep_data"/>
+
+    <Button
+        android:id="@+id/btn_view_sport_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewSport"
+        android:text="@string/view_sport_data"/>
+
+    <Button
+        android:id="@+id/btn_view_ecg_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clickViewEcg"
+        android:text="@string/view_ecg_data"/>
 
 </LinearLayout>

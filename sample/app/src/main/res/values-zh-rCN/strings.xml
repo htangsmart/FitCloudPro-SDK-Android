@@ -188,4 +188,33 @@
     <string name="sync_data_state_progress">同步进度:<xliff:g id="params">%1$d</xliff:g>%%</string>
     <string name="sync_data_state_success">同步成功</string>
 
+    <string name="view_heart_rate_data">查看心率数据</string>
+    <string name="view_oxygen_data">查看血氧数据</string>
+    <string name="view_blood_pressure_data">查看血压数据</string>
+    <string name="view_respiratory_rate_data">查看呼吸频率数据</string>
+    <string name="view_healthy_data_tips">该数据与心率数据类似，请参考心率数据做法</string>
+
+    <string name="view_sleep_data">查看睡眠数据</string>
+    <string name="deep_sleep_hour_minute">深睡:<xliff:g id="params1">%1$d</xliff:g>小时<xliff:g id="params2">%2$d</xliff:g>分钟</string>
+    <string name="light_sleep_hour_minute">浅睡:<xliff:g id="params1">%1$d</xliff:g>小时<xliff:g id="params2">%2$d</xliff:g>分钟</string>
+    <string name="sober_sleep_hour_minute">清醒:<xliff:g id="params1">%1$d</xliff:g>小时<xliff:g id="params2">%2$d</xliff:g>分钟</string>
+
+    <string name="view_sport_data">查看运动数据</string>
+    <string name="view_sport_type_ride">骑行</string>
+    <string name="view_sport_type_od">室外跑步</string>
+    <string name="view_sport_type_id">室内跑步</string>
+    <string name="view_sport_type_walk">健走</string>
+    <string name="view_sport_type_climb">登山</string>
+    <string name="view_sport_type_bb">篮球</string>
+    <string name="view_sport_type_swim">游泳</string>
+    <string name="view_sport_type_badminton">羽毛球</string>
+    <string name="view_sport_type_football">足球</string>
+
+    <string name="view_sport_data_calories">卡路里:<xliff:g id="params1">%1$s</xliff:g>千卡</string>
+    <string name="view_sport_data_step">步数:<xliff:g id="params1">%1$d</xliff:g></string>
+    <string name="view_sport_data_distance">距离:<xliff:g id="params1">%1$s</xliff:g>千米</string>
+    <string name="view_sport_data_hr">心率:<xliff:g id="params1">%1$d</xliff:g></string>
+
+    <string name="view_ecg_data">查看心电数据</string>
+    <string name="view_ecg_data_sample">采样率:<xliff:g id="params1">%1$d</xliff:g></string>
 </resources>

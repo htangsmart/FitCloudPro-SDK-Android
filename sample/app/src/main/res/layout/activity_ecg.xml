@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="176dp">
+
+        <com.github.kilnn.wristband2.sample.syncdata.EcgGridView
+            android:id="@+id/ecg_grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:grid_bold_line_width="2px"
+            app:grid_line_color="#FFFFD2B9"
+            app:grid_line_gap="4dp"
+            app:grid_line_width="1px"/>
+
+        <com.github.kilnn.wristband2.sample.syncdata.EcgView
+            android:id="@+id/ecg_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:ecg_data_auto_scope="true"
+            app:ecg_data_max_value="65535"
+            app:ecg_data_min_value="0"
+            app:ecg_grid_width="4dp"
+            app:ecg_less_data_align_left="false"
+            app:ecg_line_color="@android:color/black"
+            app:ecg_line_width="1dp"
+            app:ecg_new_data_align_left="false"
+            app:ecg_play_back_refresh_interval="600"
+            app:ecg_real_time_refresh_interval="600"
+            app:ecg_sampling_rate="10"/>
+
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

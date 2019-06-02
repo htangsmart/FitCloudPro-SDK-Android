@@ -1,14 +1,17 @@
 package com.github.kilnn.wristband2.sample.syncdata;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.kilnn.wristband2.sample.BaseActivity;
+import com.github.kilnn.wristband2.sample.MyApplication;
 import com.github.kilnn.wristband2.sample.R;
+import com.github.kilnn.wristband2.sample.mock.AppFakeDataProvider;
+import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.SyncDataRaw;
@@ -16,12 +19,14 @@ import com.htsmart.wristband2.bean.data.BloodPressureData;
 import com.htsmart.wristband2.bean.data.EcgData;
 import com.htsmart.wristband2.bean.data.HeartRateData;
 import com.htsmart.wristband2.bean.data.OxygenData;
+import com.htsmart.wristband2.bean.data.RespiratoryRateData;
 import com.htsmart.wristband2.bean.data.SleepData;
 import com.htsmart.wristband2.bean.data.SportData;
 import com.htsmart.wristband2.bean.data.StepData;
 import com.htsmart.wristband2.bean.data.TodayTotalData;
 import com.htsmart.wristband2.packet.SyncDataParser;
 
+import java.util.Calendar;
 import java.util.List;
 
 import io.reactivex.Completable;
@@ -40,10 +45,12 @@ public class SyncDataActivity extends BaseActivity {
 
     private WristbandManager mWristbandManager = WristbandApplication.getWristbandManager();
     private TextView mTvSyncState;
-    private Button mBtnSync;
 
     private Disposable mSyncStateDisposable;
     private Disposable mSyncDisposable;
+
+    //Get dao to access database
+    private SyncDataDao mSyncDataDao = MyApplication.getSyncDataDb().dao();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,13 +58,6 @@ public class SyncDataActivity extends BaseActivity {
         setContentView(R.layout.activity_sync_data);
 
         mTvSyncState = findViewById(R.id.tv_sync_state);
-        mBtnSync = findViewById(R.id.btn_sync);
-        mBtnSync.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sync_data();
-            }
-        });
 
         mSyncStateDisposable = mWristbandManager.observerSyncDataState()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -86,10 +86,26 @@ public class SyncDataActivity extends BaseActivity {
                 });
     }
 
-    private void sync_data() {
+    /**
+     * Users may quit sleep between 4 and 12:00
+     */
+    public static boolean isInExitSleepMonitorTime() {
+        Calendar cd = Calendar.getInstance();
+        int h = cd.get(Calendar.HOUR_OF_DAY);
+        int m = cd.get(Calendar.MINUTE);
+        int currentTime = h * 60 + m;
+        return currentTime >= 4 * 60 && currentTime <= 12 * 60;
+    }
+
+    public void clickSync(View view) {
         if (mSyncDisposable != null && !mSyncDisposable.isDisposed()) {
             //Syncing
             return;
+        }
+        boolean syncManual = true;//Sync Manual
+        if (syncManual && isInExitSleepMonitorTime()) {
+            //Exit sleep monitor
+            mWristbandManager.exitSleepMonitor().onErrorComplete().subscribe();
         }
         mSyncDisposable = mWristbandManager
                 .syncData()
@@ -97,31 +113,25 @@ public class SyncDataActivity extends BaseActivity {
                 .flatMapCompletable(new Function<SyncDataRaw, CompletableSource>() {
                     @Override
                     public CompletableSource apply(SyncDataRaw syncDataRaw) throws Exception {
+                        //parser sync data and save to database
                         if (syncDataRaw.getDataType() == SyncDataParser.TYPE_HEART_RATE) {
                             List<HeartRateData> datas = SyncDataParser.parserHeartRateData(syncDataRaw.getDatas());
-                            if (datas != null && datas.size() > 0) {
-                                //TODO save data
-                            }
+                            mSyncDataDao.saveHeartRate(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_BLOOD_PRESSURE) {
                             List<BloodPressureData> datas = SyncDataParser.parserBloodPressureData(syncDataRaw.getDatas());
-                            if (datas != null && datas.size() > 0) {
-                                //TODO save data
-                            }
+                            mSyncDataDao.saveBloodPressure(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_OXYGEN) {
                             List<OxygenData> datas = SyncDataParser.parserOxygenData(syncDataRaw.getDatas());
-                            if (datas != null && datas.size() > 0) {
-                                //TODO save data
-                            }
+                            mSyncDataDao.saveOxygen(datas);
+                        } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_RESPIRATORY_RATE) {
+                            List<RespiratoryRateData> datas = SyncDataParser.parserRespiratoryRateData(syncDataRaw.getDatas());
+                            mSyncDataDao.saveRespiratoryRate(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_SLEEP) {
-                            List<SleepData> sleepDataList = SyncDataParser.parserSleepData(syncDataRaw.getDatas());
-                            if (sleepDataList != null && sleepDataList.size() > 0) {
-                                //TODO save data
-                            }
+                            List<SleepData> datas = SyncDataParser.parserSleepData(syncDataRaw.getDatas());
+                            mSyncDataDao.saveSleep(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_SPORT) {
                             List<SportData> datas = SyncDataParser.parserSportData(syncDataRaw.getDatas(), syncDataRaw.getConfig());
-                            if (datas != null && datas.size() > 0) {
-                                //TODO save data
-                            }
+                            mSyncDataDao.saveSport(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_STEP) {
                             List<StepData> datas = SyncDataParser.parserStepData(syncDataRaw.getDatas());
                             if (datas != null && datas.size() > 0) {
@@ -129,14 +139,23 @@ public class SyncDataActivity extends BaseActivity {
                             }
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_ECG) {
                             EcgData ecgData = SyncDataParser.parserEcgData(syncDataRaw.getDatas());
-                            if (ecgData != null) {
-                                //TODO save data
-                            }
+                            mSyncDataDao.saveEcg(ecgData);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TOTAL_DATA) {
                             TodayTotalData data = SyncDataParser.parserTotalData(syncDataRaw.getDatas());
                             //TODO save data
                         }
                         return Completable.complete();
+                    }
+                })
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        if (AppFakeDataProvider.ENABLED) {
+                            mSyncDataDao.saveHeartRate(AppFakeDataProvider.fakeHeartRate(SyncDataActivity.this));
+                            mSyncDataDao.saveSleep(AppFakeDataProvider.fakeSleepRecord());
+                            mSyncDataDao.saveSport(AppFakeDataProvider.fakeSportRecord());
+                            mSyncDataDao.saveEcg(AppFakeDataProvider.fakeEcgRecord());
+                        }
                     }
                 })
                 .subscribe(new Action() {
@@ -151,6 +170,34 @@ public class SyncDataActivity extends BaseActivity {
                     }
                 });
 
+    }
+
+    public void clickViewHeartRate(View view) {
+        startActivity(new Intent(this, HeartRateActivity.class));
+    }
+
+    public void clickViewOxygen(View view) {
+        toast(R.string.view_healthy_data_tips);
+    }
+
+    public void clickViewBloodPressure(View view) {
+        toast(R.string.view_healthy_data_tips);
+    }
+
+    public void clickViewRespiratoryRate(View view) {
+        toast(R.string.view_healthy_data_tips);
+    }
+
+    public void clickViewSleep(View view) {
+        startActivity(new Intent(this, SleepActivity.class));
+    }
+
+    public void clickViewSport(View view) {
+        startActivity(new Intent(this, SportActivity.class));
+    }
+
+    public void clickViewEcg(View view) {
+        startActivity(new Intent(this, EcgActivity.class));
     }
 
     @Override

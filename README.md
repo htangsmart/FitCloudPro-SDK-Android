@@ -248,7 +248,7 @@ if (mWristbandConfig.getWristbandVersion().isExtAncsEmail()) {
 5. 温度单位(FLAG_TEMPERATURE_UNIT)，true为华氏摄氏度，false为摄氏度
 
 #### 6.1.6、HealthyConfig
-用于配置健康数据的实时监测，这个设定将影响心率、血压、血氧等数据。心率、血压、血氧这三部分数据会在设定的时间段内监测用户健康状态，并产生数据。产生的数据可以通过同步数据过程获得。
+用于配置健康数据的实时监测，这个设定将影响心率、血压、血氧、呼吸频率等数据。心率、血压、血氧、呼吸频率数据会在设定的时间段内监测用户健康状态，并产生数据。产生的数据可以通过同步数据过程获得。
 
 #### 6.1.7、SedentaryConfig
 用于配置是否在用户久坐的时候提醒用户，并设置开始和结束时间，以及免打扰设置。
@@ -352,20 +352,24 @@ mWristbandManager.openEcgRealTimeData()
 ```
 
 ### 6.6、数据同步
-数据同步功能指获取手环上存储的各个不同功能模块的数据，获取成功后，手环上将删除这些数据(除了当天总数据)。
-SDK支持同步的数据如下：
+数据同步功能指获取手环上存储的各个不同功能模块的数据。
+
+SDK支持同步的数据模块如下：
+
 ```
-SyncDataParser#TYPE_STEP
-SyncDataParser#TYPE_SLEEP
-SyncDataParser#TYPE_HEART_RATE
-SyncDataParser#TYPE_OXYGEN
-SyncDataParser#TYPE_BLOOD_PRESSURE
-SyncDataParser#TYPE_RESPIRATORY_RATE
-SyncDataParser#TYPE_SPORT
-SyncDataParser#TYPE_ECG
-SyncDataParser#TYPE_TOTAL_DATA
+步数        SyncDataParser#TYPE_STEP
+睡眠        SyncDataParser#TYPE_SLEEP
+心率        SyncDataParser#TYPE_HEART_RATE
+血氧        SyncDataParser#TYPE_OXYGEN
+血压        SyncDataParser#TYPE_BLOOD_PRESSURE
+呼吸频率     SyncDataParser#TYPE_RESPIRATORY_RATE
+运动        SyncDataParser#TYPE_SPORT
+当天总数据   SyncDataParser#TYPE_TOTAL_DATA
+心电        SyncDataParser#TYPE_ECG
 ```
-其中步数和睡眠是必定存在的，其他功能模块则取决于手环是否支持。使用`WristbandVersion`可以检测手环中该功能模块是否存在。
+其中‘步数’，‘睡眠’和‘当天总数据’是必定存在的，其他功能模块则取决于手环是否支持。使用`WristbandVersion`可以检测手环中该功能模块是否存在。同步数据流程将按照‘步数’，‘睡眠’，‘心率’，‘血氧’，‘血压’，‘呼吸频率’，‘运动’，‘当天总数据’，‘心电’的顺序依次同步并返回各个模块的数据，如果某个模块不存在，那么就会跳过。
+
+除‘当天总数据’外，其他每个模块数据同步成功后，手环上将删除这个模块的数据。 如果某一个模块数据同步失败，那么将会中断后续同步流程。
 
 使用`WristbandManager#syncData()`同步数据，此方法将获取到原始的byte数据，根据不同的数据类型，使用`SyncDataParser`中的解析方法获取到各模块数据。
 ```
@@ -459,6 +463,173 @@ mWristbandManager.observerSyncDataState()
     });
 ```
 
+#### 6.6.1 步数
+手环会全天监测用户运动状态，产生步数数据。同步数据并解析得到`StepData`。`StepData`表示在某个时间点用户的运动的步数，如2019-05-29 12:00:00，步数50步。实际可以理解为在2019-05-29 11:55:00到2019-05-29 12:00:00这5分钟时间内，用户累计运动50步。
+
+```
+StepData{
+   long getTimeStamp();//该数据时间点
+   int getStep();//该时间点步数
+}
+```
+
+1. 手环会保存几天的步数数据？
+手环保存最新7天的步数数据，每次步数数据同步成功后，手环上的步数数据将被删除。下次同步的话，只会得到新产生的步数数据。
+
+2. 步数数据的时间间隔是多少？
+时间间隔不确定。如果用户处于持续运动状态，每个步数数据将间隔5分钟。如果用户断断续续的运动，那么间隔可能大于5分钟，也可能小于5分钟。
+
+3. 如何根据步数计算距离和卡路里？
+步数转换为卡路里和距离参考计算方法如下：
+    ```
+        /**
+         * 根据步数和步长计算距离(km)
+         *
+         * @param step       步数
+         * @param stepLength 步长(m)
+         * @return 距离(km)
+         */
+        public static float step2Km(int step, float stepLength) {
+            return (stepLength * step) / (1000);
+        }
+        
+         /**
+         * 根据距离和体重计算卡路里(千卡)
+         *
+         * @param km     距离(km)
+         * @param weight 体重(kg)
+         * @return 卡路里(千卡)
+         */
+        public static float km2Calories(float km, float weight) {
+            return 0.78f * weight * km;
+        }
+        
+        /**
+         * 根据身高和性别计算步长(m)
+         * @param height     身高(cm)
+         * @param man        性别，true为男，false为女
+         * @return 步长(m)
+         */
+        public static float getStepLength(float height,boolean man) {
+            float stepLength = height * (man ? 0.415f : 0.413f);
+            if (stepLength < 30) {
+                stepLength = 30.f;//30cm，默认最小30CM的步长
+            }
+            if (stepLength > 100) {
+                stepLength = 100.f;//100cm，默认最大100CM的步长
+            }
+            return stepLength / 100;
+        }
+    ```
+4. APP将同步获取到的`StepData`缓存到数据库，为什么当天的`StepData`累加起来的总步数和手环上总步数不一致？
+造成这种情况有两种可能。
+ 1. 当天重新绑定了手环。
+目前手环的设计是每次绑定时，都会清空数据。如果当天手环产生了步数数据，并且同步到APP缓存起来。此时再去解绑并重新绑定手环，手环清空数据，此时手环上的总步数为0，所以和APP缓存的数据对应不上。解决办法就是在重新绑定手环时，APP清空当天的`StepData`，这样就与手环上的总步数保持一致。
+ 2. `StepData`5分钟保存一次，最近5分钟的步数数据会延迟。
+目前手环步数是累积5分钟然后保存为一个`StepData`数据，如果没有到5分钟，那么不会产生`StepData`，APP自然就同步不到。但是手环的总步数是直接累积，所以会导致手环总步数和`StepData`累积的步数不一致。如果非要考虑这种实时性，那么可以考虑结合`TodayTotalData`和处理，详见`#### 6.6.4 当天总数据`
+
+#### 6.6.2 睡眠
+手环会在晚上21:30至第二天12:00之间监测用户睡眠状态，并产生睡眠数据。同步数据并解析得到`SleepData`。
+
+```
+/**
+ * 某天睡眠的统计数据，包含3中睡眠状态的时长，以及明显数据
+ */
+SleepData{
+    long getTimeStamp();//数据的时间，为某天0点0分0秒0毫秒时间。
+    int getDeepSleep();//深睡的总时长，单位为秒
+    int getLightSleep();//浅睡的总时长，单位为秒
+    int getSoberSleep();//清醒总时长，单位秒
+    List<SleepItemData> getItems();//睡眠明显数据
+}
+
+/**
+ * 某段睡眠状态
+ */
+SleepItemData {
+    int getStatus();//该睡眠段的状态
+    long getStartTime();//该睡眠段起始时间
+    long getEndTime();//该睡眠段结束时间
+}
+
+```
+
+`SleepData#getTimeStamp()`获取的是某天的起始时间戳，例如2019-05-29 00:00:00:000，可以理解为其代表的是昨晚的睡眠状况。即2019-05-28 21:30至2019-05-29 12:00之间的睡眠状况。
+
+手环在监测用户睡眠过程中，不会产生睡眠数据，所以同步数据会获取不到睡眠数据。只有在监测到用户退出睡眠后，或者主动调用`WristbandManager#exitSleepMonitor()`退出睡眠，手环才会将整个睡眠过程汇总，生成睡眠数据。
+
+因为手环主动判定用户退出睡眠的时间较长，所以很可能造成例如早上7点用户已经不再睡眠，但是同步却获取不到睡眠数据。所以建议的做法是，在在凌晨4点至12点之间(该时间段用户极有可能不再睡眠)，用户主动同步数据(如下拉刷新)之前，调用`WristbandManager#exitSleepMonitor()`退出睡眠，然后再进行同步数据操作。
+
+1. 手环会保存几天的睡眠数据？
+手环保存最新7天的睡眠数据，每次睡眠数据同步成功后，手环上的睡眠数据将被删除。下次同步的话，只会得到新产生的睡眠数据。
+
+
+#### 6.6.3 心率、血氧、血压、呼吸频率四种健康数据
+手环会在`#### 6.1.6、HealthyConfig`设定的时间范围内监测用户的身体状态，产生对应的数据，同步数据并解析得到`HeartRateData`,`BloodPressureData`,`OxygenData`,`RespiratoryRateData`等健康数据。
+
+`HeartRateData`表示在某个时间点用户的心率值，如2019-05-29 12:00:00，心跳72次。在监测时间内，心率值一般间隔5分钟左右。
+
+`BloodPressureData`,`OxygenData`,`RespiratoryRateData`与`HeartRateData`类似。
+
+1. 手环会保存几天的健康数据？
+手环保存最新7天的健康数据，每次健康数据同步成功后，手环上的健康数据将被删除。下次同步的话，只会得到新产生的健康数据。
+
+2. 健康数据的时间间隔是多少？
+时间间隔不确定。一般情况下，间隔5分钟左右。
+
+#### 6.6.4 运动
+手环启动运动模式时，会产生运动数据，同步数据并解析得到`SportData`。
+
+```
+SportData{
+    long getTimeStamp();//运动时间
+    int getSportType();//运动类型
+    int getDuration();//运动持续时间，单位秒
+    float getDistance();//运动距离，单位km
+    float getCalories();//运动消耗卡路里，单位千卡
+    int getSteps();//运动步数
+    List<SportHR> getHrs();//运动过程中心率数据
+}
+```
+
+不同类型的`SportData`中所包含的数据有所差别。
+`getSportType()`为`SportData#TYPE_RIDE`,`SportData#TYPE_SWIM`类型无距离和步数数据。
+`getSportType()`为`SportData#SPORT_BB`,`SportData#SPORT_BADMINTON`,`SportData#SPORT_FOOTBALL`时，无距离数据。
+
+如果`WristbandVersion#isDynamicHeartRateEnabled()`为true的话，则存在心率数据，否则不存在心率数据。
+
+1. 手环会保存几天的运动数据？
+手环上所有未同步的运动数据累积时长超过一定数值后，手环将删除旧的运动数据。每次运动数据同步成功后，手环上的运动数据将被删除。下次同步的话，只会得到新产生的运动数据。
+
+#### 6.6.5 当天总数据
+手环会把当天的数据统计为一个总数据，同步数据并解析得到`TodayTotalData`。该数据中包含当天总步数、睡眠时长以及平均心率等信息。每次同步都能获取到`TodayTotalData`，但是如果手环重新绑定，那么总数据会清空，然后会重新统计。
+
+虽然`TodayTotalData`包含多种数据，但是主要是用于对当天步数数据的补充处理。与步数相关的方法如下：
+```
+TodayTotalData{
+    int getStep();//当天运动的总步数
+    int getDistance()//当天运动的总距离，单位米
+    int getCalorie()//当天运动消耗的总卡路里，单位卡
+    int getDeltaStep();//未被保存到StepData的步数
+    int getDeltaDistance();//未被保存到StepData的距离，单位米
+    int getDeltaCalorie();//未被保存到StepData的卡路里，单位卡
+    long getTimeStamp();//同步时间
+}
+```
+在`#### 6.6.1 步数`中提到的`StepData`5分钟保存一次，最近5分钟的步数数据会延迟，那么可以在APP上显示总步数的时候使用`TodayTotalData`中的总步数。
+
+#### 6.6.6 心电
+在手环上启动的心电测量，同步数据并解析得到`EcgData`。
+```
+EcgData{
+    List<Integer> getItems();//心电值
+    int getSample();//采样率(每秒心电值个数)
+    long getTimeStamp();//测量时间
+}
+```
+
+1. 手环会保存几天的心电数据？
+手环上仅保存最后一次测量的心电值，每次心电数据同步成功后，手环上的心电数据将被删除。下次同步的话，只会得到新产生的心电数据。
 
 ### 6.7、DFU升级
 使用DfuManager可以对手表硬件进行升级。DfuManager所完成的工作如下：

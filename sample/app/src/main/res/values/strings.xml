@@ -188,4 +188,33 @@
     <string name="sync_data_state_progress">Sync Progress:<xliff:g id="params">%1$d</xliff:g>%%</string>
     <string name="sync_data_state_success">Sync Success</string>
 
+    <string name="view_heart_rate_data">View Heart Rate Data</string>
+    <string name="view_oxygen_data">View Oxygen Data</string>
+    <string name="view_blood_pressure_data">View BloodPressure Data</string>
+    <string name="view_respiratory_rate_data">View Respiratory Rate Data</string>
+    <string name="view_healthy_data_tips">This data is similar to heart rate data. Please refer to heart rate data practice.</string>
+
+    <string name="view_sleep_data">View Sleep Data</string>
+    <string name="deep_sleep_hour_minute">Deep Sleep:<xliff:g id="params1">%1$d</xliff:g> hr <xliff:g id="params2">%2$d</xliff:g> min</string>
+    <string name="light_sleep_hour_minute">Light Sleep:<xliff:g id="params1">%1$d</xliff:g> hr <xliff:g id="params2">%2$d</xliff:g> min</string>
+    <string name="sober_sleep_hour_minute">Sober Sleep:<xliff:g id="params1">%1$d</xliff:g> hr <xliff:g id="params2">%2$d</xliff:g> min</string>
+
+    <string name="view_sport_data">View Sport Data</string>
+    <string name="view_sport_type_ride">Ride</string>
+    <string name="view_sport_type_od">Outdoor Running</string>
+    <string name="view_sport_type_id">Indoor Running</string>
+    <string name="view_sport_type_walk">Walk</string>
+    <string name="view_sport_type_climb">Climb</string>
+    <string name="view_sport_type_bb">Basketball</string>
+    <string name="view_sport_type_swim">Swim</string>
+    <string name="view_sport_type_badminton">Badminton</string>
+    <string name="view_sport_type_football">Football</string>
+
+    <string name="view_sport_data_calories">Calories:<xliff:g id="params1">%1$s</xliff:g>kCal</string>
+    <string name="view_sport_data_step">Steps:<xliff:g id="params1">%1$d</xliff:g></string>
+    <string name="view_sport_data_distance">Distance:<xliff:g id="params1">%1$s</xliff:g>Km</string>
+    <string name="view_sport_data_hr">HeartRate:<xliff:g id="params1">%1$d</xliff:g></string>
+
+    <string name="view_ecg_data">View Ecg Data</string>
+    <string name="view_ecg_data_sample">Sampling Rate:<xliff:g id="params1">%1$d</xliff:g></string>
 </resources>

@@ -57,6 +57,14 @@
 
         <activity android:name=".syncdata.SyncDataActivity"/>
 
+        <activity android:name=".syncdata.HeartRateActivity"/>
+
+        <activity android:name=".syncdata.SleepActivity"/>
+
+        <activity android:name=".syncdata.SportActivity"/>
+
+        <activity android:name=".syncdata.EcgActivity"/>
+
         <activity android:name=".dfu.DfuActivity"/>
     </application>
 

@@ -9,12 +9,21 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
 }
 
@@ -42,6 +51,15 @@ dependencies {
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu-release_19_0405_1', ext: 'aar')
+
+    //room
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+
+    //json
+    implementation 'com.alibaba:fastjson:1.1.64.android'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 
     implementation 'com.yanzhenjie:permission:2.0.0-rc12'
     implementation(name: 'Lib_WheelView-release', ext: 'aar')

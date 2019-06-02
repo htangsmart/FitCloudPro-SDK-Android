@@ -71,4 +71,53 @@
         <attr name="sectionGroupDividerPaddingEnd" format="dimension|reference"/>
     </declare-styleable>
 
+    <declare-styleable name="EcgGridView">
+        <!--线条颜色-->
+        <attr name="grid_line_color" format="color|reference"/>
+        <!--线条的宽度-->
+        <attr name="grid_line_width" format="dimension"/>
+        <!--每个线条之间的间距-->
+        <attr name="grid_line_gap" format="dimension"/>
+
+        <!--是否绘制粗线条，默认是true-->
+        <attr name="grid_bold_line_enabled" format="boolean"/>
+        <!--粗线条的颜色，如果不设置，将使用line_color-->
+        <attr name="grid_bold_line_color" format="color|reference"/>
+        <!--粗线条的宽度，如果不设置，将使用line_width*1.5-->
+        <attr name="grid_bold_line_width" format="dimension"/>
+        <!--每个粗线条中间间隔几个普通线条-->
+        <attr name="grid_bold_line_gap" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="EcgView">
+        <!--线条颜色-->
+        <attr name="ecg_line_color" format="color|reference"/>
+        <!--线条的宽度-->
+        <attr name="ecg_line_width" format="dimension"/>
+        <!--心电图一个格子的宽度，在心电图中，一个格子代表40ms，这个值最好和EcgGridView 中的 grid_line_gap一样大小-->
+        <attr name="ecg_grid_width" format="dimension"/>
+        <!--数据的采样率，即每隔多少ms有一个点-->
+        <attr name="ecg_sampling_rate" format="integer"/>
+        <!--
+        数据显示的顺序。
+        true代表新的数据将绘制在左边，即波形图是从左到右移动。
+        false代表新的数据将绘制在右边，即波形图是从右到左移动
+        -->
+        <attr name="ecg_new_data_align_left" format="boolean"/>
+        <!--普通模式下，是否是展示最左边的数据-->
+        <attr name="ecg_less_data_align_left" format="boolean"/>
+
+        <!--心电值的最大值-->
+        <attr name="ecg_data_max_value" format="integer"/>
+        <!--心电值的最小值-->
+        <attr name="ecg_data_min_value" format="integer"/>
+        <!--根据心电数据，自动确定最大值和最小值-->
+        <attr name="ecg_data_auto_scope" format="boolean"/>
+
+        <!--实时测量时，每隔多长时间刷新一次，如果为0，那么每添加一个点刷新1次-->
+        <attr name="ecg_real_time_refresh_interval" format="integer"/>
+        <!--回放数据时，每隔多长时间刷新一次，如果为0，则使用ecg_sampling_rate，一次刷新一个点-->
+        <attr name="ecg_play_back_refresh_interval" format="integer"/>
+    </declare-styleable>
+
 </resources>
