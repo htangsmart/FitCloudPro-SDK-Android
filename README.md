@@ -474,59 +474,67 @@ StepData{
 ```
 
 1. 手环会保存几天的步数数据？
+
 手环保存最新7天的步数数据，每次步数数据同步成功后，手环上的步数数据将被删除。下次同步的话，只会得到新产生的步数数据。
 
 2. 步数数据的时间间隔是多少？
+
 时间间隔不确定。如果用户处于持续运动状态，每个步数数据将间隔5分钟。如果用户断断续续的运动，那么间隔可能大于5分钟，也可能小于5分钟。
 
 3. 如何根据步数计算距离和卡路里？
+
 步数转换为卡路里和距离参考计算方法如下：
-    ```
-        /**
-         * 根据步数和步长计算距离(km)
-         *
-         * @param step       步数
-         * @param stepLength 步长(m)
-         * @return 距离(km)
-         */
-        public static float step2Km(int step, float stepLength) {
-            return (stepLength * step) / (1000);
+```
+    /**
+     * 根据步数和步长计算距离(km)
+     *
+     * @param step       步数
+     * @param stepLength 步长(m)
+     * @return 距离(km)
+     */
+    public static float step2Km(int step, float stepLength) {
+        return (stepLength * step) / (1000);
+    }
+
+     /**
+     * 根据距离和体重计算卡路里(千卡)
+     *
+     * @param km     距离(km)
+     * @param weight 体重(kg)
+     * @return 卡路里(千卡)
+     */
+    public static float km2Calories(float km, float weight) {
+        return 0.78f * weight * km;
+    }
+
+    /**
+     * 根据身高和性别计算步长(m)
+     * @param height     身高(cm)
+     * @param man        性别，true为男，false为女
+     * @return 步长(m)
+     */
+    public static float getStepLength(float height,boolean man) {
+        float stepLength = height * (man ? 0.415f : 0.413f);
+        if (stepLength < 30) {
+            stepLength = 30.f;//30cm，默认最小30CM的步长
         }
-        
-         /**
-         * 根据距离和体重计算卡路里(千卡)
-         *
-         * @param km     距离(km)
-         * @param weight 体重(kg)
-         * @return 卡路里(千卡)
-         */
-        public static float km2Calories(float km, float weight) {
-            return 0.78f * weight * km;
+        if (stepLength > 100) {
+            stepLength = 100.f;//100cm，默认最大100CM的步长
         }
-        
-        /**
-         * 根据身高和性别计算步长(m)
-         * @param height     身高(cm)
-         * @param man        性别，true为男，false为女
-         * @return 步长(m)
-         */
-        public static float getStepLength(float height,boolean man) {
-            float stepLength = height * (man ? 0.415f : 0.413f);
-            if (stepLength < 30) {
-                stepLength = 30.f;//30cm，默认最小30CM的步长
-            }
-            if (stepLength > 100) {
-                stepLength = 100.f;//100cm，默认最大100CM的步长
-            }
-            return stepLength / 100;
-        }
-    ```
+        return stepLength / 100;
+    }
+```
+    
 4. APP将同步获取到的`StepData`缓存到数据库，为什么当天的`StepData`累加起来的总步数和手环上总步数不一致？
+
 造成这种情况有两种可能。
  1. 当天重新绑定了手环。
-目前手环的设计是每次绑定时，都会清空数据。如果当天手环产生了步数数据，并且同步到APP缓存起来。此时再去解绑并重新绑定手环，手环清空数据，此时手环上的总步数为0，所以和APP缓存的数据对应不上。解决办法就是在重新绑定手环时，APP清空当天的`StepData`，这样就与手环上的总步数保持一致。
+ 
+ 目前手环的设计是每次绑定时，都会清空数据。如果当天手环产生了步数数据，并且同步到APP缓存起来。此时再去解绑并重新绑定手环，手环清空数据，此时手环上的总步数为0，所以和APP缓存的数据对应不上。解决办法就是在重新绑定手环时，APP清空当天的`StepData`，这样就与手环上的总步数保持一致。
+ 
  2. `StepData`5分钟保存一次，最近5分钟的步数数据会延迟。
-目前手环步数是累积5分钟然后保存为一个`StepData`数据，如果没有到5分钟，那么不会产生`StepData`，APP自然就同步不到。但是手环的总步数是直接累积，所以会导致手环总步数和`StepData`累积的步数不一致。如果非要考虑这种实时性，那么可以考虑结合`TodayTotalData`和处理，详见`#### 6.6.4 当天总数据`
+ 
+ 目前手环步数是累积5分钟然后保存为一个`StepData`数据，如果没有到5分钟，那么不会产生`StepData`，APP自然就同步不到。但是手环的总步数是直接累积，所以会导致手环总步数和`StepData`累积的步数不一致。如果非要考虑这种实时性，那么可以考虑结合`TodayTotalData`和处理，详见`#### 6.6.4 当天总数据`
 
 #### 6.6.2 睡眠
 手环会在晚上21:30至第二天12:00之间监测用户睡眠状态，并产生睡眠数据。同步数据并解析得到`SleepData`。
@@ -561,6 +569,7 @@ SleepItemData {
 因为手环主动判定用户退出睡眠的时间较长，所以很可能造成例如早上7点用户已经不再睡眠，但是同步却获取不到睡眠数据。所以建议的做法是，在在凌晨4点至12点之间(该时间段用户极有可能不再睡眠)，用户主动同步数据(如下拉刷新)之前，调用`WristbandManager#exitSleepMonitor()`退出睡眠，然后再进行同步数据操作。
 
 1. 手环会保存几天的睡眠数据？
+
 手环保存最新7天的睡眠数据，每次睡眠数据同步成功后，手环上的睡眠数据将被删除。下次同步的话，只会得到新产生的睡眠数据。
 
 
@@ -572,9 +581,11 @@ SleepItemData {
 `BloodPressureData`,`OxygenData`,`RespiratoryRateData`与`HeartRateData`类似。
 
 1. 手环会保存几天的健康数据？
+
 手环保存最新7天的健康数据，每次健康数据同步成功后，手环上的健康数据将被删除。下次同步的话，只会得到新产生的健康数据。
 
 2. 健康数据的时间间隔是多少？
+
 时间间隔不确定。一般情况下，间隔5分钟左右。
 
 #### 6.6.4 运动
@@ -599,6 +610,7 @@ SportData{
 如果`WristbandVersion#isDynamicHeartRateEnabled()`为true的话，则存在心率数据，否则不存在心率数据。
 
 1. 手环会保存几天的运动数据？
+
 手环上所有未同步的运动数据累积时长超过一定数值后，手环将删除旧的运动数据。每次运动数据同步成功后，手环上的运动数据将被删除。下次同步的话，只会得到新产生的运动数据。
 
 #### 6.6.5 当天总数据
@@ -629,6 +641,7 @@ EcgData{
 ```
 
 1. 手环会保存几天的心电数据？
+
 手环上仅保存最后一次测量的心电值，每次心电数据同步成功后，手环上的心电数据将被删除。下次同步的话，只会得到新产生的心电数据。
 
 ### 6.7、DFU升级
