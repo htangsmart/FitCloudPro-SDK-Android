@@ -34,6 +34,9 @@
     <string name="state_passive_disconnect">被动断开连接</string>
     <string name="toast_device_disconnected">设备未连接</string>
 
+    <string name="toast_connect_login_tips">使用Login模式连接</string>
+    <string name="toast_connect_bind_tips">使用Bind模式连接，APP清除当天的步数数据</string>
+
     <string name="clear_bind">清除绑定</string>
     <string name="dialog_clear_bind_title">清除用户绑定状态</string>
     <string name="dialog_clear_bind_msg">
@@ -217,4 +220,7 @@
 
     <string name="view_ecg_data">查看心电数据</string>
     <string name="view_ecg_data_sample">采样率:<xliff:g id="params1">%1$d</xliff:g></string>
+
+    <string name="view_step_data">查看步数数据</string>
+    <string name="view_step_data_total_step">总步数:<xliff:g id="params1">%1$d</xliff:g></string>
 </resources>

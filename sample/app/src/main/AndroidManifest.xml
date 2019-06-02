@@ -65,6 +65,8 @@
 
         <activity android:name=".syncdata.EcgActivity"/>
 
+        <activity android:name=".syncdata.StepActivity"/>
+
         <activity android:name=".dfu.DfuActivity"/>
     </application>
 

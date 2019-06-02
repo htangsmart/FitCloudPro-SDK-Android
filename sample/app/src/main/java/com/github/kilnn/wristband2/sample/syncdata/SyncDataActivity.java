@@ -134,15 +134,13 @@ public class SyncDataActivity extends BaseActivity {
                             mSyncDataDao.saveSport(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_STEP) {
                             List<StepData> datas = SyncDataParser.parserStepData(syncDataRaw.getDatas());
-                            if (datas != null && datas.size() > 0) {
-                                //TODO save data
-                            }
+                            mSyncDataDao.saveStep(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_ECG) {
                             EcgData ecgData = SyncDataParser.parserEcgData(syncDataRaw.getDatas());
                             mSyncDataDao.saveEcg(ecgData);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TOTAL_DATA) {
                             TodayTotalData data = SyncDataParser.parserTotalData(syncDataRaw.getDatas());
-                            //TODO save data
+                            mSyncDataDao.saveTodayTotalData(data);
                         }
                         return Completable.complete();
                     }
@@ -198,6 +196,10 @@ public class SyncDataActivity extends BaseActivity {
 
     public void clickViewEcg(View view) {
         startActivity(new Intent(this, EcgActivity.class));
+    }
+
+    public void clickViewStep(View view) {
+        startActivity(new Intent(this, StepActivity.class));
     }
 
     @Override

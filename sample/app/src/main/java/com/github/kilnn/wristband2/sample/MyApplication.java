@@ -10,15 +10,22 @@ public class MyApplication extends Application {
 
     private static SyncDataDb sSyncDataDb;
 
+    private static MyApplication sInstance;
+
     @Override
     public void onCreate() {
         super.onCreate();
         WristbandApplication.init(this);
         WristbandApplication.setDebugEnable(true);
+        sInstance = this;
         sSyncDataDb = Room
                 .databaseBuilder(this, SyncDataDb.class, "SyncDataDb")
                 .allowMainThreadQueries()
                 .build();
+    }
+
+    public static MyApplication getInstance() {
+        return sInstance;
     }
 
     public static SyncDataDb getSyncDataDb() {

@@ -24,6 +24,28 @@ public class Utils {
     }
 
     /**
+     * Get the start point of the hour
+     */
+    public static Date getHourStartTime(Calendar calendar, Date date) {
+        calendar.setTime(date);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime();
+    }
+
+    /**
+     * Get the end point of the hour
+     */
+    public static Date getHourEndTime(Calendar calendar, Date date) {
+        calendar.setTime(date);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MILLISECOND, 999);
+        return calendar.getTime();
+    }
+
+    /**
      * Get day start time
      */
     public static Date getDayStartTime(Calendar calendar, Date date) {
@@ -53,6 +75,13 @@ public class Utils {
         calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) - dayLimit);//设置时间到n天之前
         return calendar.getTime();
+    }
+
+    public static boolean isToday(Date date) {
+        Date today = new Date();
+        return date.getYear() == today.getYear()
+                && date.getMonth() == today.getMonth()
+                && date.getDate() == today.getDate();
     }
 
     public static int sp2px(Context context, float spValue) {

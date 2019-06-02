@@ -4,7 +4,11 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
+
+import com.alibaba.fastjson.JSON;
+import com.htsmart.wristband2.bean.data.TodayTotalData;
 
 /**
  * Mock database cache
@@ -50,4 +54,30 @@ public class DbMock {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPreferences.edit().putInt(getKey(device), 0).apply();
     }
+
+    /**
+     * Set TodayTotalData
+     */
+    public static void setTodayTotalData(Context context, TodayTotalData data) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = null;
+        if (data != null) {
+            json = JSON.toJSONString(data);
+        }
+        sharedPreferences.edit().putString("TodayTotalData", json).apply();
+    }
+
+    /**
+     * Get TodayTotalData
+     */
+    public static TodayTotalData getTodayTotalData(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String json = sharedPreferences.getString("TodayTotalData", null);
+        if (TextUtils.isEmpty(json)) {
+            return null;
+        } else {
+            return JSON.parseObject(json, TodayTotalData.class);
+        }
+    }
+
 }

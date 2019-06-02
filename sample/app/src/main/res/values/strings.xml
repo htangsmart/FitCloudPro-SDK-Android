@@ -34,6 +34,9 @@
     <string name="state_passive_disconnect">Passive disconnect</string>
     <string name="toast_device_disconnected">Device Disconnected</string>
 
+    <string name="toast_connect_login_tips">Connect with Login Mode</string>
+    <string name="toast_connect_bind_tips">Connect with Bind Mode，APP will clear today\'s Step Data</string>
+
     <string name="clear_bind">Clear Bond</string>
     <string name="dialog_clear_bind_title">Clear User Bond State</string>
     <string name="dialog_clear_bind_msg">
@@ -217,4 +220,7 @@
 
     <string name="view_ecg_data">View Ecg Data</string>
     <string name="view_ecg_data_sample">Sampling Rate:<xliff:g id="params1">%1$d</xliff:g></string>
+
+    <string name="view_step_data">View Step Data</string>
+    <string name="view_step_data_total_step">Total Step:<xliff:g id="params1">%1$d</xliff:g></string>
 </resources>

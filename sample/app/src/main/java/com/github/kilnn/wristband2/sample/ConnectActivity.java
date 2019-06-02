@@ -23,6 +23,7 @@ import com.github.kilnn.wristband2.sample.mock.User;
 import com.github.kilnn.wristband2.sample.mock.UserMock;
 import com.github.kilnn.wristband2.sample.realtimedata.RealTimeDataActivity;
 import com.github.kilnn.wristband2.sample.syncdata.SyncDataActivity;
+import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.ConnectionError;
@@ -50,6 +51,8 @@ public class ConnectActivity extends BaseActivity {
     private Disposable mStateDisposable;
     private Disposable mErrorDisposable;
     private ConnectionState mState = ConnectionState.DISCONNECTED;
+
+    private SyncDataDao mSyncDataDao = MyApplication.getSyncDataDb().dao();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +83,13 @@ public class ConnectActivity extends BaseActivity {
                             mStateTv.setText(R.string.state_connect_success);
                             updateConnectBtn(false, true);
                             DbMock.setUserBind(ConnectActivity.this, mBluetoothDevice, mUser);
+                            if (mWristbandManager.isBindOrLogin()) {
+                                //If connect with bind mode, clear Today Step Data
+                                toast(R.string.toast_connect_bind_tips);
+                                mSyncDataDao.clearTodayStep();
+                            } else {
+                                toast(R.string.toast_connect_login_tips);
+                            }
                         } else {
                             mStateTv.setText(R.string.state_connecting);
                             updateConnectBtn(true, false);

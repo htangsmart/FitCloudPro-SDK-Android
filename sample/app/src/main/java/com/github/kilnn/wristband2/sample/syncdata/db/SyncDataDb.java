@@ -4,7 +4,7 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
 @Database(entities = {
-//        StepItem.class,
+        StepItem.class,
         SleepRecord.class,
         HeartRateItem.class,
         OxygenItem.class,
