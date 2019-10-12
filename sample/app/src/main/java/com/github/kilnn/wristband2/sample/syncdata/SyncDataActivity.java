@@ -11,7 +11,10 @@ import com.github.kilnn.wristband2.sample.BaseActivity;
 import com.github.kilnn.wristband2.sample.MyApplication;
 import com.github.kilnn.wristband2.sample.R;
 import com.github.kilnn.wristband2.sample.mock.AppFakeDataProvider;
+import com.github.kilnn.wristband2.sample.mock.User;
+import com.github.kilnn.wristband2.sample.mock.UserMock;
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
+import com.github.kilnn.wristband2.sample.util.Utils;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.SyncDataRaw;
@@ -133,8 +136,22 @@ public class SyncDataActivity extends BaseActivity {
                             List<SportData> datas = SyncDataParser.parserSportData(syncDataRaw.getDatas(), syncDataRaw.getConfig());
                             mSyncDataDao.saveSport(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_STEP) {
-                            List<StepData> datas = SyncDataParser.parserStepData(syncDataRaw.getDatas());
-                            mSyncDataDao.saveStep(datas);
+                            List<StepData> datas = SyncDataParser.parserStepData(syncDataRaw.getDatas(), syncDataRaw.getConfig());
+                            if (datas != null && datas.size() > 0) {
+                                if (syncDataRaw.getConfig().getWristbandVersion().isExtStepExtra()) {
+                                    //The wristband supports automatic calculation of distance and calorie data
+                                } else {
+                                    //you need to calculate distance and calorie yourself.
+                                    User user = UserMock.getLoginUser();
+                                    float stepLength = Utils.getStepLength(user.getHeight(), user.isSex());
+                                    for (StepData data : datas) {
+                                        data.setDistance(Utils.step2Km(data.getStep(), stepLength));
+                                        data.setCalories(Utils.km2Calories(data.getDistance(), user.getWeight()));
+                                    }
+                                }
+                                //Only the step data is saved here. If you need distance and calorie data, you can choose according to the actual situation.
+                                mSyncDataDao.saveStep(datas);
+                            }
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_ECG) {
                             EcgData ecgData = SyncDataParser.parserEcgData(syncDataRaw.getDatas());
                             mSyncDataDao.saveEcg(ecgData);

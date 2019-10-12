@@ -166,7 +166,7 @@ public class CameraControlActivity extends BaseActivity {
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        if (integer == WristbandManager.MSG_TAKE_PHOTO) {
+                        if (integer == WristbandManager.MSG_CAMERA_TAKE_PHOTO) {
                             takePhoto();
                         }
                     }

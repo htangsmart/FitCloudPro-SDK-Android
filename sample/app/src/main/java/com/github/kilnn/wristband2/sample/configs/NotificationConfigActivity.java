@@ -40,6 +40,7 @@ public class NotificationConfigActivity extends BaseActivity {
     private CheckBox cb_facebook_msg;
     private CheckBox cb_kakaotalk;
     private CheckBox cb_skype;
+    private CheckBox cb_snapchat;
     private CheckBox cb_email;
     private CheckBox cb_telegram;
     private CheckBox cb_viber;
@@ -59,15 +60,10 @@ public class NotificationConfigActivity extends BaseActivity {
             cb_qq.setChecked(config.isFlagEnable(NotificationConfig.FLAG_QQ));
             cb_wechat.setChecked(config.isFlagEnable(NotificationConfig.FLAG_WECHAT));
             cb_facebook.setChecked(config.isFlagEnable(NotificationConfig.FLAG_FACEBOOK));
-            cb_twitter.setChecked(config.isFlagEnable(NotificationConfig.FLAG_TWITTER));
-            cb_linkedin.setChecked(config.isFlagEnable(NotificationConfig.FLAG_LINKEDIN));
-            cb_instagram.setChecked(config.isFlagEnable(NotificationConfig.FLAG_INSTAGRAM));
             cb_pinterest.setChecked(config.isFlagEnable(NotificationConfig.FLAG_PINTEREST));
             cb_whatsapp.setChecked(config.isFlagEnable(NotificationConfig.FLAG_WHATSAPP));
             cb_line.setChecked(config.isFlagEnable(NotificationConfig.FLAG_LINE));
-            cb_facebook_msg.setChecked(config.isFlagEnable(NotificationConfig.FLAG_FACEBOOK_MESSENGER));
             cb_kakaotalk.setChecked(config.isFlagEnable(NotificationConfig.FLAG_KAKAO));
-            cb_skype.setChecked(config.isFlagEnable(NotificationConfig.FLAG_SKYPE));
 
             if (mWristbandConfig.getWristbandVersion().isExtAncsEmail()) {
                 cb_email.setChecked(config.isFlagEnable(NotificationConfig.FLAG_EMAIL));
@@ -83,7 +79,24 @@ public class NotificationConfigActivity extends BaseActivity {
                 cb_viber.setVisibility(View.GONE);
             }
 
-            cb_calendar.setChecked(config.isFlagEnable(NotificationConfig.FLAG_CALENDAR));
+            if (mWristbandConfig.getWristbandVersion().isExtAncsExtra1()) {
+                cb_twitter.setChecked(config.isFlagEnable(NotificationConfig.FLAG_TWITTER));
+                cb_linkedin.setChecked(config.isFlagEnable(NotificationConfig.FLAG_LINKEDIN));
+                cb_instagram.setChecked(config.isFlagEnable(NotificationConfig.FLAG_INSTAGRAM));
+                cb_facebook_msg.setChecked(config.isFlagEnable(NotificationConfig.FLAG_FACEBOOK_MESSENGER));
+                cb_skype.setChecked(config.isFlagEnable(NotificationConfig.FLAG_SKYPE));
+                cb_snapchat.setChecked(config.isFlagEnable(NotificationConfig.FLAG_SNAPCHAT));
+            } else {
+                cb_twitter.setVisibility(View.GONE);
+                cb_linkedin.setVisibility(View.GONE);
+                cb_instagram.setVisibility(View.GONE);
+                cb_facebook_msg.setVisibility(View.GONE);
+                cb_skype.setVisibility(View.GONE);
+                cb_snapchat.setVisibility(View.GONE);
+            }
+
+            cb_calendar.setVisibility(View.GONE);
+
             cb_others.setChecked(config.isFlagEnable(NotificationConfig.FLAG_OTHERS_APP));
         }
     }
@@ -103,6 +116,7 @@ public class NotificationConfigActivity extends BaseActivity {
         cb_facebook_msg = findViewById(R.id.cb_facebook_msg);
         cb_kakaotalk = findViewById(R.id.cb_kakaotalk);
         cb_skype = findViewById(R.id.cb_skype);
+        cb_snapchat = findViewById(R.id.cb_snapchat);
         cb_email = findViewById(R.id.cb_email);
         cb_telegram = findViewById(R.id.cb_telegram);
         cb_viber = findViewById(R.id.cb_viber);
@@ -128,15 +142,10 @@ public class NotificationConfigActivity extends BaseActivity {
                 config.setFlagEnable(NotificationConfig.FLAG_QQ, cb_qq.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_WECHAT, cb_wechat.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_FACEBOOK, cb_facebook.isChecked());
-                config.setFlagEnable(NotificationConfig.FLAG_TWITTER, cb_twitter.isChecked());
-                config.setFlagEnable(NotificationConfig.FLAG_LINKEDIN, cb_linkedin.isChecked());
-                config.setFlagEnable(NotificationConfig.FLAG_INSTAGRAM, cb_instagram.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_PINTEREST, cb_pinterest.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_WHATSAPP, cb_whatsapp.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_LINE, cb_line.isChecked());
-                config.setFlagEnable(NotificationConfig.FLAG_FACEBOOK_MESSENGER, cb_facebook_msg.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_KAKAO, cb_kakaotalk.isChecked());
-                config.setFlagEnable(NotificationConfig.FLAG_SKYPE, cb_skype.isChecked());
 
                 if (mWristbandConfig.getWristbandVersion().isExtAncsEmail()) {
                     config.setFlagEnable(NotificationConfig.FLAG_EMAIL, cb_email.isChecked());
@@ -147,7 +156,16 @@ public class NotificationConfigActivity extends BaseActivity {
                     config.setFlagEnable(NotificationConfig.FLAG_VIBER, cb_viber.isChecked());
                 }
 
-                config.setFlagEnable(NotificationConfig.FLAG_CALENDAR, cb_calendar.isChecked());
+                if (mWristbandConfig.getWristbandVersion().isExtAncsExtra1()) {
+                    config.setFlagEnable(NotificationConfig.FLAG_TWITTER, cb_twitter.isChecked());
+                    config.setFlagEnable(NotificationConfig.FLAG_LINKEDIN, cb_linkedin.isChecked());
+                    config.setFlagEnable(NotificationConfig.FLAG_INSTAGRAM, cb_instagram.isChecked());
+                    config.setFlagEnable(NotificationConfig.FLAG_FACEBOOK_MESSENGER, cb_facebook_msg.isChecked());
+                    config.setFlagEnable(NotificationConfig.FLAG_SKYPE, cb_skype.isChecked());
+                    config.setFlagEnable(NotificationConfig.FLAG_SNAPCHAT, cb_snapchat.isChecked());
+                }
+
+//                config.setFlagEnable(NotificationConfig.FLAG_CALENDAR, cb_calendar.isChecked());
                 config.setFlagEnable(NotificationConfig.FLAG_OTHERS_APP, cb_others.isChecked());
 
                 mWristbandManager.setNotificationConfig(config)

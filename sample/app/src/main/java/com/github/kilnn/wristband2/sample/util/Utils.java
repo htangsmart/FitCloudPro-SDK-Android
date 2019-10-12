@@ -14,6 +14,45 @@ import java.util.Date;
 
 public class Utils {
 
+    /**
+     * Calculate the distance based on the number of steps and the step size(km)
+     *
+     * @param step       number of steps
+     * @param stepLength step size(m)
+     * @return distance(km)
+     */
+    public static float step2Km(int step, float stepLength) {
+        return (stepLength * step) / (1000);
+    }
+
+    /**
+     * Calculate calories based on distance and weight(kCal)
+     *
+     * @param km     distance(km)
+     * @param weight weight(kg)
+     * @return calories(kCal)
+     */
+    public static float km2Calories(float km, float weight) {
+        return 0.78f * weight * km;
+    }
+
+    /**
+     * Calculate the step size based on height and gender(m)
+     * @param height     height(cm)
+     * @param man        gender，True for male, false for female
+     * @return step size(m)
+     */
+    public static float getStepLength(float height,boolean man) {
+        float stepLength = height * (man ? 0.415f : 0.413f);
+        if (stepLength < 30) {
+            stepLength = 30.f;//30cm，Default minimum step size 30cm
+        }
+        if (stepLength > 100) {
+            stepLength = 100.f;//100cm，Default maximum step size 100cm
+        }
+        return stepLength / 100;
+    }
+
     @ColorInt
     public static int getColor(Context context, @AttrRes int attr) {
         int[] attrsArray = new int[]{attr};

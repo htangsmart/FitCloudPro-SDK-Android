@@ -80,6 +80,7 @@
     <string name="notification_config_facebook_msg">Facebook Messenger</string>
     <string name="notification_config_kakaotalk">Kakao Talk</string>
     <string name="notification_config_skype">Skype</string>
+    <string name="notification_config_snapchat">Snapchat</string>
     <string name="notification_config_email">Email</string>
     <string name="notification_config_telegram">Telegram</string>
     <string name="notification_config_viber">Viber</string>

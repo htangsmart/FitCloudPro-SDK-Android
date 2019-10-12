@@ -23,10 +23,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.7.0'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_0405_1', ext: 'aar')
+    implementation(name: 'libraryCore-release_19_1013_1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu-release_19_0405_1', ext: 'aar')
+    implementation(name: 'libraryDfu-release_19_1013_1', ext: 'aar')
     
     ...
 }
@@ -167,6 +167,8 @@ BluetoothDevice getConnectedDevice();
 7. SedentaryConfig 久坐提醒配置
 8. PageConfig 手环页面配置
 9. TurnWristLightingConfig 翻腕亮屏配置
+10. WarnHeartRateConfig 心率预警配置
+11. WarnBloodPressureConfig 血压预警配置
 
 在获取到`WristbandConfig`之后，你可以在通过`WristbandConfig#getBytes()`获取对应的字节码，缓存到本地。之后可以通过`WristbandConfig#newInstance(byte[])`重新生成实例。
 
@@ -204,7 +206,11 @@ private boolean dynamicHeartRateEnabled;
 private boolean extHidePageConfig;
 private boolean extAncsEmail;
 private boolean extAncsViberTelegram;
-
+private boolean extStepExtra;
+private boolean extWarnHeartRate;
+private boolean extWarnBloodPressure;
+private boolean extAncsExtra1;
+ 
 ```
 
 3.页面支持信息，用于判断手环上可显示的页面，结合PageConfig使用。具体参考PageConfig的用法。
@@ -214,22 +220,37 @@ private int pageSupport;
 ```
 
 #### 6.1.2、NotificationConfig
-配置手环能够接收并显示的的消息通知类型。其中`NotificationConfig.FLAG_EMAIL`,`NotificationConfig.FLAG_TELEGRAM`,`NotificationConfig.FLAG_VIBER`在某些手环可能不支持，你需要判断`WristbandVersion`中的功能支持，如下：
-```
-if (mWristbandConfig.getWristbandVersion().isExtAncsEmail()) {
-                cb_email.setChecked(config.isFlagEnable(NotificationConfig.FLAG_EMAIL));
-            } else {
-                cb_email.setVisibility(View.GONE);
-            }
+配置手环能够接收并显示的的消息通知类型。此配置定义了多种消息类型，但并不是所有的手环都支持。
 
-            if (mWristbandConfig.getWristbandVersion().isExtAncsViberTelegram()) {
-                cb_telegram.setChecked(config.isFlagEnable(NotificationConfig.FLAG_TELEGRAM));
-                cb_viber.setChecked(config.isFlagEnable(NotificationConfig.FLAG_VIBER));
-            } else {
-                cb_telegram.setVisibility(View.GONE);
-                cb_viber.setVisibility(View.GONE);
-            }
-```
+以下通知在所有手环都支持
+FLAG_TELEPHONE
+FLAG_SMS
+FLAG_QQ
+FLAG_WECHAT
+FLAG_FACEBOOK
+FLAG_PINTEREST
+FLAG_WHATSAPP
+FLAG_LINE
+FLAG_KAKAO
+FLAG_OTHERS_APP
+
+以下通知只有当`WristbandVersion#isExtAncsEmail()`为true时才支持
+FLAG_EMAIL
+
+以下通知只有当`WristbandVersion#isExtAncsViberTelegram()`为true时才支持
+FLAG_TELEGRAM
+FLAG_VIBER
+
+以下通知只有当`WristbandVersion#isExtAncsExtra1()`为true时才支持
+FLAG_TWITTER
+FLAG_LINKEDIN
+FLAG_INSTAGRAM
+FLAG_FACEBOOK_MESSENGER
+FLAG_SKYPE
+FLAG_SNAPCHAT
+
+以下通知只是预定义了，暂无手环支持
+FLAG_CALENDAR
 
 #### 6.1.3、BloodPressureConfig
 配置用户血压参考范围，用于手环检测用户血压后，对血压数值进行修正，以便于更加合理。其中`BloodPressureConfig#isPrivateModel()`类似于`isEnabled`，True为开启，false为关闭。
@@ -261,6 +282,12 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 #### 6.1.9、TurnWristLightingConfig
 翻腕亮屏设置
 
+#### 6.1.10、WarnHeartRateConfig
+心率预警配置。当`WristbandVersion#isExtWarnHeartRate()`为true时，手环才支持此功能。
+
+#### 6.1.11、WarnBloodPressureConfig
+血压预警配置。当`WristbandVersion#isExtWarnBloodPressure()`为true时，手环才支持此功能。
+
 ### 6.2、闹钟设置
 手环只支持5个闹钟，每一个闹钟以`WristbandAlarm`中的`alarmId`作为唯一标志，所以`alarmId`的值为0-4。
 闹钟的时间信息为 年(year)，月(month)，日(day)，时(hour)，分(minute)。
@@ -287,7 +314,16 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 MSG_WEATHER;
 MSG_FIND_PHONE;
 MSG_HUNG_UP_PHONE;
-MSG_TAKE_PHOTO;
+
+MSG_CAMERA_TAKE_PHOTO;
+MSG_CAMERA_WAKE_UP
+
+MSG_MEDIA_PLAY_PAUSE
+MSG_MEDIA_NEXT
+MSG_MEDIA_PREVIOUS
+MSG_MEDIA_VOLUME_UP
+MSG_MEDIA_VOLUME_DOWN   
+
 ```
 #### 6.4.1、MSG_WEATHER
 此消息用于手环请求天气。目前手环并无此功能。APP需要自己在合适的时机向手环发送天气，比如在手环连接时，和天气信息发送改变时，向手环发送天气信息。
@@ -298,10 +334,28 @@ MSG_TAKE_PHOTO;
 #### 6.4.3、MSG_HUNG_UP_PHONE
 此消息用于手环请求挂断电话，APP如果需要此功能，在接受到该消息后，需要挂断手机的电话。
 
-#### 6.4.4、MSG_TAKE_PHOTO
+#### 6.4.4、MSG_CAMERA_TAKE_PHOTO
 此消息用于手环请求拍照，APP如果需要此功能，在接受到该消息后，需要调用APP拍照。手环实现的拍照功能并不能控制Android系统的相机，你必须自己实现相机拍照功能。
 此功能需要结合`WristbandManager#setCameraStatus(boolean enterCameraApp)`一起使用，在进入相机界面，调用`WristbandManager#setCameraStatus(true)`通知手环已经准备好拍照控制。此时晃动手环，手环就会发送MSG_TAKE_PHOTO消息，然后完成拍照。
 在退出相机的时候，务必调用`WristbandManager#setCameraStatus(false)`通知手环退出拍照控制。
+
+#### 6.4.5、MSG_CAMERA_WAKE_UP
+此消息用于唤醒APP手机相机
+
+#### 6.4.6、MSG_MEDIA_PLAY_PAUSE
+此消息用于控制播放或者暂停手机音频
+
+#### 6.4.7、MSG_MEDIA_NEXT
+此消息用于控制APP播放下一首音频
+
+#### 6.4.8、MSG_MEDIA_PREVIOUS
+此消息用于控制APP播放上一首音频
+
+#### 6.4.9、MSG_MEDIA_VOLUME_UP
+此消息用于控制APP增加音量
+
+#### 6.4.10、MSG_MEDIA_VOLUME_DOWN
+此消息用于控制APP减小音量
 
 ### 6.5、实时数据测量
 
@@ -468,8 +522,11 @@ mWristbandManager.observerSyncDataState()
 StepData{
    long getTimeStamp();//该数据时间点
    int getStep();//该时间点步数
+   float getDistance();//该时间点运动距离
+   float getCalories();//该时间点消耗卡路里
 }
 ```
+其中`StepData#getDistance()`和`StepData#getCalories()`是由手环根据步数计算出来，在某些旧手环上可能不支持。你可以检测`WristbandVersion#isExtStepExtra()`，当它为false时，你需要自己计算。
 
 1. 手环会保存几天的步数数据？
 
