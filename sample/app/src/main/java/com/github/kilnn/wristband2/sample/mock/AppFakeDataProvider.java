@@ -10,7 +10,7 @@ import com.htsmart.wristband2.bean.data.HeartRateData;
 import com.htsmart.wristband2.bean.data.SleepData;
 import com.htsmart.wristband2.bean.data.SleepItemData;
 import com.htsmart.wristband2.bean.data.SportData;
-import com.htsmart.wristband2.bean.data.SportHR;
+import com.htsmart.wristband2.bean.data.SportItem;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -144,16 +144,16 @@ public class AppFakeDataProvider {
         sportData.setSteps(random.nextInt(500));
         if (random.nextInt(10) > 5) {
             //create SportHR
-            List<SportHR> hrs = new ArrayList<>();
+            List<SportItem> items = new ArrayList<>();
             int duration = 0;
             while (duration < sportData.getDuration()) {
-                SportHR hr = new SportHR();
-                hr.setDuration(duration);
-                hr.setValue(random.nextInt(100));
-                hrs.add(hr);
+                SportItem item = new SportItem();
+                item.setDuration(duration);
+                item.setHeartRate(random.nextInt(100));
+                items.add(item);
                 duration += 300;
             }
-            sportData.setHrs(hrs);
+            sportData.setItems(items);
         }
         Log.e("AppFakeDataProvider", "create Sport fake data");
 

@@ -1,3 +1,8 @@
+# 2019-11-13
+## 发布libraryCore-release_19_1113_1.aar
+1. 去掉`SportHR`类，添加`SportItem`类
+2. 添加免打扰配置`NotDisturbConfig`
+
 # 2019-10-13
 ## 发布libraryCore-release_19_1013_1.aar
 1. 添加相机唤醒指令和音乐控制指令

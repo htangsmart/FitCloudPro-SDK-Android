@@ -17,13 +17,13 @@ dependencies {
 
     //RxJava2 and RxAndroid
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //RxAndroidBle
-    implementation 'com.polidea.rxandroidble2:rxandroidble:1.7.0'
+    implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.4'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1013_1', ext: 'aar')
+    implementation(name: 'libraryCore-release_19_1113_1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu-release_19_1013_1', ext: 'aar')
@@ -169,6 +169,7 @@ BluetoothDevice getConnectedDevice();
 9. TurnWristLightingConfig 翻腕亮屏配置
 10. WarnHeartRateConfig 心率预警配置
 11. WarnBloodPressureConfig 血压预警配置
+12. NotDisturbConfig 免打扰配置
 
 在获取到`WristbandConfig`之后，你可以在通过`WristbandConfig#getBytes()`获取对应的字节码，缓存到本地。之后可以通过`WristbandConfig#newInstance(byte[])`重新生成实例。
 
@@ -210,7 +211,8 @@ private boolean extStepExtra;
 private boolean extWarnHeartRate;
 private boolean extWarnBloodPressure;
 private boolean extAncsExtra1;
- 
+private boolean extDialUiUpgrade;
+private boolean extNotDisturb;
 ```
 
 3.页面支持信息，用于判断手环上可显示的页面，结合PageConfig使用。具体参考PageConfig的用法。
@@ -287,6 +289,9 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 
 #### 6.1.11、WarnBloodPressureConfig
 血压预警配置。当`WristbandVersion#isExtWarnBloodPressure()`为true时，手环才支持此功能。
+
+#### 6.1.12、NotDisturbConfig
+免打扰配置。当`WristbandVersion#isExtNotDisturb()`为true时，手环才支持此功能。
 
 ### 6.2、闹钟设置
 手环只支持5个闹钟，每一个闹钟以`WristbandAlarm`中的`alarmId`作为唯一标志，所以`alarmId`的值为0-4。
@@ -654,7 +659,7 @@ SportData{
     float getDistance();//运动距离，单位km
     float getCalories();//运动消耗卡路里，单位千卡
     int getSteps();//运动步数
-    List<SportHR> getHrs();//运动过程中心率数据
+    List<SportItem> getItems();//运动过程中的详细数据
 }
 ```
 

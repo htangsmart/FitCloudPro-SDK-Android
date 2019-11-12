@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.9.1'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1013_1', ext: 'aar')
+    implementation(name: 'libraryCore-release_19_1113_1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu-release_19_1013_1', ext: 'aar')

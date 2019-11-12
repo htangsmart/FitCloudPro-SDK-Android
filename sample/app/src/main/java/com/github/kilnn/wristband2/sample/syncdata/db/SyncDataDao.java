@@ -19,7 +19,7 @@ import com.htsmart.wristband2.bean.data.RespiratoryRateData;
 import com.htsmart.wristband2.bean.data.SleepData;
 import com.htsmart.wristband2.bean.data.SleepItemData;
 import com.htsmart.wristband2.bean.data.SportData;
-import com.htsmart.wristband2.bean.data.SportHR;
+import com.htsmart.wristband2.bean.data.SportItem;
 import com.htsmart.wristband2.bean.data.StepData;
 import com.htsmart.wristband2.bean.data.TodayTotalData;
 
@@ -152,14 +152,16 @@ public abstract class SyncDataDao {
             sportRecord.setCalorie(d.getCalories());
             sportRecord.setStep(d.getSteps());
 
-            List<SportHR> hrs = d.getHrs();
-            if (hrs != null && hrs.size() > 0) {
-                List<SportHeartRate> heartRates = new ArrayList<>(hrs.size());
-                for (SportHR sportHR : hrs) {
-                    SportHeartRate sportHeartRate = new SportHeartRate();
-                    sportHeartRate.setDuration(sportHR.getDuration());
-                    sportHeartRate.setValue(sportHR.getValue());
-                    heartRates.add(sportHeartRate);
+            List<SportItem> items = d.getItems();
+            if (items != null && items.size() > 0) {
+                List<SportHeartRate> heartRates = new ArrayList<>(items.size());
+                for (SportItem item : items) {
+                    if (item.getHeartRate() > 0) {
+                        SportHeartRate sportHeartRate = new SportHeartRate();
+                        sportHeartRate.setDuration(item.getDuration());
+                        sportHeartRate.setValue(item.getHeartRate());
+                        heartRates.add(sportHeartRate);
+                    }
                 }
                 sportRecord.setHeartRates(heartRates);
             }
