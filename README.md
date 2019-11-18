@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.4'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1113_1', ext: 'aar')
+    implementation(name: 'libraryCore-release_19_1118_1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu-release_19_1013_1', ext: 'aar')
@@ -217,6 +217,8 @@ private boolean extWarnBloodPressure;
 private boolean extAncsExtra1;
 private boolean extDialUiUpgrade;
 private boolean extNotDisturb;
+private boolean extLatestHealthy;
+private boolean extTpUpgrade;
 ```
 
 3. Page support information, used to determine the page that can be displayed on the bracelet, combined with `PageConfig`. Refer specifically to the usage of `PageConfig`.
@@ -407,6 +409,8 @@ mWristbandManager.openEcgRealTimeData()
          }
      });
 ```
+#### 6.5.3、Obtain the latest health measurement record of the wristband
+If `WristbandVersion#isExtLatestHealthy()` is true, then the representative wristband supports the ability to get the most recent health measurement record. Use `WristbandManager#requestLatestHealthy()` to get it.
 
 ### 6.6、Data Synchronization
 The data synchronization function refers to acquiring data of different functional modules stored on the wristband.

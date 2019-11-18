@@ -1,3 +1,7 @@
+# 2019-11-18
+## 发布libraryCore-release_19_1118_1.aar
+1. 添加获取手环最近一次健康测量数据的记录，`WristbandManager#requestLatestHealthy()`，详细内容参考开发文档`6.5.3、获取手环最近一次健康测量记录`
+
 # 2019-11-13
 ## 发布libraryCore-release_19_1113_1.aar
 1. 去掉`SportHR`类，添加`SportItem`类

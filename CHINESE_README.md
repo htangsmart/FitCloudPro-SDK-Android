@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.4'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1113_1', ext: 'aar')
+    implementation(name: 'libraryCore-release_19_1118_1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu-release_19_1013_1', ext: 'aar')
@@ -213,6 +213,8 @@ private boolean extWarnBloodPressure;
 private boolean extAncsExtra1;
 private boolean extDialUiUpgrade;
 private boolean extNotDisturb;
+private boolean extLatestHealthy;
+private boolean extTpUpgrade;
 ```
 
 3.页面支持信息，用于判断手环上可显示的页面，结合PageConfig使用。具体参考PageConfig的用法。
@@ -407,6 +409,9 @@ mWristbandManager.openEcgRealTimeData()
          }
      });
 ```
+
+#### 6.5.3、获取手环最近一次健康测量记录
+如果`WristbandVersion#isExtLatestHealthy()`为true，那么代表手环支持获取最近一次健康测量记录的功能。使用`WristbandManager#requestLatestHealthy()`就可以获取。
 
 ### 6.6、数据同步
 数据同步功能指获取手环上存储的各个不同功能模块的数据。
