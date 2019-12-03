@@ -24,13 +24,13 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //RxAndroidBle
-    implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.4'
+    implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.5'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1118_1', ext: 'aar')
+    implementation(name: 'libraryCore-release_19_1203_1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu-release_19_1013_1', ext: 'aar')
+    implementation(name: 'libraryDfu-release_19_1203_1', ext: 'aar')
     
     ...
 }

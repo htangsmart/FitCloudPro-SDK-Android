@@ -1,3 +1,12 @@
+# 2019-12-03
+## 发布libraryCore-release_19_1203_1.aar
+1. 解决连续指令发送时，某个指令异常导致整个指令队列阻塞的bug。第三方库RxAndroidBLE同样更新了此问题，请更新RxAndroidBLE为最新版本。
+2. 优化同步数据流程指令的发送
+3. 解决心率血压等健康测量无法正常结束的bug
+
+## 发布libraryDfu-release_19_1203_1.aar
+1. 优化DFU升级部分表盘无法成功的bug
+
 # 2019-11-18
 ## 发布libraryCore-release_19_1118_1.aar
 1. 添加获取手环最近一次健康测量数据的记录，`WristbandManager#requestLatestHealthy()`，详细内容参考开发文档`6.5.3、获取手环最近一次健康测量记录`
