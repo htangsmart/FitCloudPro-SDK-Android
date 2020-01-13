@@ -130,7 +130,7 @@ public class SyncDataActivity extends BaseActivity {
                             List<RespiratoryRateData> datas = SyncDataParser.parserRespiratoryRateData(syncDataRaw.getDatas());
                             mSyncDataDao.saveRespiratoryRate(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_SLEEP) {
-                            List<SleepData> datas = SyncDataParser.parserSleepData(syncDataRaw.getDatas());
+                            List<SleepData> datas = SyncDataParser.parserSleepData(syncDataRaw.getDatas(), syncDataRaw.getConfig());
                             mSyncDataDao.saveSleep(datas);
                         } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_SPORT) {
                             List<SportData> datas = SyncDataParser.parserSportData(syncDataRaw.getDatas(), syncDataRaw.getConfig());
