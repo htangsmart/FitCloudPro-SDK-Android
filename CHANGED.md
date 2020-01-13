@@ -1,3 +1,14 @@
+# 2020-01-13
+## 发布libraryCore_v1.0.0.aar
+1. 自此版本开始，以版本名称命名aar包
+2. 添加了对新消息通知协议的支持，WristbandNotification支持更长的name。对于开发者，不需要处理这点。
+3. 添加了对新睡眠协议的支持，睡眠数据更加准确。对于开发者，不需要处理这点。
+4. WristbandManager中的多个方法，添加了AceException的声明。如果发送指令给手环，手环长时间不响应时，将抛出AceException。
+5. 添加了MTU的设置。使用WristbandApplication#betaSetRequestMtuEnabled(enabled)方法，可以在设备连接时，请求更大长度的MTU。这样可以加快指令的接受和发送。
+
+## 发布libraryDfu_v1.0.0.aar
+1. 自此版本开始，以版本名称命名aar包
+
 # 2019-12-03
 ## 发布libraryCore-release_19_1203_1.aar
 1. 解决连续指令发送时，某个指令异常导致整个指令队列阻塞的bug。第三方库RxAndroidBLE同样更新了此问题，请更新RxAndroidBLE为最新版本。

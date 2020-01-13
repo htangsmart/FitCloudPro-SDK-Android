@@ -23,10 +23,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.5'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1203_1', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.0', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu-release_19_1203_1', ext: 'aar')
+    implementation(name: 'libraryDfu_v1.0.0', ext: 'aar')
     
     ...
 }
@@ -193,6 +193,8 @@ private String extension;
 
 2.功能模块信息，用于判断手环所支持的功能。
 
+部分功能模块的兼容在sdk内部已经处理，哪些需要外部使用时注意请参考各个模块的详细文档。
+
 ```
 private boolean heartRateEnable;
 private boolean oxygenEnabled;
@@ -215,6 +217,8 @@ private boolean extDialUiUpgrade;
 private boolean extNotDisturb;
 private boolean extLatestHealthy;
 private boolean extTpUpgrade;
+private boolean extNewNotificationFormat;
+private boolean extNewSleepFormat;
 ```
 
 3.页面支持信息，用于判断手环上可显示的页面，结合PageConfig使用。具体参考PageConfig的用法。

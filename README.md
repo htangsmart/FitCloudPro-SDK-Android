@@ -27,10 +27,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.5'
 
     //lib core function
-    implementation(name: 'libraryCore-release_19_1203_1', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.0', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu-release_19_1203_1', ext: 'aar')
+    implementation(name: 'libraryDfu_v1.0.0', ext: 'aar')
     
     ...
 }
@@ -197,6 +197,8 @@ private String extension;
 
 2. Function module information, used to determine the functions supported by the bracelet.
 
+The compatibility of some functional modules has been handled in the SDK. Please refer to the detailed documents of each module when you need to use them externally.
+
 ```
 private boolean heartRateEnable;
 private boolean oxygenEnabled;
@@ -219,6 +221,8 @@ private boolean extDialUiUpgrade;
 private boolean extNotDisturb;
 private boolean extLatestHealthy;
 private boolean extTpUpgrade;
+private boolean extNewNotificationFormat;
+private boolean extNewSleepFormat;
 ```
 
 3. Page support information, used to determine the page that can be displayed on the bracelet, combined with `PageConfig`. Refer specifically to the usage of `PageConfig`.
