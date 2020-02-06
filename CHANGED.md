@@ -1,3 +1,7 @@
+# 2020-02-06
+## 发布libraryCore_v1.0.1.aar
+1. 解决步数数据StepData单位错误的bug
+
 # 2020-01-13
 ## 发布libraryCore_v1.0.0.aar
 1. 自此版本开始，以版本名称命名aar包
