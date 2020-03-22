@@ -703,15 +703,13 @@ EcgData{
 手环上仅保存最后一次测量的心电值，每次心电数据同步成功后，手环上的心电数据将被删除。下次同步的话，只会得到新产生的心电数据。
 
 ### 6.7、DFU升级
-使用DfuManager可以对手表硬件进行升级。DfuManager所完成的工作如下：
+使用`DfuManager`可以对手表固件或者表盘进行升级。`WristbandVersion`,`WristbandManager#requestDialUiInfo`,`WristbandManager#requestDialBinInfo`中包含了手环固件和表盘的信息。
 
- 1. 检查DFU文件是否正确。如果传入文件url，会自动下载，请确保app拥有网络权限，访问存储权限。
- 2. 进入DFU模式。
- 3. 搜索DFU设备。
- 4. 发送升级数据包。
- 5. 升级成功/失败。
+使用`DfuManager#start(String uri, boolean firmwareUpgrade)`进行升级。升级固件时，第二个参数传true，升级表盘时，第二个参数传false。
 
-具体细节，请参考javaDoc文档和sample工程。
+如果使用错误的文件进行升级，可能导致手环无法使用。所以在开发升级功能时，请务必先和开发人员或产品经理沟通，获取正确的升级包。
+
+具体升级功能的细节，请参考javaDoc文档和sample工程。
 
 ### 6.8、其他简单指令
 #### 6.8.1、设置用户信息

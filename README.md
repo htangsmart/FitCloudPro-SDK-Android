@@ -712,15 +712,13 @@ EcgData{
 Only the last measured ECG value is saved on the wristband. After each ECG data synchronization is successful, the ECG data on the wristband will be deleted. The next time you synchronize, you will only get the newly generated ECG data.
 
 ### 6.7、DFU upgrade
-Use `DfuManager` to upgrade your bracelet. The work done by DfuManager is as follows:
+Use `DfuManager` to upgrade firmware or dial. `WristbandVersion`,` WristbandManager#requestDialUiInfo`, `WristbandManager#requestDialBinInfo` contains information about the bracelet firmware and dial info.
 
-  1. Check if the DFU file is correct. If the file url is passed in, it will be downloaded automatically. Please make sure the app has network permissions and access storage permissions.
-  2. Enter DFU mode.
-  3. Search for DFU devices.
-  4. Send an upgrade packet.
-  5. Upgrade success/failure.
+Use `DfuManager#start (String uri, boolean firmwareUpgrade)` to upgrade. When upgrading the firmware, the second parameter is passed as true, and when upgrading the dial, the second parameter is passed as false.
 
-For details, please refer to the javaDoc documentation and the sample project.
+If you use the wrong file to upgrade, it may make the bracelet unusable. Therefore, when developing upgrade functions, you must first communicate with the developer or product manager to obtain the correct upgrade package.
+
+For details of the specific upgrade function, please refer to the javaDoc document and the sample project.
 
 ### 6.8、Other simple instructions
 #### 6.8.1、Set user information
