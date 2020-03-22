@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class AppFakeDataProvider {
 
-    public static final boolean ENABLED = false;
+    public static final boolean ENABLED = true;
 
     private static SharedPreferences openSp(Context context) {
         return context.getSharedPreferences("AppFakeDataProvider", Context.MODE_PRIVATE);
@@ -85,9 +85,6 @@ public class AppFakeDataProvider {
 
         Random random = new Random();
         int segmentCount = random.nextInt(3) + 4;
-        long deep = 0;//Deep sleep time
-        long light = 0;//Light sleep time
-        long sober = 0;//Sober sleep time
 
         Date yesterdayStartTime = Utils.getExpireLimitTime(calendar, 1);
         yesterdayStartTime.setHours(random.nextInt(4) + 19);
@@ -103,14 +100,6 @@ public class AppFakeDataProvider {
             startTime += duration;
             sleepItem.setEndTime(startTime);
 
-            if (sleepItem.getStatus() == SleepItemData.SLEEP_STATUS_DEEP) {//深睡
-                deep += duration;
-            } else if (sleepItem.getStatus() == SleepItemData.SLEEP_STATUS_LIGHT) {//浅睡
-                light += duration;
-            } else if (sleepItem.getStatus() == SleepItemData.SLEEP_STATUS_SOBER) {//清醒
-                sober += duration;
-            }
-
             SleepItemData previousItem = items.size() > 0 ? items.get(items.size() - 1) : null;
             if (previousItem != null && sleepItem.getStatus() == previousItem.getStatus()) {
                 previousItem.setEndTime(sleepItem.getEndTime());
@@ -119,9 +108,6 @@ public class AppFakeDataProvider {
             }
         }
         sleepData.setItems(items);
-        sleepData.setDeepSleep((int) (deep / 1000));
-        sleepData.setLightSleep((int) (light / 1000));
-        sleepData.setSoberSleep((int) (sober / 1000));
         Log.e("AppFakeDataProvider", "create Sleep fake data");
 
         list.add(sleepData);

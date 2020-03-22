@@ -68,6 +68,24 @@
                 android:onClick="turn_wrist_lighting_config"
                 android:text="@string/configs_turn_wrist_lighting"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="warn_heart_rate_config"
+                android:text="@string/configs_warn_heart_rate"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="warn_blood_pressure_config"
+                android:text="@string/configs_warn_blood_pressure"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="dnd_config"
+                android:text="@string/configs_dnd"/>
+
         </LinearLayout>
     </ScrollView>
 

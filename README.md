@@ -7,7 +7,7 @@ This document guides Android developers to integrate `FitCloudPro-SDK-Android` i
 
 ## 1. Import SDK
 
-Import the `libraryCore-release_xx_xxxx_x.aar` and `libraryDfu-release_xx_xxxx_x.aar` into the project, generally copy them to the `libs` directory, and then set them in the build.gradle in the module as follows:
+Import the `libraryCore_vx.x.x.aar` and `libraryDfu_vx.x.x.aar` into the project, generally copy them to the `libs` directory, and then set them in the build.gradle in the module as follows:
 
 ```
 repositories {
@@ -20,14 +20,14 @@ dependencies {
     ...
 
     //RxJava2 and RxAndroid
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //RxAndroidBle
-    implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.5'
+    implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.1', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.2', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.0', ext: 'aar')
@@ -166,11 +166,11 @@ In the SDK, `WristbandConfig` is used as the entity class of the bracelet config
 2. `NotificationConfig` : Notification configuration
 3. `BloodPressureConfig` : Blood pressure configuration
 4. `DrinkWaterConfig` : Drink water reminder configuration
-5. `FunctionConfig` : Accessibility  function configuration
+5. `FunctionConfig` : Accessibility function configuration
 6. `HealthyConfig` : Real-time detection configuration of health data
 7. `SedentaryConfig` : Sedentary reminder configuration
 8. `PageConfig` : Bracelet page configuration
-9. `TurnWristLightingConfig` : Turn the wrist screen configuration
+9. `TurnWristLightingConfig` : Light up the wrist configuration
 10. `WarnHeartRateConfig` Heart rate warning config
 11. `WarnBloodPressureConfig` Blood pressure warning config
 12. `NotDisturbConfig` DND config
@@ -180,7 +180,6 @@ After getting the `WristbandConfig`, you can get the corresponding bytecode thro
 If you want to get the bytecode of a configuration in `WristbandConfig`, you can also use the `getBytes()` method of the configuration, such as `PageConfig#getBytes()`.
 
 #### 6.1.1、WristbandVersion
-
 The information in WristbandVersion is mainly divided into three parts:
 
 1. Version information of hardware, firmware, flash, etc., used for version judgment in future firmware upgrades.
@@ -223,6 +222,8 @@ private boolean extLatestHealthy;
 private boolean extTpUpgrade;
 private boolean extNewNotificationFormat;
 private boolean extNewSleepFormat;
+private boolean extChangeConfigItself;
+private boolean extMockEcg;
 ```
 
 3. Page support information, used to determine the page that can be displayed on the bracelet, combined with `PageConfig`. Refer specifically to the usage of `PageConfig`.
@@ -232,54 +233,38 @@ private int pageSupport;
 ```
 
 #### 6.1.2、NotificationConfig
-
 Configure the type of message notification that the bracelet can receive and display. This config defines multiple types of notifications. But not all notifications are supported on the wristband.
 
-The following notifications are supported on all bracelets.
-FLAG_TELEPHONE
-FLAG_SMS
-FLAG_QQ
-FLAG_WECHAT
-FLAG_FACEBOOK
-FLAG_PINTEREST
-FLAG_WHATSAPP
-FLAG_LINE
-FLAG_KAKAO
-FLAG_OTHERS_APP
+The following notifications are supported on all bracelets：`FLAG_TELEPHONE`,`FLAG_SMS`,`FLAG_QQ`,`FLAG_WECHAT`,`FLAG_FACEBOOK`,`FLAG_PINTEREST`,`FLAG_WHATSAPP`,`FLAG_LINE`,`FLAG_KAKAO`,`FLAG_OTHERS_APP`
 
-The following notifications are supported when `WristbandVersion#isExtAncsEmail()` is true
-FLAG_EMAIL
+The following notifications are supported when `WristbandVersion#isExtAncsEmail()` is true：`FLAG_EMAIL`
 
-The following notifications are supported when `WristbandVersion#isExtAncsViberTelegram()` is true
-FLAG_TELEGRAM
-FLAG_VIBER
+The following notifications are supported when `WristbandVersion#isExtAncsViberTelegram()` is true：`FLAG_TELEGRAM`,`FLAG_VIBER`
 
-The following notifications are supported when `WristbandVersion#isExtAncsExtra1()` is true
-FLAG_TWITTER
-FLAG_LINKEDIN
-FLAG_INSTAGRAM
-FLAG_FACEBOOK_MESSENGER
-FLAG_SKYPE
-FLAG_SNAPCHAT
+The following notifications are supported when `WristbandVersion#isExtAncsExtra1()` is true：`FLAG_TWITTER`,`FLAG_LINKEDIN`,`FLAG_INSTAGRAM`,`FLAG_FACEBOOK_MESSENGER`,`FLAG_SKYPE`,`FLAG_SNAPCHAT`
 
-The following notifications are just definitions and are not implemented on the wristband.
-FLAG_CALENDAR
+The following notifications are just definitions and are not implemented on the wristband：`FLAG_CALENDAR`
+
+In Android development, `BroadcastReceiver` is generally used to monitor calls and text messages, and` NotificationListenerService` is used to obtain notifications from third-party apps and parse messages. Because `Notification` involves the compatibility of many different versions of the system, many apps will send the same notification repeatedly, so pay attention to filtering the duplicate notifications sent by the same APP during development. And it is not recommended to use `FLAG_OTHERS_APP` to support many APP types that are not supported by the bracelet. This may cause you to send many notifications and cause the bracelet to keep vibrating.
 
 #### 6.1.3、BloodPressureConfig
+Set the reference blood pressure range so that the wristband can measure blood pressure more accurately. Where `BloodPressureConfig#isPrivateModel()` is similar to `isEnabled`, True is on, and false is off.
 
-Configure the user blood pressure reference range, after the wristband detects the user's blood pressure, correct the blood pressure value to make it more reasonable. Where `BloodPressureConfig#isPrivateModel()` is similar to `isEnabled`, True is on, and false is off.
+The systolic pressure setting range is generally 50-200mmhg, and the diastolic pressure setting range is generally 20-120mmhg.
 
 #### 6.1.4、DrinkWaterConfig
-
 Used to remind users to drink water on time. The bracelet will alert the user to drink water at intervals between the set start time and end time.
+`setInterval` sets the interval time, the range is [30,180] minutes
+`setStart` sets the start time, the range is [00: 00,23: 59].for example, time 11:30 is converted to an int value, 11 × 60 + 30 = 690
+`setEnd` sets the end time, the range is [00: 00,23: 59].
 
 #### 6.1.5、FunctionConfig
 Configure some simple features of the bracelet.
-1. Wearing method (FLAG_WEAR_WAY), true for the right hand, false for the left and right
-2. Strengthen the measurement (FLAG_STRENGTHEN_TEST), true is on, false is off
-3. Twelve-hour system (FLAG_HOUR_STYLE), true is twelve-hour system, false is twenty-four hour system
-4. Length unit (FLAG_LENGTH_UNIT), true is imperial, false is metric
-5. Temperature unit (FLAG_TEMPERATURE_UNIT), true is Fahrenheit, and false is Celsius
+1. Wearing method (`FLAG_WEAR_WAY`), true for the right hand, false for the left and right
+2. Strengthen the measurement (`FLAG_STRENGTHEN_TEST`), true is on, false is off
+3. Twelve-hour system (`FLAG_HOUR_STYLE`), true is twelve-hour system, false is twenty-four hour system
+4. Length unit (`FLAG_LENGTH_UNIT`), true is imperial, false is metric
+5. Temperature unit (`FLAG_TEMPERATURE_UNIT`), true is Fahrenheit, and false is Celsius
 
 #### 6.1.6、HealthyConfig
 Used to configure real-time monitoring of health data, this setting will affect heart rate, blood pressure, blood oxygen, respiratory rate and other data. Heart rate, blood pressure, blood oxygen, and respiratory rate data monitor the user's health status and generate data for a set period of time. The resulting data can be obtained by synchronizing the data process.
@@ -298,19 +283,21 @@ For details, please refer to the sample project.
 Turn the wristscreen settings
 
 #### 6.1.10、WarnHeartRateConfig
-Heart rate warning config. This feature is only supported when the `WristbandVersion#isExtWarnHeartRate()` is true.
+Heart rate warning config. This feature is only supported when the `WristbandVersion#isExtWarnHeartRate()` is true. You can set early warning values for heart rate during exercise and heart rate during rest.
 
 #### 6.1.11、WarnBloodPressureConfig
-Blood pressure warning config. This feature is only supported when the `WristbandVersion#isExtWarnBloodPressure()` is true.
+Blood pressure warning config. This feature is only supported when the `WristbandVersion#isExtWarnBloodPressure()` is true.Upper and lower limits can be set separately for systolic and diastolic blood pressure.
 
 #### 6.1.12、NotDisturbConfig
-DND config. This feature is only supported when the `WristbandVersion#isExtNotDisturb()` is true.
+DND config. This feature is only supported when the `WristbandVersion#isExtNotDisturb()` is true. Can set up DND all day, or set a certain period of DND
 
 ### 6.2、Alarm setting
 The bracelet only supports 5 alarm clocks. Each alarm clock has the `alarmId` in `WristbandAlarm` as the unique flag, so the value of `alarmId` is 0-4.
 The time information of the alarm clock is year, month, day, hour, minute.
 
 The repetition period of the alarm is marked with `repeat`. If `repeat` is 0, it means no repetition, then it will only take effect once at the set time. If `repeat` is not 0, the year, month, and day will be ignored, and it will take effect multiple times at some point in the set day. Whether the alarm is turned on or not using `enable`. It's worth noting that if `repeat` is 0 and the time set is less than the current time, then you should force `enable` to be false.
+
+You can set a label for the alarm clock setting, but the length of the label cannot exceed 32 bytes, and the excess will be ignored.
 
 Request alarms with `WristbandManager#requestAlarmList()`.
 Set alarms by `WristbandManager#setAlarmList(@Nullable List<WristbandAlarm> alarmList)`. It's important to note that you must set all the alarms you want to save at the same time, so you need to pass in a List here. If only one alarm is set, all other alarm information will be lost.
@@ -332,7 +319,17 @@ At some point, the bracelet will actively send some messages to complete certain
 MSG_WEATHER;
 MSG_FIND_PHONE;
 MSG_HUNG_UP_PHONE;
-MSG_TAKE_PHOTO;
+
+MSG_CAMERA_TAKE_PHOTO;
+MSG_CAMERA_WAKE_UP
+
+MSG_MEDIA_PLAY_PAUSE
+MSG_MEDIA_NEXT
+MSG_MEDIA_PREVIOUS
+MSG_MEDIA_VOLUME_UP
+MSG_MEDIA_VOLUME_DOWN   
+
+MSG_CHANGE_CONFIG_ITSELF
 ```
 #### 6.4.1、MSG_WEATHER
 This message is used for the bracelet to request weather. The current bracelet does not have this feature. The APP needs to send the weather to the bracelet at the right time, such as when the bracelet is connected, and when the weather information is sent, the weather information is sent to the bracelet.
@@ -365,6 +362,9 @@ This message is used to control the APP to increase the volume.
 
 #### 6.4.10、MSG_MEDIA_VOLUME_DOWN
 This message is used to control the APP to reduce the volume.
+
+#### 6.4.11, MSG_CHANGE_CONFIG_ITSELF
+If `WristbandVersion#isExtChangeConfigItself()` is true, it means that the bracelet can change some configurations by itself. When the bracelet changes the configuration, it will actively send this message.
 
 ### 6.5、Real-time data measurement
 
@@ -634,9 +634,9 @@ SleepItemData {
 ```
 `SleepData#getTimeStamp()` gets the start timestamp of a certain day, for example 2019-05-29 00:00:00:000, which can be understood as representing the sleep condition of last night. That is, the sleep condition between 2019-05-28 21:30 and 2019-05-29 12:00.
 
-The wristband does not generate sleep data during the monitoring of the user's sleep, so the synchronized data will not obtain sleep data. Only after monitoring the user to exit sleep, or actively calling `WristbandManager#exitSleepMonitor()` to exit sleep, the bracelet will summarize the entire sleep process to generate sleep data.
+Older versions of the bracelet will return all sleep data for the day at a time, and no longer generate sleep data after exiting sleep. Because the bracelet actively determines that the user takes a long time to exit from sleep, it is likely that, for example, the user no longer sleeps at 7 am, but cannot obtain sleep data during synchronization. So the recommended approach is to call `WristbandManager # exitSleepMonitor ()` to exit sleep between 4am to 12am (the user is likely to no longer sleep during this period), and the user actively synchronizes data (as shown below). , And then synchronize data.
 
-Because the wristband actively determines that the user has left the sleep for a long time, it is likely to cause, for example, that the user is no longer sleeping at 7:00 in the morning, but the synchronization does not obtain the sleep data. So the recommended practice is to call `WristbandManager#exitSleepMonitor()` to exit sleep before the user actively synchronizes the data (such as pull refresh) between 4 am and 12 am (the time is very likely that the user is no longer asleep). And then synchronize the data operation.
+The new version of the bracelet will return to sleep data multiple times. You can still use `WristbandManager # exitSleepMonitor ()` method to exit sleep, the bracelet will be compatible with the version. However, it should be noted that you may need to merge externally and then display it on the interface for multiple sleeps returned on the same day.
 
 1. How many days of sleep data will the bracelet keep?
 
@@ -672,11 +672,7 @@ SportData{
     List<SportItem> getItems();//item datas
 }
 ```
-The data contained in the different types of `SportData` is different.
-
-`SportData#TYPE_RIDE`, `SportData#TYPE_SWIM` has no distance and step data.
-
-`SportData#SPORT_BB`, `SportData#SPORT_BADMINTON`, `SportData#SPORT_FOOTBALL`, there is no distance data.
+The data contained in the different types of `SportData` is different.See the document for details.
 
 If `WristbandVersion#isDynamicHeartRateEnabled()` is true, then there is heart rate data, otherwise there is no heart rate data.
 

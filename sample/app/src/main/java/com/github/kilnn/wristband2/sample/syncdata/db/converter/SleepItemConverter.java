@@ -1,6 +1,6 @@
 package com.github.kilnn.wristband2.sample.syncdata.db.converter;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
 import com.alibaba.fastjson.JSON;
 import com.github.kilnn.wristband2.sample.syncdata.db.SleepItem;

@@ -2,8 +2,8 @@ package com.github.kilnn.wristband2.sample.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.AttrRes;
-import android.support.annotation.ColorInt;
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
 import android.util.SparseArray;
 import android.view.View;
 

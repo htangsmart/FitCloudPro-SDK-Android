@@ -19,11 +19,16 @@ import com.github.kilnn.wristband2.sample.util.Utils;
 import com.htsmart.wristband2.bean.data.SleepItemData;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.annotation.NonNull;
+
+import static com.htsmart.wristband2.bean.data.SleepItemData.SLEEP_STATUS_SOBER;
 
 
 /**
@@ -245,24 +250,22 @@ public class SleepDayView extends View {
         SleepDayData[] datas = null;
         if (record != null && record.getDetail() != null
                 && record.getDetail().size() > 0) {
-            List<SleepItem> items = record.getDetail();
-            Collections.sort(items, new Comparator<SleepItem>() {
-                @Override
-                public int compare(SleepItem o1, SleepItem o2) {
-                    return (int) (o1.getStartTime().getTime() - o2.getStartTime().getTime());
+            List<SleepItem> items = adjustSleepItems(record.getDetail());
+
+            //Convert SleepItem to SleepDayData
+            if (items.size() > 0) {
+                datas = new SleepDayData[items.size()];
+                int totalTime = (int) ((items.get(items.size() - 1).getEndTime().getTime()
+                        - items.get(0).getStartTime().getTime()) / 1000);
+                for (int i = 0; i < items.size(); i++) {
+                    SleepItem item = items.get(i);
+                    SleepDayData data = new SleepDayData();
+                    data.value = item.getStatus();
+                    data.startTime = (int) (item.getStartTime().getTime() / 1000);
+                    data.endTime = (int) (item.getEndTime().getTime() / 1000);
+                    data.percent = (data.endTime - data.startTime) / (float) totalTime;
+                    datas[i] = data;
                 }
-            });
-            datas = new SleepDayData[items.size()];
-            int totalTime = (int) ((items.get(items.size() - 1).getEndTime().getTime()
-                    - items.get(0).getStartTime().getTime()) / 1000);
-            for (int i = 0; i < items.size(); i++) {
-                SleepItem item = items.get(i);
-                SleepDayData data = new SleepDayData();
-                data.value = item.getStatus();
-                data.startTime = (int) (item.getStartTime().getTime() / 1000);
-                data.endTime = (int) (item.getEndTime().getTime() / 1000);
-                data.percent = (data.endTime - data.startTime) / (float) totalTime;
-                datas[i] = data;
             }
         }
 
@@ -274,6 +277,54 @@ public class SleepDayView extends View {
         postInvalidate();
     }
 
+    /**
+     * Adjust SleepItem to remove the soberness at the beginning and end.
+     * And handle the time-staggered data caused by the abnormality, so that the sleep data can be continuously displayed
+     */
+    private List<SleepItem> adjustSleepItems(@NonNull List<SleepItem> items) {
+        Collections.sort(items, new Comparator<SleepItem>() {
+            @Override
+            public int compare(SleepItem o1, SleepItem o2) {
+                return (int) (o1.getStartTime().getTime() - o2.getStartTime().getTime());
+            }
+        });
+
+        List<SleepItem> resultList = new ArrayList<>(items.size());
+        List<SleepItem> endSoberList = new ArrayList<>();
+
+        for (int i = 0; i < items.size(); i++) {
+            SleepItem itemData = items.get(i);
+            int status = itemData.getStatus();
+            if (status == SLEEP_STATUS_SOBER && resultList.size() <= 0) {
+                continue;
+            }
+            if (resultList.size() <= 0) {
+                resultList.add(itemData);
+                continue;
+            }
+
+            long duration = itemData.getEndTime().getTime() - itemData.getStartTime().getTime();
+            if (duration > 0) {
+                SleepItem previousItemData;
+                if (endSoberList.size() > 0) {
+                    previousItemData = endSoberList.get(endSoberList.size() - 1);
+                } else {
+                    previousItemData = resultList.get(resultList.size() - 1);
+                }
+                itemData.getStartTime().setTime(previousItemData.getEndTime().getTime());
+                itemData.getEndTime().setTime(previousItemData.getEndTime().getTime() + duration);
+                if (status == SLEEP_STATUS_SOBER) {
+                    endSoberList.add(itemData);
+                } else {
+                    resultList.addAll(endSoberList);
+                    endSoberList.clear();
+                    resultList.add(itemData);
+                }
+            }
+        }
+
+        return resultList;
+    }
 
     private class DrawParams {
 
@@ -306,7 +357,7 @@ public class SleepDayView extends View {
                 mRectPaint.setColor(mColor1);
             } else if (value == SleepItemData.SLEEP_STATUS_LIGHT) {
                 mRectPaint.setColor(mColor2);
-            } else if (value == SleepItemData.SLEEP_STATUS_SOBER) {
+            } else if (value == SLEEP_STATUS_SOBER) {
                 mRectPaint.setColor(mColor3);
             }
             return mRectPaint;
@@ -317,7 +368,7 @@ public class SleepDayView extends View {
                 return mColor1;
             } else if (value == SleepItemData.SLEEP_STATUS_LIGHT) {
                 return mColor2;
-            } else if (value == SleepItemData.SLEEP_STATUS_SOBER) {
+            } else if (value == SLEEP_STATUS_SOBER) {
                 return mColor3;
             }
             return mColor1;

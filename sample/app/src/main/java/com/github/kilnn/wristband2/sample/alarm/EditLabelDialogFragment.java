@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialogFragment;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
+
 import android.text.InputFilter;
 import android.text.Spanned;
 
@@ -62,12 +64,12 @@ public class EditLabelDialogFragment extends AppCompatDialogFragment {
                         keep -= new String(tempChars).getBytes().length;
                         if (keep <= 0) {
                             if (keep == 0) {//长度正好
-                                return source.subSequence(start, i);
+                                return source.subSequence(start, i + 1);//截取start到i，包括i，所有+1
                             } else {//长度超了，也就是要去掉一个
                                 if (i == start) {
                                     return "";//没有可以去掉的，返回 ""
                                 } else {
-                                    return source.subSequence(start, i - 1);
+                                    return source.subSequence(start, i);//截取start到i，不包括i
                                 }
                             }
                         }

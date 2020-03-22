@@ -1,8 +1,8 @@
 package com.github.kilnn.wristband2.sample;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 public abstract class BaseActivity extends AppCompatActivity {

@@ -1,7 +1,7 @@
 package com.github.kilnn.wristband2.sample.syncdata.db;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 @Database(entities = {
         StepItem.class,

@@ -33,6 +33,7 @@
     <string name="state_active_disconnect">Active disconnect</string>
     <string name="state_passive_disconnect">Passive disconnect</string>
     <string name="toast_device_disconnected">Device Disconnected</string>
+    <string name="toast_device_not_support">Device does not support this feature</string>
 
     <string name="toast_connect_login_tips">Connect with Login Mode</string>
     <string name="toast_connect_bind_tips">Connect with Bind Mode，APP will clear today\'s Step Data</string>
@@ -65,6 +66,9 @@
     <string name="configs_sedentary">7.Sedentary Config</string>
     <string name="configs_page">8.Page Config</string>
     <string name="configs_turn_wrist_lighting">9.Turn Wrist Lighting Config</string>
+    <string name="configs_warn_heart_rate">10.Warn Heart Rate Config</string>
+    <string name="configs_warn_blood_pressure">11.Warn BloodPressure Config</string>
+    <string name="configs_dnd">12.DND</string>
 
     <string name="notification_config_phone_call">Call alert</string>
     <string name="notification_config_sms">SMS</string>
@@ -213,6 +217,10 @@
     <string name="view_sport_type_swim">Swim</string>
     <string name="view_sport_type_badminton">Badminton</string>
     <string name="view_sport_type_football">Football</string>
+    <string name="view_sport_type_elliptical_trainer">Elliptical Trainer</string>
+    <string name="view_sport_type_yoga">Yoga</string>
+    <string name="view_sport_type_ping_pong">Ping pong</string>
+    <string name="view_sport_type_rope_skipping">Rope skipping</string>
 
     <string name="view_sport_data_calories">Calories:<xliff:g id="params1">%1$s</xliff:g>kCal</string>
     <string name="view_sport_data_step">Steps:<xliff:g id="params1">%1$d</xliff:g></string>

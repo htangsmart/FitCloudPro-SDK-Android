@@ -1,11 +1,5 @@
 package com.github.kilnn.wristband2.sample.syncdata.db;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.TypeConverters;
-
 import com.github.kilnn.wristband2.sample.MyApplication;
 import com.github.kilnn.wristband2.sample.mock.DbMock;
 import com.github.kilnn.wristband2.sample.syncdata.db.converter.DateConverter;
@@ -22,12 +16,21 @@ import com.htsmart.wristband2.bean.data.SportData;
 import com.htsmart.wristband2.bean.data.SportItem;
 import com.htsmart.wristband2.bean.data.StepData;
 import com.htsmart.wristband2.bean.data.TodayTotalData;
+import com.htsmart.wristband2.packet.SleepCalculateHelper;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import androidx.room.TypeConverters;
 
 @Dao
 public abstract class SyncDataDao {
@@ -107,16 +110,15 @@ public abstract class SyncDataDao {
 
     public void saveSleep(List<SleepData> datas) {
         if (datas == null || datas.size() <= 0) return;
-        for (SleepData d : datas) {
-            SleepRecord sleepRecord = new SleepRecord();
-            sleepRecord.setDate(new Date(d.getTimeStamp()));
-            sleepRecord.setDeepSleep(d.getDeepSleep());
-            sleepRecord.setLightSleep(d.getLightSleep());
-            sleepRecord.setSoberSleep(d.getSoberSleep());
 
-            if (d.getItems() != null) {
-                List<SleepItem> items = new ArrayList<>(d.getItems().size());
-                for (SleepItemData itemData : d.getItems()) {
+        for (SleepData sleepData : datas) {
+            SleepRecord sleepRecord = new SleepRecord();
+            sleepRecord.setDate(new Date(sleepData.getTimeStamp()));//The date of the Sleep data
+
+            //Convert SleepItemData to SleepItem
+            if (sleepData.getItems() != null) {
+                List<SleepItem> items = new ArrayList<>(sleepData.getItems().size());
+                for (SleepItemData itemData : sleepData.getItems()) {
                     SleepItem item = new SleepItem();
                     item.setStatus(itemData.getStatus());
                     item.setStartTime(new Date(itemData.getStartTime()));
@@ -126,6 +128,35 @@ public abstract class SyncDataDao {
                 sleepRecord.setDetail(items);
             }
 
+            //TODO Warn :Merge existing day's sleep data
+            //TODO Warn :In actual processing, if the sleep data comes from multiple different bracelets, you can choose to clear or merge according to your needs.
+            SleepRecord existRecord = querySleepRecord(sleepRecord.getDate());
+            if (existRecord != null) {
+                List<SleepItem> existItems = existRecord.getDetail();
+                if (existItems != null) {
+                    if (sleepRecord.getDetail() != null) {
+                        existItems.addAll(sleepRecord.getDetail());
+                    }
+                    sleepRecord.setDetail(existItems);
+                }
+            }
+
+            //Calculate sleep time
+            if (sleepRecord.getDetail() != null && sleepRecord.getDetail().size() > 0) {
+                Collections.sort(sleepRecord.getDetail(), new Comparator<SleepItem>() {
+                    @Override
+                    public int compare(SleepItem o1, SleepItem o2) {
+                        return (int) (o1.getStartTime().getTime() - o2.getStartTime().getTime());
+                    }
+                });
+                int[] durations = SleepCalculateHelper.calculateDuration(sleepRecord.getDetail());
+
+                sleepRecord.setDeepSleep(durations[0]);
+                sleepRecord.setLightSleep(durations[1]);
+                sleepRecord.setSoberSleep(durations[2]);
+            }
+
+            //insert
             insert(sleepRecord);
         }
     }

@@ -2,8 +2,10 @@ package com.github.kilnn.wristband2.sample.configs;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDialogFragment;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,6 +87,18 @@ public class HardwareInfoDialogFragment extends AppCompatDialogFragment {
             info.addItem("Hide Page Config:" + (version.isExtHidePageConfig() ? "Y" : "N"));
             info.addItem("ANCS Email:" + (version.isExtAncsEmail() ? "Y" : "N"));
             info.addItem("ANCS Viber&Telegram:" + (version.isExtAncsViberTelegram() ? "Y" : "N"));
+            info.addItem("Step Extra:" + (version.isExtStepExtra() ? "Y" : "N"));
+            info.addItem("Warn HeartRate:" + (version.isExtWarnHeartRate() ? "Y" : "N"));
+            info.addItem("Warn BloodPressure:" + (version.isExtWarnBloodPressure() ? "Y" : "N"));
+            info.addItem("ANCS Extra1:" + (version.isExtAncsExtra1() ? "Y" : "N"));
+            info.addItem("Dial Ui Upgrade:" + (version.isExtDialUpgrade() ? "Y" : "N"));
+            info.addItem("DND:" + (version.isExtNotDisturb() ? "Y" : "N"));
+            info.addItem("Latest Healthy:" + (version.isExtLatestHealthy() ? "Y" : "N"));
+            info.addItem("TP Upgrade:" + (version.isExtTpUpgrade() ? "Y" : "N"));
+            info.addItem("New Notification Format:" + (version.isExtNewNotificationFormat() ? "Y" : "N"));
+            info.addItem("New Sleep Format:" + (version.isExtNewSleepFormat() ? "Y" : "N"));
+            info.addItem("Change Config Itself:" + (version.isExtChangeConfigItself() ? "Y" : "N"));
+            info.addItem("Mock Ecg:" + (version.isExtMockEcg() ? "Y" : "N"));
         }
 
         return groupInfos;

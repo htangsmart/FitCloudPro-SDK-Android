@@ -2,7 +2,7 @@ package com.github.kilnn.wristband2.sample.alarm;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.format.DateFormat;
 import android.view.Menu;
 import android.view.MenuItem;

@@ -4,7 +4,7 @@
 该文档为指导Android开发人员在Android 4.4及以上系统中集成FitCloudPro-SDK-Android，主要为一些关键的使用示例，更详细API，请参考JavaDoc文档。
 
 ## 一、导入SDK
-将libraryCore-release_xx_xxxx_x.aar和libraryDfu-release_xx_xxxx_x.aar导入工程，一般复制到libs目录下，然后在module中的build.gradle中如下设置：
+将`libraryCore_vx.x.x.aar`和`libraryDfu_vx.x.x.aar`导入工程，一般复制到libs目录下，然后在module中的build.gradle中如下设置：
 ```
 repositories {
     flatDir {
@@ -16,14 +16,14 @@ dependencies {
     ...
 
     //RxJava2 and RxAndroid
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //RxAndroidBle
-    implementation 'com.polidea.rxandroidble2:rxandroidble:1.10.5'
+    implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.1', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.2', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.0', ext: 'aar')
@@ -176,7 +176,6 @@ BluetoothDevice getConnectedDevice();
 如果想要获取`WristbandConfig`中某一项配置的字节码，同样可以使用该项配置的`getBytes()`方法，如`PageConfig#getBytes()`.
 
 #### 6.1.1、WristbandVersion
-
 WristbandVersion里的信息主要分为三部分：
 
 1.硬件、固件、flash等版本信息，用于以后固件升级时的版本判断。
@@ -193,7 +192,7 @@ private String extension;
 
 2.功能模块信息，用于判断手环所支持的功能。
 
-部分功能模块的兼容在sdk内部已经处理，哪些需要外部使用时注意请参考各个模块的详细文档。
+部分功能模块的兼容在sdk内部已经处理，哪些需要外部使用时注意请参考各个功能模块的详细文档。
 
 ```
 private boolean heartRateEnable;
@@ -219,6 +218,8 @@ private boolean extLatestHealthy;
 private boolean extTpUpgrade;
 private boolean extNewNotificationFormat;
 private boolean extNewSleepFormat;
+private boolean extChangeConfigItself;
+private boolean extMockEcg;
 ```
 
 3.页面支持信息，用于判断手环上可显示的页面，结合PageConfig使用。具体参考PageConfig的用法。
@@ -230,49 +231,36 @@ private int pageSupport;
 #### 6.1.2、NotificationConfig
 配置手环能够接收并显示的的消息通知类型。此配置定义了多种消息类型，但并不是所有的手环都支持。
 
-以下通知在所有手环都支持
-FLAG_TELEPHONE
-FLAG_SMS
-FLAG_QQ
-FLAG_WECHAT
-FLAG_FACEBOOK
-FLAG_PINTEREST
-FLAG_WHATSAPP
-FLAG_LINE
-FLAG_KAKAO
-FLAG_OTHERS_APP
+以下通知在所有手环都支持：`FLAG_TELEPHONE`,`FLAG_SMS`,`FLAG_QQ`,`FLAG_WECHAT`,`FLAG_FACEBOOK`,`FLAG_PINTEREST`,`FLAG_WHATSAPP`,`FLAG_LINE`,`FLAG_KAKAO`,`FLAG_OTHERS_APP`
 
-以下通知只有当`WristbandVersion#isExtAncsEmail()`为true时才支持
-FLAG_EMAIL
+以下通知只有当`WristbandVersion#isExtAncsEmail()`为true时才支持：`FLAG_EMAIL`
 
-以下通知只有当`WristbandVersion#isExtAncsViberTelegram()`为true时才支持
-FLAG_TELEGRAM
-FLAG_VIBER
+以下通知只有当`WristbandVersion#isExtAncsViberTelegram()`为true时才支持：`FLAG_TELEGRAM`,`FLAG_VIBER`
 
-以下通知只有当`WristbandVersion#isExtAncsExtra1()`为true时才支持
-FLAG_TWITTER
-FLAG_LINKEDIN
-FLAG_INSTAGRAM
-FLAG_FACEBOOK_MESSENGER
-FLAG_SKYPE
-FLAG_SNAPCHAT
+以下通知只有当`WristbandVersion#isExtAncsExtra1()`为true时才支持：`FLAG_TWITTER`,`FLAG_LINKEDIN`,`FLAG_INSTAGRAM`,`FLAG_FACEBOOK_MESSENGER`,`FLAG_SKYPE`,`FLAG_SNAPCHAT`
 
-以下通知只是预定义了，暂无手环支持
-FLAG_CALENDAR
+以下通知只是预定义了，暂无手环支持：`FLAG_CALENDAR`
+
+在Android开发中，一般使用`BroadcastReceiver`来监听电话和短信，使用`NotificationListenerService`来获取第三方APP的通知并解析消息。因为`Notification`涉及许多不同版本系统的兼容问题，许多APP会重复发送同一个通知，所以开发时注意对同一个APP发出的重复通知进行过滤。并且不建议使用`FLAG_OTHERS_APP`去支持许多未在手环支持的APP类型，这可能会使你发送许多通知导致手环不断震动提示消息。
 
 #### 6.1.3、BloodPressureConfig
-配置用户血压参考范围，用于手环检测用户血压后，对血压数值进行修正，以便于更加合理。其中`BloodPressureConfig#isPrivateModel()`类似于`isEnabled`，True为开启，false为关闭。
+配置用户血压参考范围，以便于使手环测量的血压值更准确。其中`BloodPressureConfig#isPrivateModel()`类似于`isEnabled`，True为开启，false为关闭。
+
+收缩压设置范围一般是50-200mmhg，舒张压设置范围一般是20-120mmhg.
 
 #### 6.1.4、DrinkWaterConfig
 用于提醒用户按时喝水。手环将在设定的起始时间和结束时间内，按照间隔提醒用户喝水。
+`setInterval`设置间隔时间，范围在[30,180]分钟
+`setStart`设置起始时间，范围在[00:00,23:59]。如11:30转换为一个int值，11×60+30=690
+`setEnd`设置结束时间，范围在[00:00,23:59]。
 
 #### 6.1.5、FunctionConfig
 配置手环部分简单的功能。
-1. 佩戴方式(FLAG_WEAR_WAY)，true为右手佩戴，false为左右佩戴
-2. 加强测量(FLAG_STRENGTHEN_TEST)，true为开启，false为关闭
-3. 十二小时制(FLAG_HOUR_STYLE)，true为十二小时制，false为二十四小时制
-4. 长度单位(FLAG_LENGTH_UNIT)，true为英制，false为公制
-5. 温度单位(FLAG_TEMPERATURE_UNIT)，true为华氏摄氏度，false为摄氏度
+1. 佩戴方式(`FLAG_WEAR_WAY`)，true为右手佩戴，false为左右佩戴
+2. 加强测量(`FLAG_STRENGTHEN_TEST`)，true为开启，false为关闭
+3. 十二小时制(`FLAG_HOUR_STYLE`)，true为十二小时制，false为二十四小时制
+4. 长度单位(`FLAG_LENGTH_UNIT`)，true为英制，false为公制
+5. 温度单位(`FLAG_TEMPERATURE_UNIT`)，true为华氏摄氏度，false为摄氏度
 
 #### 6.1.6、HealthyConfig
 用于配置健康数据的实时监测，这个设定将影响心率、血压、血氧、呼吸频率等数据。心率、血压、血氧、呼吸频率数据会在设定的时间段内监测用户健康状态，并产生数据。产生的数据可以通过同步数据过程获得。
@@ -291,19 +279,21 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 翻腕亮屏设置
 
 #### 6.1.10、WarnHeartRateConfig
-心率预警配置。当`WristbandVersion#isExtWarnHeartRate()`为true时，手环才支持此功能。
+心率预警配置。当`WristbandVersion#isExtWarnHeartRate()`为true时，手环才支持此功能。可以分别设置运动时心率和静止时心率的预警值。
 
 #### 6.1.11、WarnBloodPressureConfig
-血压预警配置。当`WristbandVersion#isExtWarnBloodPressure()`为true时，手环才支持此功能。
+血压预警配置。当`WristbandVersion#isExtWarnBloodPressure()`为true时，手环才支持此功能。可以分别对收缩压和舒张压设置上下限。
 
 #### 6.1.12、NotDisturbConfig
-免打扰配置。当`WristbandVersion#isExtNotDisturb()`为true时，手环才支持此功能。
+免打扰配置。当`WristbandVersion#isExtNotDisturb()`为true时，手环才支持此功能。可以设置全天免打扰，也可以设置某一个时段免打扰。
 
 ### 6.2、闹钟设置
 手环只支持5个闹钟，每一个闹钟以`WristbandAlarm`中的`alarmId`作为唯一标志，所以`alarmId`的值为0-4。
 闹钟的时间信息为 年(year)，月(month)，日(day)，时(hour)，分(minute)。
 
 闹钟的重复周期使用`repeat`来标志。如果`repeat`为0，表示不重复，那么它只会在设置的时刻生效一次。如果`repeat`不为0，那么年、月、日会被忽略，它会在设置的某天的某个时刻多次生效。闹钟是否开启使用`enable`来表示。值得注意的是，如果`repeat`为0，并且设置的时间小于当前时间，那么你应该强制的认为`enable`为false。
+
+可以对闹钟设置标一个标签，但是标签的长度不能超过32字节，超出的部分将会被忽略。
 
 通过`WristbandManager#requestAlarmList()`来请求闹钟，
 通过`WristbandManager#setAlarmList(@Nullable List<WristbandAlarm> alarmList)`来设置闹钟。需要注意的是，你必须同时设置所有你希望保存的闹钟，所以这里需要传入的是一个List。如果只设置一个闹钟，那么其他的闹钟信息将全部丢失。
@@ -335,6 +325,7 @@ MSG_MEDIA_PREVIOUS
 MSG_MEDIA_VOLUME_UP
 MSG_MEDIA_VOLUME_DOWN   
 
+MSG_CHANGE_CONFIG_ITSELF
 ```
 #### 6.4.1、MSG_WEATHER
 此消息用于手环请求天气。目前手环并无此功能。APP需要自己在合适的时机向手环发送天气，比如在手环连接时，和天气信息发送改变时，向手环发送天气信息。
@@ -367,6 +358,9 @@ MSG_MEDIA_VOLUME_DOWN
 
 #### 6.4.10、MSG_MEDIA_VOLUME_DOWN
 此消息用于控制APP减小音量
+
+#### 6.4.11、MSG_CHANGE_CONFIG_ITSELF
+如果`WristbandVersion#isExtChangeConfigItself()`为true，代表手环能自己更改一些配置。当手环更改配置时，会主动发送此消息。
 
 ### 6.5、实时数据测量
 
@@ -614,9 +608,6 @@ StepData{
  */
 SleepData{
     long getTimeStamp();//数据的时间，为某天0点0分0秒0毫秒时间。
-    int getDeepSleep();//深睡的总时长，单位为秒
-    int getLightSleep();//浅睡的总时长，单位为秒
-    int getSoberSleep();//清醒总时长，单位秒
     List<SleepItemData> getItems();//睡眠明显数据
 }
 
@@ -633,9 +624,9 @@ SleepItemData {
 
 `SleepData#getTimeStamp()`获取的是某天的起始时间戳，例如2019-05-29 00:00:00:000，可以理解为其代表的是昨晚的睡眠状况。即2019-05-28 21:30至2019-05-29 12:00之间的睡眠状况。
 
-手环在监测用户睡眠过程中，不会产生睡眠数据，所以同步数据会获取不到睡眠数据。只有在监测到用户退出睡眠后，或者主动调用`WristbandManager#exitSleepMonitor()`退出睡眠，手环才会将整个睡眠过程汇总，生成睡眠数据。
+旧版本手环会一次把当天的所有睡眠数据返回，并且在退出睡眠后不再生成睡眠数据。因为手环主动判定用户退出睡眠的时间较长，所以很可能造成例如早上7点用户已经不再睡眠，但是同步却获取不到睡眠数据。所以建议的做法是，在在凌晨4点至12点之间(该时间段用户极有可能不再睡眠)，用户主动同步数据(如下拉刷新)之前，调用`WristbandManager#exitSleepMonitor()`退出睡眠，然后再进行同步数据操作。
 
-因为手环主动判定用户退出睡眠的时间较长，所以很可能造成例如早上7点用户已经不再睡眠，但是同步却获取不到睡眠数据。所以建议的做法是，在在凌晨4点至12点之间(该时间段用户极有可能不再睡眠)，用户主动同步数据(如下拉刷新)之前，调用`WristbandManager#exitSleepMonitor()`退出睡眠，然后再进行同步数据操作。
+新版本手环会分多次返回睡眠数据。你依然可以使用`WristbandManager#exitSleepMonitor()`方法退出睡眠，手环会根据版本做兼容处理。但是需要注意的是，同一天返回的多段睡眠你可能需要外部合并然后在展示在界面上。
 
 1. 手环会保存几天的睡眠数据？
 
@@ -672,9 +663,7 @@ SportData{
 }
 ```
 
-不同类型的`SportData`中所包含的数据有所差别。
-`getSportType()`为`SportData#TYPE_RIDE`,`SportData#TYPE_SWIM`类型无距离和步数数据。
-`getSportType()`为`SportData#SPORT_BB`,`SportData#SPORT_BADMINTON`,`SportData#SPORT_FOOTBALL`时，无距离数据。
+不同类型的`SportData`中所包含的数据有所差别。详情查看document文档。
 
 如果`WristbandVersion#isDynamicHeartRateEnabled()`为true的话，则存在心率数据，否则不存在心率数据。
 

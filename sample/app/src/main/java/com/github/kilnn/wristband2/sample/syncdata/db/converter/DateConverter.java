@@ -1,6 +1,6 @@
 package com.github.kilnn.wristband2.sample.syncdata.db.converter;
 
-import android.arch.persistence.room.TypeConverter;
+import androidx.room.TypeConverter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

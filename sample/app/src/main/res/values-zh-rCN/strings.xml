@@ -33,6 +33,7 @@
     <string name="state_active_disconnect">主动断开连接</string>
     <string name="state_passive_disconnect">被动断开连接</string>
     <string name="toast_device_disconnected">设备未连接</string>
+    <string name="toast_device_not_support">设备不支持此功能</string>
 
     <string name="toast_connect_login_tips">使用Login模式连接</string>
     <string name="toast_connect_bind_tips">使用Bind模式连接，APP清除当天的步数数据</string>
@@ -65,6 +66,9 @@
     <string name="configs_sedentary">7.久坐提醒配置</string>
     <string name="configs_page">8.页面配置</string>
     <string name="configs_turn_wrist_lighting">9.翻腕亮屏配置</string>
+    <string name="configs_warn_heart_rate">10.心率预警配置</string>
+    <string name="configs_warn_blood_pressure">11.血压预警配置</string>
+    <string name="configs_dnd">12.免打扰配置</string>
 
     <string name="notification_config_phone_call">电话提醒</string>
     <string name="notification_config_sms">短信提醒</string>
@@ -213,6 +217,10 @@
     <string name="view_sport_type_swim">游泳</string>
     <string name="view_sport_type_badminton">羽毛球</string>
     <string name="view_sport_type_football">足球</string>
+    <string name="view_sport_type_elliptical_trainer">椭圆机</string>
+    <string name="view_sport_type_yoga">瑜伽</string>
+    <string name="view_sport_type_ping_pong">乒乓球</string>
+    <string name="view_sport_type_rope_skipping">跳绳</string>
 
     <string name="view_sport_data_calories">卡路里:<xliff:g id="params1">%1$s</xliff:g>千卡</string>
     <string name="view_sport_data_step">步数:<xliff:g id="params1">%1$d</xliff:g></string>

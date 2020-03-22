@@ -1,8 +1,8 @@
 package com.github.kilnn.wristband2.sample.syncdata.db;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.TypeConverters;
-import android.support.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.TypeConverters;
+import androidx.annotation.NonNull;
 
 import com.github.kilnn.wristband2.sample.syncdata.db.converter.TimeConverter;
 

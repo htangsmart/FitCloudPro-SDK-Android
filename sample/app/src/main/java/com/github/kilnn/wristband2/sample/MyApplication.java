@@ -1,7 +1,7 @@
 package com.github.kilnn.wristband2.sample;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDb;
 import com.htsmart.wristband2.WristbandApplication;

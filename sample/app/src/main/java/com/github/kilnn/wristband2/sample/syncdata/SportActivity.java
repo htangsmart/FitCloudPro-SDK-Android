@@ -1,7 +1,6 @@
 package com.github.kilnn.wristband2.sample.syncdata;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -20,6 +19,8 @@ import com.htsmart.wristband2.bean.data.SportData;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.annotation.Nullable;
 
 public class SportActivity extends BaseActivity {
 
@@ -108,8 +109,24 @@ public class SportActivity extends BaseActivity {
                     break;
 
                 case SportData.SPORT_FOOTBALL:
-                default:
                     tv_sport_type.setText(R.string.view_sport_type_football);
+                    break;
+
+                case SportData.SPORT_ELLIPTICAL_TRAINER:
+                    tv_sport_type.setText(R.string.view_sport_type_elliptical_trainer);
+                    break;
+
+                case SportData.SPORT_YOGA:
+                    tv_sport_type.setText(R.string.view_sport_type_yoga);
+                    break;
+
+                case SportData.SPORT_PING_PONG:
+                    tv_sport_type.setText(R.string.view_sport_type_ping_pong);
+                    break;
+
+                case SportData.SPORT_ROPE_SKIPPING:
+                default:
+                    tv_sport_type.setText(R.string.view_sport_type_rope_skipping);
                     break;
             }
 

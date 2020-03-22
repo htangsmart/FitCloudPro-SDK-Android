@@ -3,7 +3,6 @@ package com.github.kilnn.wristband2.sample.configs;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 
@@ -12,13 +11,18 @@ import com.github.kilnn.wristband2.sample.R;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.WristbandConfig;
+import com.htsmart.wristband2.bean.WristbandVersion;
 import com.htsmart.wristband2.bean.config.BloodPressureConfig;
 import com.htsmart.wristband2.bean.config.DrinkWaterConfig;
 import com.htsmart.wristband2.bean.config.FunctionConfig;
 import com.htsmart.wristband2.bean.config.HealthyConfig;
+import com.htsmart.wristband2.bean.config.NotDisturbConfig;
 import com.htsmart.wristband2.bean.config.SedentaryConfig;
 import com.htsmart.wristband2.bean.config.TurnWristLightingConfig;
+import com.htsmart.wristband2.bean.config.WarnBloodPressureConfig;
+import com.htsmart.wristband2.bean.config.WarnHeartRateConfig;
 
+import androidx.annotation.Nullable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
@@ -238,6 +242,107 @@ public class ConfigsActivity extends BaseActivity {
                             toast(R.string.operation_failed);
                         }
                     });
+        } else {
+            toast(R.string.toast_device_disconnected);
+        }
+    }
+
+
+    /**
+     * 10.Warn Heart Rate Config
+     */
+    public void warn_heart_rate_config(View view) {
+        if (mWristbandManager.isConnected()) {
+            WristbandVersion version = mWristbandManager.getWristbandConfig().getWristbandVersion();
+            if (version.isExtWarnHeartRate()) {
+                WarnHeartRateConfig config = mWristbandManager.getWristbandConfig().getWarnHeartRateConfig();
+                config.setDynamicEnable(true);
+                config.setStaticEnable(true);
+                config.setDynamicValue(140);
+                config.setStaticValue(90);
+                mWristbandManager.setWarnHeartRateConfig(config)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Action() {
+                            @Override
+                            public void run() throws Exception {
+                                toast(R.string.operation_success);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.e("sample", "", throwable);
+                                toast(R.string.operation_failed);
+                            }
+                        });
+            } else {
+                toast(R.string.toast_device_not_support);
+            }
+        } else {
+            toast(R.string.toast_device_disconnected);
+        }
+    }
+
+    /**
+     * 11.Warn BloodPressure Config
+     */
+    public void warn_blood_pressure_config(View view) {
+        if (mWristbandManager.isConnected()) {
+            WristbandVersion version = mWristbandManager.getWristbandConfig().getWristbandVersion();
+            if (version.isExtWarnBloodPressure()) {
+                WarnBloodPressureConfig config = mWristbandManager.getWristbandConfig().getWarnBloodPressureConfig();
+                config.setEnable(true);
+                config.setSbpLowerLimit(60);
+                config.setSbpUpperLimit(100);
+                config.setDbpLowerLimit(90);
+                config.setDbpUpperLimit(140);
+                mWristbandManager.setWarnBloodPressureConfig(config)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Action() {
+                            @Override
+                            public void run() throws Exception {
+                                toast(R.string.operation_success);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.e("sample", "", throwable);
+                                toast(R.string.operation_failed);
+                            }
+                        });
+            } else {
+                toast(R.string.toast_device_not_support);
+            }
+        } else {
+            toast(R.string.toast_device_disconnected);
+        }
+    }
+
+    /**
+     * 12. DND
+     */
+    public void dnd_config(View view) {
+        if (mWristbandManager.isConnected()) {
+            WristbandVersion version = mWristbandManager.getWristbandConfig().getWristbandVersion();
+            if (version.isExtNotDisturb()) {
+                NotDisturbConfig config = mWristbandManager.getWristbandConfig().getNotDisturbConfig();
+                config.setEnableAllDay(true);
+                mWristbandManager.setNotDisturbConfig(config)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Action() {
+                            @Override
+                            public void run() throws Exception {
+                                toast(R.string.operation_success);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.e("sample", "", throwable);
+                                toast(R.string.operation_failed);
+                            }
+                        });
+            } else {
+                toast(R.string.toast_device_not_support);
+            }
         } else {
             toast(R.string.toast_device_disconnected);
         }

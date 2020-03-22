@@ -1,3 +1,13 @@
+# 2020-03-21
+## 发布libraryCore_v1.0.2.aar
+1. 解决连续发送指令时，取消上一个指令，可能会导致下一个指令发送超时的bug
+2. 解决通知消息太长，可能导致发送失败的bug
+3. 添加WristbandLog，可以设置日志拦截器，控制sdk输出的日志
+4. 添加WristbandManager#requestDialBinInfo()，获取表盘信息
+5. 删除SleepData中深睡，浅睡和清醒的字段，可以使用SleepCalculateHelper在外部计算。因为部分手环的睡眠会分多段返回，所以把这个计算放到外部。当同一天获取到多次睡眠数据的时候，可以自己合并睡眠数据，并使用该方法计算睡眠的时长。
+6. SportData新增4种运动类型.
+7. WristbandVersion#isExtDialUiUpgrade()修改为isExtDialUpgrade
+
 # 2020-02-06
 ## 发布libraryCore_v1.0.1.aar
 1. 解决步数数据StepData单位错误的bug

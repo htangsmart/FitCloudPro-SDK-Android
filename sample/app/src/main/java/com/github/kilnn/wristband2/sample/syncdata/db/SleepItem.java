@@ -2,13 +2,14 @@ package com.github.kilnn.wristband2.sample.syncdata.db;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.github.kilnn.wristband2.sample.syncdata.db.converter.TimeConverter;
+import com.htsmart.wristband2.bean.data.ICalculateSleepItem;
 
 import java.util.Date;
 
 /**
  * 睡眠Item数据。代表某段时间的睡眠状态
  */
-public class SleepItem {
+public class SleepItem implements ICalculateSleepItem {
     /**
      * 该时间段睡眠状态：1深睡，2浅睡，3清醒
      */
@@ -48,5 +49,20 @@ public class SleepItem {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public int getCalculateStatus() {
+        return status;
+    }
+
+    @Override
+    public long getCalculateStartTime() {
+        return startTime.getTime();
+    }
+
+    @Override
+    public long getCalculateEndTime() {
+        return endTime.getTime();
     }
 }
