@@ -1,3 +1,8 @@
+# 2020-03-26
+## 发布libraryCore_v1.0.3.aar
+## 发布libraryDfu_v1.0.1.aar
+1.升级原厂OTA库
+
 # 2020-03-21
 ## 发布libraryCore_v1.0.2.aar
 1. 解决连续发送指令时，取消上一个指令，可能会导致下一个指令发送超时的bug
