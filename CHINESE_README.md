@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.3', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.4', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.1', ext: 'aar')
@@ -205,6 +205,7 @@ private boolean sportEnabled;
 private boolean wechatSportEnabled;
 private boolean platform8762CEnabled;
 private boolean dynamicHeartRateEnabled;
+private boolean temperatureEnabled;
 private boolean extHidePageConfig;
 private boolean extAncsEmail;
 private boolean extAncsViberTelegram;
@@ -366,13 +367,18 @@ MSG_CHANGE_CONFIG_ITSELF
 
 SDK支持多种实时数据的测试，但是是否有效，还要取决于手环是否有该项功能模块。使用`WristbandVersion`检测手环中该功能模块是否存在，在进行某个实时数据的测量。
 
-#### 6.5.1、心率，血氧，血压，呼吸频率
+#### 6.5.1、心率，血氧，血压，呼吸频率，温度
 使用`WristbandManager#openHealthyRealTimeData(int healthyType)`启动测量。但是在启动之前，你需要检测`WristbandVersion`中是否支持此模块，对应关系如下：
 ```
 WristbandVersion#isHeartRateEnabled() --> WristbandManager#HEALTHY_TYPE_HEART_RATE
+
 WristbandVersion#isOxygenEnabled() --> WristbandManager#HEALTHY_TYPE_OXYGEN
+
 WristbandVersion#isBloodPressureEnabled() --> WristbandManager#HEALTHY_TYPE_BLOOD_PRESSURE
+
 WristbandVersion#isRespiratoryRateEnabled() --> WristbandManager#HEALTHY_TYPE_RESPIRATORY_RATE
+
+WristbandVersion#isTemperatureEnabled() --> WristbandManager#HEALTHY_TYPE_TEMPERATURE
 ```
 你可以启动单个测量，如使用`HEALTHY_TYPE_HEART_RATE`，也可以同时启动
 多个测量，如`HEALTHY_TYPE_HEART_RATE|HEALTHY_TYPE_OXYGEN`。
@@ -380,6 +386,8 @@ WristbandVersion#isRespiratoryRateEnabled() --> WristbandManager#HEALTHY_TYPE_RE
 启动测量后，你可以主动结束测量(Disposable#dispose())，或者等一段时间(约2分钟)，手环也会自动结束，请注意测量结束的处理，具体参考sample工程。
 
 > 注意：测量返回结果可能包含无效的数据值。如启动了心率测量，返回结果中心率值有可能为0，所以你需要过滤掉无效的数据，并且其他值未开启测量的值，如血氧可能不为0，但是不具备参考意义。
+
+>注意：温度有一点点特殊，实际温度可能为0，但是由于手环限制，依然认为只有当温度不等于0时，才认为是有效数据。并且`HealthyDataResult#getTemperatureBody()`只有在测量完成后才返回有效值，其他时候都是0. 并且在测试温度的时候，可能会额外抛出`TemperatureRealTimeException`异常。
 
 `WristbandManager#openHealthyRealTimeData(int healthyType)`默认测量时间为2分钟，可以使用`WristbandManager#openHealthyRealTimeData(int healthyType,int minute)`自定义测量时间，自定义时间限制为1-255分钟。
 
@@ -426,8 +434,9 @@ SDK支持同步的数据模块如下：
 运动        SyncDataParser#TYPE_SPORT
 当天总数据   SyncDataParser#TYPE_TOTAL_DATA
 心电        SyncDataParser#TYPE_ECG
+温度        SyncDataParser#TYPE_TEMPERATURE
 ```
-其中‘步数’，‘睡眠’和‘当天总数据’是必定存在的，其他功能模块则取决于手环是否支持。使用`WristbandVersion`可以检测手环中该功能模块是否存在。同步数据流程将按照‘步数’，‘睡眠’，‘心率’，‘血氧’，‘血压’，‘呼吸频率’，‘运动’，‘当天总数据’，‘心电’的顺序依次同步并返回各个模块的数据，如果某个模块不存在，那么就会跳过。
+其中‘步数’，‘睡眠’和‘当天总数据’是必定存在的，其他功能模块则取决于手环是否支持。使用`WristbandVersion`可以检测手环中该功能模块是否存在。同步数据流程将按照‘步数’，‘睡眠’，‘心率’，‘血氧’，‘血压’，‘呼吸频率’，‘运动’，‘体温’，‘当天总数据’，‘心电’的顺序依次同步并返回各个模块的数据，如果某个模块不存在，那么就会跳过。
 
 除‘当天总数据’外，其他每个模块数据同步成功后，手环上将删除这个模块的数据。 如果某一个模块数据同步失败，那么将会中断后续同步流程。
 
@@ -477,7 +486,12 @@ mWristbandManager
             } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TOTAL_DATA) {
                 TodayTotalData data = SyncDataParser.parserTotalData(syncDataRaw.getDatas());
                 //TODO save data
-            }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TEMPERATURE) {
+                List<TemperatureData> temperatureDataList = SyncDataParser.parserTemperatureData(syncDataRaw.getDatas());
+                if (temperatureDataList != null && temperatureDataList.size() > 0) {
+                    //TODO save data
+                }
+            } 
             return Completable.complete();
         }
     })
@@ -633,12 +647,12 @@ SleepItemData {
 手环保存最新7天的睡眠数据，每次睡眠数据同步成功后，手环上的睡眠数据将被删除。下次同步的话，只会得到新产生的睡眠数据。
 
 
-#### 6.6.3 心率、血氧、血压、呼吸频率四种健康数据
-手环会在`#### 6.1.6、HealthyConfig`设定的时间范围内监测用户的身体状态，产生对应的数据，同步数据并解析得到`HeartRateData`,`BloodPressureData`,`OxygenData`,`RespiratoryRateData`等健康数据。
+#### 6.6.3 心率、血氧、血压、呼吸频率、体温等健康数据
+手环会在`#### 6.1.6、HealthyConfig`设定的时间范围内监测用户的身体状态，产生对应的数据，同步数据并解析得到`HeartRateData`,`BloodPressureData`,`OxygenData`,`RespiratoryRateData`,`TemperatureData`等健康数据。
 
 `HeartRateData`表示在某个时间点用户的心率值，如2019-05-29 12:00:00，心跳72次。在监测时间内，心率值一般间隔5分钟左右。
 
-`BloodPressureData`,`OxygenData`,`RespiratoryRateData`与`HeartRateData`类似。
+`BloodPressureData`,`OxygenData`,`RespiratoryRateData`,`TemperatureData`与`HeartRateData`类似。
 
 1. 手环会保存几天的健康数据？
 
@@ -768,3 +782,9 @@ EcgData{
 0x0c 雾、雾霾
 ```
 一般用户从第三方平台获取的天气代码与上述列表不一致，需要自己对应转换一下在设置到手环。
+
+### 6.9、联系人功能
+如果`WristbandVersion#isExtContacts()`为true，表示手环支持联系人功能。可以使用`WristbandManager#setContactsList(List)`设置最多10个联系人。使用`WristbandManager#requestContactsList()`请求保存在手环上的联系人。
+
+使用`WristbandContacts#create(String,String)`创建手环能识别的联系人对象。
+

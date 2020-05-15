@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.3', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.4', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.1', ext: 'aar')
@@ -209,6 +209,7 @@ private boolean sportEnabled;
 private boolean wechatSportEnabled;
 private boolean platform8762CEnabled;
 private boolean dynamicHeartRateEnabled;
+private boolean temperatureEnabled;
 private boolean extHidePageConfig;
 private boolean extAncsEmail;
 private boolean extAncsViberTelegram;
@@ -370,13 +371,18 @@ If `WristbandVersion#isExtChangeConfigItself()` is true, it means that the brace
 
 The SDK supports a variety of real-time data testing, but whether it is effective or not depends on whether the module has this function module. Use `WristbandVersion` to detect the presence of this function module in the bracelet and perform some real-time data measurement.
 
-#### 6.5.1、Heart rate, blood oxygen, blood pressure, respiratory rate
+#### 6.5.1、Heart rate, blood oxygen, blood pressure, respiratory rate, temperature
 Start the measurement with `WristbandManager#openHealthyRealTimeData(int healthyType)`. But before starting, you need to check if this module is supported in `WristbandVersion`, the corresponding relationship is as follows:
 ```
 WristbandVersion#isHeartRateEnabled() --> WristbandManager#HEALTHY_TYPE_HEART_RATE
+
 WristbandVersion#isOxygenEnabled() --> WristbandManager#HEALTHY_TYPE_OXYGEN
+
 WristbandVersion#isBloodPressureEnabled() --> WristbandManager#HEALTHY_TYPE_BLOOD_PRESSURE
+
 WristbandVersion#isRespiratoryRateEnabled() --> WristbandManager#HEALTHY_TYPE_RESPIRATORY_RATE
+
+WristbandVersion#isTemperatureEnabled() --> WristbandManager#HEALTHY_TYPE_TEMPERATURE
 ```
 You can start a single measurement, such as using `HEALTHY_TYPE_HEART_RATE`, or you can start at the same time.
 Multiple measurements, such as `HEALTHY_TYPE_HEART_RATE|HEALTHY_TYPE_OXYGEN`.
@@ -384,6 +390,8 @@ Multiple measurements, such as `HEALTHY_TYPE_HEART_RATE|HEALTHY_TYPE_OXYGEN`.
 After starting the measurement, you can take the initiative to end the measurement (Disposable#dispose()), or wait for a while (about 2 minutes), the bracelet will also automatically end, please pay attention to the end of the measurement process, refer to the sample project.
 
 > Note: Measurement returns may contain invalid data values. If the heart rate measurement is started, the return value may be 0, so you need to filter out the invalid data, and other values do not open the measured value, such as blood oxygen may not be 0, but it is not meaningful.
+
+>Note: The temperature is a little special. The actual temperature may be 0, but due to the limitation of the bracelet, we still think that it is only valid when the temperature is not equal to 0. And `HealthyDataResult#getTemperatureBody()` only returns valid values after the measurement is completed, otherwise it is 0. And when testing the temperature, an additional `TemperatureRealTimeException` may be thrown
 
 `WristbandManager#openHealthyRealTimeData(int healthyType)` The default measurement time is 2 minutes. You can use `WristbandManager#openHealthyRealTimeData(int healthyType, int minute)` to customize the measurement time. The custom time limit is 1-255 minutes.
 
@@ -431,8 +439,9 @@ Respiratory Rate         SyncDataParser#TYPE_RESPIRATORY_RATE
 Sports                    SyncDataParser#TYPE_SPORT
 Total data for today     SyncDataParser#TYPE_TOTAL_DATA
 ECG                      SyncDataParser#TYPE_ECG
+Temperature              SyncDataParser#TYPE_TEMPERATURE
 ```
-Among them, ‘Step’, ‘Sleep’ and ‘Total data for today’ must exist, and other functional modules depend on whether the bracelet is supported. Use `WristbandVersion` to check if the function module exists in the bracelet. The synchronized data flow will be synchronized in the order of 'Step', 'Sleep', 'Heart Rate', 'Oxygen', 'Blood Pressure', 'Respiratory Rate', 'Sports', 'Total data for today', 'ECG' And return the data of each module, if a module does not exist, it will be skipped.
+Among them, ‘Step’, ‘Sleep’ and ‘Total data for today’ must exist, and other functional modules depend on whether the bracelet is supported. Use `WristbandVersion` to check if the function module exists in the bracelet. The synchronized data flow will be synchronized in the order of 'Step', 'Sleep', 'Heart Rate', 'Oxygen', 'Blood Pressure', 'Respiratory Rate', ‘Temperature’, 'Sports', 'Total data for today', 'ECG' And return the data of each module, if a module does not exist, it will be skipped.
 
 Except for ‘Total data of today’, after the data of each module is successfully synchronized, the data of this module will be deleted on the bracelet. If a module fails to synchronize data, the subsequent synchronization process will be interrupted.
 
@@ -483,7 +492,12 @@ mWristbandManager
             } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TOTAL_DATA) {
                 TodayTotalData data = SyncDataParser.parserTotalData(syncDataRaw.getDatas());
                 //TODO save data
-            }
+            } else if (syncDataRaw.getDataType() == SyncDataParser.TYPE_TEMPERATURE) {
+                List<TemperatureData> temperatureDataList = SyncDataParser.parserTemperatureData(syncDataRaw.getDatas());
+                if (temperatureDataList != null && temperatureDataList.size() > 0) {
+                    //TODO save data
+                }
+            } 
             return Completable.complete();
         }
     })
@@ -643,12 +657,12 @@ The new version of the bracelet will return to sleep data multiple times. You ca
 The bracelet saves the latest 7 days of sleep data, and the sleep data on the bracelet will be deleted each time the sleep data is successfully synchronized. The next time you sync, you will only get the newly generated sleep data.
 
 
-#### 6.6.3 Heart rate, blood oxygen, blood pressure, respiratory rate
-The bracelet will monitor the user's physical state within the time range set by `#### 6.1.6, HealthyConfig`, generate corresponding data. Synchronize the data and parse the health data such as `HeartRateData`, `BloodPressureData`, `OxygenData`, `RespiratoryRateData`.
+#### 6.6.3 Heart rate, blood oxygen, blood pressure, respiratory rate, TemperatureData
+The bracelet will monitor the user's physical state within the time range set by `#### 6.1.6, HealthyConfig`, generate corresponding data. Synchronize the data and parse the health data such as `HeartRateData`, `BloodPressureData`, `OxygenData`, `RespiratoryRateData`,`TemperatureData`.
 
 `HeartRateData` indicates the user's heart rate value at a certain point in time, such as 2019-05-29 12:00:00, heartbeat 72 times. Heart rate values are generally separated by about 5 minutes during the monitoring period.
 
-`BloodPressureData`, `OxygenData`, `RespiratoryRateData` is similar to `HeartRateData`.
+`BloodPressureData`, `OxygenData`, `RespiratoryRateData` ,`TemperatureData`is similar to `HeartRateData`.
 
 1. How many days of health data will the bracelet keep?
 
@@ -777,3 +791,8 @@ The weather code supported by the bracelet is as follows:
 0x0c Fog, smog
 ```
 The weather code obtained by the general user from the third-party platform is inconsistent with the above list, and it is necessary to convert the setting to the wristband.
+
+### 6.9、Contact function
+If `WristbandVersion # isExtContacts ()` is true, it means that the bracelet supports the contact function. You can use `WristbandManager # setContactsList (List)` to set up to 10 contacts. Use `WristbandManager # requestContactsList ()` to request the contacts saved on the bracelet.
+
+Use `WristbandContacts # create (String, String)` to create a contact object that the bracelet can recognize.
