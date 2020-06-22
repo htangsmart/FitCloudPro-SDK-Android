@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.4', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.5', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.1', ext: 'aar')
@@ -206,6 +206,7 @@ private boolean wechatSportEnabled;
 private boolean platform8762CEnabled;
 private boolean dynamicHeartRateEnabled;
 private boolean temperatureEnabled;
+private boolean womenHealthyEnabled;
 private boolean extHidePageConfig;
 private boolean extAncsEmail;
 private boolean extAncsViberTelegram;
@@ -221,6 +222,7 @@ private boolean extNewNotificationFormat;
 private boolean extNewSleepFormat;
 private boolean extChangeConfigItself;
 private boolean extMockEcg;
+private boolean extProtectionReminder;
 ```
 
 3.页面支持信息，用于判断手环上可显示的页面，结合PageConfig使用。具体参考PageConfig的用法。
@@ -288,6 +290,12 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 #### 6.1.12、NotDisturbConfig
 免打扰配置。当`WristbandVersion#isExtNotDisturb()`为true时，手环才支持此功能。可以设置全天免打扰，也可以设置某一个时段免打扰。
 
+#### 6.1.13、WomenHealthyConfig
+女性健康配置。当`WristbandVersion#isWomenHealthyEnabled()`为true时，手环才支持此功能。使用`WristbandManager#setWomenHealthyConfig(WomenHealthyConfig)`设置此配置
+
+#### 6.1.14、ProtectionReminderConfig
+防护提醒配置。当`WristbandVersion#isExtProtectionReminder()`为true时，手环才支持此功能。使用`WristbandManager#setProtectionReminderConfig(ProtectionReminderConfig)`设置此配置
+
 ### 6.2、闹钟设置
 手环只支持5个闹钟，每一个闹钟以`WristbandAlarm`中的`alarmId`作为唯一标志，所以`alarmId`的值为0-4。
 闹钟的时间信息为 年(year)，月(month)，日(day)，时(hour)，分(minute)。
@@ -319,6 +327,7 @@ MSG_HUNG_UP_PHONE;
 
 MSG_CAMERA_TAKE_PHOTO;
 MSG_CAMERA_WAKE_UP
+MSG_CAMERA_EXIT
 
 MSG_MEDIA_PLAY_PAUSE
 MSG_MEDIA_NEXT
@@ -345,22 +354,25 @@ MSG_CHANGE_CONFIG_ITSELF
 #### 6.4.5、MSG_CAMERA_WAKE_UP
 此消息用于唤醒APP手机相机
 
-#### 6.4.6、MSG_MEDIA_PLAY_PAUSE
+#### 6.4.6、MSG_CAMERA_EXIT
+此消息用于退出APP手机相机
+
+#### 6.4.7、MSG_MEDIA_PLAY_PAUSE
 此消息用于控制播放或者暂停手机音频
 
-#### 6.4.7、MSG_MEDIA_NEXT
+#### 6.4.8、MSG_MEDIA_NEXT
 此消息用于控制APP播放下一首音频
 
-#### 6.4.8、MSG_MEDIA_PREVIOUS
+#### 6.4.9、MSG_MEDIA_PREVIOUS
 此消息用于控制APP播放上一首音频
 
-#### 6.4.9、MSG_MEDIA_VOLUME_UP
+#### 6.4.10、MSG_MEDIA_VOLUME_UP
 此消息用于控制APP增加音量
 
-#### 6.4.10、MSG_MEDIA_VOLUME_DOWN
+#### 6.4.11、MSG_MEDIA_VOLUME_DOWN
 此消息用于控制APP减小音量
 
-#### 6.4.11、MSG_CHANGE_CONFIG_ITSELF
+#### 6.4.12、MSG_CHANGE_CONFIG_ITSELF
 如果`WristbandVersion#isExtChangeConfigItself()`为true，代表手环能自己更改一些配置。当手环更改配置时，会主动发送此消息。
 
 ### 6.5、实时数据测量

@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.4', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.5', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.1', ext: 'aar')
@@ -210,6 +210,7 @@ private boolean wechatSportEnabled;
 private boolean platform8762CEnabled;
 private boolean dynamicHeartRateEnabled;
 private boolean temperatureEnabled;
+private boolean womenHealthyEnabled;
 private boolean extHidePageConfig;
 private boolean extAncsEmail;
 private boolean extAncsViberTelegram;
@@ -225,6 +226,7 @@ private boolean extNewNotificationFormat;
 private boolean extNewSleepFormat;
 private boolean extChangeConfigItself;
 private boolean extMockEcg;
+private boolean extProtectionReminder;
 ```
 
 3. Page support information, used to determine the page that can be displayed on the bracelet, combined with `PageConfig`. Refer specifically to the usage of `PageConfig`.
@@ -292,6 +294,13 @@ Blood pressure warning config. This feature is only supported when the `Wristban
 #### 6.1.12、NotDisturbConfig
 DND config. This feature is only supported when the `WristbandVersion#isExtNotDisturb()` is true. Can set up DND all day, or set a certain period of DND
 
+#### 6.1.13、WomenHealthyConfig
+Female health configuration. The wristband only supports this function when `WristbandVersion#isWomenHealthyEnabled()` is true. Use `WristbandManager#setWomenHealthyConfig(WomenHealthyConfig)` to set this configuration
+
+#### 6.1.14、ProtectionReminderConfig
+Protection reminder configuration. This function is only supported when `WristbandVersion#isExtProtectionReminder()` is true. Use `WristbandManager#setProtectionReminderConfig(ProtectionReminderConfig)` to set this configuration
+
+
 ### 6.2、Alarm setting
 The bracelet only supports 5 alarm clocks. Each alarm clock has the `alarmId` in `WristbandAlarm` as the unique flag, so the value of `alarmId` is 0-4.
 The time information of the alarm clock is year, month, day, hour, minute.
@@ -323,6 +332,7 @@ MSG_HUNG_UP_PHONE;
 
 MSG_CAMERA_TAKE_PHOTO;
 MSG_CAMERA_WAKE_UP
+MSG_CAMERA_EXIT
 
 MSG_MEDIA_PLAY_PAUSE
 MSG_MEDIA_NEXT
@@ -349,22 +359,25 @@ When exiting the camera, be sure to call `WristbandManager#setCameraStatus(false
 #### 6.4.5、MSG_CAMERA_WAKE_UP
 This message is used to wake up the APP phone camera
 
-#### 6.4.6、MSG_MEDIA_PLAY_PAUSE
+#### 6.4.6、MSG_CAMERA_EXIT
+This message is used to exit the APP phone camera
+
+#### 6.4.7、MSG_MEDIA_PLAY_PAUSE
 This message is used to control play or pause the phone audio
 
-#### 6.4.7、MSG_MEDIA_NEXT
+#### 6.4.8、MSG_MEDIA_NEXT
 This message is used to control the APP to play the next audio.
 
-#### 6.4.8、MSG_MEDIA_PREVIOUS
+#### 6.4.9、MSG_MEDIA_PREVIOUS
 This message is used to control the APP to play the previous audio.
 
-#### 6.4.9、MSG_MEDIA_VOLUME_UP
+#### 6.4.10、MSG_MEDIA_VOLUME_UP
 This message is used to control the APP to increase the volume.
 
-#### 6.4.10、MSG_MEDIA_VOLUME_DOWN
+#### 6.4.11、MSG_MEDIA_VOLUME_DOWN
 This message is used to control the APP to reduce the volume.
 
-#### 6.4.11, MSG_CHANGE_CONFIG_ITSELF
+#### 6.4.12, MSG_CHANGE_CONFIG_ITSELF
 If `WristbandVersion#isExtChangeConfigItself()` is true, it means that the bracelet can change some configurations by itself. When the bracelet changes the configuration, it will actively send this message.
 
 ### 6.5、Real-time data measurement

@@ -1,3 +1,11 @@
+# 2020-06-22
+## 发布libraryCore_v1.0.5.aar
+1.添加女性健康设置`WomenHealthyConfig`。
+2.添加防护提醒设置`ProtectionReminderConfig`。
+3.添加手环退出拍照界面的消息`WristbandManager#MSG_CAMERA_EXIT`
+4.添加设置manufacturerId为0xfe的6字节的自定义广播数据功能，`WristbandManager#setCustomAdvertising(byte[])`
+5.解决体温测量为负值时，但是解析数据出错的bug
+
 # 2020-03-26
 ## 发布libraryCore_v1.0.4.aar
 1.添加温度功能，类似以前的心率和血压等功能。参考开发文档`6.5、实时数据测量` 和 `6.6、数据同步`,
