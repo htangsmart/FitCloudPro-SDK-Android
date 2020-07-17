@@ -1,3 +1,9 @@
+# 2020-07-17
+## 发布libraryCore_v1.0.6.aar
+1.添加测试方法`WristbandManager#requestSleepRawForTest()`获取睡眠原始数据，方便调式分析
+2.最近一次测量请求`WristbandManager#requestLatestHealthy()`加上温度数据。
+
+
 # 2020-06-22
 ## 发布libraryCore_v1.0.5.aar
 1.添加女性健康设置`WomenHealthyConfig`。
