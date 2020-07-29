@@ -800,3 +800,46 @@ EcgData{
 
 使用`WristbandContacts#create(String,String)`创建手环能识别的联系人对象。
 
+### 6.10、自定义表盘
+1. 确保设备已经连接`WristbandManager#isConnected()`,并且支持表盘升级`WristbandVersion#isExtDialUpgrade()`.
+
+2. 使用`WristbandManager#requestDialBinInfo()`获取设备表盘信息`DialBinInfo`
+
+3. 使用`DialBinInfo`中lcd和toolVersion向服务器请求支持的表盘样式列表`DialCustom`，并根据本地支持的表盘样式进行筛选。
+DialCustom {//此为接口返回数据的自定义类型，你可以使用任意的解析方式和类名。
+    String binUrl;//下载地址
+    String styleName;//样式名。
+}
+
+详细流程可以参考sample工程中`DialCustomActivity#refresh()`方法。
+
+目前服务器一般支持5种样式:"White","Black","Yellow","Green","Gray"，每种样式对应的图片可以从sample工程中res/drawable-nodpi目录中获取。
+
+4. 第3步成功获取到样式列表数据`List<DialCustom>`，并且使用`DialDrawer.Shape.createFromLcd()`成功创建表盘外形`DialDrawer.Shape`，就可以开始创建表盘。
+
+5. 创建表盘。
+使用`DialCustom#binUrl`下载原始表盘。
+使用`DialDrawer.createDialBackground`根据所选原始背景图片，创建用于修改表盘背景的图片。
+使用`DialDrawer.createDialPreview`根据所选原始背景图片以及样式图片，创建用于修改表盘预览图的图片。
+使用`DialWriter`生成表盘文件。
+生成成功后，可以得到生成后新表盘的文件地址，使用此文件，就可以进行正常的表盘升级操作。
+
+6. 表盘的展示，可以使用`DialView`。
+`setStyleSource(Uri)`和`setStyleBitmap(Bitmap)`用于设置样式图片，`clearStyleBitmap()`用于清除样式图片。
+
+`setBackgroundSource(Uri)`和`setBackgroundBitmap(Bitmap)`用于设置背景图片，`clearBackgroundBitmap()`用于清除背景图片。
+
+`setStylePosition(DialDrawer.Position)`用于设置样式展示的位置
+
+`setShape(DialDrawer.Shape)`用于设置表盘外形
+
+`setBackgroundScaleType(DialDrawer.ScaleType)`用于设置背景图片裁剪的方式。当背景图片尺寸与Shape不匹配时，根据这个设定的方式进行裁剪。
+
+`setChecked(boolean)`和`setCheckParams(boolean , int , int , int )`用于设置选中的高亮效果。如果不需要此功能可以不使用。
+
+`createActualBackground()`和`createActualPreview(int , int )`用于直接根据`DialView`当前设置，创建用于修改表盘的背景图和预览图。当然，你也可以根据自己需求，使用`DialDrawer`创建
+。
+
+7. 表盘图片加载方式
+可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
+

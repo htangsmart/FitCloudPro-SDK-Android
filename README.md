@@ -809,3 +809,47 @@ The weather code obtained by the general user from the third-party platform is i
 If `WristbandVersion # isExtContacts ()` is true, it means that the bracelet supports the contact function. You can use `WristbandManager # setContactsList (List)` to set up to 10 contacts. Use `WristbandManager # requestContactsList ()` to request the contacts saved on the bracelet.
 
 Use `WristbandContacts # create (String, String)` to create a contact object that the bracelet can recognize.
+
+
+### 6.10、Custom dial
+1. Make sure that the device is connected `WristbandManager#isConnected()` and supports dial upgrade `WristbandVersion#isExtDialUpgrade()`.
+
+2. Use `WristbandManager#requestDialBinInfo()` to get device dial information `DialBinInfo`
+
+3. Use the `lcd` and `toolVersion` in `DialBinInfo` to request the list of `DialCustom` supported by the server , and filter according to the locally supported dial styles.
+DialCustom {//This is a custom type of data returned by the server. You can use any resolution method and class name.
+    String binUrl;//Download address
+    String styleName;//Style name.
+}
+
+For the detailed process, please refer to the `DialCustomActivity#refresh()` method in the sample project.
+
+At present, the server generally supports 5 styles: "White", "Black", "Yellow", "Green", "Gray". The pictures corresponding to each style can be obtained from the res/drawable-nodpi directory in the sample project.
+
+4. The third step is to successfully obtain the style list data `List<DialCustom>`, and use `DialDrawer.Shape.createFromLcd()` to successfully create the dial shape `DialDrawer.Shape`, and than you can start to create the dial.
+
+5. Create the watch face.
+Use `DialCustom#binUrl` to download the original dial bin.
+Use `DialDrawer.createDialBackground` to create a picture for modifying the background of the dial based on the selected original background picture.
+Use `DialDrawer.createDialPreview` to create a picture for modifying the dial preview according to the selected original background picture and style picture.
+Use `DialWriter` to generate dial files.
+After the generation is successful, you can get the file address of the new dial after generation, and use this file to perform normal dial upgrade operations.
+
+6. To display the dial, you can use `DialView`.
+`setStyleSource(Uri)` and `setStyleBitmap(Bitmap)` are used to set the style picture, and `clearStyleBitmap()` is used to clear the style picture.
+
+`setBackgroundSource(Uri)` and `setBackgroundBitmap(Bitmap)` are used to set the background image, and `clearBackgroundBitmap()` is used to clear the background image.
+
+`setStylePosition(DialDrawer.Position)` is used to set the position of the style display
+
+`setShape(DialDrawer.Shape)` is used to set the dial shape
+
+`setBackgroundScaleType(DialDrawer.ScaleType)` is used to set the background image cropping method. When the background image size does not match the Shape, it will be cropped according to this setting.
+
+`setChecked(boolean)` and `setCheckParams(boolean, int, int, int )` are used to set the selected highlight effect. If you don't need this function, you can not use it.
+
+`createActualBackground()` and `createActualPreview(int, int )` are used to create the background image and preview image for modifying the dial directly according to the current setting of `DialView`. Of course, you can also use `DialDrawer` to create according to your needs
+.
+
+7. How to load dial bitmaps
+You can implement the `DialViewEngine` interface to customize the loading method of the dial bitmap (if your APP has its own bitmap loading framework). And set it by `DialView.setEngine(new MyDialViewEngine());`. This setting will change how the bitmaps are loaded in the `DialView#setStyleSource(Uri)` and `DialView#setBackgroundSource(Uri)` methods.

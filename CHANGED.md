@@ -1,3 +1,6 @@
+# 2020-07-29
+1.更新自定义表盘sample和开发文档`6.10、自定义表盘`
+
 # 2020-07-17
 ## 发布libraryCore_v1.0.6.aar
 1.添加测试方法`WristbandManager#requestSleepRawForTest()`获取睡眠原始数据，方便调式分析
