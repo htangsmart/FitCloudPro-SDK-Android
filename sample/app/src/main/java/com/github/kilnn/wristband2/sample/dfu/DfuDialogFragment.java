@@ -109,7 +109,7 @@ public class DfuDialogFragment extends AppCompatDialogFragment {
 
         @Override
         public void onError(int errorType, int errorCode) {
-            toastError(errorType, errorCode);
+            toastError(getContext(), errorType, errorCode);
             dismissAllowingStateLoss();
         }
 
@@ -157,7 +157,7 @@ public class DfuDialogFragment extends AppCompatDialogFragment {
         }
     };
 
-    private void toastError(int errorType, int errorCode) {
+    public static void toastError(Context context, int errorType, int errorCode) {
         int toastId = 0;
         if (errorType == DfuManager.ERROR_TYPE_BT) {
             if (errorCode == DfuManager.ERROR_CODE_BT_UNSUPPORTED) {
@@ -198,9 +198,9 @@ public class DfuDialogFragment extends AppCompatDialogFragment {
         }
 
         if (toastId != 0) {
-            Toast.makeText(getContext(), toastId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, toastId, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getContext(), getString(R.string.dfu_failed) + "  errorCode:" + errorCode, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getString(R.string.dfu_failed) + "  errorCode:" + errorCode, Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.github.kilnn.wristband2.sample">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.github.kilnn.wristband2.sample">
 
     <!--In most cases, you need to ensure that the device supports BLE.-->
     <uses-feature
@@ -68,6 +68,20 @@
         <activity android:name=".syncdata.StepActivity"/>
 
         <activity android:name=".dfu.DfuActivity"/>
+
+        <activity android:name=".dial.custom.DialCustomActivity"/>
+
+        <!-- FileProvider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${FileAuthorities}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"/>
+        </provider>
+
     </application>
 
 </manifest>

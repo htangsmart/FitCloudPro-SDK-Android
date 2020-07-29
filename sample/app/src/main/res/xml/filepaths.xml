@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding= "utf-8"?>
+<resources>
+
+    <!--参考：http://blog.csdn.net/hultron/article/details/55211790-->
+    <paths>
+
+        <!--com.htsmart.wristband.app.compat.util.CameraUtil#getOutputMediaFileUri(Context,int)-->
+        <!--com.zhihu.matisse.internal.utils.MediaStoreCompat#createImageFile()-->
+        <!--        <external-files-path-->
+        <!--            name="external_pictures"-->
+        <!--            path="Pictures/"/>-->
+
+        <!--        <external-cache-path-->
+        <!--            name="external_cache"-->
+        <!--            path=""/>-->
+
+        <!--        <root-path-->
+        <!--            name="root_path"-->
+        <!--            path="."/>-->
+
+        <external-path
+            name="external"
+            path="."/>
+        <external-files-path
+            name="external_files"
+            path="."/>
+        <cache-path
+            name="cache"
+            path="."/>
+        <external-cache-path
+            name="external_cache"
+            path="."/>
+        <files-path
+            name="files"
+            path="."/>
+
+    </paths>
+
+</resources>

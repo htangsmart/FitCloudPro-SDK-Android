@@ -56,6 +56,7 @@
     <string name="op6">6.同步数据</string>
     <string name="op7">7.DFU</string>
     <string name="op8">8.简单指令</string>
+    <string name="op9">9.自定义表盘</string>
 
     <string name="configs_version_info">1.手环版本信息</string>
     <string name="configs_notification">2.通知配置</string>
@@ -232,4 +233,20 @@
 
     <string name="view_step_data">查看步数数据</string>
     <string name="view_step_data_total_step">总步数:<xliff:g id="params1">%1$d</xliff:g></string>
+
+    <string name="dial_custom_title">自定义表盘</string>
+    <string name="dial_custom_set_dial">设置表盘</string>
+    <string name="ds_dial_error_none_shape">暂不支持此手环升级，请尝试升级至最新版本</string>
+    <string name="ds_dial_error_none_style">暂不支持此手环升级</string>
+    <string name="photo_select_failed">选择失败</string>
+    <string name="photo_crop_failed">裁减失败</string>
+    <string name="photo_take_failed">拍照失败</string>
+    <string name="photo_take_success">拍照成功</string>
+    <string name="ds_dial_background">背景</string>
+    <string name="ds_dial_style">样式</string>
+    <string name="ds_dial_position">位置</string>
+    <string name="ds_dial_create">正在生成表盘</string>
+    <string name="ds_dial_create_failed">生成失败</string>
+    <string name="ds_dial_syncing">同步中…</string>
+    <string name="ds_dial_sync_success">同步成功</string>
 </resources>

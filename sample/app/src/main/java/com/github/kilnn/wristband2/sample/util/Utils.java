@@ -4,10 +4,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+
+import android.os.StatFs;
 import android.util.SparseArray;
 import android.view.View;
 
+import java.io.File;
 import java.math.BigDecimal;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -152,5 +158,48 @@ public class Utils {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(scale, roundingMode);
         return bd.doubleValue();
+    }
+
+    public static String toMD5(@NonNull String inStr) {
+        StringBuilder sb = new StringBuilder();
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            md.update(inStr.getBytes());
+            byte b[] = md.digest();
+            int i;
+            for (byte aB : b) {
+                i = aB;
+                if (i < 0)
+                    i += 256;
+                if (i < 16)
+                    sb.append("0");
+                sb.append(Integer.toHexString(i));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return inStr;
+    }
+
+    /**
+     * 获得当前目录的剩余容量，即可用大小
+     *
+     * @return 可用余量，单位为MB
+     */
+    public static double getAvailableSpace(@NonNull File file) {
+        StatFs stat = null;
+        try {
+            stat = new StatFs(file.getAbsolutePath());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (stat == null) {
+            return 0;
+        }
+        long blockSize = stat.getBlockSizeLong();
+        long availableBlocks = stat.getAvailableBlocksLong();
+        return availableBlocks * blockSize / 1024.0f / 1024.0f;//MB
     }
 }

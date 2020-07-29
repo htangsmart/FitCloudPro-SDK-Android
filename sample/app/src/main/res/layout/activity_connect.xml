@@ -86,6 +86,12 @@
                 android:onClick="simple_command"
                 android:text="@string/op8"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="custom_dial"
+                android:text="@string/op9"/>
+
         </LinearLayout>
     </ScrollView>
 

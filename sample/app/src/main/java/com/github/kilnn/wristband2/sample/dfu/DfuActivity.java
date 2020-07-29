@@ -78,6 +78,7 @@ public class DfuActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case SELECT_FILE_REQ: {
                 if (resultCode == RESULT_OK) {
