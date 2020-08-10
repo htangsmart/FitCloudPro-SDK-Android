@@ -1,3 +1,9 @@
+# 2020-08-10
+## 发布libraryCore_v1.0.7.aar
+1.`HealthyConfig`添加时间间隔设置，当`WristbandVersion#isExtHealthyConfigInterval()`为true时，此设置有效。
+2.`SedentaryConfig`添加时间间隔设置，当`WristbandVersion#isExtSedentaryConfigInterval()`为true时，此设置有效。
+3.`WristbandManager#setWeather`添加天气预报设置，当`WristbandVersion#isExtWeatherForecast()`为true时，此设置有效。
+	
 # 2020-07-29
 1.更新自定义表盘sample和开发文档`6.10、自定义表盘`
 

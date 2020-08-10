@@ -784,6 +784,8 @@ You can get the current system language type using `Utils.getSystemLanguageType(
 #### 6.8.10、Setting the weather
 `WristbandManager#setWeather(int currentTemperature, int lowTemperature, int highTemperature, int weatherCode, String city)`，
 
+`libraryCore_v1.0.7` adds weather forecast settings, you can use the method `WristbandManager#setWeather(String city, long updateTimestamp, @NonNull WeatherToday weatherToday, @Nullable List<WeatherForecast> weatherForecasts)` to set the weather for the next 0-14 days. If `WristbandVersion#isExtWeatherForecast` is false, it means that the bracelet does not support weather forecasts, and the `weatherForecasts` parameter will be ignored.
+    
 Before using the set weather, you need to ensure that `WristbandVersion#isWeatherEnable()` is true, that is, the bracelet supports the weather function.
 
 The weather code supported by the bracelet is as follows:

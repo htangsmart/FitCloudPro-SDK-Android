@@ -774,6 +774,8 @@ EcgData{
 #### 6.8.10、设置天气
 `WristbandManager#setWeather(int currentTemperature, int lowTemperature, int highTemperature, int weatherCode, String city)`，
 
+`libraryCore_v1.0.7`增加了天气预报设置，可以使用方法`WristbandManager#setWeather(String city, long updateTimestamp, @NonNull WeatherToday weatherToday, @Nullable List<WeatherForecast> weatherForecasts)`来设置未来0-14天的天气。如果`WristbandVersion#isExtWeatherForecast`为false，代表手环不支持天气预报，`weatherForecasts`参数将会被忽略。
+
 在使用设置天气之前，需要保证`WristbandVersion#isWeatherEnable()`为true，即手环支持天气功能。
 
 手环支持的天气代码如下：
