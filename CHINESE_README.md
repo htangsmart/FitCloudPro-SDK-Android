@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.5', ext: 'aar')
+    implementation(name: 'libraryCore_v1.0.8', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.1', ext: 'aar')
@@ -170,6 +170,9 @@ BluetoothDevice getConnectedDevice();
 10. WarnHeartRateConfig 心率预警配置
 11. WarnBloodPressureConfig 血压预警配置
 12. NotDisturbConfig 免打扰配置
+13. WomenHealthyConfig 女性健康功能设置
+14. ProtectionReminderConfig 防护提醒
+15. HandWashingReminderConfig 洗手提醒
 
 在获取到`WristbandConfig`之后，你可以在通过`WristbandConfig#getBytes()`获取对应的字节码，缓存到本地。之后可以通过`WristbandConfig#newInstance(byte[])`重新生成实例。
 
@@ -295,6 +298,9 @@ PageConfig用于配置手表上的显示的界面。在设置之前，最好先�
 
 #### 6.1.14、ProtectionReminderConfig
 防护提醒配置。当`WristbandVersion#isExtProtectionReminder()`为true时，手环才支持此功能。使用`WristbandManager#setProtectionReminderConfig(ProtectionReminderConfig)`设置此配置
+
+#### 6.1.15、HandWashingReminderConfig
+洗手提醒配置。当`WristbandVersion#isExtHandWashingReminder()`为true时，手环才支持此功能。使用`WristbandManager#setHandWashingReminderConfig(HandWashingReminderConfig)`设置此配置
 
 ### 6.2、闹钟设置
 手环只支持5个闹钟，每一个闹钟以`WristbandAlarm`中的`alarmId`作为唯一标志，所以`alarmId`的值为0-4。
@@ -775,6 +781,8 @@ EcgData{
 `WristbandManager#setWeather(int currentTemperature, int lowTemperature, int highTemperature, int weatherCode, String city)`，
 
 `libraryCore_v1.0.7`增加了天气预报设置，可以使用方法`WristbandManager#setWeather(String city, long updateTimestamp, @NonNull WeatherToday weatherToday, @Nullable List<WeatherForecast> weatherForecasts)`来设置未来0-14天的天气。如果`WristbandVersion#isExtWeatherForecast`为false，代表手环不支持天气预报，`weatherForecasts`参数将会被忽略。
+
+`libraryCore_v1.0.8`增加了开启或关闭天气的设置。当`WristbandVersion#isExtWeatherSwitch()`为true时，可使用`FunctionConfig#FLAG_WEATHER_SWITCH`来开启或关闭手环上的天气推送。在APP无法获取天气时，可使用`WristbandManager#setWeatherException()`来提示手环。
 
 在使用设置天气之前，需要保证`WristbandVersion#isWeatherEnable()`为true，即手环支持天气功能。
 

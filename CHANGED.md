@@ -1,3 +1,15 @@
+# 2020-11-19
+## 发布libraryCore_v1.0.8.aar
+1.解决消息通知标志位偶尔不正确的bug
+2.解决拍照消息没有正确处理，导致`WristbandManager#observerWristbandMessage`无法接收此消息的bug
+3.DfuManager#start方法支持传入Uri，兼容Android10分区存储无法获取外部文件路径的问题
+4.自定义表盘添加支持新的表盘LCD类型，自定义表盘Shape支持圆角设置
+5.添加天气推送开关的设置。当`WristbandVersion#isExtWeatherSwitch()`为true时，可使用`FunctionConfig#FLAG_WEATHER_SWITCH`来开启或关闭手环上的天气推送。在APP无法获取天气时，可使用`WristbandManager#setWeatherException()`来提示手环。
+6.添加洗手提醒设置`HandWashingReminderConfig`，当`WristbandVersion#isExtHandWashingReminder()`为true时，此设置有效。
+7.手环语言设置添加阿尔尼亚语.
+8.健康检测和久坐提醒中的间隔值范围加大.
+9.添加手环调试辅助信息的获取
+
 # 2020-08-10
 ## 发布libraryCore_v1.0.7.aar
 1.`HealthyConfig`添加时间间隔设置，当`WristbandVersion#isExtHealthyConfigInterval()`为true时，此设置有效。

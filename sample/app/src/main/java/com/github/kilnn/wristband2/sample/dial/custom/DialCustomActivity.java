@@ -310,9 +310,13 @@ public class DialCustomActivity extends BaseActivity {
     private void refresh() {
         //TODO 请求之前，最好检测下设备是否连接(WristbandManager#isConnected())，并且支持表盘升级(WristbandVersion#isExtDialUpgrade())
 
+        DialBinInfo dialBinInfo=new DialBinInfo();
+        dialBinInfo.setLcd(4);
+        dialBinInfo.setToolVersion("1.4");
         mWristbandManager
                 //Request device dial bin info
                 .requestDialBinInfo()
+                .onErrorReturnItem(dialBinInfo)
                 .flatMapPublisher(new Function<DialBinInfo, Publisher<List<DialCustom>>>() {
                     @Override
                     public Publisher<List<DialCustom>> apply(DialBinInfo dialBinInfo) throws Exception {
