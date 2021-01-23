@@ -1,3 +1,17 @@
+# 2021-01-23
+## 发布libraryCore_v1.1.0.aar
+1.添加多表盘推送功能，详细参考开发文档`6.7.1、多表盘升级`，以及javadoc文档。
+
+# 2021-01-11
+## 发布libraryCore_v1.0.9.aar
+1.添加锁屏设置，当`WristbandVersion#isExtLockScreen()`为true时，可使用`WristbandManager#setLockScreen`设置锁屏和解锁
+2.添加Hike和YouTube提醒，当`WristbandVersion#isExtAncsHikeYouTube()`为true时，支持这两个提醒
+3.添加日程设置，当`WristbandVersion#isExtSchedule()`为true时，可以使用`WristbandManager#setScheduleList`和`WristbandManager#requestScheduleList`设置和获取日程。用法基本和`WristbandAlarm`一样。
+
+## 发布libraryDfu_v1.0.2.aar
+1. 升级原厂OTA库，支持新的手环芯片类型
+
+
 # 2020-11-19
 ## 发布libraryCore_v1.0.8.aar
 1.解决消息通知标志位偶尔不正确的bug

@@ -23,10 +23,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.0.8', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.0', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu_v1.0.1', ext: 'aar')
+    implementation(name: 'libraryDfu_v1.0.2', ext: 'aar')
     
     ...
 }
@@ -743,6 +743,11 @@ EcgData{
 
 具体升级功能的细节，请参考javaDoc文档和sample工程。
 
+#### 6.7.1、多表盘升级
+当`WristbandVersion#isExtDialMultiple`为true时，代表手环支持多表盘升级。使用`WristbandManager#requestDialBinInfo`获取的表盘信息中包含多表盘的信息列表`DialBinInfo#getSubBinList()`。
+
+根据`DialSubBinInfo#getFlag()`判断某个表盘是否可以被覆盖升级。如果可以升级，那么先使用`WristbandManager#setDialUpgradeIndex()`设置想要升级的序号。然后在使用`DfuManager`进行升级。
+
 ### 6.8、其他简单指令
 #### 6.8.1、设置用户信息
 `WristbandManager#setUserInfo(boolean sex, int age, float height, float weight)`。
@@ -805,6 +810,9 @@ EcgData{
 ```
 一般用户从第三方平台获取的天气代码与上述列表不一致，需要自己对应转换一下在设置到手环。
 
+#### 6.8.11、锁屏设置
+当`WristbandVersion#isExtLockScreen()`为true时，可使用`WristbandManager#setLockScreen`设置锁屏和解锁。注意锁屏密码为6个字节的数组
+
 ### 6.9、联系人功能
 如果`WristbandVersion#isExtContacts()`为true，表示手环支持联系人功能。可以使用`WristbandManager#setContactsList(List)`设置最多10个联系人。使用`WristbandManager#requestContactsList()`请求保存在手环上的联系人。
 
@@ -853,3 +861,5 @@ DialCustom {//此为接口返回数据的自定义类型，你可以使用任意
 7. 表盘图片加载方式
 可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
 
+### 6.11、日常设置
+当`WristbandVersion#isExtSchedule()`为true时，可以使用`WristbandManager#setScheduleList`和`WristbandManager#requestScheduleList`设置和获取日程。用法基本和`WristbandAlarm`一样。

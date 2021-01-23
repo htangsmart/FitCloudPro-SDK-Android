@@ -752,6 +752,11 @@ If you use the wrong file to upgrade, it may make the bracelet unusable. Therefo
 
 For details of the specific upgrade function, please refer to the javaDoc document and the sample project.
 
+#### 6.7.1, Multi-dial upgrade
+When `WristbandVersion#isExtDialMultiple` is true, it means that the bracelet supports multi-dial upgrade. The dial information obtained with `WristbandManager#requestDialBinInfo` contains the information list of multiple dials `DialBinInfo#getSubBinList()`.
+
+According to `DialSubBinInfo#getFlag()`, judge whether a dial can be overwritten and upgraded. If it can be upgrade, first use `WristbandManager#setDialUpgradeIndex()` to set the index you want to upgrade. Then use `DfuManager` to upgrade.
+
 ### 6.8、Other simple instructions
 #### 6.8.1、Set user information
 `WristbandManager#setUserInfo(boolean sex, int age, float height, float weight)`。
@@ -814,6 +819,10 @@ The weather code supported by the bracelet is as follows:
 ```
 The weather code obtained by the general user from the third-party platform is inconsistent with the above list, and it is necessary to convert the setting to the wristband.
 
+#### 6.8.11、Lock screen settings
+When `WristbandVersion#isExtLockScreen()` is true, you can use `WristbandManager#setLockScreen` to set the screen lock and unlock. Note that the lock screen password is an array of 6 bytes
+
+
 ### 6.9、Contact function
 If `WristbandVersion # isExtContacts ()` is true, it means that the bracelet supports the contact function. You can use `WristbandManager # setContactsList (List)` to set up to 10 contacts. Use `WristbandManager # requestContactsList ()` to request the contacts saved on the bracelet.
 
@@ -862,3 +871,6 @@ After the generation is successful, you can get the file address of the new dial
 
 7. How to load dial bitmaps
 You can implement the `DialViewEngine` interface to customize the loading method of the dial bitmap (if your APP has its own bitmap loading framework). And set it by `DialView.setEngine(new MyDialViewEngine());`. This setting will change how the bitmaps are loaded in the `DialView#setStyleSource(Uri)` and `DialView#setBackgroundSource(Uri)` methods.
+
+### 6.11、Schedule settings
+When `WristbandVersion#isExtSchedule()` is true, you can use `WristbandManager#setScheduleList` and `WristbandManager#requestScheduleList` to set and get the schedule. The usage is basically the same as that of `WristbandAlarm`.
