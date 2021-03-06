@@ -18,6 +18,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
+
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.github.kilnn.wristband2.sample.R;
@@ -32,11 +38,6 @@ import com.htsmart.wristband2.dial.DialWriter;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDialogFragment;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
@@ -66,6 +67,7 @@ public class DialCustomDialogFragment extends AppCompatDialogFragment {
         public DialDrawer.Shape shape;
         public DialDrawer.ScaleType scaleType;
         public DialDrawer.Position position;
+        public byte binFlag;
 
         public DialCustomParam() {
         }
@@ -84,6 +86,7 @@ public class DialCustomDialogFragment extends AppCompatDialogFragment {
             }
             scaleType = DialDrawer.ScaleType.fromId(in.readInt());
             position = DialDrawer.Position.fromId(in.readInt());
+            binFlag = in.readByte();
         }
 
         @Override
@@ -96,6 +99,7 @@ public class DialCustomDialogFragment extends AppCompatDialogFragment {
             dest.writeInt(shape.height());
             dest.writeInt(scaleType.getId());
             dest.writeInt(position.getId());
+            dest.writeByte(binFlag);
         }
 
         @Override
@@ -243,7 +247,7 @@ public class DialCustomDialogFragment extends AppCompatDialogFragment {
                         mTvTitle.setText(R.string.ds_dial_syncing);
                         mProgressBar.setProgress(0);
                         mProgressBar.setIndeterminate(false);
-                        mDfuManager.start(file.getAbsolutePath(), false);
+                        mDfuManager.upgradeDial(file.getAbsolutePath(), mParam.binFlag);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

@@ -23,10 +23,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.1.0', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.1', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu_v1.0.2', ext: 'aar')
+    implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
     
     ...
 }
@@ -735,18 +735,73 @@ EcgData{
 手环上仅保存最后一次测量的心电值，每次心电数据同步成功后，手环上的心电数据将被删除。下次同步的话，只会得到新产生的心电数据。
 
 ### 6.7、DFU升级
-使用`DfuManager`可以对手表固件或者表盘进行升级。`WristbandVersion`,`WristbandManager#requestDialUiInfo`,`WristbandManager#requestDialBinInfo`中包含了手环固件和表盘的信息。
 
-使用`DfuManager#start(String uri, boolean firmwareUpgrade)`进行升级。升级固件时，第二个参数传true，升级表盘时，第二个参数传false。
+使用`DfuManager`可以对手表固件或者表盘进行升级。
 
-如果使用错误的文件进行升级，可能导致手环无法使用。所以在开发升级功能时，请务必先和开发人员或产品经理沟通，获取正确的升级包。
+该功能较为复杂，如果使用错误的文件进行升级，可能导致手环无法使用。所以在开发升级功能时，请务必先和开发人员或产品经理沟通，获取正确的升级包。
 
-具体升级功能的细节，请参考javaDoc文档和sample工程。
+#### 6.7.1 固件升级
+`WristbandVersion`中`getProject()`代表唯一的项目号。对比本地和服务器中此`getProject()`下，`getPatch()`,`getFlash()`,`getApp()`3个参数是否有更新的版本。
 
-#### 6.7.1、多表盘升级
-当`WristbandVersion#isExtDialMultiple`为true时，代表手环支持多表盘升级。使用`WristbandManager#requestDialBinInfo`获取的表盘信息中包含多表盘的信息列表`DialBinInfo#getSubBinList()`。
+获取到新版本的bin文件后，使用`DfuManager#upgradeFirmware`来进行固件的升级。
 
-根据`DialSubBinInfo#getFlag()`判断某个表盘是否可以被覆盖升级。如果可以升级，那么先使用`WristbandManager#setDialUpgradeIndex()`设置想要升级的序号。然后在使用`DfuManager`进行升级。
+#### 6.7.2 表盘升级
+当`WristbandVersion#isExtDialUpgrade()`为true时，代表手环支持表盘升级功能。可以使用`WristbandManager#requestDialBinInfo`中请求手环中表盘的信息。
+
+使用`WristbandVersion#getProject()`得到的项目号，以及`DialBinInfo#getLcd()`，`DialBinInfo#getToolVersion()`这3个参数，可以向服务器查询此项目支持升级的表盘。
+
+获取到表盘的bin文件后，使用`DfuManager#upgradeDial(String,byte)`进行表盘升级。
+
+`DfuManager#upgradeDial(String,byte)`方法有两个参数，第一个参数为bin文件uri，第二个参数为多表盘的支持。如果手环不支持多表盘，传0即可。多表盘功能参考`6.7.3 多表盘升级`
+
+#### 6.7.3 多表盘升级
+当`WristbandVersion#isExtDialMultiple`为true时，代表手环支持多表盘升级。使用`DialBinInfo#getSubBinList()`获取手环上预设置的多个表盘位。
+
+当`DialSubBinInfo#getDialType()`不等于0时，表示此表盘位可以被覆盖。那么在升级表盘时，将需要覆盖的表盘位的`DialSubBinInfo#getBinFlag()`作为`DfuManager#upgradeDial(String,byte)`的第二个参数，以此来进行覆盖某个表盘位的升级。
+
+#### 6.7.4 自定义表盘
+1. 确保设备已经连接`WristbandManager#isConnected()`,并且支持表盘升级`WristbandVersion#isExtDialUpgrade()`.
+
+2. 使用`WristbandManager#requestDialBinInfo()`获取设备表盘信息`DialBinInfo`
+
+3. 使用`DialBinInfo`中lcd和toolVersion向服务器请求支持的表盘样式列表`DialCustom`，并根据本地支持的表盘样式进行筛选。
+DialCustom {//此为接口返回数据的自定义类型，你可以使用任意的解析方式和类名。
+    String binUrl;//下载地址
+    String styleName;//样式名。
+}
+
+详细流程可以参考sample工程中`DialCustomActivity#refresh()`方法。
+
+目前服务器一般支持5种样式:"White","Black","Yellow","Green","Gray"，每种样式对应的图片可以从sample工程中res/drawable-nodpi目录中获取。
+
+4. 第3步成功获取到样式列表数据`List<DialCustom>`，并且使用`DialDrawer.Shape.createFromLcd()`成功创建表盘外形`DialDrawer.Shape`，就可以开始创建表盘。
+
+5. 创建表盘。
+使用`DialCustom#binUrl`下载原始表盘。
+使用`DialDrawer.createDialBackground`根据所选原始背景图片，创建用于修改表盘背景的图片。
+使用`DialDrawer.createDialPreview`根据所选原始背景图片以及样式图片，创建用于修改表盘预览图的图片。
+使用`DialWriter`生成表盘文件。
+生成成功后，可以得到生成后新表盘的文件地址，使用此文件，就可以进行正常的表盘升级操作。
+
+6. 表盘的展示，可以使用`DialView`。
+`setStyleSource(Uri)`和`setStyleBitmap(Bitmap)`用于设置样式图片，`clearStyleBitmap()`用于清除样式图片。
+
+`setBackgroundSource(Uri)`和`setBackgroundBitmap(Bitmap)`用于设置背景图片，`clearBackgroundBitmap()`用于清除背景图片。
+
+`setStylePosition(DialDrawer.Position)`用于设置样式展示的位置
+
+`setShape(DialDrawer.Shape)`用于设置表盘外形
+
+`setBackgroundScaleType(DialDrawer.ScaleType)`用于设置背景图片裁剪的方式。当背景图片尺寸与Shape不匹配时，根据这个设定的方式进行裁剪。
+
+`setChecked(boolean)`和`setCheckParams(boolean , int , int , int )`用于设置选中的高亮效果。如果不需要此功能可以不使用。
+
+`createActualBackground()`和`createActualPreview(int , int )`用于直接根据`DialView`当前设置，创建用于修改表盘的背景图和预览图。当然，你也可以根据自己需求，使用`DialDrawer`创建
+。
+
+7. 表盘图片加载方式
+可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
+
 
 ### 6.8、其他简单指令
 #### 6.8.1、设置用户信息
@@ -818,48 +873,5 @@ EcgData{
 
 使用`WristbandContacts#create(String,String)`创建手环能识别的联系人对象。
 
-### 6.10、自定义表盘
-1. 确保设备已经连接`WristbandManager#isConnected()`,并且支持表盘升级`WristbandVersion#isExtDialUpgrade()`.
-
-2. 使用`WristbandManager#requestDialBinInfo()`获取设备表盘信息`DialBinInfo`
-
-3. 使用`DialBinInfo`中lcd和toolVersion向服务器请求支持的表盘样式列表`DialCustom`，并根据本地支持的表盘样式进行筛选。
-DialCustom {//此为接口返回数据的自定义类型，你可以使用任意的解析方式和类名。
-    String binUrl;//下载地址
-    String styleName;//样式名。
-}
-
-详细流程可以参考sample工程中`DialCustomActivity#refresh()`方法。
-
-目前服务器一般支持5种样式:"White","Black","Yellow","Green","Gray"，每种样式对应的图片可以从sample工程中res/drawable-nodpi目录中获取。
-
-4. 第3步成功获取到样式列表数据`List<DialCustom>`，并且使用`DialDrawer.Shape.createFromLcd()`成功创建表盘外形`DialDrawer.Shape`，就可以开始创建表盘。
-
-5. 创建表盘。
-使用`DialCustom#binUrl`下载原始表盘。
-使用`DialDrawer.createDialBackground`根据所选原始背景图片，创建用于修改表盘背景的图片。
-使用`DialDrawer.createDialPreview`根据所选原始背景图片以及样式图片，创建用于修改表盘预览图的图片。
-使用`DialWriter`生成表盘文件。
-生成成功后，可以得到生成后新表盘的文件地址，使用此文件，就可以进行正常的表盘升级操作。
-
-6. 表盘的展示，可以使用`DialView`。
-`setStyleSource(Uri)`和`setStyleBitmap(Bitmap)`用于设置样式图片，`clearStyleBitmap()`用于清除样式图片。
-
-`setBackgroundSource(Uri)`和`setBackgroundBitmap(Bitmap)`用于设置背景图片，`clearBackgroundBitmap()`用于清除背景图片。
-
-`setStylePosition(DialDrawer.Position)`用于设置样式展示的位置
-
-`setShape(DialDrawer.Shape)`用于设置表盘外形
-
-`setBackgroundScaleType(DialDrawer.ScaleType)`用于设置背景图片裁剪的方式。当背景图片尺寸与Shape不匹配时，根据这个设定的方式进行裁剪。
-
-`setChecked(boolean)`和`setCheckParams(boolean , int , int , int )`用于设置选中的高亮效果。如果不需要此功能可以不使用。
-
-`createActualBackground()`和`createActualPreview(int , int )`用于直接根据`DialView`当前设置，创建用于修改表盘的背景图和预览图。当然，你也可以根据自己需求，使用`DialDrawer`创建
-。
-
-7. 表盘图片加载方式
-可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
-
-### 6.11、日常设置
+### 6.10、日常设置
 当`WristbandVersion#isExtSchedule()`为true时，可以使用`WristbandManager#setScheduleList`和`WristbandManager#requestScheduleList`设置和获取日程。用法基本和`WristbandAlarm`一样。

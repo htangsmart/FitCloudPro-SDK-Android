@@ -249,4 +249,6 @@
     <string name="ds_dial_create_failed">Build failed</string>
     <string name="ds_dial_syncing">Synchronizing&#8230;</string>
     <string name="ds_dial_sync_success">Successful synchronization</string>
+
+    <string name="dial_select_replace">Select the dial to be replaced</string>
 </resources>

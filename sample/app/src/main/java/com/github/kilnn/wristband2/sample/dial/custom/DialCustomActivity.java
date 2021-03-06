@@ -11,20 +11,24 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+
 import com.github.kilnn.wristband2.sample.BaseActivity;
 import com.github.kilnn.wristband2.sample.BuildConfig;
 import com.github.kilnn.wristband2.sample.MyApplication;
 import com.github.kilnn.wristband2.sample.R;
 import com.github.kilnn.wristband2.sample.dfu.FileUtils;
 import com.github.kilnn.wristband2.sample.dial.custom.bean.DialCustom;
+import com.github.kilnn.wristband2.sample.dial.custom.bean.DialRequestParam;
 import com.github.kilnn.wristband2.sample.dial.custom.util.DialUtils;
+import com.github.kilnn.wristband2.sample.dial.custom.util.TaskGetDialRequestParam;
 import com.github.kilnn.wristband2.sample.net.GlobalApiClient;
 import com.github.kilnn.wristband2.sample.utils.AndPermissionHelper;
 import com.github.kilnn.wristband2.sample.widget.DataLceView;
 import com.google.android.material.tabs.TabLayout;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
-import com.htsmart.wristband2.bean.DialBinInfo;
 import com.htsmart.wristband2.dial.DialDrawer;
 import com.htsmart.wristband2.dial.DialView;
 import com.zhihu.matisse.Matisse;
@@ -38,17 +42,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class DialCustomActivity extends BaseActivity {
+public class DialCustomActivity extends BaseActivity
+        implements DialSubSelectFragment.Listener {
     private final String TAG = "DialCustomActivity";
 
     static {
@@ -291,37 +295,43 @@ public class DialCustomActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_set:
-                DialCustomDialogFragment.DialCustomParam param = new DialCustomDialogFragment.DialCustomParam();
-                param.binUrl = mSelectDialCustom.getBinUrl();
-                param.backgroundUri = mSelectBackgroundUri;
-                param.styleUri = mSelectDialCustom.getStyleUri();
-                param.shape = mShape;
-                param.scaleType = mDialView.getBackgroundScaleType();
-                param.position = mDialView.getStylePosition();
-                DialCustomDialogFragment.newInstance(param)
-                        .show(getSupportFragmentManager(), null);
+                if (mDialRequestParam == null) return;
+                if (mDialRequestParam.getSubBinParams() != null && mDialRequestParam.getSubBinParams().size() > 0) {
+                    //手环支持多表盘升级，那么需要选择去覆盖哪个表盘
+                    DialSubSelectFragment.newInstance(mDialRequestParam)
+                            .show(getSupportFragmentManager(), null);
+                } else {
+                    showDialCustomDialog((byte) 0);
+                }
                 break;
         }
     }
 
-    private volatile int mDeviceLcd;
+    private void showDialCustomDialog(byte binFlag) {
+        DialCustomDialogFragment.DialCustomParam param = new DialCustomDialogFragment.DialCustomParam();
+        param.binUrl = mSelectDialCustom.getBinUrl();
+        param.backgroundUri = mSelectBackgroundUri;
+        param.styleUri = mSelectDialCustom.getStyleUri();
+        param.shape = mShape;
+        param.scaleType = mDialView.getBackgroundScaleType();
+        param.position = mDialView.getStylePosition();
+        param.binFlag = binFlag;
+        DialCustomDialogFragment.newInstance(param)
+                .show(getSupportFragmentManager(), null);
+    }
+
+    private volatile DialRequestParam mDialRequestParam;
 
     @SuppressLint("CheckResult")
     private void refresh() {
         //TODO 请求之前，最好检测下设备是否连接(WristbandManager#isConnected())，并且支持表盘升级(WristbandVersion#isExtDialUpgrade())
-
-        DialBinInfo dialBinInfo=new DialBinInfo();
-        dialBinInfo.setLcd(4);
-        dialBinInfo.setToolVersion("1.4");
-        mWristbandManager
-                //Request device dial bin info
-                .requestDialBinInfo()
-                .onErrorReturnItem(dialBinInfo)
-                .flatMapPublisher(new Function<DialBinInfo, Publisher<List<DialCustom>>>() {
+        TaskGetDialRequestParam task = new TaskGetDialRequestParam();
+        task.get()
+                .flatMap(new Function<DialRequestParam, Publisher<List<DialCustom>>>() {
                     @Override
-                    public Publisher<List<DialCustom>> apply(DialBinInfo dialBinInfo) throws Exception {
-                        mDeviceLcd = dialBinInfo.getLcd();
-                        return mApiClient.getDialCustom(dialBinInfo.getLcd(), dialBinInfo.getToolVersion());
+                    public Publisher<List<DialCustom>> apply(@NonNull DialRequestParam dialRequestParam) throws Exception {
+                        mDialRequestParam = dialRequestParam;
+                        return mApiClient.getDialCustom(dialRequestParam.getLcd(), dialRequestParam.getToolVersion());
                     }
                 })
                 //Request service Support Dial
@@ -332,21 +342,18 @@ public class DialCustomActivity extends BaseActivity {
                         return DialUtils.filterSupportStyles(DialCustomActivity.this, dialCustoms);
                     }
                 })
-
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-
                 .doOnSubscribe(new Consumer<Subscription>() {
                     @Override
                     public void accept(Subscription subscription) throws Exception {
                         mDataLceView.lceShowLoading();
                     }
                 })
-
                 .subscribe(new Consumer<List<DialCustom>>() {
                     @Override
                     public void accept(List<DialCustom> dialCustoms) throws Exception {
-                        mShape = DialDrawer.Shape.createFromLcd(mDeviceLcd);
+                        mShape = DialDrawer.Shape.createFromLcd(mDialRequestParam.getLcd());
                         mDialCustoms = dialCustoms;
                         if (mDialCustoms.size() <= 0) {
                             //TODO 没有数据，可能是后台未添加表盘，提示"暂不支持此手环升级"
@@ -377,4 +384,8 @@ public class DialCustomActivity extends BaseActivity {
                 });
     }
 
+    @Override
+    public void onBinFlagSelected(byte binFlag) {
+        showDialCustomDialog(binFlag);
+    }
 }

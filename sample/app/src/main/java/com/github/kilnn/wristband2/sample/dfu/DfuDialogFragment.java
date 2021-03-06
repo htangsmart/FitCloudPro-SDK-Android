@@ -12,14 +12,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.kilnn.wristband2.sample.R;
-import com.htsmart.wristband2.dfu.DfuCallback;
-import com.htsmart.wristband2.dfu.DfuManager;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.github.kilnn.wristband2.sample.R;
+import com.htsmart.wristband2.dfu.DfuCallback;
+import com.htsmart.wristband2.dfu.DfuManager;
 
 
 public class DfuDialogFragment extends AppCompatDialogFragment {
@@ -84,7 +84,7 @@ public class DfuDialogFragment extends AppCompatDialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //TODO The example here is used to upgrade the firmware.
         // If you need to upgrade the dial, the parameter is passed false
-        mDfuManager.start(mUri, true);
+        mDfuManager.upgradeFirmware(mUri);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 

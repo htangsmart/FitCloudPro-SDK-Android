@@ -44,7 +44,7 @@
                 android:minHeight="0dp"
                 android:text="@string/dial_custom_set_dial"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/black"/>
 
         </RelativeLayout>
 
