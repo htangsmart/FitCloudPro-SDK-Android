@@ -665,7 +665,7 @@ SleepItemData {
 手环保存最新7天的睡眠数据，每次睡眠数据同步成功后，手环上的睡眠数据将被删除。下次同步的话，只会得到新产生的睡眠数据。
 
 
-#### 6.6.3 心率、血氧、血压、呼吸频率、体温等健康数据
+#### 6.6.3 心率、血氧、血压、呼吸频率、体温，压力等健康数据
 手环会在`#### 6.1.6、HealthyConfig`设定的时间范围内监测用户的身体状态，产生对应的数据，同步数据并解析得到`HeartRateData`,`BloodPressureData`,`OxygenData`,`RespiratoryRateData`,`TemperatureData`等健康数据。
 
 `HeartRateData`表示在某个时间点用户的心率值，如2019-05-29 12:00:00，心跳72次。在监测时间内，心率值一般间隔5分钟左右。
@@ -802,6 +802,9 @@ DialCustom {//此为接口返回数据的自定义类型，你可以使用任意
 7. 表盘图片加载方式
 可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
 
+#### 6.7.5 表盘组件功能
+如果`WristbandVersion#isExtDialComponent()`为true，说明手环支持表盘组件功能。`DialSubBinInfo#getComponents()`包含了组件信息，该数据返回为一个byte数组，长度目前为0-4之间，代表手环可配置的组件个数。目前byte数组值在0x00--0x06之间。
+
 
 ### 6.8、其他简单指令
 #### 6.8.1、设置用户信息
@@ -873,5 +876,9 @@ DialCustom {//此为接口返回数据的自定义类型，你可以使用任意
 
 使用`WristbandContacts#create(String,String)`创建手环能识别的联系人对象。
 
-### 6.10、日常设置
+### 6.10、日程设置
 当`WristbandVersion#isExtSchedule()`为true时，可以使用`WristbandManager#setScheduleList`和`WristbandManager#requestScheduleList`设置和获取日程。用法基本和`WristbandAlarm`一样。
+
+可以使用`WristbandManager#setAllowWristbandChangeSchedule(boolean allow)`设置允许手环自己设置日程
+
+当手环自己改变日程时，使用`WristbandManager#observerWristbandMessage()`监听`WristbandManager#MSG_CHANGE_SCHEDULE`消息

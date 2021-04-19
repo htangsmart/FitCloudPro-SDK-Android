@@ -1,3 +1,11 @@
+# 2021-04-19
+## 发布libraryCore_v1.1.2.aar
+1.自定义表盘添加新的LCD类型。
+2.添加压力功能。当`WristbandVersion#isPressureEnabled()`为true时，手环支持压力功能。
+3.添加表盘组件功能。详细参考`6.7.5 表盘组件功能`
+4.添加闹钟和日程改变的消息。`WristbandManager#MSG_CHANGE_ALARM`,`WristbandManager#MSG_CHANGE_SCHEDULE`
+5.添加允许手环设置日程的指令.`WristbandManager#setAllowWristbandChangeSchedule(boolean allow)`
+
 # 2021-03-05
 ## 发布libraryCore_v1.1.1.aar
 1.自定义表盘添加新的LCD类型。

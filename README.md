@@ -675,7 +675,7 @@ The new version of the bracelet will return to sleep data multiple times. You ca
 The bracelet saves the latest 7 days of sleep data, and the sleep data on the bracelet will be deleted each time the sleep data is successfully synchronized. The next time you sync, you will only get the newly generated sleep data.
 
 
-#### 6.6.3 Heart rate, blood oxygen, blood pressure, respiratory rate, TemperatureData
+#### 6.6.3 Heart rate, blood oxygen, blood pressure, respiratory rate, TemperatureData，PressureData
 The bracelet will monitor the user's physical state within the time range set by `#### 6.1.6, HealthyConfig`, generate corresponding data. Synchronize the data and parse the health data such as `HeartRateData`, `BloodPressureData`, `OxygenData`, `RespiratoryRateData`,`TemperatureData`.
 
 `HeartRateData` indicates the user's heart rate value at a certain point in time, such as 2019-05-29 12:00:00, heartbeat 72 times. Heart rate values are generally separated by about 5 minutes during the monitoring period.
@@ -811,6 +811,9 @@ After the generation is successful, you can get the file address of the new dial
 7. How to load dial bitmaps
 You can implement the `DialViewEngine` interface to customize the loading method of the dial bitmap (if your APP has its own bitmap loading framework). And set it by `DialView.setEngine(new MyDialViewEngine());`. This setting will change how the bitmaps are loaded in the `DialView#setStyleSource(Uri)` and `DialView#setBackgroundSource(Uri)` methods.
 
+#### 6.7.5 Dial component function
+If `WristbandVersion#isExtDialComponent()` is true, it means that the bracelet supports the dial component function. `DialSubBinInfo#getComponents()` contains component information, the data is returned as a byte array, the length is currently between 0-4, which represents the number of components that can be configured on the bracelet. The current byte array value is between 0x00--0x06.
+
 ### 6.8、Other simple instructions
 #### 6.8.1、Set user information
 `WristbandManager#setUserInfo(boolean sex, int age, float height, float weight)`。
@@ -884,3 +887,7 @@ Use `WristbandContacts # create (String, String)` to create a contact object tha
 
 ### 6.10、Schedule settings
 When `WristbandVersion#isExtSchedule()` is true, you can use `WristbandManager#setScheduleList` and `WristbandManager#requestScheduleList` to set and get the schedule. The usage is basically the same as that of `WristbandAlarm`.
+
+You can use `WristbandManager#setAllowWristbandChangeSchedule(boolean allow)` to allow the bracelet to set its own schedule。
+
+When the bracelet changes the schedule by itself, use `WristbandManager#observerWristbandMessage()` to monitor the `WristbandManager#MSG_CHANGE_SCHEDULE` message
