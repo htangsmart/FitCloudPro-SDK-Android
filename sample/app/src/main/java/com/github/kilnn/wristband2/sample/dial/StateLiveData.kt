@@ -1,7 +1,10 @@
 package com.github.kilnn.wristband2.sample.dial
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
+/**
+ * 用于LiveData，封装请求过程中的状态。
+ */
 sealed class State<T>(val result: T?) {
     override fun toString(): String {
         return "${javaClass.simpleName}:${result?.toString()}"
@@ -12,7 +15,10 @@ sealed class State<T>(val result: T?) {
     class Success<T>(result: T? = null) : State<T>(result)
 }
 
-class StateLiveData<T> : LiveData<State<T>?>() {
+/**
+ * 扩展LiveData，提供快捷发生State值的方法
+ */
+class StateLiveData<T> : MutableLiveData<State<T>?>() {
     ///////set//////
     fun setLoading(clearData: Boolean = false) {
         value = if (clearData) {

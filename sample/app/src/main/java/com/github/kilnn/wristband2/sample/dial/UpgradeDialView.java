@@ -10,7 +10,9 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.github.kilnn.wristband2.sample.R;
 
-
+/**
+ * 提供进度表展示的简单View
+ */
 public class UpgradeDialView extends AppCompatTextView {
 
     private int mProgress = 100;

@@ -37,6 +37,7 @@ open class DialParamViewModule : ViewModel() {
             jobGetDialParam = viewModelScope.launch {
                 liveDialParam.setLoading()
                 try {
+                    //请求DialParam
                     liveDialParam.setSuccess(taskGetDialParam.execute())
                 } catch (e: Exception) {
                     liveDialParam.setFailed(e)

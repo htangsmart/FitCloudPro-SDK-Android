@@ -2,7 +2,9 @@ package com.github.kilnn.wristband2.sample.dial
 
 import androidx.lifecycle.MediatorLiveData
 
-
+/**
+ * 扩展MediatorStateLiveData，提供快捷发生State值的方法
+ */
 class MediatorStateLiveData<T> : MediatorLiveData<State<T>?>() {
 
     ///////set//////

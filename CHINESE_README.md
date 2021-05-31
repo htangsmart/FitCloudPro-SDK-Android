@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.1.1', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.3', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
@@ -755,26 +755,32 @@ EcgData{
 `DfuManager#upgradeDial(String,byte)`方法有两个参数，第一个参数为bin文件uri，第二个参数为多表盘的支持。如果手环不支持多表盘，传0即可。多表盘功能参考`6.7.3 多表盘升级`
 
 #### 6.7.3 多表盘升级
+
+详细代码参考sample工程`DialLibraryActivity`
+
 当`WristbandVersion#isExtDialMultiple`为true时，代表手环支持多表盘升级。使用`DialBinInfo#getSubBinList()`获取手环上预设置的多个表盘位。
 
 当`DialSubBinInfo#getDialType()`不等于0时，表示此表盘位可以被覆盖。那么在升级表盘时，将需要覆盖的表盘位的`DialSubBinInfo#getBinFlag()`作为`DfuManager#upgradeDial(String,byte)`的第二个参数，以此来进行覆盖某个表盘位的升级。
 
 #### 6.7.4 自定义表盘
+
+详细代码参考sample工程`DialCustomActivity`
+
 1. 确保设备已经连接`WristbandManager#isConnected()`,并且支持表盘升级`WristbandVersion#isExtDialUpgrade()`.
 
 2. 使用`WristbandManager#requestDialBinInfo()`获取设备表盘信息`DialBinInfo`
 
-3. 使用`DialBinInfo`中lcd和toolVersion向服务器请求支持的表盘样式列表`DialCustom`，并根据本地支持的表盘样式进行筛选。
-DialCustom {//此为接口返回数据的自定义类型，你可以使用任意的解析方式和类名。
-    String binUrl;//下载地址
-    String styleName;//样式名。
-}
+3. 使用`DialBinInfo`中lcd和toolVersion向服务器请求支持的表盘样式。
 
-详细流程可以参考sample工程中`DialCustomActivity#refresh()`方法。
+根据`WristbandVersion#isExtGUI`判断是旧协议表盘还是GUI新协议表盘。
 
-目前服务器一般支持5种样式:"White","Black","Yellow","Green","Gray"，每种样式对应的图片可以从sample工程中res/drawable-nodpi目录中获取。
+如果是旧表盘，向服务器请求支持的表盘样式列表`DialCustom`，并根据本地支持的表盘样式进行筛选。目前服务器一般支持5种样式:"White","Black","Yellow","Green","Gray"，每种样式对应的图片可以从sample工程中res/drawable-nodpi目录中获取。
 
-4. 第3步成功获取到样式列表数据`List<DialCustom>`，并且使用`DialDrawer.Shape.createFromLcd()`成功创建表盘外形`DialDrawer.Shape`，就可以开始创建表盘。
+如果是新表盘，向服务器请求对应的自定义表盘信息`DialInfoComplex`。
+
+详细流程可以参考sample工程中`TaskGetDialCustomCompat`处理新旧表盘的兼容处理。
+
+4. 第3步成功获取到样式列表数据，并且使用`DialDrawer.Shape.createFromLcd()`成功创建表盘外形`DialDrawer.Shape`，就可以开始创建表盘。
 
 5. 创建表盘。
 使用`DialCustom#binUrl`下载原始表盘。
@@ -784,7 +790,7 @@ DialCustom {//此为接口返回数据的自定义类型，你可以使用任意
 生成成功后，可以得到生成后新表盘的文件地址，使用此文件，就可以进行正常的表盘升级操作。
 
 6. 表盘的展示，可以使用`DialView`。
-`setStyleSource(Uri)`和`setStyleBitmap(Bitmap)`用于设置样式图片，`clearStyleBitmap()`用于清除样式图片。
+`setStyleSource(Uri,int)`和`setStyleBitmap(Bitmap,int)`用于设置样式图片，`clearStyleBitmap()`用于清除样式图片。
 
 `setBackgroundSource(Uri)`和`setBackgroundBitmap(Bitmap)`用于设置背景图片，`clearBackgroundBitmap()`用于清除背景图片。
 
@@ -800,11 +806,12 @@ DialCustom {//此为接口返回数据的自定义类型，你可以使用任意
 。
 
 7. 表盘图片加载方式
-可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
+可以实现`DialViewEngine`接口，自定义表盘图片的加载方式（如果你的APP有自己的图片加载框架的话）。并通过`DialView.setEngine(new MyDialViewEngine());`设置。此设置将改变`DialView#setStyleSource(Uri,int)`和`DialView#setBackgroundSource(Uri)`方法中图片的加载方式。
 
 #### 6.7.5 表盘组件功能
-如果`WristbandVersion#isExtDialComponent()`为true，说明手环支持表盘组件功能。`DialSubBinInfo#getComponents()`包含了组件信息，该数据返回为一个byte数组，长度目前为0-4之间，代表手环可配置的组件个数。目前byte数组值在0x00--0x06之间。
+如果`WristbandVersion#isExtDialComponent()`为true，说明手环支持表盘组件功能。`DialSubBinInfo#getComponents()`包含了组件信息。
 
+详细代码参考sample工程`DialComponentActivity`
 
 ### 6.8、其他简单指令
 #### 6.8.1、设置用户信息

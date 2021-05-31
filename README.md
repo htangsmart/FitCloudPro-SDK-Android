@@ -764,26 +764,32 @@ After obtaining the bin file of the dial, use `DfuManager#upgradeDial(String,byt
 The `DfuManager#upgradeDial(String,byte)` method has two parameters, the first parameter is the bin file uri, and the second parameter is the support of multiple dials. If the bracelet does not support multiple dials, just pass 0. Multi-dial upgrade function refer to `6.7.3 Multi-dial upgrade`
 
 #### 6.7.3 Multi-dial upgrade
+
+For detailed code refer to sample project `DialLibraryActivity`
+
 When `WristbandVersion#isExtDialMultiple` is true, it means that the bracelet supports multiple dial upgrades. Use `DialBinInfo#getSubBinList()` to get multiple dials preset on the bracelet.
 
 When `DialSubBinInfo#getDialType()` is not equal to 0, it means that the dial can be overwritten. Then, when upgrading the dial, use `DialSubBinInfo#getBinFlag()` of the dial you want to be overwritten as the second parameter of `DfuManager#upgradeDial(String,byte)`.
 
 #### 6.7.4 Custom dial
+
+For detailed code refer to sample project `DialCustomActivity`
+
 1. Make sure that the device is connected `WristbandManager#isConnected()` and supports dial upgrade `WristbandVersion#isExtDialUpgrade()`.
 
 2. Use `WristbandManager#requestDialBinInfo()` to get device dial information `DialBinInfo`
 
-3. Use the `lcd` and `toolVersion` in `DialBinInfo` to request the list of `DialCustom` supported by the server , and filter according to the locally supported dial styles.
-DialCustom {//This is a custom type of data returned by the server. You can use any resolution method and class name.
-    String binUrl;//Download address
-    String styleName;//Style name.
-}
+3. Use the lcd and toolVersion in `DialBinInfo` to request the supported dial style from the server.
 
-For the detailed process, please refer to the `DialCustomActivity#refresh()` method in the sample project.
+According to `WristbandVersion#isExtGUI`, it is judged whether it is the old protocol dial or the GUI new protocol dial.
 
-At present, the server generally supports 5 styles: "White", "Black", "Yellow", "Green", "Gray". The pictures corresponding to each style can be obtained from the res/drawable-nodpi directory in the sample project.
+If it is an old watch face, request a list of dial styles supported by the server `DialCustom`, and filter according to the locally supported dial styles. Currently, the server generally supports 5 styles: "White", "Black", "Yellow", "Green", and "Gray". The pictures corresponding to each style can be obtained from the res/drawable-nodpi directory in the sample project.
 
-4. The third step is to successfully obtain the style list data `List<DialCustom>`, and use `DialDrawer.Shape.createFromLcd()` to successfully create the dial shape `DialDrawer.Shape`, and than you can start to create the dial.
+If it is a new dial, request the corresponding custom dial information `DialInfoComplex` from the server.
+
+For the detailed process, please refer to `TaskGetDialCustomCompat` in the sample project to handle the compatibility of the old and new dials.
+
+4. The third step is to successfully obtain the style list data, and use the `DialDrawer.Shape.createFromLcd()` to successfully create the dial shape `DialDrawer.Shape`, then you can start to create the dial.
 
 5. Create the watch face.
 Use `DialCustom#binUrl` to download the original dial bin.
@@ -793,7 +799,7 @@ Use `DialWriter` to generate dial files.
 After the generation is successful, you can get the file address of the new dial after generation, and use this file to perform normal dial upgrade operations.
 
 6. To display the dial, you can use `DialView`.
-`setStyleSource(Uri)` and `setStyleBitmap(Bitmap)` are used to set the style picture, and `clearStyleBitmap()` is used to clear the style picture.
+`setStyleSource(Uri,int)` and `setStyleBitmap(Bitmap)` are used to set the style picture, and `clearStyleBitmap()` is used to clear the style picture.
 
 `setBackgroundSource(Uri)` and `setBackgroundBitmap(Bitmap)` are used to set the background image, and `clearBackgroundBitmap()` is used to clear the background image.
 
@@ -809,10 +815,12 @@ After the generation is successful, you can get the file address of the new dial
 .
 
 7. How to load dial bitmaps
-You can implement the `DialViewEngine` interface to customize the loading method of the dial bitmap (if your APP has its own bitmap loading framework). And set it by `DialView.setEngine(new MyDialViewEngine());`. This setting will change how the bitmaps are loaded in the `DialView#setStyleSource(Uri)` and `DialView#setBackgroundSource(Uri)` methods.
+You can implement the `DialViewEngine` interface to customize the loading method of the dial bitmap (if your APP has its own bitmap loading framework). And set it by `DialView.setEngine(new MyDialViewEngine());`. This setting will change how the bitmaps are loaded in the `DialView#setStyleSource(Uri,int)` and `DialView#setBackgroundSource(Uri)` methods.
 
 #### 6.7.5 Dial component function
-If `WristbandVersion#isExtDialComponent()` is true, it means that the bracelet supports the dial component function. `DialSubBinInfo#getComponents()` contains component information, the data is returned as a byte array, the length is currently between 0-4, which represents the number of components that can be configured on the bracelet. The current byte array value is between 0x00--0x06.
+If `WristbandVersion#isExtDialComponent()` is true, it means that the bracelet supports the dial component function. `DialSubBinInfo#getComponents()` contains component information.
+
+For detailed code refer to sample project `DialComponentActivity`
 
 ### 6.8、Other simple instructions
 #### 6.8.1、Set user information

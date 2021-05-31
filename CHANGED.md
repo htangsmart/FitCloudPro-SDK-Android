@@ -1,3 +1,13 @@
+# 2021-05-31
+## 发布libraryCore_v1.1.3.aar
+1.ConnectionError添加尝试连接次数等额外的信息
+
+2.多表盘协议更改，现在多表盘的信息在DialComponent中
+
+3.DialBinInfo添加dialPosition字段，代表当前表盘在多表盘的位置。
+
+4.增加对GUI格式的表盘和自定义表盘的支持
+
 # 2021-04-19
 ## 发布libraryCore_v1.1.2.aar
 1.自定义表盘添加新的LCD类型。
