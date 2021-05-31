@@ -1,7 +1,8 @@
 package com.github.kilnn.wristband2.sample.net;
 
-import com.github.kilnn.wristband2.sample.dial.custom.bean.DialCustom;
-import com.github.kilnn.wristband2.sample.dial.custom.bean.DialInfo;
+import com.github.kilnn.wristband2.sample.dial.entity.DialCustom;
+import com.github.kilnn.wristband2.sample.dial.entity.DialInfo;
+import com.github.kilnn.wristband2.sample.dial.entity.DialInfoComplex;
 import com.github.kilnn.wristband2.sample.net.result.ListResult;
 
 import io.reactivex.Flowable;
@@ -16,8 +17,24 @@ import retrofit2.http.POST;
  */
 interface GlobalApiService {
 
-    String URL_DIAL_CUSTOM = "/public/dial/custom";//获取自定义表盘列表
+    String URL_DIAL_LIST = "/public/dial/list";//查询符合的表盘列表
     String URL_DIAL_GET = "/public/dial/get";//查询符合的表盘列表
+    String URL_DIAL_CUSTOM = "/public/dial/custom";//获取自定义表盘列表
+    String URL_DIAL_CUSTOM_GUI = "/public/dial/customgui";//获取GUI自定义表盘列表
+
+    @POST(URL_DIAL_LIST)
+    @FormUrlEncoded
+    Flowable<ListResult<DialInfo>> getDialList(
+            @Field("hardwareInfo") String hardwareInfo,
+            @Field("lcd") int lcd,
+            @Field("toolVersion") String toolVersion
+    );
+
+    @POST(URL_DIAL_GET)
+    @FormUrlEncoded
+    Flowable<ListResult<DialInfoComplex>> getDialListByNumbers(
+            @Field("data") String data
+    );
 
     @POST(URL_DIAL_CUSTOM)
     @FormUrlEncoded
@@ -26,9 +43,10 @@ interface GlobalApiService {
             @Field("toolVersion") String toolVersion
     );
 
-    @POST(URL_DIAL_GET)
+    @POST(URL_DIAL_CUSTOM_GUI)
     @FormUrlEncoded
-    Flowable<ListResult<DialInfo>> getDialListByNumbers(
-            @Field("data") String data
+    Flowable<ListResult<DialInfoComplex>> getDialCustomGUI(
+            @Field("lcd") int lcd,
+            @Field("toolVersion") String toolVersion
     );
 }

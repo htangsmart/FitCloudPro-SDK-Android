@@ -69,7 +69,13 @@
 
         <activity android:name=".dfu.DfuActivity"/>
 
+        <activity
+            android:name=".dial.library.DialLibraryActivity"
+            android:theme="@style/AppThemeNoActionBar"/>
+
         <activity android:name=".dial.custom.DialCustomActivity"/>
+        <activity android:name=".dial.component.DialComponentActivity"/>
+        <activity android:name=".dial.component.DialComponentEditActivity"/>
 
         <!-- FileProvider -->
         <provider

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="1dp"
+    app:contentPadding="2dp"
+    tools:viewBindingIgnore="true">
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="end|top"
+        android:src="@drawable/ic_dial_custom_edit"/>
+
+    <com.htsmart.wristband2.dial.DialView
+        android:id="@+id/dial_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:scaleType="fitCenter"
+        app:dv_background_src="@drawable/dial_default_bg"
+        app:dv_check_enabled="false"
+        app:dv_scale_type="center_crop"
+        app:dv_style_position="bottom"
+        app:dv_style_src="@drawable/dial_style1"/>
+
+</androidx.cardview.widget.CardView>

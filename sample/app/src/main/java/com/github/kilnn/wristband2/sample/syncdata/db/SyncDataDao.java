@@ -4,7 +4,7 @@ import com.github.kilnn.wristband2.sample.MyApplication;
 import com.github.kilnn.wristband2.sample.mock.DbMock;
 import com.github.kilnn.wristband2.sample.syncdata.db.converter.DateConverter;
 import com.github.kilnn.wristband2.sample.syncdata.db.converter.TimeConverter;
-import com.github.kilnn.wristband2.sample.util.Utils;
+import com.github.kilnn.wristband2.sample.utils.Utils;
 import com.htsmart.wristband2.bean.data.BloodPressureData;
 import com.htsmart.wristband2.bean.data.EcgData;
 import com.htsmart.wristband2.bean.data.HeartRateData;

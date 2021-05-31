@@ -12,10 +12,12 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import com.github.kilnn.wristband2.sample.R;
 import com.github.kilnn.wristband2.sample.syncdata.db.SleepItem;
 import com.github.kilnn.wristband2.sample.syncdata.db.SleepRecord;
-import com.github.kilnn.wristband2.sample.util.Utils;
+import com.github.kilnn.wristband2.sample.utils.DisplayUtil;
 import com.htsmart.wristband2.bean.data.SleepItemData;
 
 import java.text.SimpleDateFormat;
@@ -25,8 +27,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import androidx.annotation.NonNull;
 
 import static com.htsmart.wristband2.bean.data.SleepItemData.SLEEP_STATUS_SOBER;
 
@@ -384,7 +384,7 @@ public class SleepDayView extends View {
             mPaintLarge.setAntiAlias(true);
             mPaintLarge.setDither(true);
             mPaintLarge.setColor(Color.BLACK);
-            mPaintLarge.setTextSize(Utils.sp2px(getContext(), 12));
+            mPaintLarge.setTextSize(DisplayUtil.sp2px(getContext(), 12));
             mLargeTextWidth = (int) mPaintLarge.measureText("00:00");
             mTextHeight = (int) (-mPaintLarge.getFontMetrics().ascent);
 
@@ -392,7 +392,7 @@ public class SleepDayView extends View {
             mPaintSmall.setAntiAlias(true);
             mPaintSmall.setDither(true);
             mPaintSmall.setColor(Color.BLACK);
-            mPaintSmall.setTextSize(Utils.sp2px(getContext(), 10));
+            mPaintSmall.setTextSize(DisplayUtil.sp2px(getContext(), 10));
             mSmallTextWidth = (int) mPaintSmall.measureText("00:00-00:00");
             //            mSmallTextHeight = (int) (mPaintSmall.getFontMetrics().descent - mPaintSmall.getFontMetrics().ascent);
 

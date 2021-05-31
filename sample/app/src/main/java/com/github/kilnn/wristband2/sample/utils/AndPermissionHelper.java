@@ -87,6 +87,48 @@ public class AndPermissionHelper {
                 .start();
     }
 
+    public static void fileAndLocationRequest(AppCompatActivity activity, AndPermissionHelperListener1 listener1) {
+        String[] permissions = new String[]{
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+
+                //LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        };
+        HashMap<String, Integer> rationales = new HashMap<>(2);
+        rationales.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, R.string.permission_dialog_rationale_storage);
+        rationales.put(Manifest.permission.ACCESS_FINE_LOCATION, R.string.permission_dialog_rationale_location);
+
+        AndPermissionRequest
+                .with(activity)
+                .permission(permissions)
+                .rationales(rationales)
+                .listener1(listener1)
+                .start();
+    }
+
+    public static void fileAndLocationRequest(Fragment fragment, AndPermissionHelperListener1 listener1) {
+        String[] permissions = new String[]{
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+
+                //LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        };
+        HashMap<String, Integer> rationales = new HashMap<>(2);
+        rationales.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, R.string.permission_dialog_rationale_storage);
+        rationales.put(Manifest.permission.ACCESS_FINE_LOCATION, R.string.permission_dialog_rationale_location);
+
+        AndPermissionRequest
+                .with(fragment)
+                .permission(permissions)
+                .rationales(rationales)
+                .listener1(listener1)
+                .start();
+    }
+
     public interface AndPermissionHelperListener1 {
         void onSuccess();
     }

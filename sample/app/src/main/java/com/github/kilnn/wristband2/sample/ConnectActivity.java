@@ -12,11 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
 import com.github.kilnn.wristband2.sample.activemsg.ActiveMsgActivity;
 import com.github.kilnn.wristband2.sample.alarm.AlarmListActivity;
 import com.github.kilnn.wristband2.sample.configs.ConfigsActivity;
 import com.github.kilnn.wristband2.sample.dfu.DfuActivity;
-import com.github.kilnn.wristband2.sample.dial.custom.DialCustomActivity;
+import com.github.kilnn.wristband2.sample.dial.component.DialComponentActivity;
+import com.github.kilnn.wristband2.sample.dial.library.DialLibraryActivity;
 import com.github.kilnn.wristband2.sample.mock.DbMock;
 import com.github.kilnn.wristband2.sample.mock.User;
 import com.github.kilnn.wristband2.sample.mock.UserMock;
@@ -29,8 +33,6 @@ import com.htsmart.wristband2.bean.ConnectionError;
 import com.htsmart.wristband2.bean.ConnectionState;
 import com.htsmart.wristband2.bean.WristbandNotification;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
@@ -257,10 +259,16 @@ public class ConnectActivity extends BaseActivity {
     }
 
     /**
-     * 9.Custom Dial
+     * 9.Dial library
      */
-    public void custom_dial(View view) {
-        startActivity(new Intent(this, DialCustomActivity.class));
+    public void dial_library(View view) {
+        startActivity(new Intent(this, DialLibraryActivity.class));
     }
 
+    /**
+     * 10.Dial component
+     */
+    public void dial_component(View view) {
+        startActivity(new Intent(this, DialComponentActivity.class));
+    }
 }

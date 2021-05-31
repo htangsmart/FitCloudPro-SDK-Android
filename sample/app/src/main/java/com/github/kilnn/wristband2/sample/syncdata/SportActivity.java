@@ -13,7 +13,7 @@ import com.github.kilnn.wristband2.sample.R;
 import com.github.kilnn.wristband2.sample.syncdata.db.SportHeartRate;
 import com.github.kilnn.wristband2.sample.syncdata.db.SportRecord;
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
-import com.github.kilnn.wristband2.sample.util.Utils;
+import com.github.kilnn.wristband2.sample.utils.Utils;
 import com.htsmart.wristband2.bean.data.SportData;
 
 import java.text.SimpleDateFormat;

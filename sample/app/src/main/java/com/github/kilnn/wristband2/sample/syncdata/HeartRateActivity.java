@@ -13,7 +13,7 @@ import com.github.kilnn.wristband2.sample.MyApplication;
 import com.github.kilnn.wristband2.sample.R;
 import com.github.kilnn.wristband2.sample.syncdata.db.HeartRateItem;
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
-import com.github.kilnn.wristband2.sample.util.Utils;
+import com.github.kilnn.wristband2.sample.utils.Utils;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;

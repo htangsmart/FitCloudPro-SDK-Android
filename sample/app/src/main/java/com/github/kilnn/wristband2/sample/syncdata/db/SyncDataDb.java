@@ -3,6 +3,9 @@ package com.github.kilnn.wristband2.sample.syncdata.db;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
+import com.github.kilnn.wristband2.sample.dial.entity.DialInfo;
+import com.github.kilnn.wristband2.sample.dial.entity.DialInfoDao;
+
 @Database(entities = {
         StepItem.class,
         SleepRecord.class,
@@ -12,9 +15,12 @@ import androidx.room.RoomDatabase;
         RespiratoryRateItem.class,
         EcgRecord.class,
         SportRecord.class,
-}, version = 1)
+        DialInfo.class,
+}, version = 2)
 public abstract class SyncDataDb extends RoomDatabase {
 
     public abstract SyncDataDao dao();
+
+    public abstract DialInfoDao dialInfoDao();
 
 }

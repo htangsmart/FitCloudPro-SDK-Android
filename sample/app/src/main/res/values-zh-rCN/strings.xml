@@ -56,7 +56,8 @@
     <string name="op6">6.同步数据</string>
     <string name="op7">7.DFU</string>
     <string name="op8">8.简单指令</string>
-    <string name="op9">9.自定义表盘</string>
+    <string name="op9">9.表盘库</string>
+    <string name="op10">10.表盘组件</string>
 
     <string name="configs_version_info">1.手环版本信息</string>
     <string name="configs_notification">2.通知配置</string>
@@ -234,8 +235,30 @@
     <string name="view_step_data">查看步数数据</string>
     <string name="view_step_data_total_step">总步数:<xliff:g id="params1">%1$d</xliff:g></string>
 
-    <string name="dial_custom_title">自定义表盘</string>
-    <string name="dial_custom_set_dial">设置表盘</string>
+    <string name="err_network">网络异常</string>
+    <string name="err_data">数据异常</string>
+    <string name="err_unknown">未知异常</string>
+    <string name="feature_location_request_for_ble_scan">蓝牙扫描需要开启定位功能才能正常使用，是否开启？</string>
+    <string name="tip_please_wait">请稍后…</string>
+    <string name="tip_save_success">保存成功</string>
+    <string name="sync_data_ongoing">正在同步</string>
+    <string name="err_ble_time_out">指令超时</string>
+    <string name="err_ble_format">指令错误</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_completed">完成</string>
+    <string name="tip_current_no_data">暂无数据</string>
+
+    <string name="ds_dial_center">表盘中心</string>
+    <string name="ds_dial_mine">我的表盘</string>
+    <string name="ds_dial_sync">同步表盘</string>
+    <string name="ds_dial_downloading">下载中…</string>
+    <string name="ds_dial_syncing">同步中&#8230;</string>
+    <string name="ds_dial_sync_success">同步成功</string>
+
+    <string name="ds_dial_custom">自定义表盘</string>
+    <string name="ds_dial_set_dial">设为表盘</string>
+    <string name="version_download_failed_check_sd_card">下载失败，请确保您的SD卡正确安装并有足够的空间</string>
+    <string name="version_download_failed">下载失败</string>
     <string name="ds_dial_error_none_shape">暂不支持此手环升级，请尝试升级至最新版本</string>
     <string name="ds_dial_error_none_style">暂不支持此手环升级</string>
     <string name="photo_select_failed">选择失败</string>
@@ -247,8 +270,10 @@
     <string name="ds_dial_position">位置</string>
     <string name="ds_dial_create">正在生成表盘</string>
     <string name="ds_dial_create_failed">生成失败</string>
-    <string name="ds_dial_syncing">同步中…</string>
-    <string name="ds_dial_sync_success">同步成功</string>
-
     <string name="dial_select_replace">选择替换的表盘</string>
+    <string name="ds_dial_img_over_tips">最多添加5张图片</string>
+
+    <string name="ds_dial_component_title">表盘组件</string>
+    <string name="ds_dial_component_edit">编辑组件</string>
+    <string name="ds_dial_component">组件<xliff:g id="params1">%1$d</xliff:g></string>
 </resources>

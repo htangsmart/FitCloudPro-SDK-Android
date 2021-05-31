@@ -56,7 +56,8 @@
     <string name="op6">6.Sync data</string>
     <string name="op7">7.DFU</string>
     <string name="op8">8.Simple Command</string>
-    <string name="op9">9.Custom Dial</string>
+    <string name="op9">9.Dial Library</string>
+    <string name="op10">10.Dial Component</string>
 
     <string name="configs_version_info">1.Wristband Version Info</string>
     <string name="configs_notification">2.Notification Config</string>
@@ -234,8 +235,30 @@
     <string name="view_step_data">View Step Data</string>
     <string name="view_step_data_total_step">Total Step:<xliff:g id="params1">%1$d</xliff:g></string>
 
-    <string name="dial_custom_title">Custom Dial</string>
-    <string name="dial_custom_set_dial">Set as watch face</string>
+    <string name="err_network">Error network</string>
+    <string name="err_data">Error data</string>
+    <string name="err_unknown">Error Unknown</string>
+    <string name="feature_location_request_for_ble_scan">蓝牙扫描需要开启定位功能才能正常使用，是否开启？</string>
+    <string name="tip_please_wait">Please wait&#8230;</string>
+    <string name="tip_save_success">Save success</string>
+    <string name="sync_data_ongoing">Syncing data</string>
+    <string name="err_ble_time_out">Instruction timeout</string>
+    <string name="err_ble_format">Instruction error</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_completed">Done</string>
+    <string name="tip_current_no_data">No data</string>
+
+    <string name="ds_dial_center">Dial Center</string>
+    <string name="ds_dial_mine">My Dial</string>
+    <string name="ds_dial_sync">Sync Dial</string>
+    <string name="ds_dial_downloading">Downloading&#8230;</string>
+    <string name="ds_dial_syncing">Synchronizing&#8230;</string>
+    <string name="ds_dial_sync_success">Successful synchronization</string>
+
+    <string name="ds_dial_custom">Dial custom</string>
+    <string name="ds_dial_set_dial">Set as watch face</string>
+    <string name="version_download_failed_check_sd_card">Download failed. Make sure that your SD card is installed properly and has enough space.</string>
+    <string name="version_download_failed">Download failed</string>
     <string name="ds_dial_error_none_shape">You need to upgrade the current firmware before synchronizing the watchface.</string>
     <string name="ds_dial_error_none_style">This bracelet is currently not supported for upgrade</string>
     <string name="photo_select_failed">Choose failed</string>
@@ -247,8 +270,10 @@
     <string name="ds_dial_position">Position</string>
     <string name="ds_dial_create">Dial is being generated</string>
     <string name="ds_dial_create_failed">Build failed</string>
-    <string name="ds_dial_syncing">Synchronizing&#8230;</string>
-    <string name="ds_dial_sync_success">Successful synchronization</string>
-
     <string name="dial_select_replace">Select the dial to be replaced</string>
+    <string name="ds_dial_img_over_tips">Add up to 5 pictures</string>
+
+    <string name="ds_dial_component_title">Dial Component</string>
+    <string name="ds_dial_component_edit">Edit Component</string>
+    <string name="ds_dial_component">Component<xliff:g id="params1">%1$d</xliff:g></string>
 </resources>

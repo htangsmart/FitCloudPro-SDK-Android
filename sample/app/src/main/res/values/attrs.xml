@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="DotView">
+        <attr name="dot_color" format="color|reference"/>
+        <attr name="dot_size" format="dimension"/>
+    </declare-styleable>
+
     <declare-styleable name="SectionItem">
         <!--Item的类型-->
         <attr name="sectionItemType">

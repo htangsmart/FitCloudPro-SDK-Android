@@ -2,10 +2,11 @@ package com.github.kilnn.wristband2.sample.syncdata;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.github.kilnn.wristband2.sample.BaseActivity;
 import com.github.kilnn.wristband2.sample.MyApplication;
@@ -14,7 +15,7 @@ import com.github.kilnn.wristband2.sample.mock.AppFakeDataProvider;
 import com.github.kilnn.wristband2.sample.mock.User;
 import com.github.kilnn.wristband2.sample.mock.UserMock;
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
-import com.github.kilnn.wristband2.sample.util.Utils;
+import com.github.kilnn.wristband2.sample.utils.Utils;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.SyncDataRaw;

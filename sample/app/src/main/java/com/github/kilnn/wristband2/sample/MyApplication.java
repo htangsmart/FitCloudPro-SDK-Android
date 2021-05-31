@@ -2,11 +2,14 @@ package com.github.kilnn.wristband2.sample;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.room.Room;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+
 import com.github.kilnn.wristband2.sample.net.GlobalApiClient;
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDb;
 import com.htsmart.wristband2.WristbandApplication;
-
-import androidx.room.Room;
 
 public class MyApplication extends Application {
 
@@ -23,10 +26,19 @@ public class MyApplication extends Application {
         sInstance = this;
         sSyncDataDb = Room
                 .databaseBuilder(this, SyncDataDb.class, "SyncDataDb")
+                .addMigrations(MIGRATION_1_2)
                 .allowMainThreadQueries()
                 .build();
         sApiClient = new GlobalApiClient(this);
     }
+
+    private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `DialInfo` (`projectNum` TEXT NOT NULL, `lcd` INTEGER NOT NULL, `toolVersion` TEXT, `dialNum` INTEGER NOT NULL, `binVersion` INTEGER NOT NULL, `imgUrl` TEXT, `deviceImgUrl` TEXT, `binUrl` TEXT, `name` TEXT, `downloadCount` INTEGER NOT NULL, PRIMARY KEY(`projectNum`, `dialNum`))");
+        }
+    };
 
     public static MyApplication getInstance() {
         return sInstance;

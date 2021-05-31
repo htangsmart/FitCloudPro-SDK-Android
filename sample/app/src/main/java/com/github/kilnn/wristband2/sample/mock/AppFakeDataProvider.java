@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.github.kilnn.wristband2.sample.util.Utils;
+import com.github.kilnn.wristband2.sample.utils.Utils;
 import com.htsmart.wristband2.bean.data.EcgData;
 import com.htsmart.wristband2.bean.data.HeartRateData;
 import com.htsmart.wristband2.bean.data.SleepData;
