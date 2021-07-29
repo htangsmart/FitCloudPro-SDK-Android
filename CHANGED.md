@@ -1,4 +1,37 @@
 # 2021-05-31
+## 发布libraryCore_v1.1.4.aar
+1.添加表盘空间大小(单位kb)，限制该表盘位置能升级的表盘文件大小。见DialSubBinInfo#getDialSpace()
+
+2.自定义表盘添加设置自定义编号功能，见DialWriter#setCustomDialNum(int)
+
+3.新增多种表盘尺寸，见DialDrawer#Shape
+
+4.添加Nordic芯片的OTA支持. WristbandVersion#isPlatformNordicEnabled()为true代表是Nordic芯片
+如果是Nordic芯片，需要在Manifest添加服务：
+```
+<service android:name="com.htsmart.wristband2.dfu.DfuNordicService"/>
+```
+需要在build.gradle添加依赖:
+```
+implementation 'no.nordicsemi.android:dfu:1.10.3'
+```
+
+5.添加游戏记录和皮肤的功能. 详细参考开发文档参考`6.6.7 游戏记录`
+
+6.添加AppleMusic，Zoom，TikTok，未接来电消息通知，WristbandVersion#isExtAncsAppleMusicZoomTikTokTelephoneMissed()为true时，才支持这几个新增的消息通知。详细参考NotificationConfig，WristbandNotification等
+
+7.添加设置静音的手环消息，APP收到此消息设置手机为静音模式。只针对部分电话手环，普通手环不需要处理。参考WristbandManager#MSG_SET_SILENT_MODE
+
+8.可以针对某一些特殊蓝牙名添加额外的日志，每次重连时必定扫描判断手环是否在附近，每次重连时会额外打印系统已配对设备和已连接设备。使用WristbandApplication.setTestDeviceNameRegex(String)设置一个正则表达式来匹配蓝牙名。
+
+9.添加静默升级标志位，现在使用DfuManager.upgradeFirmware(String uri, WristbandVersion.isUpgradeFirmwareSilent())来升级固件
+
+10.添加新的运动类型，参考SportData
+
+## 发布libraryDfu_v1.0.4.aar
+1.升级为最新的原厂OTA库
+
+# 2021-05-31
 ## 发布libraryCore_v1.1.3.aar
 1.ConnectionError添加尝试连接次数等额外的信息
 

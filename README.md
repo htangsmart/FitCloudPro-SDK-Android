@@ -33,6 +33,8 @@ dependencies {
     implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
     
     ...
+    //Optional. If your app need dfu function and is Nordic chip
+    implementation 'no.nordicsemi.android:dfu:1.10.3'
 }
 
 ```
@@ -40,6 +42,7 @@ dependencies {
 ## 2. Permission Settings
 
 ```
+<application>
 <!--In most cases, you need to ensure that the device supports BLE.-->
 <uses-feature
     android:name="android.hardware.bluetooth_le"
@@ -54,6 +57,11 @@ dependencies {
 
 <!--Optional. If your app need dfu function.-->
 <uses-permission android:name="android.permission.INTERNET"/>
+
+<!--Optional. If your app need dfu function and is Nordic chip-->
+<service android:name="com.htsmart.wristband2.dfu.DfuNordicService"/>
+
+</application>
 ```
 
 ## 3. Initialization
@@ -344,8 +352,11 @@ MSG_MEDIA_NEXT
 MSG_MEDIA_PREVIOUS
 MSG_MEDIA_VOLUME_UP
 MSG_MEDIA_VOLUME_DOWN   
+MSG_MEDIA_SET_SILENT_MODE
 
 MSG_CHANGE_CONFIG_ITSELF
+MSG_CHANGE_ALARM
+MSG_CHANGE_SCHEDULE
 ```
 #### 6.4.1、MSG_WEATHER
 This message is used for the bracelet to request weather. The current bracelet does not have this feature. The APP needs to send the weather to the bracelet at the right time, such as when the bracelet is connected, and when the weather information is sent, the weather information is sent to the bracelet.
@@ -382,8 +393,17 @@ This message is used to control the APP to increase the volume.
 #### 6.4.11、MSG_MEDIA_VOLUME_DOWN
 This message is used to control the APP to reduce the volume.
 
-#### 6.4.12, MSG_CHANGE_CONFIG_ITSELF
+#### 6.4.12、MSG_MEDIA_SET_SILENT_MODE
+Set the silent bracelet message, the APP receives this message and sets the phone to silent mode. Only for some phone wristbands, ordinary wristbands do not need to be processed
+
+#### 6.4.13, MSG_CHANGE_CONFIG_ITSELF
 If `WristbandVersion#isExtChangeConfigItself()` is true, it means that the bracelet can change some configurations by itself. When the bracelet changes the configuration, it will actively send this message.
+
+#### 6.4.14, MSG_CHANGE_ALARM
+The bracelet itself has changed the alarm setting
+
+#### 6.4.15, MSG_CHANGE_SCHEDULE
+The bracelet itself has changed the schedule setting
 
 ### 6.5、Real-time data measurement
 
@@ -743,6 +763,43 @@ EcgData{
 
 Only the last measured ECG value is saved on the wristband. After each ECG data synchronization is successful, the ECG data on the wristband will be deleted. The next time you synchronize, you will only get the newly generated ECG data.
 
+#### 6.6.7 Game Record
+##### 6.6.7.1 Flag bit
+`WristbandVersion#isGameEnabled` means to support game recording
+`WristbandVersion#isExtGameSkin` represents support for game skins
+
+##### 6.6.7.2 Game record
+Use `WristbandManager#requestSupportGameTypes` to get the supported game types, the returned int array, each int value represents a game type, defined in `GameData.GameType`
+
+Use `WristbandManager#requestHighestGameRecords` to get the top three game records. The data content refers to the definition of `GameData` entity.
+
+##### 6.6.7.3 Synchronization of game records
+In the data returned by syncData, determine that the type is equal to `SyncDataParser#TYPE_GAME`, and then use `SyncDataParser#parserGameData` to parse out the GameData List.
+
+```
+GameData{
+    private int type;//game type
+    private int duration;//Duration
+    private int score;//score
+    private int level;//level level
+    private long timeStamp;//time
+}
+```
+
+##### 6.6.7.3 Game skin
+`WristbandManager#requestGameSkins` Get the current game skin. The data content refers to the definition of GameSkin.
+
+Use `DfuManager#upgradeGameSkin(String uri, byte binFlag)`. This binFlag is the binFlag in `GameSkin`.
+
+```
+GameSkin{
+    private int gameType;//Game type
+    private int skinNumber;//Skin number
+    private int skinSpace;//Skin space size, limit the file size of the upgraded skin
+    private byte binFlag;//binFlag for DfuManager#upgradeGameSkin
+}
+```
+
 ### 6.7、DFU upgrade
 
 Use `DfuManager` to upgrade firmware or dial.
@@ -752,7 +809,7 @@ The function is more complicated. If you use the wrong file to upgrade, it may m
 #### 6.7.1 Firmware upgrade 
 `WristbandVersion#getProject()` represents a unique project number. Compare the local and server under this `getProject()`, whether there is an updated version for the three parameters of `getPatch()`, `getFlash()`, and `getApp()`.
 
-After obtaining the new version of the bin file, use `DfuManager#upgradeFirmware` to upgrade the firmware.
+After obtaining the new version of the bin file, use `DfuManager.upgradeFirmware(String uri, WristbandVersion.isUpgradeFirmwareSilent())` to upgrade the firmware.
 
 #### 6.7.2 Dial upgrade
 When `WristbandVersion#isExtDialUpgrade()` is true, it means that the bracelet supports the dial upgrade function. You can use `WristbandManager#requestDialBinInfo` to request the information of the dial in the bracelet.
@@ -770,6 +827,8 @@ For detailed code refer to sample project `DialLibraryActivity`
 When `WristbandVersion#isExtDialMultiple` is true, it means that the bracelet supports multiple dial upgrades. Use `DialBinInfo#getSubBinList()` to get multiple dials preset on the bracelet.
 
 When `DialSubBinInfo#getDialType()` is not equal to 0, it means that the dial can be overwritten. Then, when upgrading the dial, use `DialSubBinInfo#getBinFlag()` of the dial you want to be overwritten as the second parameter of `DfuManager#upgradeDial(String,byte)`.
+
+It should be noted that the multi-dial upgrade needs to determine the size of the dial. If the dial file is larger than DialSubBinInfo#getDialSpace(), it cannot be pushed to avoid errors.
 
 #### 6.7.4 Custom dial
 

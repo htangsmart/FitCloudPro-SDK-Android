@@ -22,13 +22,15 @@ dependencies {
     //RxAndroidBle
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
-    //lib core function
-    implementation(name: 'libraryCore_v1.1.3', ext: 'aar')
+    //核心功能库
+    implementation(name: 'libraryCore_v1.1.4', ext: 'aar')
 
-    //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
+    //DFU库. 可选. 当你APP需要DFU功能时添加
+    implementation(name: 'libraryDfu_v1.0.4', ext: 'aar')
     
     ...
+    //DFU库. 可选. 当你APP需要DFU功能时，并且你们项目的手环是Nordic芯片时
+    implementation 'no.nordicsemi.android:dfu:1.10.3'
 }
 
 ```
@@ -36,6 +38,7 @@ dependencies {
 ## 二、权限设置
 
 ```
+<application>
 <!--In most cases, you need to ensure that the device supports BLE.-->
 <uses-feature
     android:name="android.hardware.bluetooth_le"
@@ -48,8 +51,13 @@ dependencies {
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-<!--Optional. If your app need dfu function.-->
+<!--可选. 当你APP需要DFU功能时添加.-->
 <uses-permission android:name="android.permission.INTERNET"/>
+
+<!--可选. 当你APP需要DFU功能时，并且你们项目的手环是Nordic芯片时-->
+<service android:name="com.htsmart.wristband2.dfu.DfuNordicService"/>
+
+</application>
 ```
 
 ## 三、初始化
@@ -340,8 +348,11 @@ MSG_MEDIA_NEXT
 MSG_MEDIA_PREVIOUS
 MSG_MEDIA_VOLUME_UP
 MSG_MEDIA_VOLUME_DOWN   
+MSG_MEDIA_SET_SILENT_MODE
 
 MSG_CHANGE_CONFIG_ITSELF
+MSG_CHANGE_ALARM
+MSG_CHANGE_SCHEDULE
 ```
 #### 6.4.1、MSG_WEATHER
 此消息用于手环请求天气。目前手环并无此功能。APP需要自己在合适的时机向手环发送天气，比如在手环连接时，和天气信息发送改变时，向手环发送天气信息。
@@ -378,8 +389,18 @@ MSG_CHANGE_CONFIG_ITSELF
 #### 6.4.11、MSG_MEDIA_VOLUME_DOWN
 此消息用于控制APP减小音量
 
-#### 6.4.12、MSG_CHANGE_CONFIG_ITSELF
+#### 6.4.12、MSG_MEDIA_SET_SILENT_MODE
+设置静音的手环消息，APP收到此消息设置手机为静音模式。只针对部分电话手环，普通手环不需要处理
+
+#### 6.4.13、MSG_CHANGE_CONFIG_ITSELF
 如果`WristbandVersion#isExtChangeConfigItself()`为true，代表手环能自己更改一些配置。当手环更改配置时，会主动发送此消息。
+
+#### 6.4.14、MSG_CHANGE_ALARM
+手环自身更改了闹钟设置
+
+#### 6.4.15、MSG_CHANGE_SCHEDULE
+手环自身更改了日程设置
+
 
 ### 6.5、实时数据测量
 
@@ -734,6 +755,40 @@ EcgData{
 
 手环上仅保存最后一次测量的心电值，每次心电数据同步成功后，手环上的心电数据将被删除。下次同步的话，只会得到新产生的心电数据。
 
+#### 6.6.7 游戏记录
+##### 6.6.7.1 标志位
+WristbandVersion#isGameEnabled  代表支持游戏记录
+WristbandVersion#isExtGameSkin  代表支持游戏皮肤
+
+##### 6.6.7.2 游戏记录
+使用WristbandManager#requestSupportGameTypes获取支持的游戏类型，返回的int数组，每个int值代表一个游戏类型，在GameData.GameType里定义了
+
+使用WristbandManager#requestHighestGameRecords 获取最高的三条游戏记录。数据内容参考GameData实体的定义。
+
+##### 6.6.7.3 游戏记录的同步
+在syncData返回的数据里判断类型等于SyncDataParser#TYPE_GAME，然后用SyncDataParser#parserGameData 解析出GameData的List。
+
+GameData{
+    private int type;//游戏类型
+    private int duration;//持续时间
+    private int score;//分数
+    private int level;//等级关卡
+    private long  timeStamp;//时间
+}
+
+##### 6.6.7.3 游戏皮肤
+WristbandManager#requestGameSkins 获取当前的游戏皮肤。数据内容参考GameSkin的定义。
+
+使用DfuManager#upgradeGameSkin(String uri, byte binFlag)。这个binFlag为GameSkin中的binFlag。
+
+GameSkin{
+    private int gameType;//游戏类型
+    private int skinNumber;//皮肤编号
+    private int skinSpace;//皮肤空间大小，限制升级皮肤的文件大小
+    private byte binFlag;//用于DfuManager#upgradeGameSkin的binFlag
+}
+
+
 ### 6.7、DFU升级
 
 使用`DfuManager`可以对手表固件或者表盘进行升级。
@@ -743,7 +798,7 @@ EcgData{
 #### 6.7.1 固件升级
 `WristbandVersion`中`getProject()`代表唯一的项目号。对比本地和服务器中此`getProject()`下，`getPatch()`,`getFlash()`,`getApp()`3个参数是否有更新的版本。
 
-获取到新版本的bin文件后，使用`DfuManager#upgradeFirmware`来进行固件的升级。
+获取到新版本的bin文件后，使用`DfuManager.upgradeFirmware(String uri, WristbandVersion.isUpgradeFirmwareSilent()))`来进行固件的升级。
 
 #### 6.7.2 表盘升级
 当`WristbandVersion#isExtDialUpgrade()`为true时，代表手环支持表盘升级功能。可以使用`WristbandManager#requestDialBinInfo`中请求手环中表盘的信息。
@@ -761,6 +816,8 @@ EcgData{
 当`WristbandVersion#isExtDialMultiple`为true时，代表手环支持多表盘升级。使用`DialBinInfo#getSubBinList()`获取手环上预设置的多个表盘位。
 
 当`DialSubBinInfo#getDialType()`不等于0时，表示此表盘位可以被覆盖。那么在升级表盘时，将需要覆盖的表盘位的`DialSubBinInfo#getBinFlag()`作为`DfuManager#upgradeDial(String,byte)`的第二个参数，以此来进行覆盖某个表盘位的升级。
+
+需要注意的是，多表盘升级需要判断表盘大小，如果表盘文件大于DialSubBinInfo#getDialSpace()，则不能推送，以免出错。
 
 #### 6.7.4 自定义表盘
 
