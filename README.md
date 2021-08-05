@@ -27,10 +27,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.1.1', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.5', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
+    implementation(name: 'libraryDfu_v1.0.4', ext: 'aar')
     
     ...
     //Optional. If your app need dfu function and is Nordic chip

@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //核心功能库
-    implementation(name: 'libraryCore_v1.1.4', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.5', ext: 'aar')
 
     //DFU库. 可选. 当你APP需要DFU功能时添加
     implementation(name: 'libraryDfu_v1.0.4', ext: 'aar')

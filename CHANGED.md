@@ -1,4 +1,10 @@
-# 2021-05-31
+# 2021-08-06
+## 发布libraryCore_v1.1.5.aar
+1. SportData中的运动类型0x41改为自由训练，力量训练改为0x59
+2. GameData新增运动游戏类型(俄罗斯方块，数独，答题游戏)
+3. 添加sample中表盘升级对表盘空间的处理，以及固件升级时
+
+# 2021-07-29
 ## 发布libraryCore_v1.1.4.aar
 1.添加表盘空间大小(单位kb)，限制该表盘位置能升级的表盘文件大小。见DialSubBinInfo#getDialSpace()
 
