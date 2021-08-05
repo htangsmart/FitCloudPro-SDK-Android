@@ -16,7 +16,7 @@ import com.github.kilnn.wristband2.sample.dial.entity.DialInfoDao;
         EcgRecord.class,
         SportRecord.class,
         DialInfo.class,
-}, version = 2)
+}, version = 3)
 public abstract class SyncDataDb extends RoomDatabase {
 
     public abstract SyncDataDao dao();

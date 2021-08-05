@@ -35,6 +35,11 @@ data class DialBinParam(
     val binFlag: Byte,
 
     /**
+     * 表盘空间，单位kb
+     */
+    val dialSpace: Int,
+
+    /**
      * 表盘的展示图，通常为纯表面形式，不带实际手环外壳。
      */
     val imgUrl: String? = null,
@@ -59,6 +64,7 @@ data class DialBinParam(
         parcel.readInt(),
         parcel.readInt(),
         parcel.readByte(),
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -70,6 +76,7 @@ data class DialBinParam(
         parcel.writeInt(dialNum)
         parcel.writeInt(binVersion)
         parcel.writeByte(binFlag)
+        parcel.writeInt(dialSpace)
         parcel.writeString(imgUrl)
         parcel.writeString(deviceImgUrl)
         parcel.writeString(previewImgUrl)

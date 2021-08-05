@@ -56,6 +56,8 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
         DialDrawer.Position.RIGHT,
     )//positionAdapter的原始数据
 
+    private var selectBinSize = 0L
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewBind.root)
@@ -89,7 +91,7 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
                     if (Utils.checkLocationEnabled(this, R.string.feature_location_request_for_ble_scan)) {
                         if (state.result.param.isSelectableDialBinParams()) {
                             //有多表盘，先选择升级位置
-                            DialBinSelectFragment.newInstance(state.result.param).show(supportFragmentManager, null)
+                            DialBinSelectFragment.newInstance(state.result.param, selectBinSize).show(supportFragmentManager, null)
                         } else {
                             //没有多表盘信息，直接升级
                             showDialCustomDialog(0.toByte())
@@ -173,6 +175,9 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
         viewBind.dialView.setBackgroundSource(selectedBackground)
         viewBind.dialView.setStyleSource(selectedStyle.styleUri, selectedStyle.styleBaseOnWidth)
         viewBind.dialView.stylePosition = selectedPosition
+
+        selectBinSize = selectedStyle.binSize
+        viewBind.btnSet.text = getString(R.string.ds_dial_set_dial) + "（" + Utils.fileSizeStr(selectBinSize) + "）"
     }
 
     private val bgListener: DialGridItemAdapter.Listener = object : DialGridItemAdapter.Listener() {

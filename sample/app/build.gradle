@@ -64,10 +64,10 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.1'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.1.3', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.5', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu_v1.0.3', ext: 'aar')
+    implementation(name: 'libraryDfu_v1.0.4', ext: 'aar')
 
     //room
     implementation 'androidx.room:room-runtime:2.2.5'

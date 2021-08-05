@@ -27,6 +27,7 @@ public class MyApplication extends Application {
         sSyncDataDb = Room
                 .databaseBuilder(this, SyncDataDb.class, "SyncDataDb")
                 .addMigrations(MIGRATION_1_2)
+                .addMigrations(MIGRATION_2_3)
                 .allowMainThreadQueries()
                 .build();
         sApiClient = new GlobalApiClient(this);
@@ -37,6 +38,14 @@ public class MyApplication extends Application {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             database.execSQL("CREATE TABLE IF NOT EXISTS `DialInfo` (`projectNum` TEXT NOT NULL, `lcd` INTEGER NOT NULL, `toolVersion` TEXT, `dialNum` INTEGER NOT NULL, `binVersion` INTEGER NOT NULL, `imgUrl` TEXT, `deviceImgUrl` TEXT, `binUrl` TEXT, `name` TEXT, `downloadCount` INTEGER NOT NULL, PRIMARY KEY(`projectNum`, `dialNum`))");
+        }
+    };
+
+    private static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE `DialInfo` ADD COLUMN `binSize` INTEGER NOT NULL DEFAULT 0");
         }
     };
 

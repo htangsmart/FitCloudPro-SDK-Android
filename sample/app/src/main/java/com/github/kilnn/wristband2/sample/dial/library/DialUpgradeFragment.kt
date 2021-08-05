@@ -67,6 +67,8 @@ class DialUpgradeFragment : AppCompatDialogFragment(), DialBinSelectFragment.Lis
     private var _viewBind: DialogDialUpgradeBinding? = null
     private val viewBind get() = _viewBind!!
 
+    private var binSize = 0L
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (parentFragment != null && parentFragment is Listener) {
@@ -87,6 +89,15 @@ class DialUpgradeFragment : AppCompatDialogFragment(), DialBinSelectFragment.Lis
             dialInfo = it.getParcelable(EXTRA_DIAL_INFO)!!
             param = it.getParcelable(EXTRA_DIAL_PARAM)!!
         }
+
+        binSize = dialInfo.binSize
+        if (binSize <= 0L) {//没有大小数据，从本地加载试试
+            val binFile = DialFileHelper.getNormalFileByUrl(requireContext(), dialInfo.binUrl)
+            if (binFile?.exists() == true) {
+                binSize = binFile.length()
+            }
+        }
+
         dfuManager = DfuManager(context)
         dfuManager.setDfuCallback(dfuCallback)
         dfuManager.init()
@@ -111,13 +122,13 @@ class DialUpgradeFragment : AppCompatDialogFragment(), DialBinSelectFragment.Lis
                 .into(viewBind.imgView)
         }
 
-        viewBind.upgradeDialView.setText(R.string.ds_dial_sync)
+        viewBind.upgradeDialView.text = getString(R.string.ds_dial_sync) + "（" + Utils.fileSizeStr(binSize) + "）"
         viewBind.upgradeDialView.setOnClickListener {
             listener?.let {
                 it.scheduleUpgrade {
                     if (param.isSelectableDialBinParams()) {
                         //有多表盘，先选择升级位置
-                        DialBinSelectFragment.newInstance(param).show(childFragmentManager, null)
+                        DialBinSelectFragment.newInstance(param, binSize).show(childFragmentManager, null)
                     } else {
                         //没有多表盘信息，直接升级
                         startSyncDial(0)
@@ -192,7 +203,7 @@ class DialUpgradeFragment : AppCompatDialogFragment(), DialBinSelectFragment.Lis
 
     private fun resetOriginalState() {
         viewBind.upgradeDialView.isEnabled = true
-        viewBind.upgradeDialView.setText(R.string.ds_dial_sync)
+        viewBind.upgradeDialView.text = getString(R.string.ds_dial_sync) + "（" + Utils.fileSizeStr(binSize) + "）"
         viewBind.upgradeDialView.setProgress(100)
         isCancelable = true
     }

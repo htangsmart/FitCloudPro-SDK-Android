@@ -7,6 +7,7 @@ public class DialCustom {
     private String binUrl;
     private String styleName;//样式名
     private Uri styleUri;
+    private long binSize;//bin文件大小
 
     public String getBinUrl() {
         return binUrl;
@@ -30,5 +31,13 @@ public class DialCustom {
 
     public void setStyleUri(Uri styleUri) {
         this.styleUri = styleUri;
+    }
+
+    public long getBinSize() {
+        return binSize;
+    }
+
+    public void setBinSize(long binSize) {
+        this.binSize = binSize;
     }
 }

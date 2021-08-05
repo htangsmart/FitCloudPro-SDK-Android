@@ -24,6 +24,7 @@ class DialCustomCompat(
          * 样式基于多大的宽度设计的
          */
         val styleBaseOnWidth: Int,
-        val binUrl: String
+        val binUrl: String,
+        val binSize: Long
     )
 }

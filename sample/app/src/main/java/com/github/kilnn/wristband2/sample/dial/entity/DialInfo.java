@@ -21,6 +21,7 @@ public class DialInfo implements Parcelable {
     private String binUrl;//bin文件下载地址url
     private String name;//样式名称
     private int downloadCount;//下载次数
+    private long binSize;//bin文件大小
 
     public DialInfo() {
     }
@@ -37,6 +38,7 @@ public class DialInfo implements Parcelable {
         binUrl = in.readString();
         name = in.readString();
         downloadCount = in.readInt();
+        binSize = in.readLong();
     }
 
     @Override
@@ -51,6 +53,7 @@ public class DialInfo implements Parcelable {
         dest.writeString(binUrl);
         dest.writeString(name);
         dest.writeInt(downloadCount);
+        dest.writeLong(binSize);
     }
 
     @Override
@@ -148,5 +151,13 @@ public class DialInfo implements Parcelable {
 
     public void setDownloadCount(int downloadCount) {
         this.downloadCount = downloadCount;
+    }
+
+    public long getBinSize() {
+        return binSize;
+    }
+
+    public void setBinSize(long binSize) {
+        this.binSize = binSize;
     }
 }

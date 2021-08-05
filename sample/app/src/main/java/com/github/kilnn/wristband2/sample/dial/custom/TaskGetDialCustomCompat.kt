@@ -36,7 +36,7 @@ class TaskGetDialCustomCompat {
                 val styleBaseOnWidth = DialDrawer.Shape.createFromLcd(param.lcd)!!.width() * 2//新的GUI协议自定义表盘，图片都是放大两倍，所以就是Shape.width()*2
                 val dialInfo = list[0]
                 val styles: List<DialCustomCompat.Style> = list[0].components!![0].urls!!.map {
-                    DialCustomCompat.Style(Uri.parse(it), styleBaseOnWidth, dialInfo.binUrl)
+                    DialCustomCompat.Style(Uri.parse(it), styleBaseOnWidth, dialInfo.binUrl, dialInfo.binSize)
                 }
 
                 DialCustomCompat(
@@ -63,7 +63,8 @@ class TaskGetDialCustomCompat {
                                 DialCustomCompat.Style(
                                     Utils.getUriFromDrawableResId(context, support.resId),
                                     DialDrawer.STYLE_BASE_ON_WIDTH,//旧协议的自定义表盘，样式基于800像素设计的
-                                    dial.binUrl
+                                    dial.binUrl,
+                                    dial.binSize
                                 )
                             )
                             break

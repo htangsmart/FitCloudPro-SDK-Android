@@ -31,6 +31,7 @@ public class DialInfoComplex {
     private String type;// basic: 第一版表盘   gui: 新版gui表盘  gui-custom：新版gui的自定义表盘
     private int hasComponent;     // 0 无组件，1 有组件
     private String previewImgUrl;//组件预览背景图
+    private long binSize;//bin文件大小
 
     @Nullable
     private List<Component> components;
@@ -138,5 +139,13 @@ public class DialInfoComplex {
 
     public void setComponents(@Nullable List<Component> components) {
         this.components = components;
+    }
+
+    public long getBinSize() {
+        return binSize;
+    }
+
+    public void setBinSize(long binSize) {
+        this.binSize = binSize;
     }
 }

@@ -42,6 +42,7 @@ import org.json.JSONException;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.HttpRetryException;
 import java.net.MalformedURLException;
 import java.net.SocketException;
@@ -50,9 +51,12 @@ import java.net.UnknownHostException;
 import java.net.UnknownServiceException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.TimeoutException;
 
 import retrofit2.HttpException;
@@ -390,5 +394,38 @@ public class Utils {
         long blockSize = stat.getBlockSizeLong();
         long availableBlocks = stat.getAvailableBlocksLong();
         return availableBlocks * blockSize / 1024.0f / 1024.0f;//MB
+    }
+
+    public static final long KB = 1024;
+
+    public static String fileSizeStr(long bytes) {
+        final long MB = KB * KB;
+        final long GB = MB * KB;
+        final long TB = GB * KB;
+        if (bytes <= 0) {
+            return "0KB";
+        } else if (bytes < KB * 0.1f) {
+            return "0.1KB";
+        } else if (bytes < MB) {
+            return decimal1Str(bytes / (float) KB) + "KB";
+        } else if (bytes < GB) {
+            return decimal1Str(bytes / (float) MB) + "MB";
+        } else if (bytes < TB) {
+            return decimal1Str(bytes / (float) GB) + "GB";
+        } else {
+            return decimal1Str(bytes / (float) TB) + "TB";
+        }
+    }
+
+    public static String decimal1Str(float value) {
+        return DECIMAL_1_FORMAT.format(Double.parseDouble(Float.toString(value)));
+    }
+
+    private static final DecimalFormat DECIMAL_1_FORMAT;
+
+    static {
+        DECIMAL_1_FORMAT = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        DECIMAL_1_FORMAT.applyPattern("0.0");
+        DECIMAL_1_FORMAT.setRoundingMode(RoundingMode.DOWN);
     }
 }

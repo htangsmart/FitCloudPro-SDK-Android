@@ -27,23 +27,23 @@ class TaskGetDialParam() {
         val config = manager.wristbandConfig ?: throw NullPointerException()
 
         //硬件信息
-        val hardwareInfo = config.wristbandVersion.rawVersion
-//        val hardwareInfo = "000000000A0600000155000027F3000010001100000000000000030919081319000000000000"//for test
+//        val hardwareInfo = config.wristbandVersion.rawVersion
+        val hardwareInfo = "000000000A0600000155000027F3000010001100000000000000030919081319000000000000"//for test
         if (hardwareInfo.isNullOrEmpty()) {
             throw NullPointerException()
         }
 
         //是否支持多表盘
-        val isExtDialMultiple = config.wristbandVersion.isExtDialMultiple
-//        val isExtDialMultiple = true//for test
+//        val isExtDialMultiple = config.wristbandVersion.isExtDialMultiple
+        val isExtDialMultiple = true//for test
 
         //是否是GUI协议
-        val isGUI = config.wristbandVersion.isExtGUI
-//        val isGUI = true//for test
+//        val isGUI = config.wristbandVersion.isExtGUI
+        val isGUI = true//for test
 
         return withContext(Dispatchers.IO) {
-            val dialBinInfo = manager.requestDialBinInfo().await()
-//            val dialBinInfo = mockDialBinInfo()//for test
+//            val dialBinInfo = manager.requestDialBinInfo().await()
+            val dialBinInfo = mockDialBinInfo()//for test
             if (!DialDrawer.Shape.isLcdSupport(dialBinInfo.lcd)) {
                 throw UnSupportLcdException()
             }
@@ -131,6 +131,7 @@ class TaskGetDialParam() {
                     local.dialNum,
                     local.binVersion,
                     local.binFlag,
+                    local.dialSpace,
                     remote?.imgUrl,
                     remote?.deviceImgUrl,
                     remote?.previewImgUrl,

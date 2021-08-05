@@ -2,17 +2,22 @@ package com.github.kilnn.wristband2.sample.dial
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kilnn.wristband2.sample.R
 import com.github.kilnn.wristband2.sample.databinding.DialogBinSelectBinding
+import com.github.kilnn.wristband2.sample.dial.task.DialBinParam
 import com.github.kilnn.wristband2.sample.dial.task.DialParam
 import com.github.kilnn.wristband2.sample.utils.Utils
 import com.htsmart.wristband2.bean.DialSubBinInfo
@@ -26,10 +31,18 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
         }
 
         private const val EXTRA_DIAL_PARAM = "dial_param"
+        private const val EXTRA_BIN_SIZE = "bin_size"
 
-        fun newInstance(param: DialParam): DialBinSelectFragment {
+        /**
+         * @param param 表盘参数
+         * @param binSize 将要升级的bin文件大小
+         */
+        fun newInstance(param: DialParam, binSize: Long): DialBinSelectFragment {
             val fragment = DialBinSelectFragment()
-            fragment.arguments = Bundle().apply { putParcelable(EXTRA_DIAL_PARAM, param) }
+            fragment.arguments = Bundle().apply {
+                putParcelable(EXTRA_DIAL_PARAM, param)
+                putLong(EXTRA_BIN_SIZE, binSize)
+            }
             return fragment
         }
     }
@@ -40,6 +53,7 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
 
     private var listener: Listener? = null
     private lateinit var param: DialParam
+    private var binSize = 0L
     private lateinit var adapter: InnerAdapter
 
     private var _viewBind: DialogBinSelectBinding? = null
@@ -62,15 +76,19 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         param = requireArguments().getParcelable(EXTRA_DIAL_PARAM)!!
+        binSize = requireArguments().getLong(EXTRA_BIN_SIZE)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _viewBind = DialogBinSelectBinding.inflate(LayoutInflater.from(context))
 
         viewBind.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        adapter = InnerAdapter(param)
+        adapter = InnerAdapter(param, binSize)
         viewBind.recyclerView.adapter = adapter
 
+        //确认按钮是否可用，只需设置一次即可。因为会自动查找第一个可用的选择。如果被设置为false，那么表盘所有表盘都不能被选择，状态也不会再改变了。
+        viewBind.btnSure.isEnabled = adapter.hasSelectBinFlag()
+        viewBind.btnSure.text = getString(R.string.action_sure) + "（" + Utils.fileSizeStr(binSize) + "）"
         viewBind.btnSure.setOnClickListener {
             listener?.onDialBinSelect(adapter.getSelectBinFlag())
             dismissAllowingStateLoss()
@@ -89,12 +107,50 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
 
     private class InnerViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val dialView: DialView = itemView.findViewById(R.id.dial_view)
+        val tvDialSpace: TextView = itemView.findViewById(R.id.tv_dial_space)
     }
 
-    private class InnerAdapter(param: DialParam) : RecyclerView.Adapter<InnerViewHolder>() {
+    private class InnerAdapter(param: DialParam, private val binSize: Long) : RecyclerView.Adapter<InnerViewHolder>() {
         private val dialBinParams = param.filterSelectableDialBinParams()//获取可被选择的表盘
         private val shape = DialDrawer.Shape.createFromLcd(param.lcd)!!.adjustRecommendCorners()//一定支持这个shape，要不然这个dialog不会显示
-        private var selectPosition = 0//默认选择第一个
+        private var selectPosition = -1//默认不可选
+
+        private val paintSaturationMin: Paint by lazy {
+            val paint = Paint()
+            val colorMatrix = ColorMatrix()
+            colorMatrix.setSaturation(0.0f)
+            paint.colorFilter = ColorMatrixColorFilter(colorMatrix)
+            paint
+        }
+
+        private val paintSaturationMax: Paint by lazy {
+            val paint = Paint()
+            val colorMatrix = ColorMatrix()
+            colorMatrix.setSaturation(1.0f)
+            paint.colorFilter = ColorMatrixColorFilter(colorMatrix)
+            paint
+        }
+
+        init {
+            for (i in dialBinParams.indices) {
+                //默认选择第一个表盘空间大小binSize的位置，如果没有，那么就是默认值-1
+                if (isDialSelectable(dialBinParams[i])) {
+                    selectPosition = i
+                    break
+                }
+            }
+        }
+
+        private fun isDialSelectable(dial: DialBinParam): Boolean {
+            return dial.dialSpace * Utils.KB > binSize
+        }
+
+        /**
+         * 选择位置是否可用
+         */
+        fun hasSelectBinFlag(): Boolean {
+            return selectPosition != -1
+        }
 
         fun getSelectBinFlag(): Byte {
             return dialBinParams[selectPosition].binFlag
@@ -134,11 +190,23 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
                 }
                 holder.dialView.stylePosition = DialDrawer.Position.TOP
             }
+
+            val isDialSelectable = isDialSelectable(dialBinParam)
+
             holder.dialView.isChecked = position == selectPosition
-            holder.dialView.setOnClickListener { //默认选择第一个
-                selectPosition = position
-                notifyDataSetChanged()
+            if (isDialSelectable) {
+                holder.dialView.setLayerType(View.LAYER_TYPE_HARDWARE, paintSaturationMax)
+                holder.dialView.setOnClickListener { //默认选择第一个
+                    selectPosition = holder.adapterPosition
+                    notifyDataSetChanged()
+                }
+            } else {
+                holder.dialView.setLayerType(View.LAYER_TYPE_HARDWARE, paintSaturationMin)
+                holder.dialView.setOnClickListener(null)
             }
+
+            holder.tvDialSpace.isEnabled = isDialSelectable
+            holder.tvDialSpace.text = Utils.fileSizeStr(dialBinParam.dialSpace * Utils.KB)
         }
 
         override fun getItemCount(): Int {
