@@ -27,23 +27,23 @@ class TaskGetDialParam() {
         val config = manager.wristbandConfig ?: throw NullPointerException()
 
         //硬件信息
-//        val hardwareInfo = config.wristbandVersion.rawVersion
-        val hardwareInfo = "000000000A0600000155000027F3000010001100000000000000030919081319000000000000"//for test
+        val hardwareInfo = config.wristbandVersion.rawVersion
+//        val hardwareInfo = "000000000A0600000155000027F3000010001100000000000000030919081319000000000000"//for test
         if (hardwareInfo.isNullOrEmpty()) {
             throw NullPointerException()
         }
 
         //是否支持多表盘
-//        val isExtDialMultiple = config.wristbandVersion.isExtDialMultiple
-        val isExtDialMultiple = true//for test
+        val isExtDialMultiple = config.wristbandVersion.isExtDialMultiple
+//        val isExtDialMultiple = true//for test
 
         //是否是GUI协议
-//        val isGUI = config.wristbandVersion.isExtGUI
-        val isGUI = true//for test
+        val isGUI = config.wristbandVersion.isExtGUI
+//        val isGUI = true//for test
 
         return withContext(Dispatchers.IO) {
-//            val dialBinInfo = manager.requestDialBinInfo().await()
-            val dialBinInfo = mockDialBinInfo()//for test
+            val dialBinInfo = manager.requestDialBinInfo().await()
+//            val dialBinInfo = mockDialBinInfo()//for test
             if (!DialDrawer.Shape.isLcdSupport(dialBinInfo.lcd)) {
                 throw UnSupportLcdException()
             }
@@ -171,6 +171,7 @@ class TaskGetDialParam() {
             DialComponent().apply { width = 85;height = 72;positionX = 10;positionY = 10;styleCurrent = 1;styleCount = 4 },
             DialComponent().apply { width = 85;height = 72;positionX = 10;positionY = 180;styleCurrent = 1;styleCount = 4 },
         )
+        sub1.dialSpace = 256
         subBinList.add(sub1)
 
 
@@ -182,6 +183,7 @@ class TaskGetDialParam() {
             DialComponent().apply { width = 85;height = 72;positionX = 180;positionY = 10;styleCurrent = 1;styleCount = 4 },
             DialComponent().apply { width = 85;height = 72;positionX = 180;positionY = 180;styleCurrent = 1;styleCount = 4 },
         )
+        sub2.dialSpace = 512
         subBinList.add(sub2)
 
 //        val sub3 = DialSubBinInfo()
