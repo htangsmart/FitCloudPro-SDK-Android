@@ -54,7 +54,7 @@ class TaskGetDialParam() {
 
             if (isExtDialMultiple && !subBinList.isNullOrEmpty()) {//支持多表盘，并且多表盘List里有数据
                 //支持多表盘升级
-                val dialNumbers = ArrayList<Int>(subBinList.size)
+                val dialNumbers = HashSet<Int>(subBinList.size)
                 for (i in subBinList.indices) {
                     //旧协议的自定义表盘，与其他表盘不兼容，服务器也没有对应的信息，所以不去请求图片信息
                     if (subBinList[i].dialType == DialSubBinInfo.TYPE_NORMAL || subBinList[i].dialType == DialSubBinInfo.TYPE_NONE) {
@@ -66,7 +66,7 @@ class TaskGetDialParam() {
                     emptyList<DialInfoComplex>()
                 } else {
                     //根据表盘编号，向服务器请求表盘信息
-                    apiClient.getDialListByNumbers(dialNumbers).onErrorReturnItem(emptyList<DialInfoComplex>()).awaitFirst()
+                    apiClient.getDialListByNumbers(dialNumbers.toList()).onErrorReturnItem(emptyList<DialInfoComplex>()).awaitFirst()
                 }
                 dialBinParamList = combinationData(subBinList, dialInfos)
             }
