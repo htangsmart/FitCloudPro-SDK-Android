@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class AppFakeDataProvider {
 
-    public static final boolean ENABLED = true;
+    public static final boolean ENABLED = false;
 
     private static SharedPreferences openSp(Context context) {
         return context.getSharedPreferences("AppFakeDataProvider", Context.MODE_PRIVATE);
