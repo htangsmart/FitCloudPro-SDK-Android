@@ -1,6 +1,8 @@
 package com.github.kilnn.wristband2.sample.dial
 
 import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,7 @@ import android.widget.ImageView
 import androidx.annotation.CallSuper
 import androidx.cardview.widget.CardView
 import com.github.kilnn.wristband2.sample.R
+import com.github.kilnn.wristband2.sample.utils.DisplayUtil
 import com.htsmart.wristband2.dial.DialDrawer
 import com.htsmart.wristband2.dial.DialView
 
@@ -25,6 +28,13 @@ abstract class DialCardView : CardView {
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        setCardBackgroundColor(Color.WHITE)
+        radius = DisplayUtil.dip2px(context, 4F).toFloat()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            elevation = DisplayUtil.dip2px(context, 1F).toFloat()
+        }
+        val padding = DisplayUtil.dip2px(context, 2F)
+        setContentPadding(padding, padding, padding, padding)
         contentView = initAndGetContentView(context)
     }
 

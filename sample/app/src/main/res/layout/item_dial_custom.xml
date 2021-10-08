@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="1dp"
-    app:contentPadding="2dp"
     tools:viewBindingIgnore="true">
 
     <ImageView
@@ -29,4 +25,4 @@
         app:dv_style_position="bottom"
         app:dv_style_src="@drawable/dial_style1"/>
 
-</androidx.cardview.widget.CardView>
+</merge>
