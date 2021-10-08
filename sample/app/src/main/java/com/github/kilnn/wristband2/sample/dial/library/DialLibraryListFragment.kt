@@ -146,6 +146,11 @@ class DialLibraryListFragment : Fragment(), DialUpgradeFragment.Listener {
                     }
                 }
                 is State.Success<*> -> state.result?.let {
+                    adapter.isShowCustomView = if (isLocal) {
+                        false//本地不显示自定义表盘
+                    } else {
+                        it.param.supportCustom//表盘中心，当支持自定义的时候才显示
+                    }
                     adapter.shape = it.param.shape
                     adapter.sources = it.list
                     adapter.notifyDataSetChanged()

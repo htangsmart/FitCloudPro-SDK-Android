@@ -20,7 +20,7 @@ class DialListAdapter(
     /**
      * 是否显示自定义View
      */
-    private val isShowCustomView: Boolean
+    var isShowCustomView: Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {

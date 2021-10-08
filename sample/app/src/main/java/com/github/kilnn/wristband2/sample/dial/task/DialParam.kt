@@ -45,6 +45,8 @@ data class DialParam(
 
     val shape: DialDrawer.Shape,
 
+    val supportCustom: Boolean,
+
     ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -55,7 +57,8 @@ data class DialParam(
         parcel.readInt(),
         parcel.readInt(),
         parcel.createTypedArrayList(DialBinParam),
-        parcel.readParcelable(DialDrawer.Shape::class.java.classLoader)!!
+        parcel.readParcelable(DialDrawer.Shape::class.java.classLoader)!!,
+        parcel.readByte() != 0.toByte(),
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -67,6 +70,7 @@ data class DialParam(
         parcel.writeInt(currentDialPosition)
         parcel.writeTypedList(dialBinParams)
         parcel.writeParcelable(shape, flags)
+        parcel.writeByte(if (supportCustom) 1 else 0)
     }
 
     override fun describeContents(): Int {

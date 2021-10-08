@@ -40,6 +40,8 @@ class TaskGetDialParam {
         val isGUI = config.wristbandVersion.isExtGUI
 //        val isGUI = true//for test
 
+        val supportCustom = config.wristbandVersion.isExtDialCustom
+
         return withContext(Dispatchers.IO) {
             val dialBinInfo = manager.requestDialBinInfo().await()
 //            val dialBinInfo = mockDialBinInfo()//for test
@@ -70,7 +72,7 @@ class TaskGetDialParam {
                 dialBinParamList = combinationData(subBinList, dialInfos)
             }
 
-            DialParam(hardwareInfo, isGUI, dialBinInfo.lcd, dialBinInfo.toolVersion, dialBinInfo.dialNum, dialBinInfo.dialPosition, dialBinParamList, dialBinInfo.shape!!)
+            DialParam(hardwareInfo, isGUI, dialBinInfo.lcd, dialBinInfo.toolVersion, dialBinInfo.dialNum, dialBinInfo.dialPosition, dialBinParamList, dialBinInfo.shape!!, supportCustom)
         }
     }
 
