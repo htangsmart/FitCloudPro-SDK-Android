@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
-import com.github.kilnn.wristband2.sample.dial.adjustRecommendCorners
+import com.github.kilnn.wristband2.sample.dial.createDefaultShape
 import com.github.kilnn.wristband2.sample.dial.task.DialComponentParam
 import com.htsmart.wristband2.dial.DialDrawer
 
@@ -29,7 +29,9 @@ class DialComponentView : View {
 
     private var viewWidth: Int = 0
     private var viewHeight: Int = 0
-    private var shape = DialDrawer.Shape.createFromLcd(0)!!.adjustRecommendCorners()
+
+    //默认创建一个Shape。免得出错
+    private var shape = createDefaultShape()
 
     private var components: List<DialComponentParam>? = null
     private var previewBitmap: Bitmap? = null

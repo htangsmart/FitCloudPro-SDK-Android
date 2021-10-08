@@ -103,9 +103,6 @@ class DialComponentItemView(context: Context) : DialCardView(context) {
     }
 }
 
-fun DialDrawer.Shape.adjustRecommendCorners(): DialDrawer.Shape {
-    if (this.isShapeRectangle && this.width() != this.height()) {
-        this.setCorners(48)
-    }
-    return this
+fun createDefaultShape(): DialDrawer.Shape {
+    return DialDrawer.Shape.createRectangle(240, 240)
 }

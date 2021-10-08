@@ -11,7 +11,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kilnn.wristband2.sample.R
-import com.github.kilnn.wristband2.sample.dial.adjustRecommendCorners
+import com.github.kilnn.wristband2.sample.dial.createDefaultShape
 import com.github.kilnn.wristband2.sample.utils.DisplayUtil
 import com.htsmart.wristband2.dial.DialDrawer
 import com.htsmart.wristband2.dial.DialView
@@ -51,7 +51,10 @@ class DialGridItemAdapter(private val editEnabled: Boolean) : RecyclerView.Adapt
     }
 
     var listener: Listener? = null
-    var shape = DialDrawer.Shape.createFromLcd(0)!!.adjustRecommendCorners()
+
+    //默认创建一个Shape。免得出错
+    var shape = createDefaultShape()
+
     var sources: MutableList<DialGridItem>? = null
         set(value) {
             field = value

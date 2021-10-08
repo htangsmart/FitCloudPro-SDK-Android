@@ -64,7 +64,7 @@ class DialComponentActivity : BaseActivity() {
                 val intent = Intent(this@DialComponentActivity, DialComponentEditActivity::class.java)
                 intent.putExtra(DialComponentEditActivity.EXTRA_POSITION, position)
                 intent.putExtra(DialComponentEditActivity.EXTRA_DIAL_BIN_PARAM, param)
-                intent.putExtra(DialComponentEditActivity.EXTRA_LCD, adapter.lcd)
+                intent.putExtra(DialComponentEditActivity.EXTRA_SHAPE, adapter.shape)
                 startActivityForResult(intent, 1001)
             }
         }
@@ -95,7 +95,7 @@ class DialComponentActivity : BaseActivity() {
                     }
                 }
                 is State.Success -> state.result?.let {
-                    adapter.lcd = it.lcd
+                    adapter.shape = it.shape
                     adapter.sources = it.dialBinParams?.toMutableList()
                     adapter.selectPosition = it.currentDialPosition
                     adapter.notifyDataSetChanged()

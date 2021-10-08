@@ -6,7 +6,6 @@ import com.htsmart.wristband2.WristbandApplication
 import com.htsmart.wristband2.bean.DialBinInfo
 import com.htsmart.wristband2.bean.DialComponent
 import com.htsmart.wristband2.bean.DialSubBinInfo
-import com.htsmart.wristband2.dial.DialDrawer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.reactive.awaitFirst
 import kotlinx.coroutines.rx2.await
@@ -18,7 +17,7 @@ import timber.log.Timber
  */
 class UnSupportLcdException : Exception()
 
-class TaskGetDialParam() {
+class TaskGetDialParam {
 
     private val manager = WristbandApplication.getWristbandManager();
     private val apiClient = MyApplication.getApiClient()
@@ -44,7 +43,7 @@ class TaskGetDialParam() {
         return withContext(Dispatchers.IO) {
             val dialBinInfo = manager.requestDialBinInfo().await()
 //            val dialBinInfo = mockDialBinInfo()//for test
-            if (!DialDrawer.Shape.isLcdSupport(dialBinInfo.lcd)) {
+            if (dialBinInfo.shape == null) {
                 throw UnSupportLcdException()
             }
 
@@ -71,7 +70,7 @@ class TaskGetDialParam() {
                 dialBinParamList = combinationData(subBinList, dialInfos)
             }
 
-            DialParam(hardwareInfo, isGUI, dialBinInfo.lcd, dialBinInfo.toolVersion, dialBinInfo.dialNum, dialBinInfo.dialPosition, dialBinParamList)
+            DialParam(hardwareInfo, isGUI, dialBinInfo.lcd, dialBinInfo.toolVersion, dialBinInfo.dialNum, dialBinInfo.dialPosition, dialBinParamList, dialBinInfo.shape!!)
         }
     }
 

@@ -135,7 +135,7 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
                 is State.Success -> state.result?.let {
                     //数据赋值
                     groupCustomResult = it
-                    val shape = DialDrawer.Shape.createFromLcd(it.param.lcd)!!.adjustRecommendCorners()
+                    val shape = it.param.shape
                     viewBind.dialView.shape = shape
                     bgAdapter.shape = shape
                     styleAdapter.shape = shape

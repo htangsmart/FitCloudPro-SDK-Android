@@ -5,6 +5,16 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/activity_connect.xml" value="0.176" />
+        <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/item_dial_custom.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/item_dial_style.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/menu/menu_connect.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownProjectSettings">
     <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="true" showSelectionInPreview="true">
       <PanelProvider>

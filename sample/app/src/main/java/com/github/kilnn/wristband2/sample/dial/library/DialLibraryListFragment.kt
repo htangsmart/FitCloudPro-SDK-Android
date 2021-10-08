@@ -146,7 +146,7 @@ class DialLibraryListFragment : Fragment(), DialUpgradeFragment.Listener {
                     }
                 }
                 is State.Success<*> -> state.result?.let {
-                    adapter.lcd = it.param.lcd
+                    adapter.shape = it.param.shape
                     adapter.sources = it.list
                     adapter.notifyDataSetChanged()
                     if (adapter.itemCount <= 0) {

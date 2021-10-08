@@ -10,7 +10,7 @@ import com.github.kilnn.wristband2.sample.R
 import com.github.kilnn.wristband2.sample.dial.DialCustomView
 import com.github.kilnn.wristband2.sample.dial.DialFileHelper
 import com.github.kilnn.wristband2.sample.dial.DialInfoView
-import com.github.kilnn.wristband2.sample.dial.adjustRecommendCorners
+import com.github.kilnn.wristband2.sample.dial.createDefaultShape
 import com.github.kilnn.wristband2.sample.dial.custom.DialCustomActivity
 import com.github.kilnn.wristband2.sample.dial.entity.DialInfo
 import com.htsmart.wristband2.dial.DialDrawer
@@ -41,15 +41,8 @@ class DialListAdapter(
         val view: DialInfoView = itemView
     }
 
-    var lcd = 0
-        set(value) {
-            if (field != value && DialDrawer.Shape.isLcdSupport(lcd)) {
-                field = value
-                shape = DialDrawer.Shape.createFromLcd(lcd)!!.adjustRecommendCorners()
-            }
-        }
-
-    private var shape = DialDrawer.Shape.createFromLcd(lcd)!!.adjustRecommendCorners()
+    //默认创建一个Shape。免得出错
+    var shape: DialDrawer.Shape = createDefaultShape()
 
     var sources: MutableList<DialInfo>? = null
     var listener: Listener? = null

@@ -33,7 +33,7 @@ class TaskGetDialCustomCompat {
                     || list[0].components!![0].urls.isNullOrEmpty()//组件里需要有有样式
                 ) throw UnSupportCustomException()
 
-                val styleBaseOnWidth = DialDrawer.Shape.createFromLcd(param.lcd)!!.width() * 2//新的GUI协议自定义表盘，图片都是放大两倍，所以就是Shape.width()*2
+                val styleBaseOnWidth = param.shape.width() * 2//新的GUI协议自定义表盘，图片都是放大两倍，所以就是Shape.width()*2
                 val dialInfo = list[0]
                 val styles: List<DialCustomCompat.Style> = list[0].components!![0].urls!!.map {
                     DialCustomCompat.Style(Uri.parse(it), styleBaseOnWidth, dialInfo.binUrl, dialInfo.binSize)

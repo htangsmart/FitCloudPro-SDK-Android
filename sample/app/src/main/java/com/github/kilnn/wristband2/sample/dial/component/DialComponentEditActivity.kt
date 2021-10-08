@@ -12,7 +12,6 @@ import com.github.kilnn.wristband2.sample.BaseActivity
 import com.github.kilnn.wristband2.sample.R
 import com.github.kilnn.wristband2.sample.databinding.ActivityDialComponentEditBinding
 import com.github.kilnn.wristband2.sample.databinding.LayoutDialComponentSelectBinding
-import com.github.kilnn.wristband2.sample.dial.adjustRecommendCorners
 import com.github.kilnn.wristband2.sample.dial.task.DialBinParam
 import com.github.kilnn.wristband2.sample.dial.task.DialComponentParam
 import com.github.kilnn.wristband2.sample.utils.Utils
@@ -31,7 +30,7 @@ class DialComponentEditActivity : BaseActivity() {
     companion object {
         const val EXTRA_POSITION = "position"
         const val EXTRA_DIAL_BIN_PARAM = "dial_bin_param"
-        const val EXTRA_LCD = "lcd"
+        const val EXTRA_SHAPE = "shape"
     }
 
     private var position by Delegates.notNull<Int>()
@@ -55,7 +54,7 @@ class DialComponentEditActivity : BaseActivity() {
         //认为传进来的数据一定正确，否则不会进入这个页面
         position = intent.getIntExtra(EXTRA_POSITION, 0)
         dialBinParam = intent.getParcelableExtra(EXTRA_DIAL_BIN_PARAM)!!
-        shape = DialDrawer.Shape.createFromLcd(intent.getIntExtra(EXTRA_LCD, 0))!!.adjustRecommendCorners()
+        shape = intent.getParcelableExtra(EXTRA_SHAPE)!!
         components = dialBinParam.components!!
 
         createSelectViews()

@@ -41,8 +41,11 @@ data class DialParam(
     /**
      * 多表盘信息，如果手环支持的话。
      */
-    val dialBinParams: List<DialBinParam>? = null
-) : Parcelable {
+    val dialBinParams: List<DialBinParam>? = null,
+
+    val shape: DialDrawer.Shape,
+
+    ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
@@ -51,7 +54,8 @@ data class DialParam(
         parcel.readString() ?: "",
         parcel.readInt(),
         parcel.readInt(),
-        parcel.createTypedArrayList(DialBinParam)
+        parcel.createTypedArrayList(DialBinParam),
+        parcel.readParcelable(DialDrawer.Shape::class.java.classLoader)!!
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -62,6 +66,7 @@ data class DialParam(
         parcel.writeInt(currentDialNum)
         parcel.writeInt(currentDialPosition)
         parcel.writeTypedList(dialBinParams)
+        parcel.writeParcelable(shape, flags)
     }
 
     override fun describeContents(): Int {

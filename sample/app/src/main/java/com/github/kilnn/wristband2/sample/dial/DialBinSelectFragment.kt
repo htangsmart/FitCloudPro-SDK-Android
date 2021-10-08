@@ -112,7 +112,7 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
 
     private class InnerAdapter(param: DialParam, private val binSize: Long) : RecyclerView.Adapter<InnerViewHolder>() {
         private val dialBinParams = param.filterSelectableDialBinParams()//获取可被选择的表盘
-        private val shape = DialDrawer.Shape.createFromLcd(param.lcd)!!.adjustRecommendCorners()//一定支持这个shape，要不然这个dialog不会显示
+        private val shape = param.shape//一定支持这个shape，要不然这个dialog不会显示
         private var selectPosition = -1//默认不可选
 
         private val paintSaturationMin: Paint by lazy {

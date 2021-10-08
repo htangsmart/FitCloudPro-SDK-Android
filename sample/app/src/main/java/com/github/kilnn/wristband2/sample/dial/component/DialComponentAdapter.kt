@@ -9,7 +9,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.github.kilnn.wristband2.sample.R
 import com.github.kilnn.wristband2.sample.dial.DialComponentItemView
 import com.github.kilnn.wristband2.sample.dial.DialFileHelper
-import com.github.kilnn.wristband2.sample.dial.adjustRecommendCorners
+import com.github.kilnn.wristband2.sample.dial.createDefaultShape
 import com.github.kilnn.wristband2.sample.dial.task.DialBinParam
 import com.htsmart.wristband2.dial.DialDrawer
 
@@ -24,15 +24,8 @@ class DialComponentAdapter : RecyclerView.Adapter<DialComponentAdapter.DialCompo
         var componentView: DialComponentItemView = itemView
     }
 
-    var lcd = 0
-        set(value) {
-            if (field != value && DialDrawer.Shape.isLcdSupport(lcd)) {
-                field = value
-                shape = DialDrawer.Shape.createFromLcd(lcd)!!.adjustRecommendCorners()
-            }
-        }
-
-    private var shape = DialDrawer.Shape.createFromLcd(lcd)!!.adjustRecommendCorners()
+    //默认创建一个Shape。免得出错
+    var shape: DialDrawer.Shape = createDefaultShape()
 
     var sources: MutableList<DialBinParam>? = null
     var listener: Listener? = null
