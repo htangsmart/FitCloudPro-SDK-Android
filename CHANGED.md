@@ -1,3 +1,13 @@
+# 2021-10-08
+## 发布libraryCore_v1.1.6.aar
+1. AuthenticatedException添加失败的原因
+2. 添加屏幕震动配置BrightnessVibrateConfig，当WristbandVersion#isBrightnessVibrateEnabled()为true时，支持此配置。
+3. 添加新标志位WristbandVersion#isExtDialCustom，代表手环是否支持自定义表盘。
+4. 添加新消息类型WristbandManager#MSG_STOP_FIND_PHONE，用于监听手环停止查找手机。
+5. 添加FunctionConfig#FLAG_DISCONNECT_REMINDER，用于配置手环支持开启断连提醒
+6. 添加获取LcdShape的指令，LcdShape包含手环lcd,形状，宽高和圆角等信息。当WristbandVersion#isExtLcdShape()为true时，可以使用WristbandManager#requestLcdShape获取。同时SDK内部也兼容了此指令，DialBinInfo添加了新字段`DialDrawer.Shape shape`，外部不在需要在使用DialDrawer#Shape#createFromLcd
+7. 更新sample中表盘部分，对新标志位WristbandVersion#isExtDialCustom，以及新指令LcdShape(主要为DialBinInfo新字段的使用)的适配。
+
 # 2021-08-06
 ## 发布libraryCore_v1.1.5.aar
 1. SportData中的运动类型0x41改为自由训练，力量训练改为0x59
