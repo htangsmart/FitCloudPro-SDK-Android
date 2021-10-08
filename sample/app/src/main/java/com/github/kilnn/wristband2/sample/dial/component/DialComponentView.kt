@@ -58,6 +58,7 @@ class DialComponentView : View {
         super.onDraw(canvas)
         canvas.translate((width - viewWidth) / 2f, (height - viewHeight) / 2f)
 
+        val save = canvas.saveLayer(dialFrame, paint, Canvas.ALL_SAVE_FLAG)
         //1.draw dial background
         if (shape.isShapeCircle) {
             canvas.drawCircle(dialFrame.centerX(), dialFrame.centerY(), dialFrame.width() / 2f, paint)
@@ -71,6 +72,7 @@ class DialComponentView : View {
             canvas.drawBitmap(it, drawMatrix, paint)
             paint.xfermode = null
         }
+        canvas.restoreToCount(save)
 
         //2.draw dial style
         components?.let {
