@@ -9,8 +9,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/activity_connect.xml" value="0.176" />
+        <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/dialog_fragment_sport_push.xml" value="0.24114583333333334" />
         <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/item_dial_custom.xml" value="0.1" />
         <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/item_dial_style.xml" value="0.1" />
+        <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/layout/item_sport_push_select.xml" value="0.6" />
         <entry key="..\:/Android/Workspace/FitCloudPro-SDK-Android/sample/app/src/main/res/menu/menu_connect.xml" value="0.264" />
       </map>
     </option>

@@ -4,6 +4,7 @@ import com.github.kilnn.wristband2.sample.dial.entity.DialCustom;
 import com.github.kilnn.wristband2.sample.dial.entity.DialInfo;
 import com.github.kilnn.wristband2.sample.dial.entity.DialInfoComplex;
 import com.github.kilnn.wristband2.sample.net.result.ListResult;
+import com.github.kilnn.wristband2.sample.sportpush.entity.SportBinItem;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
@@ -21,6 +22,7 @@ interface GlobalApiService {
     String URL_DIAL_GET = "/public/dial/get";//查询符合的表盘列表
     String URL_DIAL_CUSTOM = "/public/dial/custom";//获取自定义表盘列表
     String URL_DIAL_CUSTOM_GUI = "/public/dial/customgui";//获取GUI自定义表盘列表
+    String URL_SPORT_BIN_LIST = "/public/sportbin/list";//获取运动推送
 
     @POST(URL_DIAL_LIST)
     @FormUrlEncoded
@@ -48,5 +50,11 @@ interface GlobalApiService {
     Flowable<ListResult<DialInfoComplex>> getDialCustomGUI(
             @Field("lcd") int lcd,
             @Field("toolVersion") String toolVersion
+    );
+
+    @POST(URL_SPORT_BIN_LIST)
+    @FormUrlEncoded
+    Flowable<ListResult<SportBinItem>> getSportBinItems(
+            @Field("hardwareInfo") String hardwareInfo
     );
 }

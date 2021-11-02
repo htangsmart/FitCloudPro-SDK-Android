@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.kilnn.wristband2.sample.dial.entity.DialCustom;
 import com.github.kilnn.wristband2.sample.dial.entity.DialInfo;
 import com.github.kilnn.wristband2.sample.dial.entity.DialInfoComplex;
+import com.github.kilnn.wristband2.sample.sportpush.entity.SportBinItem;
 
 import java.util.List;
 
@@ -47,6 +48,10 @@ public class GlobalApiClient extends AbstractApiClient<GlobalApiService> {
 
     public Flowable<List<DialInfoComplex>> getDialCustomGUI(int lcd, String toolVersion) {
         return NetResultTransformer.mapList(getService().getDialCustomGUI(lcd, toolVersion), false);
+    }
+
+    public Flowable<List<SportBinItem>> getSportBinItems(String hardwareInfo) {
+        return NetResultTransformer.mapList(getService().getSportBinItems(hardwareInfo), false);
     }
 
 }

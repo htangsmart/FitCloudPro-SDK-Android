@@ -78,6 +78,8 @@
         <activity android:name=".dial.component.DialComponentActivity"/>
         <activity android:name=".dial.component.DialComponentEditActivity"/>
 
+        <activity android:name=".sportpush.SportPushActivity"/>
+
         <!-- FileProvider -->
         <provider
             android:name="androidx.core.content.FileProvider"

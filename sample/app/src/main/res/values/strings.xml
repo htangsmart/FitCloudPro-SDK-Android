@@ -58,6 +58,7 @@
     <string name="op8">8.Simple Command</string>
     <string name="op9">9.Dial Library</string>
     <string name="op10">10.Dial Component</string>
+    <string name="op11">11.Sport Push</string>
 
     <string name="configs_version_info">1.Wristband Version Info</string>
     <string name="configs_notification">2.Notification Config</string>

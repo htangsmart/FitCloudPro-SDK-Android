@@ -50,7 +50,6 @@ open class DialParamViewModule : ViewModel() {
     }
 
     fun refreshDialParam() {
-        manager.observerConnectionState()
         refreshDialParamInternal(liveWristbandState.value)
     }
 

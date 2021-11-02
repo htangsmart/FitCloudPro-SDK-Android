@@ -97,6 +97,12 @@
                 android:onClick="dial_component"
                 android:text="@string/op10"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sport_push"
+                android:text="@string/op11"/>
+
         </LinearLayout>
     </ScrollView>
 

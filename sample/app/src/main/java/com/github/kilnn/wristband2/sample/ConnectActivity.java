@@ -25,12 +25,14 @@ import com.github.kilnn.wristband2.sample.mock.DbMock;
 import com.github.kilnn.wristband2.sample.mock.User;
 import com.github.kilnn.wristband2.sample.mock.UserMock;
 import com.github.kilnn.wristband2.sample.realtimedata.RealTimeDataActivity;
+import com.github.kilnn.wristband2.sample.sportpush.SportPushActivity;
 import com.github.kilnn.wristband2.sample.syncdata.SyncDataActivity;
 import com.github.kilnn.wristband2.sample.syncdata.db.SyncDataDao;
 import com.htsmart.wristband2.WristbandApplication;
 import com.htsmart.wristband2.WristbandManager;
 import com.htsmart.wristband2.bean.ConnectionError;
 import com.htsmart.wristband2.bean.ConnectionState;
+import com.htsmart.wristband2.bean.WristbandConfig;
 import com.htsmart.wristband2.bean.WristbandNotification;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -271,4 +273,21 @@ public class ConnectActivity extends BaseActivity {
     public void dial_component(View view) {
         startActivity(new Intent(this, DialComponentActivity.class));
     }
+
+    /**
+     * 11.Sport push
+     */
+    public void sport_push(View view) {
+        if (mWristbandManager.isConnected()) {
+            WristbandConfig config = mWristbandManager.getWristbandConfig();
+            if (config.getWristbandVersion().isSportPushEnabled()) {
+                startActivity(new Intent(this, SportPushActivity.class));
+            } else {
+                toast("UnSupport this function!!!");
+            }
+        } else {
+            toast(R.string.device_disconnected);
+        }
+    }
+
 }

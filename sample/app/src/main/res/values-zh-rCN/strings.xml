@@ -58,6 +58,7 @@
     <string name="op8">8.简单指令</string>
     <string name="op9">9.表盘库</string>
     <string name="op10">10.表盘组件</string>
+    <string name="op11">11.运动推送</string>
 
     <string name="configs_version_info">1.手环版本信息</string>
     <string name="configs_notification">2.通知配置</string>
