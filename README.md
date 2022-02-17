@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //lib core function
-    implementation(name: 'libraryCore_v1.1.5', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.7', ext: 'aar')
 
     //lib dfu function. Optional. If your app need dfu function.
     implementation(name: 'libraryDfu_v1.0.4', ext: 'aar')
@@ -404,6 +404,9 @@ The bracelet itself has changed the alarm setting
 
 #### 6.4.15, MSG_CHANGE_SCHEDULE
 The bracelet itself has changed the schedule setting
+
+#### 6.4.16 MSG_SOS
+Bracelet request SOS
 
 ### 6.5、Real-time data measurement
 
@@ -881,6 +884,13 @@ If `WristbandVersion#isExtDialComponent()` is true, it means that the bracelet s
 
 For detailed code refer to sample project `DialComponentActivity`
 
+#### 6.7.6 Sport push function
+When `WristbandVersion#isSportPushEnabled` is true, the bracelet supports the sports push function.
+
+Use `WristbandManager#requestSportPush` to request sports supported by the bracelet, and sports that currently exist in bracelet.
+
+Use `DfuManager#upgradeSportPush` to push the sports bin file.
+
 ### 6.8、Other simple instructions
 #### 6.8.1、Set user information
 `WristbandManager#setUserInfo(boolean sex, int age, float height, float weight)`。
@@ -958,3 +968,36 @@ When `WristbandVersion#isExtSchedule()` is true, you can use `WristbandManager#s
 You can use `WristbandManager#setAllowWristbandChangeSchedule(boolean allow)` to allow the bracelet to set its own schedule。
 
 When the bracelet changes the schedule by itself, use `WristbandManager#observerWristbandMessage()` to monitor the `WristbandManager#MSG_CHANGE_SCHEDULE` message
+
+### 6.11. Collection code and business card
+When `WristbandVersion#isExtCollectionCode` is true, it means that the bracelet supports the collection code function
+
+When `WristbandVersion#isExtBusinessCard` is true, it means that the bracelet supports the business card function
+
+Use `WristbandManager#settingQrCode` to set the QR code. QR code type reference 'WristbandManager#QrCodeType'
+
+### 6.12, third-party peripheral control
+Use `WristbandManager#observerPeripheralsRequest` to monitor the control request of the bracelet to the peripheral.
+Then use `WristbandManager#setPeripheralsResponse` to set the result of the control request.
+When the peripheral generates data, use `WristbandManager#setPeripheralsData` to set the data to the bracelet.
+
+Currently `Peripherals` only supports blood glucose meters
+
+### 6.13. Sports Connectivity function
+When `WristbandVersion#isSportConnectivity` is true, it means the bracelet supports this function.
+
+Use `WristbandManager#startSportRealTime` to start and interact with the bracelet sport. This method takes two parameters: `sportTimeId` and `sportType`.
+`sportTimeId`: You need a timestamp accurate to the second as the sport ID to ensure the uniqueness of the sport. Such as `int sportTimeId = (int) (System.currentTimeMillis()/1000)`. And `sportId` is also the flag of the subsequent control of this sport.
+`sportType`: The currently supported sport types are as follows:
+````
+int SPORT_RIDE_APP_DEVICE = 0x04;//Ride
+int SPORT_OD_APP_DEVICE = 0x08;//running-outdoor
+int SPORT_WALK_APP_DEVICE = 0x10;//Walk, walk
+int SPORT_CLIMB_APP_DEVICE = 0x14;//Climbing
+````
+
+When the sport starts, you can use `stopSportRealTime`, `pauseSportRealTime`, `resumeSportRealTime` to control the state of the sport. When you need to pay attention, you need to ensure the correctness of `sportId`, and when pausing and resuming, you need to pass in the duration of the current sport.
+
+At the same time, it should be understood that the status of the sport may also be changed on the bracelet side, so you need to use `observerSportRealTimeStatus` to monitor the changes from the bracelet side.
+
+The meaning of `Sports Connectivity` is to use the `steps`, `calories`, `heart rate` of the bracelet, and the `distance` of the APP to generate a combined exercise data. Use `observerSportRealTimeData` to monitor data from the bracelet, and use `reportSportRealTimeData` to send APP data to the bracelet.

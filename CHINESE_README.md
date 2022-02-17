@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.0'
 
     //核心功能库
-    implementation(name: 'libraryCore_v1.1.5', ext: 'aar')
+    implementation(name: 'libraryCore_v1.1.7', ext: 'aar')
 
     //DFU库. 可选. 当你APP需要DFU功能时添加
     implementation(name: 'libraryDfu_v1.0.4', ext: 'aar')
@@ -401,6 +401,8 @@ MSG_CHANGE_SCHEDULE
 #### 6.4.15、MSG_CHANGE_SCHEDULE
 手环自身更改了日程设置
 
+#### 6.4.16 MSG_SOS
+手环请求SOS
 
 ### 6.5、实时数据测量
 
@@ -870,6 +872,13 @@ GameSkin{
 
 详细代码参考sample工程`DialComponentActivity`
 
+#### 6.7.6 运动推送功能
+当`WristbandVersion#isSportPushEnabled`为true时，手环支持运动推送功能。
+
+使用`WristbandManager#requestSportPush`请求手环支持的运动，以及当前存在的运动。
+
+使用`DfuManager#upgradeSportPush`推送运动bin文件。
+
 ### 6.8、其他简单指令
 #### 6.8.1、设置用户信息
 `WristbandManager#setUserInfo(boolean sex, int age, float height, float weight)`。
@@ -946,3 +955,36 @@ GameSkin{
 可以使用`WristbandManager#setAllowWristbandChangeSchedule(boolean allow)`设置允许手环自己设置日程
 
 当手环自己改变日程时，使用`WristbandManager#observerWristbandMessage()`监听`WristbandManager#MSG_CHANGE_SCHEDULE`消息
+
+### 6.11、收款码和名片
+当`WristbandVersion#isExtCollectionCode`为true时，表示手环支持收款码功能
+
+当`WristbandVersion#isExtBusinessCard`为true时，表示手环支持名片功能
+
+使用`WristbandManager#settingQrCode`设置二维码。二维码类型参考'WristbandManager#QrCodeType'
+
+### 6.12、第三方外设控制
+使用`WristbandManager#observerPeripheralsRequest`监听手环对外设的控制请求。
+然后使用`WristbandManager#setPeripheralsResponse`设置控制请求的结果。
+当外设产生数据时，使用`WristbandManager#setPeripheralsData`设置数据到手环。
+
+目前`Peripherals`仅支持血糖仪
+
+### 6.13、运动互联功能
+当`WristbandVersion#isSportConnectivity`为true时，表示手环支持此功能。
+
+使用`WristbandManager#startSportRealTime`开启手环运动，并与之交互。此方法有两个参数：`sportTimeId`和`sportType`。
+`sportTimeId`：您需要一个精确到秒级的时间戳作为运动ID，以确保该运动的唯一性。如int sportTimeId = (int) (System.currentTimeMillis()/1000)。并且`sportId`也是后续控制此运动的标志。
+`sportType`:当前支持的的运动类型如下:
+```
+int SPORT_RIDE_APP_DEVICE = 0x04;//骑行
+int SPORT_OD_APP_DEVICE = 0x08;//跑步-室外
+int SPORT_WALK_APP_DEVICE = 0x10;//走路，健走
+int SPORT_CLIMB_APP_DEVICE = 0x14;//登山
+```
+
+当运动启动之后，可以使用`stopSportRealTime`,`pauseSportRealTime`,`resumeSportRealTime`来控制运动的状态。需要注意的时，你要保证`sportId`的正确性，并且在暂停和恢复时，你需要传入当前运动持续的时间。
+
+同时，要明白的是，在手环端，也可能更改运动的状态，所以你需要使用`observerSportRealTimeStatus`来监听来自手环端的改变。
+
+运动互联的含义是，使用手环端的`步数`，`卡路里`，`心率`，使用APP端的`距离`，来生成一个组合的运动数据。使用`observerSportRealTimeData`监听来自手环的数据，使用`reportSportRealTimeData`来发送APP的数据到手环。

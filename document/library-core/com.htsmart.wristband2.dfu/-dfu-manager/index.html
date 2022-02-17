@@ -1,0 +1,693 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DfuManager</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
+  <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../index.html">libraryCore</a></div>
+      <div></div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
+    <div id="container">
+      <div id="leftColumn">
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div class="main-content" id="content" pageIds="libraryCore::com.htsmart.wristband2.dfu/DfuManager///PointingToDeclaration//106218074">
+          <div class="breadcrumbs"><a href="../../../index.html">libraryCore</a>/<a href="../index.html">com.htsmart.wristband2.dfu</a>/<a href="index.html">DfuManager</a></div>
+          <div class="cover ">
+            <h1 class="cover"><span>Dfu</span><wbr></wbr><span><span>Manager</span></span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">DfuManager</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Created by Kilnn on 2017/6/7. Do Dfu Operation. </p><p class="paragraph"> And than get a DfuManager instance, call <a href="init.html">init</a> in Activity/Fragment onCreate() method. </p><p class="paragraph"> Call <a href="release.html">release</a> ()} in Activity/Fragment onDestroy() method. </p><p class="paragraph"> Call <a href="set-dfu-callback.html">setDfuCallback</a> monitor the dfu status and progress or an error. </p><p class="paragraph"> Call <a href="upgrade-firmware.html">upgradeFirmware</a> to upgrade firmware. Call <a href="upgrade-dial.html">upgradeDial</a> to upgrade dial.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="941418971%2FConstructors%2F106218074" anchor-label="DfuManager" id="941418971%2FConstructors%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-dfu-manager.html"><span>Dfu</span><wbr></wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="941418971%2FConstructors%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-dfu-manager.html"><span class="token function">DfuManager</span></a><span class="token punctuation">(</span>context<span class="token operator">: </span><span data-unresolved-link="android.content/Context///PointingToDeclaration/">Context</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-1339163636%2FFunctions%2F106218074" anchor-label="cancel" id="-1339163636%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="cancel.html"><span><span>cancel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1339163636%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="cancel.html"><span class="token function">cancel</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Cancel dfu is the state <a href="is-cancelable.html">isCancelable</a>.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1255475318%2FFunctions%2F106218074" anchor-label="init" id="1255475318%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="init.html"><span><span>init</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1255475318%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="init.html"><span class="token function">init</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Do init</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1553956008%2FFunctions%2F106218074" anchor-label="isCancelable" id="1553956008%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="is-cancelable.html"><span>is</span><wbr></wbr><span><span>Cancelable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1553956008%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="is-cancelable.html"><span class="token function">isCancelable</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Can the current upgrade process be cancelled.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="112904493%2FFunctions%2F106218074" anchor-label="release" id="112904493%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="release.html"><span><span>release</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="112904493%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="release.html"><span class="token function">release</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Do release</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="54961102%2FFunctions%2F106218074" anchor-label="setCustomDfuProcess1Class" id="54961102%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-custom-dfu-process1-class.html"><span>set</span><wbr></wbr><span>Custom</span><wbr></wbr><span>Dfu</span><wbr></wbr><span><span>Process1Class</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="54961102%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-custom-dfu-process1-class.html"><span class="token function">setCustomDfuProcess1Class</span></a><span class="token punctuation">(</span>clazz<span class="token operator">: </span><span data-unresolved-link="java.lang/Class///PointingToDeclaration/">Class</span><span class="token operator">&lt;</span><span class="token keyword">out </span><span data-unresolved-link="com.htsmart.wristband2.dfu/IDfuProcess///PointingToDeclaration/">IDfuProcess</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1659237173%2FFunctions%2F106218074" anchor-label="setDfuCallback" id="1659237173%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-dfu-callback.html"><span>set</span><wbr></wbr><span>Dfu</span><wbr></wbr><span><span>Callback</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1659237173%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-dfu-callback.html"><span class="token function">setDfuCallback</span></a><span class="token punctuation">(</span>callback<span class="token operator">: </span><a href="../-dfu-callback/index.html">DfuCallback</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Set dfu callback</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1824217306%2FFunctions%2F106218074" anchor-label="setDfuDeviceFinder" id="-1824217306%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-dfu-device-finder.html"><span>set</span><wbr></wbr><span>Dfu</span><wbr></wbr><span>Device</span><wbr></wbr><span><span>Finder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1824217306%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-dfu-device-finder.html"><span class="token function">setDfuDeviceFinder</span></a><span class="token punctuation">(</span>finder<span class="token operator">: </span><a href="../-i-dfu-device-finder/index.html">IDfuDeviceFinder</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1032385978%2FFunctions%2F106218074" anchor-label="setDfuFileChecker" id="1032385978%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-dfu-file-checker.html"><span>set</span><wbr></wbr><span>Dfu</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Checker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1032385978%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-dfu-file-checker.html"><span class="token function">setDfuFileChecker</span></a><span class="token punctuation">(</span>checker<span class="token operator">: </span><a href="../-i-dfu-file-checker/index.html">IDfuFileChecker</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1041924872%2FFunctions%2F106218074" anchor-label="setDfuModeChecker" id="1041924872%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="set-dfu-mode-checker.html"><span>set</span><wbr></wbr><span>Dfu</span><wbr></wbr><span>Mode</span><wbr></wbr><span><span>Checker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1041924872%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-dfu-mode-checker.html"><span class="token function">setDfuModeChecker</span></a><span class="token punctuation">(</span>checker<span class="token operator">: </span><a href="../-i-dfu-mode-checker/index.html">IDfuModeChecker</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-990190424%2FFunctions%2F106218074" anchor-label="start" id="-990190424%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="start.html"><span><span>start</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-990190424%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="java.lang/Deprecated///PointingToDeclaration/"><span class="token annotation">Deprecated</span></span></div></div><strike><span class="token keyword">open </span></strike><strike><span class="token keyword"></span></strike><strike><span class="token keyword">fun </span></strike><a href="start.html"><strike><span class="token function">start</span></strike></a><strike><span class="token punctuation">(</span></strike><strike>uri</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="java.lang/String///PointingToDeclaration/">String</span><strike><span class="token punctuation">, </span></strike><strike>upgradeFirmware</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><strike><span class="token punctuation">)</span></strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Start dfu with a file uri.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1073683532%2FFunctions%2F106218074" anchor-label="upgradeDial" id="-1073683532%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="upgrade-dial.html"><span>upgrade</span><wbr></wbr><span><span>Dial</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1073683532%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="upgrade-dial.html"><span class="token function">upgradeDial</span></a><span class="token punctuation">(</span>uri<span class="token operator">: </span><span data-unresolved-link="java.lang/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span>binFlag<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Start upgrade dial with a uri.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="994330527%2FFunctions%2F106218074" anchor-label="upgradeFirmware" id="994330527%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="upgrade-firmware.html"><span>upgrade</span><wbr></wbr><span><span>Firmware</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="994330527%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="java.lang/Deprecated///PointingToDeclaration/"><span class="token annotation">Deprecated</span></span></div></div><strike><span class="token keyword">open </span></strike><strike><span class="token keyword"></span></strike><strike><span class="token keyword">fun </span></strike><a href="upgrade-firmware.html"><strike><span class="token function">upgradeFirmware</span></strike></a><strike><span class="token punctuation">(</span></strike><strike>uri</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="java.lang/String///PointingToDeclaration/">String</span><strike><span class="token punctuation">)</span></strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="upgrade-firmware.html"><span class="token function">upgradeFirmware</span></a><span class="token punctuation">(</span>uri<span class="token operator">: </span><span data-unresolved-link="java.lang/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span>silent<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Start upgrade firmware with a uri.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-272511981%2FFunctions%2F106218074" anchor-label="upgradeGameSkin" id="-272511981%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="upgrade-game-skin.html"><span>upgrade</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Skin</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-272511981%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="upgrade-game-skin.html"><span class="token function">upgradeGameSkin</span></a><span class="token punctuation">(</span>uri<span class="token operator">: </span><span data-unresolved-link="java.lang/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span>binFlag<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Start upgrade game skin with a uri.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1995782008%2FFunctions%2F106218074" anchor-label="upgradeSportPush" id="-1995782008%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="upgrade-sport-push.html"><span>upgrade</span><wbr></wbr><span>Sport</span><wbr></wbr><span><span>Push</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1995782008%2FFunctions%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="upgrade-sport-push.html"><span class="token function">upgradeSportPush</span></a><span class="token punctuation">(</span>uri<span class="token operator">: </span><span data-unresolved-link="java.lang/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span>binFlag<span class="token operator">: </span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Start upgrade sport push with a uri.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-1155537218%2FProperties%2F106218074" anchor-label="ERROR_CODE_BT_DISABLE" id="-1155537218%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-b-t_-d-i-s-a-b-l-e.html">ERROR_CODE_BT_DISABLE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1155537218%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1155537218%2FProperties%2F106218074" anchor-label="ERROR_CODE_BT_DISABLE" id="-1155537218%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-b-t_-d-i-s-a-b-l-e.html">ERROR_CODE_BT_DISABLE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1155537218%2FProperties%2F106218074" anchor-label="ERROR_CODE_BT_DISABLE" id="-1155537218%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>The android device's bluetooth is disabled</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="342111121%2FProperties%2F106218074" anchor-label="ERROR_CODE_BT_UNSUPPORTED" id="342111121%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-b-t_-u-n-s-u-p-p-o-r-t-e-d.html">ERROR_CODE_BT_UNSUPPORTED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="342111121%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="342111121%2FProperties%2F106218074" anchor-label="ERROR_CODE_BT_UNSUPPORTED" id="342111121%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-b-t_-u-n-s-u-p-p-o-r-t-e-d.html">ERROR_CODE_BT_UNSUPPORTED</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="342111121%2FProperties%2F106218074" anchor-label="ERROR_CODE_BT_UNSUPPORTED" id="342111121%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>The android device don't support bluetooth or ble</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1837450880%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_DEVICE_NOT_FOUND" id="1837450880%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-d-e-v-i-c-e_-n-o-t_-f-o-u-n-d.html">ERROR_CODE_DFU_DEVICE_NOT_FOUND</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1837450880%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1837450880%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_DEVICE_NOT_FOUND" id="1837450880%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-d-e-v-i-c-e_-n-o-t_-f-o-u-n-d.html">ERROR_CODE_DFU_DEVICE_NOT_FOUND</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1837450880%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_DEVICE_NOT_FOUND" id="1837450880%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Device not found for dfu.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-224273673%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_DEVICE_SCAN_FAILED" id="-224273673%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-d-e-v-i-c-e_-s-c-a-n_-f-a-i-l-e-d.html">ERROR_CODE_DFU_DEVICE_SCAN_FAILED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-224273673%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-224273673%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_DEVICE_SCAN_FAILED" id="-224273673%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-d-e-v-i-c-e_-s-c-a-n_-f-a-i-l-e-d.html">ERROR_CODE_DFU_DEVICE_SCAN_FAILED</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-224273673%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_DEVICE_SCAN_FAILED" id="-224273673%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Start scan failed</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1043597278%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_CANNOT_READ" id="1043597278%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-c-a-n-n-o-t_-r-e-a-d.html">ERROR_CODE_DFU_FILE_CANNOT_READ</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1043597278%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1043597278%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_CANNOT_READ" id="1043597278%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-c-a-n-n-o-t_-r-e-a-d.html">ERROR_CODE_DFU_FILE_CANNOT_READ</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1043597278%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_CANNOT_READ" id="1043597278%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu file is not readable,may be don't have android.permission.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1418317282%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_DOWNLOAD" id="1418317282%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-d-o-w-n-l-o-a-d.html">ERROR_CODE_DFU_FILE_DOWNLOAD</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1418317282%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1418317282%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_DOWNLOAD" id="1418317282%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-d-o-w-n-l-o-a-d.html">ERROR_CODE_DFU_FILE_DOWNLOAD</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1418317282%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_DOWNLOAD" id="1418317282%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu file download error</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-747729773%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_FORMAT" id="-747729773%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-f-o-r-m-a-t.html">ERROR_CODE_DFU_FILE_FORMAT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-747729773%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-747729773%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_FORMAT" id="-747729773%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-f-o-r-m-a-t.html">ERROR_CODE_DFU_FILE_FORMAT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-747729773%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_FORMAT" id="-747729773%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu file format error.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-533018683%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_NOT_EXIST" id="-533018683%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-n-o-t_-e-x-i-s-t.html">ERROR_CODE_DFU_FILE_NOT_EXIST</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-533018683%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-533018683%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_NOT_EXIST" id="-533018683%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-n-o-t_-e-x-i-s-t.html">ERROR_CODE_DFU_FILE_NOT_EXIST</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-533018683%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_NOT_EXIST" id="-533018683%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu file not exist</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-513583580%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_URI" id="-513583580%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-u-r-i.html">ERROR_CODE_DFU_FILE_URI</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-513583580%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-513583580%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_URI" id="-513583580%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-u-r-i.html">ERROR_CODE_DFU_FILE_URI</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-513583580%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_FILE_URI" id="-513583580%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu file uri error</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1994354457%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_ABORT" id="1994354457%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-a-b-o-r-t.html">ERROR_CODE_DFU_MODE_ABORT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1994354457%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1994354457%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_ABORT" id="1994354457%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-a-b-o-r-t.html">ERROR_CODE_DFU_MODE_ABORT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1994354457%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_ABORT" id="1994354457%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Device abort when enter dfu.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1950860785%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_CMD_FAILED" id="-1950860785%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-c-m-d_-f-a-i-l-e-d.html">ERROR_CODE_DFU_MODE_CMD_FAILED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1950860785%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1950860785%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_CMD_FAILED" id="-1950860785%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-c-m-d_-f-a-i-l-e-d.html">ERROR_CODE_DFU_MODE_CMD_FAILED</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1950860785%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_CMD_FAILED" id="-1950860785%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Command send failed for enter dfu</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-233193692%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_HARDWARE_INFO" id="-233193692%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-h-a-r-d-w-a-r-e_-i-n-f-o.html">ERROR_CODE_DFU_MODE_HARDWARE_INFO</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-233193692%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-233193692%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_HARDWARE_INFO" id="-233193692%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-h-a-r-d-w-a-r-e_-i-n-f-o.html">ERROR_CODE_DFU_MODE_HARDWARE_INFO</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-233193692%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_HARDWARE_INFO" id="-233193692%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Error hardware info</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-646564473%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_LOW_BATTERY" id="-646564473%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-l-o-w_-b-a-t-t-e-r-y.html">ERROR_CODE_DFU_MODE_LOW_BATTERY</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-646564473%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-646564473%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_LOW_BATTERY" id="-646564473%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-l-o-w_-b-a-t-t-e-r-y.html">ERROR_CODE_DFU_MODE_LOW_BATTERY</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-646564473%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_LOW_BATTERY" id="-646564473%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Device low battery , so can't enter dfu</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="209707700%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_UNSUPPORTED" id="209707700%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-u-n-s-u-p-p-o-r-t-e-d.html">ERROR_CODE_DFU_MODE_UNSUPPORTED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="209707700%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="209707700%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_UNSUPPORTED" id="209707700%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-u-n-s-u-p-p-o-r-t-e-d.html">ERROR_CODE_DFU_MODE_UNSUPPORTED</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="209707700%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_MODE_UNSUPPORTED" id="209707700%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu mode unsupported</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1707374003%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_ABORT" id="-1707374003%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-a-b-o-r-t.html">ERROR_CODE_DFU_PROCESS_ABORT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1707374003%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1707374003%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_ABORT" id="-1707374003%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-a-b-o-r-t.html">ERROR_CODE_DFU_PROCESS_ABORT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1707374003%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_ABORT" id="-1707374003%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu abort</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="234089520%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_SERVICE_NOT_READY" id="234089520%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-s-e-r-v-i-c-e_-n-o-t_-r-e-a-d-y.html">ERROR_CODE_DFU_PROCESS_SERVICE_NOT_READY</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="234089520%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="234089520%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_SERVICE_NOT_READY" id="234089520%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-s-e-r-v-i-c-e_-n-o-t_-r-e-a-d-y.html">ERROR_CODE_DFU_PROCESS_SERVICE_NOT_READY</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="234089520%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_SERVICE_NOT_READY" id="234089520%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu service is not ready</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="2000669854%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_STARTUP_FAILED" id="2000669854%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-s-t-a-r-t-u-p_-f-a-i-l-e-d.html">ERROR_CODE_DFU_PROCESS_STARTUP_FAILED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2000669854%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="2000669854%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_STARTUP_FAILED" id="2000669854%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-s-t-a-r-t-u-p_-f-a-i-l-e-d.html">ERROR_CODE_DFU_PROCESS_STARTUP_FAILED</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="2000669854%2FProperties%2F106218074" anchor-label="ERROR_CODE_DFU_PROCESS_STARTUP_FAILED" id="2000669854%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu startup failed</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1759890903%2FProperties%2F106218074" anchor-label="ERROR_CODE_UNKNOWN" id="1759890903%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-c-o-d-e_-u-n-k-n-o-w-n.html">ERROR_CODE_UNKNOWN</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1759890903%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1759890903%2FProperties%2F106218074" anchor-label="ERROR_CODE_UNKNOWN" id="1759890903%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-c-o-d-e_-u-n-k-n-o-w-n.html">ERROR_CODE_UNKNOWN</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1759890903%2FProperties%2F106218074" anchor-label="ERROR_CODE_UNKNOWN" id="1759890903%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Unknown error</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1375320588%2FProperties%2F106218074" anchor-label="ERROR_TYPE_BT" id="-1375320588%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-t-y-p-e_-b-t.html">ERROR_TYPE_BT</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1375320588%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1375320588%2FProperties%2F106218074" anchor-label="ERROR_TYPE_BT" id="-1375320588%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-t-y-p-e_-b-t.html">ERROR_TYPE_BT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1375320588%2FProperties%2F106218074" anchor-label="ERROR_TYPE_BT" id="-1375320588%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Error type for bluetooth <a href="-e-r-r-o-r_-c-o-d-e_-b-t_-u-n-s-u-p-p-o-r-t-e-d.html">ERROR_CODE_BT_UNSUPPORTED</a><a href="-e-r-r-o-r_-c-o-d-e_-b-t_-d-i-s-a-b-l-e.html">ERROR_CODE_BT_DISABLE</a></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1511137092%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_DEVICE" id="1511137092%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-d-e-v-i-c-e.html">ERROR_TYPE_DFU_DEVICE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1511137092%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1511137092%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_DEVICE" id="1511137092%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-d-e-v-i-c-e.html">ERROR_TYPE_DFU_DEVICE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1511137092%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_DEVICE" id="1511137092%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Error type for scan dfu device <a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-d-e-v-i-c-e_-s-c-a-n_-f-a-i-l-e-d.html">ERROR_CODE_DFU_DEVICE_SCAN_FAILED</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-d-e-v-i-c-e_-n-o-t_-f-o-u-n-d.html">ERROR_CODE_DFU_DEVICE_NOT_FOUND</a></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1744986594%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_FILE" id="-1744986594%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-f-i-l-e.html">ERROR_TYPE_DFU_FILE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1744986594%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1744986594%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_FILE" id="-1744986594%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-f-i-l-e.html">ERROR_TYPE_DFU_FILE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1744986594%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_FILE" id="-1744986594%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Error type for dfu file <a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-u-r-i.html">ERROR_CODE_DFU_FILE_URI</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-n-o-t_-e-x-i-s-t.html">ERROR_CODE_DFU_FILE_NOT_EXIST</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-c-a-n-n-o-t_-r-e-a-d.html">ERROR_CODE_DFU_FILE_CANNOT_READ</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-f-o-r-m-a-t.html">ERROR_CODE_DFU_FILE_FORMAT</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-f-i-l-e_-d-o-w-n-l-o-a-d.html">ERROR_CODE_DFU_FILE_DOWNLOAD</a></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1819638825%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_MODE" id="-1819638825%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-m-o-d-e.html">ERROR_TYPE_DFU_MODE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1819638825%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1819638825%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_MODE" id="-1819638825%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-m-o-d-e.html">ERROR_TYPE_DFU_MODE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1819638825%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_MODE" id="-1819638825%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Error type for device enter dfu mode <a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-h-a-r-d-w-a-r-e_-i-n-f-o.html">ERROR_CODE_DFU_MODE_HARDWARE_INFO</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-c-m-d_-f-a-i-l-e-d.html">ERROR_CODE_DFU_MODE_CMD_FAILED</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-l-o-w_-b-a-t-t-e-r-y.html">ERROR_CODE_DFU_MODE_LOW_BATTERY</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-m-o-d-e_-a-b-o-r-t.html">ERROR_CODE_DFU_MODE_ABORT</a></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-2081381679%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_PROCESS" id="-2081381679%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-p-r-o-c-e-s-s.html">ERROR_TYPE_DFU_PROCESS</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2081381679%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-2081381679%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_PROCESS" id="-2081381679%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-e-r-r-o-r_-t-y-p-e_-d-f-u_-p-r-o-c-e-s-s.html">ERROR_TYPE_DFU_PROCESS</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2081381679%2FProperties%2F106218074" anchor-label="ERROR_TYPE_DFU_PROCESS" id="-2081381679%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Error type for dfu process <a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-s-e-r-v-i-c-e_-n-o-t_-r-e-a-d-y.html">ERROR_CODE_DFU_PROCESS_SERVICE_NOT_READY</a><a href="-e-r-r-o-r_-c-o-d-e_-d-f-u_-p-r-o-c-e-s-s_-s-t-a-r-t-u-p_-f-a-i-l-e-d.html">ERROR_CODE_DFU_PROCESS_STARTUP_FAILED</a></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1754851079%2FProperties%2F106218074" anchor-label="STATE_CHECK_DFU_FILE" id="-1754851079%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-s-t-a-t-e_-c-h-e-c-k_-d-f-u_-f-i-l-e.html">STATE_CHECK_DFU_FILE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1754851079%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1754851079%2FProperties%2F106218074" anchor-label="STATE_CHECK_DFU_FILE" id="-1754851079%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-t-a-t-e_-c-h-e-c-k_-d-f-u_-f-i-l-e.html">STATE_CHECK_DFU_FILE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1754851079%2FProperties%2F106218074" anchor-label="STATE_CHECK_DFU_FILE" id="-1754851079%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Check dfu file</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1829503310%2FProperties%2F106218074" anchor-label="STATE_CHECK_DFU_MODE" id="-1829503310%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-s-t-a-t-e_-c-h-e-c-k_-d-f-u_-m-o-d-e.html">STATE_CHECK_DFU_MODE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1829503310%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1829503310%2FProperties%2F106218074" anchor-label="STATE_CHECK_DFU_MODE" id="-1829503310%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-t-a-t-e_-c-h-e-c-k_-d-f-u_-m-o-d-e.html">STATE_CHECK_DFU_MODE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1829503310%2FProperties%2F106218074" anchor-label="STATE_CHECK_DFU_MODE" id="-1829503310%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Check dfu mode</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1648700236%2FProperties%2F106218074" anchor-label="STATE_DFU_ING" id="1648700236%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-s-t-a-t-e_-d-f-u_-i-n-g.html">STATE_DFU_ING</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1648700236%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1648700236%2FProperties%2F106218074" anchor-label="STATE_DFU_ING" id="1648700236%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-t-a-t-e_-d-f-u_-i-n-g.html">STATE_DFU_ING</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1648700236%2FProperties%2F106218074" anchor-label="STATE_DFU_ING" id="1648700236%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Dfu processing</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1303499302%2FProperties%2F106218074" anchor-label="STATE_FIND_DFU_DEVICE" id="-1303499302%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-s-t-a-t-e_-f-i-n-d_-d-f-u_-d-e-v-i-c-e.html">STATE_FIND_DFU_DEVICE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1303499302%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1303499302%2FProperties%2F106218074" anchor-label="STATE_FIND_DFU_DEVICE" id="-1303499302%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-t-a-t-e_-f-i-n-d_-d-f-u_-d-e-v-i-c-e.html">STATE_FIND_DFU_DEVICE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1303499302%2FProperties%2F106218074" anchor-label="STATE_FIND_DFU_DEVICE" id="-1303499302%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Find Dfu device</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="116664640%2FProperties%2F106218074" anchor-label="STATE_NONE" id="116664640%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex">
+                        <div><a href="-s-t-a-t-e_-n-o-n-e.html">STATE_NONE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="116664640%2FProperties%2F106218074"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="116664640%2FProperties%2F106218074" anchor-label="STATE_NONE" id="116664640%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-s-t-a-t-e_-n-o-n-e.html">STATE_NONE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="116664640%2FProperties%2F106218074" anchor-label="STATE_NONE" id="116664640%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>State None</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

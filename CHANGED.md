@@ -1,3 +1,30 @@
+# 2022-02-17
+## 发布libraryCore_v1.1.7.aar
+1. DialDrawer添加新LCD类型支持
+2. SportData添加新的运动类型定义
+3. FunctionConfig添加运动目标的显示和隐藏设置。`FunctionConfig#FLAG_EXERCISE_TARGET`
+4. 添加收款码和名片功能。详细参考开发文档`6.11、收款码和名片`
+5. 解决时间设置指令排队，导致手环时间误差的bug
+6. 解决同步数据时，指令判断错误，导致数据接收流程中断的bug
+7. 添加SOS消息监听。'WristbandManager#MSG_SOS','WristbandManager#observerWristbandMessage',
+8. 添加第三方外设控制功能。详细参考开发文档`6.12、第三方外设控制`
+9. 添加手动测量数据同步功能。当`WristbandVersion#isMeasureDataSyncable()`为true时，手环支持此功能。
+```
+SyncDataParser类添加了手动测量的类型：
+TYPE_HEART_RATE_MEASURE  
+TYPE_OXYGEN_MEASURE
+TYPE_BLOOD_PRESSURE_MEASURE
+TYPE_RESPIRATORY_RATE_MEASURE
+TYPE_TEMPERATURE_MEASURE
+TYPE_PRESSURE_MEASURE
+
+以及对应的解析方法，如 parserHeartRateMeasure 。使用方法和以前的数据同步类似。
+```
+10. 添加音频蓝牙配对功能
+11. 添加运动模式推送功能。当WristbandVersion#isSportPushEnabled为true时，支持此功能。详细参考开发文档`6.7.6 运动推送功能`
+12. 添加运动互联功能。当WristbandVersion#isSportConnectivity为true时，支持此功能。详细参考开发文档`6.13、运动互联功能`
+
+
 # 2021-10-08
 ## 发布libraryCore_v1.1.6.aar
 1. AuthenticatedException添加失败的原因
@@ -32,7 +59,7 @@
 implementation 'no.nordicsemi.android:dfu:1.10.3'
 ```
 
-5.添加游戏记录和皮肤的功能. 详细参考开发文档参考`6.6.7 游戏记录`
+5.添加游戏记录和皮肤的功能. 详细参考开发文档`6.6.7 游戏记录`
 
 6.添加AppleMusic，Zoom，TikTok，未接来电消息通知，WristbandVersion#isExtAncsAppleMusicZoomTikTokTelephoneMissed()为true时，才支持这几个新增的消息通知。详细参考NotificationConfig，WristbandNotification等
 
