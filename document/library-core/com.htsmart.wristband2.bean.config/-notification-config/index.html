@@ -1,530 +1,553 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>NotificationConfig</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>  </head>
-  <body>
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../../index.html">libraryCore</a></div>
-      <div></div>
-      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
-      </div>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>libraryCore</span>
+            </a>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageIds="libraryCore::com.htsmart.wristband2.bean.config/NotificationConfig///PointingToDeclaration//106218074">
-          <div class="breadcrumbs"><a href="../../../index.html">libraryCore</a>/<a href="../index.html">com.htsmart.wristband2.bean.config</a>/<a href="index.html">NotificationConfig</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>Notification</span><wbr></wbr><span><span>Config</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">NotificationConfig</a> : <span data-unresolved-link="com.htsmart.wristband2.bean.config/AbstractConfig///PointingToDeclaration/">AbstractConfig</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Notification config. </p><p class="paragraph"> This config defines multiple types of notifications. But not all notifications are supported on the wristband. </p><p class="paragraph"> The following notifications are supported on all bracelets. <a href="-f-l-a-g_-t-e-l-e-p-h-o-n-e.html">FLAG_TELEPHONE</a><a href="-f-l-a-g_-s-m-s.html">FLAG_SMS</a><a href="-f-l-a-g_-q-q.html">FLAG_QQ</a><a href="-f-l-a-g_-w-e-c-h-a-t.html">FLAG_WECHAT</a><a href="-f-l-a-g_-f-a-c-e-b-o-o-k.html">FLAG_FACEBOOK</a><a href="-f-l-a-g_-p-i-n-t-e-r-e-s-t.html">FLAG_PINTEREST</a><a href="-f-l-a-g_-w-h-a-t-s-a-p-p.html">FLAG_WHATSAPP</a><a href="-f-l-a-g_-l-i-n-e.html">FLAG_LINE</a><a href="-f-l-a-g_-k-a-k-a-o.html">FLAG_KAKAO</a><a href="-f-l-a-g_-o-t-h-e-r-s_-a-p-p.html">FLAG_OTHERS_APP</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-email.html">isExtAncsEmail</a> is true <a href="-f-l-a-g_-e-m-a-i-l.html">FLAG_EMAIL</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-viber-telegram.html">isExtAncsViberTelegram</a> is true <a href="-f-l-a-g_-t-e-l-e-g-r-a-m.html">FLAG_TELEGRAM</a><a href="-f-l-a-g_-v-i-b-e-r.html">FLAG_VIBER</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-extra1.html">isExtAncsExtra1</a> is true <a href="-f-l-a-g_-t-w-i-t-t-e-r.html">FLAG_TWITTER</a><a href="-f-l-a-g_-l-i-n-k-e-d-i-n.html">FLAG_LINKEDIN</a><a href="-f-l-a-g_-i-n-s-t-a-g-r-a-m.html">FLAG_INSTAGRAM</a><a href="-f-l-a-g_-f-a-c-e-b-o-o-k_-m-e-s-s-e-n-g-e-r.html">FLAG_FACEBOOK_MESSENGER</a><a href="-f-l-a-g_-s-k-y-p-e.html">FLAG_SKYPE</a><a href="-f-l-a-g_-s-n-a-p-c-h-a-t.html">FLAG_SNAPCHAT</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-hike-you-tube.html">isExtAncsHikeYouTube</a> is true <a href="-f-l-a-g_-h-i-k-e.html">FLAG_HIKE</a><a href="-f-l-a-g_-y-o-u-t-u-b-e.html">FLAG_YOUTUBE</a></p><p class="paragraph"> The following notifications are supported when isExtAncsAppleMusicZoomTikTok is true <a href="-f-l-a-g_-a-p-p-l-e_-m-u-s-i-c.html">FLAG_APPLE_MUSIC</a><a href="-f-l-a-g_-z-o-o-m.html">FLAG_ZOOM</a><a href="-f-l-a-g_-t-i-k-t-o-k.html">FLAG_TIKTOK</a></p><p class="paragraph"> The following notifications are just definitions and are not implemented on the wristband. <a href="-f-l-a-g_-c-a-l-e-n-d-a-r.html">FLAG_CALENDAR</a></p><p class="paragraph"> In Android development, `BroadcastReceiver` is generally used to monitor calls and text messages, and` NotificationListenerService` is used to obtain notifications from third-party apps and parse messages. </p><p class="paragraph"> Because `Notification` involves the compatibility of many different versions of the system, many apps will send the same notification repeatedly, so pay attention to filtering the duplicate notifications sent by the same APP during development. </p><p class="paragraph"> And it is not recommended to use `FLAG_OTHERS_APP` to support many APP types that are not supported by the bracelet. This may cause you to send many notifications and cause the bracelet to keep vibrating.</p></div></div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
-            <div class="tabs-section-body">
-              <h2 class="tabbedcontent">Constructors</h2>
-              <div class="table" data-togglable="Constructors"><a data-name="-2109895905%2FConstructors%2F106218074" anchor-label="NotificationConfig" id="-2109895905%2FConstructors%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-notification-config.html"><span>Notification</span><wbr></wbr><span><span>Config</span></span></a></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="libraryCore::com.htsmart.wristband2.bean.config/NotificationConfig///PointingToDeclaration//106218074">
+  <div class="breadcrumbs"><a href="../../../index.html">libraryCore</a><span class="delimiter">/</span><a href="../index.html">com.htsmart.wristband2.bean.config</a><span class="delimiter">/</span><a href="index.html">NotificationConfig</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Notification</span><wbr></wbr><span><span>Config</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">NotificationConfig</a> : <span data-unresolved-link="com.htsmart.wristband2.bean.config/AbstractConfig///PointingToDeclaration/">AbstractConfig</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Notification config. </p><p class="paragraph"> This config defines multiple types of notifications. But not all notifications are supported on the wristband. </p><p class="paragraph"> The following notifications are supported on all bracelets. <a href="-f-l-a-g_-t-e-l-e-p-h-o-n-e.html">FLAG_TELEPHONE</a><a href="-f-l-a-g_-s-m-s.html">FLAG_SMS</a><a href="-f-l-a-g_-q-q.html">FLAG_QQ</a><a href="-f-l-a-g_-w-e-c-h-a-t.html">FLAG_WECHAT</a><a href="-f-l-a-g_-f-a-c-e-b-o-o-k.html">FLAG_FACEBOOK</a><a href="-f-l-a-g_-p-i-n-t-e-r-e-s-t.html">FLAG_PINTEREST</a><a href="-f-l-a-g_-w-h-a-t-s-a-p-p.html">FLAG_WHATSAPP</a><a href="-f-l-a-g_-l-i-n-e.html">FLAG_LINE</a><a href="-f-l-a-g_-k-a-k-a-o.html">FLAG_KAKAO</a><a href="-f-l-a-g_-o-t-h-e-r-s_-a-p-p.html">FLAG_OTHERS_APP</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-email.html">isExtAncsEmail</a> is true <a href="-f-l-a-g_-e-m-a-i-l.html">FLAG_EMAIL</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-viber-telegram.html">isExtAncsViberTelegram</a> is true <a href="-f-l-a-g_-t-e-l-e-g-r-a-m.html">FLAG_TELEGRAM</a><a href="-f-l-a-g_-v-i-b-e-r.html">FLAG_VIBER</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-extra1.html">isExtAncsExtra1</a> is true <a href="-f-l-a-g_-t-w-i-t-t-e-r.html">FLAG_TWITTER</a><a href="-f-l-a-g_-l-i-n-k-e-d-i-n.html">FLAG_LINKEDIN</a><a href="-f-l-a-g_-i-n-s-t-a-g-r-a-m.html">FLAG_INSTAGRAM</a><a href="-f-l-a-g_-f-a-c-e-b-o-o-k_-m-e-s-s-e-n-g-e-r.html">FLAG_FACEBOOK_MESSENGER</a><a href="-f-l-a-g_-s-k-y-p-e.html">FLAG_SKYPE</a><a href="-f-l-a-g_-s-n-a-p-c-h-a-t.html">FLAG_SNAPCHAT</a></p><p class="paragraph"> The following notifications are supported when <a href="../../com.htsmart.wristband2.bean/-wristband-version/is-ext-ancs-hike-you-tube.html">isExtAncsHikeYouTube</a> is true <a href="-f-l-a-g_-h-i-k-e.html">FLAG_HIKE</a><a href="-f-l-a-g_-y-o-u-t-u-b-e.html">FLAG_YOUTUBE</a></p><p class="paragraph"> The following notifications are supported when isExtAncsAppleMusicZoomTikTok is true <a href="-f-l-a-g_-a-p-p-l-e_-m-u-s-i-c.html">FLAG_APPLE_MUSIC</a><a href="-f-l-a-g_-z-o-o-m.html">FLAG_ZOOM</a><a href="-f-l-a-g_-t-i-k-t-o-k.html">FLAG_TIKTOK</a></p><p class="paragraph"> The following notifications are just definitions and are not implemented on the wristband. <a href="-f-l-a-g_-c-a-l-e-n-d-a-r.html">FLAG_CALENDAR</a></p><p class="paragraph"> In Android development, `BroadcastReceiver` is generally used to monitor calls and text messages, and` NotificationListenerService` is used to obtain notifications from third-party apps and parse messages. </p><p class="paragraph"> Because `Notification` involves the compatibility of many different versions of the system, many apps will send the same notification repeatedly, so pay attention to filtering the duplicate notifications sent by the same APP during development. </p><p class="paragraph"> And it is not recommended to use `FLAG_OTHERS_APP` to support many APP types that are not supported by the bracelet. This may cause you to send many notifications and cause the bracelet to keep vibrating.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="-2109895905%2FConstructors%2F106218074" anchor-label="NotificationConfig" id="-2109895905%2FConstructors%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-notification-config.html"><span>Notification</span><wbr></wbr><span><span>Config</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2109895905%2FConstructors%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-notification-config.html"><span class="token function">NotificationConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-135125259%2FConstructors%2F106218074" anchor-label="NotificationConfig" id="-135125259%2FConstructors%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-notification-config.html"><span>Notification</span><wbr></wbr><span><span>Config</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-135125259%2FConstructors%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-notification-config.html"><span class="token function">NotificationConfig</span></a><span class="token punctuation">(</span>values<span class="token operator">: </span><span data-unresolved-link="kotlin/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Types</h2>
-              <div class="table" data-togglable="Types"><a data-name="2031005109%2FClasslikes%2F106218074" anchor-label="Flag" id="2031005109%2FClasslikes%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-flag/index.html"><span><span>Flag</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2031005109%2FClasslikes%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="java.lang.annotation/Retention///PointingToDeclaration/"><span class="token annotation">Retention</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span data-unresolved-link="java.lang.annotation/RetentionPolicy///PointingToDeclaration/">RetentionPolicy.SOURCE</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-flag/index.html">Flag</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="1487739150%2FFunctions%2F106218074" anchor-label="getBytes" id="1487739150%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="../-women-healthy-config/index.html#1487739150%2FFunctions%2F106218074"><span>get</span><wbr></wbr><span><span>Bytes</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1487739150%2FFunctions%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-women-healthy-config/index.html#1487739150%2FFunctions%2F106218074"><span class="token function">getBytes</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Get the config bytes.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1552408352%2FFunctions%2F106218074" anchor-label="isFlagEnable" id="-1552408352%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="is-flag-enable.html"><span>is</span><wbr></wbr><span>Flag</span><wbr></wbr><span><span>Enable</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552408352%2FFunctions%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="is-flag-enable.html"><span class="token function">isFlagEnable</span></a><span class="token punctuation">(</span>flag<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Is flag of page enable.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="146247697%2FFunctions%2F106218074" anchor-label="setFlagEnable" id="146247697%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="set-flag-enable.html"><span>set</span><wbr></wbr><span>Flag</span><wbr></wbr><span><span>Enable</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="146247697%2FFunctions%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-flag-enable.html"><span class="token function">setFlagEnable</span></a><span class="token punctuation">(</span>flag<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span>enable<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Set flag of page enable.</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Properties</h2>
-              <div class="table" data-togglable="Properties"><a data-name="580728479%2FProperties%2F106218074" anchor-label="FLAG_APPLE_MUSIC" id="580728479%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-a-p-p-l-e_-m-u-s-i-c.html">FLAG_APPLE_MUSIC</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="580728479%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="580728479%2FProperties%2F106218074" anchor-label="FLAG_APPLE_MUSIC" id="580728479%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-a-p-p-l-e_-m-u-s-i-c.html">FLAG_APPLE_MUSIC</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="580728479%2FProperties%2F106218074" anchor-label="FLAG_APPLE_MUSIC" id="580728479%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Apple Music reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="146825693%2FProperties%2F106218074" anchor-label="FLAG_CALENDAR" id="146825693%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-c-a-l-e-n-d-a-r.html">FLAG_CALENDAR</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="146825693%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="146825693%2FProperties%2F106218074" anchor-label="FLAG_CALENDAR" id="146825693%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-c-a-l-e-n-d-a-r.html">FLAG_CALENDAR</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="146825693%2FProperties%2F106218074" anchor-label="FLAG_CALENDAR" id="146825693%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Calendar reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1178197789%2FProperties%2F106218074" anchor-label="FLAG_EMAIL" id="-1178197789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-e-m-a-i-l.html">FLAG_EMAIL</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1178197789%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1178197789%2FProperties%2F106218074" anchor-label="FLAG_EMAIL" id="-1178197789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-e-m-a-i-l.html">FLAG_EMAIL</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1178197789%2FProperties%2F106218074" anchor-label="FLAG_EMAIL" id="-1178197789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of email reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1154665301%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK" id="1154665301%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-f-a-c-e-b-o-o-k.html">FLAG_FACEBOOK</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1154665301%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1154665301%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK" id="1154665301%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-f-a-c-e-b-o-o-k.html">FLAG_FACEBOOK</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1154665301%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK" id="1154665301%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Facebook reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1185526369%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK_MESSENGER" id="1185526369%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-f-a-c-e-b-o-o-k_-m-e-s-s-e-n-g-e-r.html">FLAG_FACEBOOK_MESSENGER</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1185526369%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1185526369%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK_MESSENGER" id="1185526369%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-f-a-c-e-b-o-o-k_-m-e-s-s-e-n-g-e-r.html">FLAG_FACEBOOK_MESSENGER</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1185526369%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK_MESSENGER" id="1185526369%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Facebook messenger reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="625735840%2FProperties%2F106218074" anchor-label="FLAG_HIKE" id="625735840%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-h-i-k-e.html">FLAG_HIKE</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="625735840%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="625735840%2FProperties%2F106218074" anchor-label="FLAG_HIKE" id="625735840%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-h-i-k-e.html">FLAG_HIKE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="625735840%2FProperties%2F106218074" anchor-label="FLAG_HIKE" id="625735840%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Hike reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1900568435%2FProperties%2F106218074" anchor-label="FLAG_INSTAGRAM" id="-1900568435%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-i-n-s-t-a-g-r-a-m.html">FLAG_INSTAGRAM</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1900568435%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1900568435%2FProperties%2F106218074" anchor-label="FLAG_INSTAGRAM" id="-1900568435%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-i-n-s-t-a-g-r-a-m.html">FLAG_INSTAGRAM</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1900568435%2FProperties%2F106218074" anchor-label="FLAG_INSTAGRAM" id="-1900568435%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Instagram reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1900096924%2FProperties%2F106218074" anchor-label="FLAG_KAKAO" id="1900096924%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-k-a-k-a-o.html">FLAG_KAKAO</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1900096924%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1900096924%2FProperties%2F106218074" anchor-label="FLAG_KAKAO" id="1900096924%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-k-a-k-a-o.html">FLAG_KAKAO</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1900096924%2FProperties%2F106218074" anchor-label="FLAG_KAKAO" id="1900096924%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of kakao reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1988017383%2FProperties%2F106218074" anchor-label="FLAG_LINE" id="1988017383%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-l-i-n-e.html">FLAG_LINE</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1988017383%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1988017383%2FProperties%2F106218074" anchor-label="FLAG_LINE" id="1988017383%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-l-i-n-e.html">FLAG_LINE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1988017383%2FProperties%2F106218074" anchor-label="FLAG_LINE" id="1988017383%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Line reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="873055261%2FProperties%2F106218074" anchor-label="FLAG_LINKEDIN" id="873055261%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-l-i-n-k-e-d-i-n.html">FLAG_LINKEDIN</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="873055261%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="873055261%2FProperties%2F106218074" anchor-label="FLAG_LINKEDIN" id="873055261%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-l-i-n-k-e-d-i-n.html">FLAG_LINKEDIN</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="873055261%2FProperties%2F106218074" anchor-label="FLAG_LINKEDIN" id="873055261%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of LinkedIn reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="170566742%2FProperties%2F106218074" anchor-label="FLAG_OTHERS_APP" id="170566742%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-o-t-h-e-r-s_-a-p-p.html">FLAG_OTHERS_APP</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="170566742%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="170566742%2FProperties%2F106218074" anchor-label="FLAG_OTHERS_APP" id="170566742%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-o-t-h-e-r-s_-a-p-p.html">FLAG_OTHERS_APP</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="170566742%2FProperties%2F106218074" anchor-label="FLAG_OTHERS_APP" id="170566742%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of other apps reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1080646235%2FProperties%2F106218074" anchor-label="FLAG_PINTEREST" id="-1080646235%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-p-i-n-t-e-r-e-s-t.html">FLAG_PINTEREST</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1080646235%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1080646235%2FProperties%2F106218074" anchor-label="FLAG_PINTEREST" id="-1080646235%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-p-i-n-t-e-r-e-s-t.html">FLAG_PINTEREST</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1080646235%2FProperties%2F106218074" anchor-label="FLAG_PINTEREST" id="-1080646235%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Pinterest reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-148638789%2FProperties%2F106218074" anchor-label="FLAG_QQ" id="-148638789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-q-q.html">FLAG_QQ</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-148638789%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-148638789%2FProperties%2F106218074" anchor-label="FLAG_QQ" id="-148638789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-q-q.html">FLAG_QQ</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-148638789%2FProperties%2F106218074" anchor-label="FLAG_QQ" id="-148638789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of QQ reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-2005493015%2FProperties%2F106218074" anchor-label="FLAG_SKYPE" id="-2005493015%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-s-k-y-p-e.html">FLAG_SKYPE</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2005493015%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-2005493015%2FProperties%2F106218074" anchor-label="FLAG_SKYPE" id="-2005493015%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-s-k-y-p-e.html">FLAG_SKYPE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2005493015%2FProperties%2F106218074" anchor-label="FLAG_SKYPE" id="-2005493015%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of skype reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="199823942%2FProperties%2F106218074" anchor-label="FLAG_SMS" id="199823942%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-s-m-s.html">FLAG_SMS</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="199823942%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="199823942%2FProperties%2F106218074" anchor-label="FLAG_SMS" id="199823942%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-s-m-s.html">FLAG_SMS</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="199823942%2FProperties%2F106218074" anchor-label="FLAG_SMS" id="199823942%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of SMS reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-224258183%2FProperties%2F106218074" anchor-label="FLAG_SNAPCHAT" id="-224258183%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-s-n-a-p-c-h-a-t.html">FLAG_SNAPCHAT</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-224258183%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-224258183%2FProperties%2F106218074" anchor-label="FLAG_SNAPCHAT" id="-224258183%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-s-n-a-p-c-h-a-t.html">FLAG_SNAPCHAT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-224258183%2FProperties%2F106218074" anchor-label="FLAG_SNAPCHAT" id="-224258183%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Snapchat reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-2049612422%2FProperties%2F106218074" anchor-label="FLAG_TELEGRAM" id="-2049612422%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-t-e-l-e-g-r-a-m.html">FLAG_TELEGRAM</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2049612422%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-2049612422%2FProperties%2F106218074" anchor-label="FLAG_TELEGRAM" id="-2049612422%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-e-l-e-g-r-a-m.html">FLAG_TELEGRAM</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2049612422%2FProperties%2F106218074" anchor-label="FLAG_TELEGRAM" id="-2049612422%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Telegram reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="181933179%2FProperties%2F106218074" anchor-label="FLAG_TELEPHONE" id="181933179%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-t-e-l-e-p-h-o-n-e.html">FLAG_TELEPHONE</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="181933179%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="181933179%2FProperties%2F106218074" anchor-label="FLAG_TELEPHONE" id="181933179%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-e-l-e-p-h-o-n-e.html">FLAG_TELEPHONE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="181933179%2FProperties%2F106218074" anchor-label="FLAG_TELEPHONE" id="181933179%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Telephone reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1801626401%2FProperties%2F106218074" anchor-label="FLAG_TIKTOK" id="1801626401%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-t-i-k-t-o-k.html">FLAG_TIKTOK</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1801626401%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1801626401%2FProperties%2F106218074" anchor-label="FLAG_TIKTOK" id="1801626401%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-i-k-t-o-k.html">FLAG_TIKTOK</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1801626401%2FProperties%2F106218074" anchor-label="FLAG_TIKTOK" id="1801626401%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of TikTok reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1596355220%2FProperties%2F106218074" anchor-label="FLAG_TWITTER" id="-1596355220%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-t-w-i-t-t-e-r.html">FLAG_TWITTER</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1596355220%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1596355220%2FProperties%2F106218074" anchor-label="FLAG_TWITTER" id="-1596355220%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-w-i-t-t-e-r.html">FLAG_TWITTER</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1596355220%2FProperties%2F106218074" anchor-label="FLAG_TWITTER" id="-1596355220%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Twitter reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="916630403%2FProperties%2F106218074" anchor-label="FLAG_VIBER" id="916630403%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-v-i-b-e-r.html">FLAG_VIBER</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="916630403%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="916630403%2FProperties%2F106218074" anchor-label="FLAG_VIBER" id="916630403%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-v-i-b-e-r.html">FLAG_VIBER</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="916630403%2FProperties%2F106218074" anchor-label="FLAG_VIBER" id="916630403%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of viber reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="22270581%2FProperties%2F106218074" anchor-label="FLAG_WECHAT" id="22270581%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-w-e-c-h-a-t.html">FLAG_WECHAT</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22270581%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="22270581%2FProperties%2F106218074" anchor-label="FLAG_WECHAT" id="22270581%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-w-e-c-h-a-t.html">FLAG_WECHAT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="22270581%2FProperties%2F106218074" anchor-label="FLAG_WECHAT" id="22270581%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of WeChat reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="255064585%2FProperties%2F106218074" anchor-label="FLAG_WHATSAPP" id="255064585%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-w-h-a-t-s-a-p-p.html">FLAG_WHATSAPP</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="255064585%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="255064585%2FProperties%2F106218074" anchor-label="FLAG_WHATSAPP" id="255064585%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-w-h-a-t-s-a-p-p.html">FLAG_WHATSAPP</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="255064585%2FProperties%2F106218074" anchor-label="FLAG_WHATSAPP" id="255064585%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of WhatsApp reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-680447300%2FProperties%2F106218074" anchor-label="FLAG_YOUTUBE" id="-680447300%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-y-o-u-t-u-b-e.html">FLAG_YOUTUBE</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-680447300%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-680447300%2FProperties%2F106218074" anchor-label="FLAG_YOUTUBE" id="-680447300%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-y-o-u-t-u-b-e.html">FLAG_YOUTUBE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-680447300%2FProperties%2F106218074" anchor-label="FLAG_YOUTUBE" id="-680447300%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of YouTube reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1512107544%2FProperties%2F106218074" anchor-label="FLAG_ZOOM" id="-1512107544%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-f-l-a-g_-z-o-o-m.html">FLAG_ZOOM</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1512107544%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1512107544%2FProperties%2F106218074" anchor-label="FLAG_ZOOM" id="-1512107544%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-z-o-o-m.html">FLAG_ZOOM</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1512107544%2FProperties%2F106218074" anchor-label="FLAG_ZOOM" id="-1512107544%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Zoom reminder</div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1637811311%2FProperties%2F106218074" anchor-label="PACKET_LENGTH" id="-1637811311%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
-                <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-p-a-c-k-e-t_-l-e-n-g-t-h.html">PACKET_LENGTH</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1637811311%2FProperties%2F106218074"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1637811311%2FProperties%2F106218074" anchor-label="PACKET_LENGTH" id="-1637811311%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-p-a-c-k-e-t_-l-e-n-g-t-h.html">PACKET_LENGTH</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-notification-config.html"><span class="token function">NotificationConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+<a data-name="-135125259%2FConstructors%2F106218074" anchor-label="NotificationConfig" id="-135125259%2FConstructors%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-notification-config.html"><span>Notification</span><wbr></wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-135125259%2FConstructors%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="-notification-config.html"><span class="token function">NotificationConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">values<span class="token operator">: </span><span data-unresolved-link="kotlin/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Types</h2>
+      <div class="table" data-togglable="Types"><a data-name="2031005109%2FClasslikes%2F106218074" anchor-label="Flag" id="2031005109%2FClasslikes%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-flag/index.html"><span><span>Flag</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2031005109%2FClasslikes%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="java.lang.annotation/Retention///PointingToDeclaration/"><span class="token annotation">Retention</span></span><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span data-unresolved-link="java.lang.annotation/RetentionPolicy///PointingToDeclaration/">RetentionPolicy.SOURCE</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">annotation class </span><a href="-flag/index.html">Flag</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="1487739150%2FFunctions%2F106218074" anchor-label="getBytes" id="1487739150%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-women-healthy-config/index.html#1487739150%2FFunctions%2F106218074"><span>get</span><wbr></wbr><span><span>Bytes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1487739150%2FFunctions%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-women-healthy-config/index.html#1487739150%2FFunctions%2F106218074"><span class="token function">getBytes</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Array///PointingToDeclaration/">Array</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token operator">&gt;</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Get the config bytes.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1552408352%2FFunctions%2F106218074" anchor-label="isFlagEnable" id="-1552408352%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="is-flag-enable.html"><span>is</span><wbr></wbr><span>Flag</span><wbr></wbr><span><span>Enable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552408352%2FFunctions%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="is-flag-enable.html"><span class="token function">isFlagEnable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">flag<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Is flag of page enable.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="146247697%2FFunctions%2F106218074" anchor-label="setFlagEnable" id="146247697%2FFunctions%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="set-flag-enable.html"><span>set</span><wbr></wbr><span>Flag</span><wbr></wbr><span><span>Enable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="146247697%2FFunctions%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="set-flag-enable.html"><span class="token function">setFlagEnable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">flag<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">enable<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">Set flag of page enable.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="">Properties</h2>
+      <div class="table" data-togglable="Properties"><a data-name="580728479%2FProperties%2F106218074" anchor-label="FLAG_APPLE_MUSIC" id="580728479%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-a-p-p-l-e_-m-u-s-i-c.html"><span><span>FLAG_APPLE_MUSIC</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="580728479%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="580728479%2FProperties%2F106218074" anchor-label="FLAG_APPLE_MUSIC" id="580728479%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-a-p-p-l-e_-m-u-s-i-c.html">FLAG_APPLE_MUSIC</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="580728479%2FProperties%2F106218074" anchor-label="FLAG_APPLE_MUSIC" id="580728479%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Apple Music reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="146825693%2FProperties%2F106218074" anchor-label="FLAG_CALENDAR" id="146825693%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-c-a-l-e-n-d-a-r.html"><span><span>FLAG_CALENDAR</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="146825693%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="146825693%2FProperties%2F106218074" anchor-label="FLAG_CALENDAR" id="146825693%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-c-a-l-e-n-d-a-r.html">FLAG_CALENDAR</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="146825693%2FProperties%2F106218074" anchor-label="FLAG_CALENDAR" id="146825693%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Calendar reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1178197789%2FProperties%2F106218074" anchor-label="FLAG_EMAIL" id="-1178197789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-e-m-a-i-l.html"><span><span>FLAG_EMAIL</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1178197789%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1178197789%2FProperties%2F106218074" anchor-label="FLAG_EMAIL" id="-1178197789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-e-m-a-i-l.html">FLAG_EMAIL</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1178197789%2FProperties%2F106218074" anchor-label="FLAG_EMAIL" id="-1178197789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of email reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1154665301%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK" id="1154665301%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-f-a-c-e-b-o-o-k.html"><span><span>FLAG_FACEBOOK</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1154665301%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1154665301%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK" id="1154665301%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-f-a-c-e-b-o-o-k.html">FLAG_FACEBOOK</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1154665301%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK" id="1154665301%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Facebook reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1185526369%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK_MESSENGER" id="1185526369%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-f-a-c-e-b-o-o-k_-m-e-s-s-e-n-g-e-r.html"><span><span>FLAG_FACEBOOK_MESSENGER</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1185526369%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1185526369%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK_MESSENGER" id="1185526369%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-f-a-c-e-b-o-o-k_-m-e-s-s-e-n-g-e-r.html">FLAG_FACEBOOK_MESSENGER</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1185526369%2FProperties%2F106218074" anchor-label="FLAG_FACEBOOK_MESSENGER" id="1185526369%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Facebook messenger reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="625735840%2FProperties%2F106218074" anchor-label="FLAG_HIKE" id="625735840%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-h-i-k-e.html"><span><span>FLAG_HIKE</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="625735840%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="625735840%2FProperties%2F106218074" anchor-label="FLAG_HIKE" id="625735840%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-h-i-k-e.html">FLAG_HIKE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="625735840%2FProperties%2F106218074" anchor-label="FLAG_HIKE" id="625735840%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Hike reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1900568435%2FProperties%2F106218074" anchor-label="FLAG_INSTAGRAM" id="-1900568435%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-i-n-s-t-a-g-r-a-m.html"><span><span>FLAG_INSTAGRAM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1900568435%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1900568435%2FProperties%2F106218074" anchor-label="FLAG_INSTAGRAM" id="-1900568435%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-i-n-s-t-a-g-r-a-m.html">FLAG_INSTAGRAM</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1900568435%2FProperties%2F106218074" anchor-label="FLAG_INSTAGRAM" id="-1900568435%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Instagram reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1900096924%2FProperties%2F106218074" anchor-label="FLAG_KAKAO" id="1900096924%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-k-a-k-a-o.html"><span><span>FLAG_KAKAO</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1900096924%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1900096924%2FProperties%2F106218074" anchor-label="FLAG_KAKAO" id="1900096924%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-k-a-k-a-o.html">FLAG_KAKAO</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1900096924%2FProperties%2F106218074" anchor-label="FLAG_KAKAO" id="1900096924%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of kakao reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1988017383%2FProperties%2F106218074" anchor-label="FLAG_LINE" id="1988017383%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-l-i-n-e.html"><span><span>FLAG_LINE</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1988017383%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1988017383%2FProperties%2F106218074" anchor-label="FLAG_LINE" id="1988017383%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-l-i-n-e.html">FLAG_LINE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1988017383%2FProperties%2F106218074" anchor-label="FLAG_LINE" id="1988017383%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Line reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="873055261%2FProperties%2F106218074" anchor-label="FLAG_LINKEDIN" id="873055261%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-l-i-n-k-e-d-i-n.html"><span><span>FLAG_LINKEDIN</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="873055261%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="873055261%2FProperties%2F106218074" anchor-label="FLAG_LINKEDIN" id="873055261%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-l-i-n-k-e-d-i-n.html">FLAG_LINKEDIN</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="873055261%2FProperties%2F106218074" anchor-label="FLAG_LINKEDIN" id="873055261%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of LinkedIn reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="170566742%2FProperties%2F106218074" anchor-label="FLAG_OTHERS_APP" id="170566742%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-o-t-h-e-r-s_-a-p-p.html"><span><span>FLAG_OTHERS_APP</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="170566742%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="170566742%2FProperties%2F106218074" anchor-label="FLAG_OTHERS_APP" id="170566742%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-o-t-h-e-r-s_-a-p-p.html">FLAG_OTHERS_APP</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="170566742%2FProperties%2F106218074" anchor-label="FLAG_OTHERS_APP" id="170566742%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of other apps reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1080646235%2FProperties%2F106218074" anchor-label="FLAG_PINTEREST" id="-1080646235%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-p-i-n-t-e-r-e-s-t.html"><span><span>FLAG_PINTEREST</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1080646235%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1080646235%2FProperties%2F106218074" anchor-label="FLAG_PINTEREST" id="-1080646235%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-p-i-n-t-e-r-e-s-t.html">FLAG_PINTEREST</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1080646235%2FProperties%2F106218074" anchor-label="FLAG_PINTEREST" id="-1080646235%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Pinterest reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-148638789%2FProperties%2F106218074" anchor-label="FLAG_QQ" id="-148638789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-q-q.html"><span><span>FLAG_QQ</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-148638789%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-148638789%2FProperties%2F106218074" anchor-label="FLAG_QQ" id="-148638789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-q-q.html">FLAG_QQ</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-148638789%2FProperties%2F106218074" anchor-label="FLAG_QQ" id="-148638789%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of QQ reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2005493015%2FProperties%2F106218074" anchor-label="FLAG_SKYPE" id="-2005493015%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-s-k-y-p-e.html"><span><span>FLAG_SKYPE</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2005493015%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-2005493015%2FProperties%2F106218074" anchor-label="FLAG_SKYPE" id="-2005493015%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-s-k-y-p-e.html">FLAG_SKYPE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2005493015%2FProperties%2F106218074" anchor-label="FLAG_SKYPE" id="-2005493015%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of skype reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="199823942%2FProperties%2F106218074" anchor-label="FLAG_SMS" id="199823942%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-s-m-s.html"><span><span>FLAG_SMS</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="199823942%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="199823942%2FProperties%2F106218074" anchor-label="FLAG_SMS" id="199823942%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-s-m-s.html">FLAG_SMS</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="199823942%2FProperties%2F106218074" anchor-label="FLAG_SMS" id="199823942%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of SMS reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-224258183%2FProperties%2F106218074" anchor-label="FLAG_SNAPCHAT" id="-224258183%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-s-n-a-p-c-h-a-t.html"><span><span>FLAG_SNAPCHAT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-224258183%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-224258183%2FProperties%2F106218074" anchor-label="FLAG_SNAPCHAT" id="-224258183%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-s-n-a-p-c-h-a-t.html">FLAG_SNAPCHAT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-224258183%2FProperties%2F106218074" anchor-label="FLAG_SNAPCHAT" id="-224258183%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Snapchat reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-2049612422%2FProperties%2F106218074" anchor-label="FLAG_TELEGRAM" id="-2049612422%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-t-e-l-e-g-r-a-m.html"><span><span>FLAG_TELEGRAM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2049612422%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-2049612422%2FProperties%2F106218074" anchor-label="FLAG_TELEGRAM" id="-2049612422%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-e-l-e-g-r-a-m.html">FLAG_TELEGRAM</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-2049612422%2FProperties%2F106218074" anchor-label="FLAG_TELEGRAM" id="-2049612422%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Telegram reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="181933179%2FProperties%2F106218074" anchor-label="FLAG_TELEPHONE" id="181933179%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-t-e-l-e-p-h-o-n-e.html"><span><span>FLAG_TELEPHONE</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="181933179%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="181933179%2FProperties%2F106218074" anchor-label="FLAG_TELEPHONE" id="181933179%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-e-l-e-p-h-o-n-e.html">FLAG_TELEPHONE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="181933179%2FProperties%2F106218074" anchor-label="FLAG_TELEPHONE" id="181933179%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Telephone reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="1801626401%2FProperties%2F106218074" anchor-label="FLAG_TIKTOK" id="1801626401%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-t-i-k-t-o-k.html"><span><span>FLAG_TIKTOK</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1801626401%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="1801626401%2FProperties%2F106218074" anchor-label="FLAG_TIKTOK" id="1801626401%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-i-k-t-o-k.html">FLAG_TIKTOK</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1801626401%2FProperties%2F106218074" anchor-label="FLAG_TIKTOK" id="1801626401%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of TikTok reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1596355220%2FProperties%2F106218074" anchor-label="FLAG_TWITTER" id="-1596355220%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-t-w-i-t-t-e-r.html"><span><span>FLAG_TWITTER</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1596355220%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1596355220%2FProperties%2F106218074" anchor-label="FLAG_TWITTER" id="-1596355220%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-t-w-i-t-t-e-r.html">FLAG_TWITTER</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1596355220%2FProperties%2F106218074" anchor-label="FLAG_TWITTER" id="-1596355220%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Twitter reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="916630403%2FProperties%2F106218074" anchor-label="FLAG_VIBER" id="916630403%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-v-i-b-e-r.html"><span><span>FLAG_VIBER</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="916630403%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="916630403%2FProperties%2F106218074" anchor-label="FLAG_VIBER" id="916630403%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-v-i-b-e-r.html">FLAG_VIBER</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="916630403%2FProperties%2F106218074" anchor-label="FLAG_VIBER" id="916630403%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of viber reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="22270581%2FProperties%2F106218074" anchor-label="FLAG_WECHAT" id="22270581%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-w-e-c-h-a-t.html"><span><span>FLAG_WECHAT</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22270581%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="22270581%2FProperties%2F106218074" anchor-label="FLAG_WECHAT" id="22270581%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-w-e-c-h-a-t.html">FLAG_WECHAT</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="22270581%2FProperties%2F106218074" anchor-label="FLAG_WECHAT" id="22270581%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of WeChat reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="255064585%2FProperties%2F106218074" anchor-label="FLAG_WHATSAPP" id="255064585%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-w-h-a-t-s-a-p-p.html"><span><span>FLAG_WHATSAPP</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="255064585%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="255064585%2FProperties%2F106218074" anchor-label="FLAG_WHATSAPP" id="255064585%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-w-h-a-t-s-a-p-p.html">FLAG_WHATSAPP</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="255064585%2FProperties%2F106218074" anchor-label="FLAG_WHATSAPP" id="255064585%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of WhatsApp reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-680447300%2FProperties%2F106218074" anchor-label="FLAG_YOUTUBE" id="-680447300%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-y-o-u-t-u-b-e.html"><span><span>FLAG_YOUTUBE</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-680447300%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-680447300%2FProperties%2F106218074" anchor-label="FLAG_YOUTUBE" id="-680447300%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-y-o-u-t-u-b-e.html">FLAG_YOUTUBE</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-680447300%2FProperties%2F106218074" anchor-label="FLAG_YOUTUBE" id="-680447300%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of YouTube reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1512107544%2FProperties%2F106218074" anchor-label="FLAG_ZOOM" id="-1512107544%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-f-l-a-g_-z-o-o-m.html"><span><span>FLAG_ZOOM</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1512107544%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1512107544%2FProperties%2F106218074" anchor-label="FLAG_ZOOM" id="-1512107544%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-f-l-a-g_-z-o-o-m.html">FLAG_ZOOM</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-1512107544%2FProperties%2F106218074" anchor-label="FLAG_ZOOM" id="-1512107544%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>Flag of Zoom reminder</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="-1637811311%2FProperties%2F106218074" anchor-label="PACKET_LENGTH" id="-1637811311%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a>
+        <div class="table-row" data-filterable-current=":libraryCore:dokkaHtml/release" data-filterable-set=":libraryCore:dokkaHtml/release">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="-p-a-c-k-e-t_-l-e-n-g-t-h.html"><span><span>PACKET_LENGTH</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1637811311%2FProperties%2F106218074"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><a data-name="-1637811311%2FProperties%2F106218074" anchor-label="PACKET_LENGTH" id="-1637811311%2FProperties%2F106218074" data-filterable-set=":libraryCore:dokkaHtml/release"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-p-a-c-k-e-t_-l-e-n-g-t-h.html">PACKET_LENGTH</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
 </html>
-

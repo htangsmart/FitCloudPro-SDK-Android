@@ -1,3 +1,35 @@
+# 2022-12-7
+## 发布libraryCore_v1.1.8.aar
+1. 添加游戏锁功能`WristbandManager#setLockGame`，参考接口javadoc文档
+2. 添加震动命令`WristbandManager#setVibration`，删除或取消通知消息`WristbandManager#dismissWristbandNotification`,`WristbandManager#deleteWristbandNotification`，此指令只针对部分定制手环，具体接口参考javadoc文档
+3. 更改`WristbandManager#requestHighestGameRecords`接口，现在需要传入某个游戏类型，请求该类型对应的数据。
+4. 运动互联功能部分指令更改，详细参考开发文档`6.13、运动互联功能`
+5. 添加游戏排名趋势设置，`WristbandManager#setGameRankingTrends`
+6. 优化游戏推送接口，GameSkin重命名为 GameSpace
+7. 添加挂断电话短信通知，使用`WristbandManager#observerHangUpSms`监听手环发送短信的消息，使用`WristbandManager#replayHangUpSms`回复手环短信是否发送成功
+8. 天气信息添加大气压强可见度等数据，部分手环支持此设置。
+9. 新增核酸码功能，使用`WristbandManager#settingQrCode` 设置核酸码
+10. 添加音乐推送指令。使用`WristbandManager#setMusicInfo`和`setMusicState`设置。使用`observerWristbandMessage`监听`MSG_MUSIC_STATE`或者`MSG_MUSIC_STATE`消息。
+11. 添加习惯养成接口
+class WristbandHabit{
+	private int habitId;//习惯id，0-9
+    private int habitType;//习惯类型。0-自定义名称 1-运动
+    private String habitName;//名称
+    private Date startTime;//习惯开始时间
+    private int duration;//习惯时长，单位分钟
+    private int repeat;//重复周期，和闹钟此字段类似。
+    private int state;//状态
+    private int reachGoalDays;//达标天数
+    private int maxReachGoalDays;//最大达标天数
+    private int taskDays;//任务天数
+    private int associatedFunction;//关联功能。0-无关联，1-运动
+    private int remindDuration;//提醒持续时间，单位秒
+    private int remindAdvance;//提醒提前时间，单位分钟
+}
+
+## 发布libraryDfu_v1.0.6.aar
+1.升级至原厂OTA库3.5.14版本
+
 # 2022-02-17
 ## 发布libraryCore_v1.1.7.aar
 1. DialDrawer添加新LCD类型支持

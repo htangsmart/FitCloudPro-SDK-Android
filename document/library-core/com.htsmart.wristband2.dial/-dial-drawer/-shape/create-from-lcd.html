@@ -1,37 +1,60 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>createFromLcd</title>
-<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../../styles/style.css" rel="Stylesheet"><link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../../styles/main.css" rel="Stylesheet"><link href="../../../../styles/prism.css" rel="Stylesheet"><link href="../../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script><script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>  </head>
-  <body>
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../../../index.html">libraryCore</a></div>
-      <div></div>
-      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../../index.html">
+                    <span>libraryCore</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
-      </div>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageIds="libraryCore::com.htsmart.wristband2.dial/DialDrawer.Shape/createFromLcd/#int/PointingToDeclaration//106218074">
-          <div class="breadcrumbs"><a href="../../../../index.html">libraryCore</a>/<a href="../../index.html">com.htsmart.wristband2.dial</a>/<a href="../index.html">DialDrawer</a>/<a href="index.html">Shape</a>/<a href="create-from-lcd.html">createFromLcd</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>create</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Lcd</span></span></h1>
-          </div>
-          <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="java.lang/Deprecated///PointingToDeclaration/"><span class="token annotation">Deprecated</span></span></div><div class="block"><span class="token annotation">@</span><span data-unresolved-link="androidx.annotation/Nullable///PointingToDeclaration/"><span class="token annotation">Nullable</span></span></div></div><strike><span class="token keyword">open </span></strike><strike><span class="token keyword"></span></strike><strike><span class="token keyword">fun </span></strike><a href="create-from-lcd.html"><strike><span class="token function">createFromLcd</span></strike></a><strike><span class="token punctuation">(</span></strike><strike>lcd</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><strike><span class="token punctuation">)</span></strike><strike><span class="token operator">: </span></strike><a href="index.html">DialDrawer.Shape</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Create shape from lcd type <span data-unresolved-link="com.htsmart.wristband2.bean/DialBinInfo/getLcd/#/PointingToDeclaration/">getLcd</span>. If the lcd is not support, null value will return. 0:240*240_Rectangle 1:240*240_Circle 2:320*320_Rectangle 3:360*360_Circle 4:320*385_Rectangle 5:320*360_Rectangle 6:240*284_Rectangle 7:240*280_Rectangle 8:348*442_Rectangle 9:280*240_Rectangle 10:200*320_Rectangle 11:368*448_Rectangle 12:320*390_Rectangle 13:172*320_Rectangle 14:454*454_Circle 15:128*220_Rectangle 16:160*80_Rectangle 17:128*128_Rectangle 18:167*320_Rectangle 19:80*160_Rectangle</p><h4 class="">Deprecated</h4><p class="paragraph">Use <span data-unresolved-link="com.htsmart.wristband2.bean/DialBinInfo/getShape/#/PointingToDeclaration/">getShape</span> instead. If <span data-unresolved-link="com.htsmart.wristband2.bean/DialBinInfo/getShape/#/PointingToDeclaration/">getShape</span> is null, There is no need to call this method, because this method will also return null</p></div></div>
-        </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageIds="libraryCore::com.htsmart.wristband2.dial/DialDrawer.Shape/createFromLcd/#int/PointingToDeclaration//106218074">
+  <div class="breadcrumbs"><a href="../../../../index.html">libraryCore</a><span class="delimiter">/</span><a href="../../index.html">com.htsmart.wristband2.dial</a><span class="delimiter">/</span><a href="../index.html">DialDrawer</a><span class="delimiter">/</span><a href="index.html">Shape</a><span class="delimiter">/</span><a href="create-from-lcd.html">createFromLcd</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>create</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Lcd</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":libraryCore:dokkaHtml/release"><div class="symbol monospace strikethrough"><div class="block"><div class="block"><span class="token annotation">@</span><span data-unresolved-link="java.lang/Deprecated///PointingToDeclaration/"><span class="token annotation">Deprecated</span></span></div><div class="block"><span class="token annotation">@</span><span data-unresolved-link="androidx.annotation/Nullable///PointingToDeclaration/"><span class="token annotation">Nullable</span></span></div></div><strike><span class="token keyword">open </span></strike><strike><span class="token keyword"></span></strike><strike><span class="token keyword">fun </span></strike><a href="create-from-lcd.html"><strike><span class="token function">createFromLcd</span></strike></a><strike><span class="token punctuation">(</span></strike><span class="parameters "><span class="parameter ">lcd<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></span></span><strike><span class="token punctuation">)</span></strike><strike><span class="token operator">: </span></strike><a href="index.html">DialDrawer.Shape</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Create shape from lcd type <span data-unresolved-link="com.htsmart.wristband2.bean/DialBinInfo/getLcd/#/PointingToDeclaration/">getLcd</span>. If the lcd is not support, null value will return. 0:240*240_Rectangle 1:240*240_Circle 2:320*320_Rectangle 3:360*360_Circle 4:320*385_Rectangle 5:320*360_Rectangle 6:240*284_Rectangle 7:240*280_Rectangle 8:348*442_Rectangle 9:280*240_Rectangle 10:200*320_Rectangle 11:368*448_Rectangle 12:320*390_Rectangle 13:172*320_Rectangle 14:454*454_Circle 15:128*220_Rectangle 16:160*80_Rectangle 17:128*128_Rectangle 18:167*320_Rectangle 19:80*160_Rectangle 20:320*380_Rectangle 21:240*286_Rectangle 22:466*466_Circle 23:4240*296_Rectangle</p><h4 class="">Deprecated</h4><p class="paragraph">Use <span data-unresolved-link="com.htsmart.wristband2.bean/DialBinInfo/getShape/#/PointingToDeclaration/">getShape</span> instead. If <span data-unresolved-link="com.htsmart.wristband2.bean/DialBinInfo/getShape/#/PointingToDeclaration/">getShape</span> is null, There is no need to call this method, because this method will also return null</p></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
-
