@@ -5,28 +5,28 @@ import android.os.Parcelable;
 
 public class SportBinItem implements Parcelable {
 
-    private int sportType;
+    private int sportUiType;
     private String iconUrl;
     private String binUrl;
 
     public SportBinItem() {
     }
 
-    public SportBinItem(int sportType, String iconUrl, String binUrl) {
-        this.sportType = sportType;
+    public SportBinItem(int sportUiType, String iconUrl, String binUrl) {
+        this.sportUiType = sportUiType;
         this.iconUrl = iconUrl;
         this.binUrl = binUrl;
     }
 
     protected SportBinItem(Parcel in) {
-        sportType = in.readInt();
+        sportUiType = in.readInt();
         iconUrl = in.readString();
         binUrl = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(sportType);
+        dest.writeInt(sportUiType);
         dest.writeString(iconUrl);
         dest.writeString(binUrl);
     }
@@ -48,12 +48,12 @@ public class SportBinItem implements Parcelable {
         }
     };
 
-    public int getSportType() {
-        return sportType;
+    public int getSportUiType() {
+        return sportUiType;
     }
 
-    public void setSportType(int sportType) {
-        this.sportType = sportType;
+    public void setSportUiType(int sportUiType) {
+        this.sportUiType = sportUiType;
     }
 
     public String getIconUrl() {

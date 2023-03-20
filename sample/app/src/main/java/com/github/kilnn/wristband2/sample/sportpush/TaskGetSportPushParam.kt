@@ -29,7 +29,7 @@ class TaskGetSportPushParam {
                 //转成SparseArray，方便下面查找
                 val array = SparseArray<SportBinItem>()
                 for (item in it) {
-                    array.put(item.sportType, item)
+                    array.put(item.sportUiType, item)
                 }
                 array
             }.awaitFirst()
