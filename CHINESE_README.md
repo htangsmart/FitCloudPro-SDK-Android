@@ -790,6 +790,15 @@ GameSkin{
     private byte binFlag;//用于DfuManager#upgradeGameSkin的binFlag
 }
 
+#### 6.6.8 GPS运动数据
+当`WristbandVersion#isGpsEnabled`为true时，代表手表支持GPS运动。
+
+当佩戴手表进行运动之后，使用`WristbandManager#syncData`同步数据，然后使用`SyncDataParser#parserGpsData`就可以获取`GpsData`。
+
+一条GPS运动的数据将分两部分返回，这里的`GpsData`和`6.6.4 运动`中的`SportData`。这两个数据中都包含一个`recordId`字段。
+
+如果`GpsData`和`SportData`中的`recordId`一致，则代表这是一条GPS运动数据。
+
 
 ### 6.7、DFU升级
 
@@ -910,6 +919,8 @@ GameSkin{
 `WristbandManager#setLanguage(byte languageType)`，具体语言类型参考如下：
 ![LanguageType](LanguageType.png)
 
+获取手表语言`WristbandManager#requestLanguage`，此功能仅部分手表支持。
+
 可以使用'Utils.getSystemLanguageType(Context context)'获取当前系统语言类型。
 
 
@@ -957,9 +968,11 @@ GameSkin{
 当手环自己改变日程时，使用`WristbandManager#observerWristbandMessage()`监听`WristbandManager#MSG_CHANGE_SCHEDULE`消息
 
 ### 6.11、收款码和名片
-当`WristbandVersion#isExtCollectionCode`为true时，表示手环支持收款码功能
+当`WristbandVersion#isExtCollectionCode`为true时，表示手环支持收款码功能。使用`WristbandManager#getSupportQrCode`查询手表支持哪些类型的收款码
 
-当`WristbandVersion#isExtBusinessCard`为true时，表示手环支持名片功能
+当`WristbandVersion#isExtBusinessCard`为true时，表示手环支持名片码功能。使用`WristbandManager#getSupportQrCode`查询手表支持哪些类型的名片码
+
+当`WristbandVersion#extNucleicAcidCode`为true时，表示手环支持核酸码功能。
 
 使用`WristbandManager#settingQrCode`设置二维码。二维码类型参考'WristbandManager#QrCodeType'
 
@@ -988,3 +1001,18 @@ int SPORT_CLIMB_APP_DEVICE = 0x14;//登山
 同时，要明白的是，在手环端，也可能更改运动的状态，所以你需要使用`observerSportRealTimeStatus`来监听来自手环端的改变。
 
 运动互联的含义是，使用手环端的`步数`，`卡路里`，`心率`，使用APP端的`距离`，来生成一个组合的运动数据。使用`observerSportRealTimeData`监听来自手环的数据，使用`reportSportRealTimeData`来发送APP的数据到手环。
+
+### 6.14、省电模式
+当`WristbandVersion#isExtPowerSaveMode`为true时，手表支持省电模式设置。
+
+当`WristbandVersion#isExtPowerSavePeriod`为true时，省电模式支持时间段设置。如果为false，您的界面不应该提供开始时间和结束时间的设置功能。
+
+使用`WristbandManager#requestPowerSaveMode`获取手表当前的省电模式。
+
+使用`WristbandManager#setPowerSaveMode(@NonNull PowerSaveMode mode)`设置手表的省电模式。
+
+### 6.15、自定义标签功能
+
+当`WristbandVersion#isExtCustomLabel`为true时，代表手表支持自定义标签功能。
+
+使用`WristbandManager#setCustomLabels`设置。

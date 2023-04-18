@@ -803,6 +803,16 @@ GameSkin{
 }
 ```
 
+#### 6.6.8 GPS data
+When `WristbandVersion#isGpsEnabled` is true, it means the watch supports GPS sports.
+
+After wearing the watch for exercise, use `WristbandManager#syncData` to synchronize data, and then use `SyncDataParser#parserGpsData` to get `GpsData`.
+
+A GPS sports data will be returned in two parts, `GpsData` here and `SportData` in `6.6.4 Sports`. Both data contains a `recordId` field.
+
+If the `recordId` in `GpsData` and `SportData` are consistent, it means that this is a piece of GPS sports data.
+
+
 ### 6.7、DFU upgrade
 
 Use `DfuManager` to upgrade firmware or dial.
@@ -922,6 +932,8 @@ When the bracelet is connected, the user information has been passed in. If the 
 `WristbandManager#setLanguage(byte languageType)`，Specific language types are as follows：
 ![LanguageType](LanguageType.png)
 
+Use `WristbandManager#requestLanguage` get the watch language. This feature is only supported by some watches
+
 You can get the current system language type using `Utils.getSystemLanguageType(Context context)`.
 
 
@@ -970,9 +982,11 @@ You can use `WristbandManager#setAllowWristbandChangeSchedule(boolean allow)` to
 When the bracelet changes the schedule by itself, use `WristbandManager#observerWristbandMessage()` to monitor the `WristbandManager#MSG_CHANGE_SCHEDULE` message
 
 ### 6.11. Collection code and business card
-When `WristbandVersion#isExtCollectionCode` is true, it means that the bracelet supports the collection code function
+When `WristbandVersion#isExtCollectionCode` is true, it means that the bracelet supports the collection code function. Use `WristbandManager#getSupportQrCode` to query which types of payment codes the watch supports
 
-When `WristbandVersion#isExtBusinessCard` is true, it means that the bracelet supports the business card function
+When `WristbandVersion#isExtBusinessCard` is true, it means that the bracelet supports the business card function. Use `WristbandManager#getSupportQrCode` to query which types of payment codes the watch supports
+
+When `WristbandVersion#isExtNucleicAcidCode` is true, it indicates that the bracelet supports the nucleic acid code function.
 
 Use `WristbandManager#settingQrCode` to set the QR code. QR code type reference 'WristbandManager#QrCodeType'
 
@@ -1001,3 +1015,18 @@ When the sport starts, you can use `stopSportRealTime`, `pauseSportRealTime`, `r
 At the same time, it should be understood that the status of the sport may also be changed on the bracelet side, so you need to use `observerSportRealTimeStatus` to monitor the changes from the bracelet side.
 
 The meaning of `Sports Connectivity` is to use the `steps`, `calories`, `heart rate` of the bracelet, and the `distance` of the APP to generate a combined exercise data. Use `observerSportRealTimeData` to monitor data from the bracelet, and use `reportSportRealTimeData` to send APP data to the bracelet.
+
+### 6.14、Power save mode
+
+When `WristbandVersion#isExtPowerSaveMode` is true, the watch supports the power saving mode setting.
+
+When `WristbandVersion#isExtPowerSavePeriod` is true, the power saving mode supports time period settings. If it is false, your interface should not provide settings for start and end times.
+
+Use `WristbandManager#requestPowerSaveMode` to obtain the current power saving mode of the watch.
+Use `WristbandManager#setPowerSaveMode(@Nonnull PowerSaveMode mode)` to set the watch's power saving mode.
+
+### 6.15、Custom label function
+
+When `WristbandVersion#isExtCustomLabel` is true, it means the watch supports the custom label function.
+
+Set using `WristbandManager#setCustomLabels`.

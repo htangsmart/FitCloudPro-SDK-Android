@@ -1,3 +1,11 @@
+# 2023-04-18
+## 发布libraryCore_v1.1.9.aar
+1. 添加获取手表语言功能`WristbandManager#requestLanguage`
+2. 添加省电模式功能，详细参考开发文档`6.14、省电模式`
+3. 添加查询手表支持的二维码`WristbandManager#getSupportQrCode`，详细参考开发文档`6.11、收款码和名片`
+4. 添加运动GPS数据功能，详细参考开发文件`6.6.8 GPS运动数据`
+5. 添加自定义标签功能，详细参考开发文件`6.15、自定义标签功能`
+
 # 2022-12-7
 ## 发布libraryCore_v1.1.8.aar
 1. 添加游戏锁功能`WristbandManager#setLockGame`，参考接口javadoc文档
