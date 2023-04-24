@@ -2,15 +2,14 @@ package com.github.kilnn.wristband2.sample.configs;
 
 import android.app.Dialog;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDialogFragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.github.kilnn.wristband2.sample.R;
 import com.github.kilnn.wristband2.sample.utils.ListViewSectionedAdapter;
@@ -29,7 +28,7 @@ public class HardwareInfoDialogFragment extends AppCompatDialogFragment {
     public static HardwareInfoDialogFragment newInstance(WristbandVersion version) {
         HardwareInfoDialogFragment fragment = new HardwareInfoDialogFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(EXTRA_INFO, new String(version.getBytes()));
+        bundle.putString(EXTRA_INFO, version.getRawVersion());
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -91,7 +90,10 @@ public class HardwareInfoDialogFragment extends AppCompatDialogFragment {
             info.addItem("Warn HeartRate:" + (version.isExtWarnHeartRate() ? "Y" : "N"));
             info.addItem("Warn BloodPressure:" + (version.isExtWarnBloodPressure() ? "Y" : "N"));
             info.addItem("ANCS Extra1:" + (version.isExtAncsExtra1() ? "Y" : "N"));
-            info.addItem("Dial Ui Upgrade:" + (version.isExtDialUpgrade() ? "Y" : "N"));
+            info.addItem("Dial Upgrade:" + (version.isExtDialUpgrade() ? "Y" : "N"));
+            info.addItem("Dial Custom:" + (version.isExtDialCustom() ? "Y" : "N"));
+            info.addItem("Dial Component:" + (version.isExtDialComponent() ? "Y" : "N"));
+            info.addItem("Dial Multiple:" + (version.isExtDialMultiple() ? "Y" : "N"));
             info.addItem("DND:" + (version.isExtNotDisturb() ? "Y" : "N"));
             info.addItem("Latest Healthy:" + (version.isExtLatestHealthy() ? "Y" : "N"));
             info.addItem("TP Upgrade:" + (version.isExtTpUpgrade() ? "Y" : "N"));
@@ -113,7 +115,7 @@ public class HardwareInfoDialogFragment extends AppCompatDialogFragment {
         WristbandVersion version = null;
         if (!TextUtils.isEmpty(info)) {
             try {
-                version = WristbandVersion.newInstance(info.getBytes());
+                version = WristbandVersion.newInstance(info);
             } catch (Exception e) {
                 e.printStackTrace();
             }
