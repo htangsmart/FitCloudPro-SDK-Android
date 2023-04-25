@@ -1,3 +1,7 @@
+# 2023-04-25
+## 发布libraryDfu_v1.0.7.aar
+1.升级至原厂OTA库3.6.4版本
+
 # 2023-04-18
 ## 发布libraryCore_v1.1.9.aar
 1. 添加获取手表语言功能`WristbandManager#requestLanguage`
