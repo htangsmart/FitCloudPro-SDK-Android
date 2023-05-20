@@ -1,0 +1,357 @@
+package com.topstep.fitcloud.sample2.data.device
+
+import android.content.Context
+import com.polidea.rxandroidble3.exceptions.BleDisconnectedException
+import com.topstep.fitcloud.sample2.data.db.AppDatabase
+import com.topstep.fitcloud.sample2.data.db.UserForConnect
+import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
+import com.topstep.fitcloud.sample2.data.entity.toModel
+import com.topstep.fitcloud.sample2.data.storage.InternalStorage
+import com.topstep.fitcloud.sample2.fcSDK
+import com.topstep.fitcloud.sample2.model.device.ConnectorDevice
+import com.topstep.fitcloud.sample2.model.device.ConnectorState
+import com.topstep.fitcloud.sample2.utils.launchWithLog
+import com.topstep.fitcloud.sdk.connector.FcConnectorState
+import com.topstep.fitcloud.sdk.connector.FcDisconnectedReason
+import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
+import com.topstep.fitcloud.sdk.v2.features.FcConfigFeature
+import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
+import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
+import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.rx3.asFlow
+import kotlinx.coroutines.rx3.await
+import timber.log.Timber
+import java.util.concurrent.TimeUnit
+
+interface DeviceManager {
+
+    val flowDevice: StateFlow<ConnectorDevice?>
+
+    val flowState: StateFlow<ConnectorState>
+
+    val flowBattery: StateFlow<FcBatteryStatus?>
+
+    /**
+     * Trying bind a new device.
+     * If bind success, the device info will be automatically saved to storage
+     */
+    fun bind(address: String, name: String)
+
+    /**
+     * Rebind current device
+     * If bind success, the device info will be automatically saved to storage
+     */
+    fun rebind()
+
+    /**
+     * Cancel if [bind] or [rebind] is in progress
+     * Otherwise do nothing.
+     */
+    fun cancelBind()
+
+    /**
+     * Unbind device and clear the device info in the storage.
+     */
+    suspend fun unbind()
+
+    /**
+     * Reset device and clear the device info in the storage.
+     */
+    suspend fun reset()
+
+    /**
+     * When state is [ConnectorState.PRE_CONNECTING], get the number of seconds to retry the connection next time
+     */
+    fun getNextRetrySeconds(): Int
+
+    /**
+     * When state is [ConnectorState.DISCONNECTED], get the reason
+     */
+    fun getDisconnectedReason(): FcDisconnectedReason
+
+    val configFeature: FcConfigFeature
+
+    val settingsFeature: FcSettingsFeature
+
+    fun disconnect()
+
+    fun reconnect()
+
+    fun newDfuManager(): FcDfuManager
+
+    fun syncData()
+}
+
+fun DeviceManager.flowStateConnected(): Flow<Boolean> {
+    return flowState.map { it == ConnectorState.CONNECTED }.distinctUntilChanged()
+}
+
+fun DeviceManager.isConnected(): Boolean {
+    return flowState.value == ConnectorState.CONNECTED
+}
+
+/**
+ * Manage device connectivity and status
+ */
+internal class DeviceManagerImpl(
+    context: Context,
+    private val applicationScope: CoroutineScope,
+    private val internalStorage: InternalStorage,
+    appDatabase: AppDatabase,
+) : DeviceManager {
+
+    private val fcSDK = context.fcSDK
+    private val connector = fcSDK.connector
+    private val configDao = appDatabase.configDao()
+    private val userDao = appDatabase.userDao()
+
+    /**
+     * Manually control the current device
+     */
+    private val deviceFromMemory: MutableStateFlow<ConnectorDevice?> = MutableStateFlow(null)
+
+    /**
+     * Flow device from storage
+     */
+    private val deviceFromStorage = internalStorage.flowAuthedUserId.flatMapLatest {
+        //ToNote:Clear device in memory every time Authed user changed. Avoid connecting to the previous user's device after switching users
+        deviceFromMemory.value = null
+        if (it == null) {
+            flowOf(null)
+        } else {
+            configDao.flowDeviceBind(it)
+        }
+    }.map {
+        it.toModel()
+    }
+
+    /**
+     * Combine device [deviceFromMemory] and [deviceFromStorage]
+     */
+    override val flowDevice: StateFlow<ConnectorDevice?> = deviceFromMemory.combine(deviceFromStorage) { fromMemory, fromStorage ->
+        Timber.tag(TAG).i("device fromMemory:%s , fromStorage:%s", fromMemory, fromStorage)
+        check(fromStorage == null || !fromStorage.isTryingBind)//device fromStorage, isTryingBind must be false
+
+        //Use device fromMemory first
+        fromMemory ?: fromStorage
+    }.stateIn(applicationScope, SharingStarted.Eagerly, null)
+
+    /**
+     * Connector state combine adapter state and current device
+     */
+    override val flowState = combine(
+        flowDevice,
+        fcSDK.observerAdapterEnabled().startWithItem(fcSDK.isAdapterEnabled()).asFlow().distinctUntilChanged(),
+        connector.observerConnectorState().map { simpleState(it) }.startWithItem(ConnectorState.DISCONNECTED).asFlow().distinctUntilChanged()
+    ) { device, isAdapterEnabled, connectorState ->
+        //Device trying bind success,save it
+        if (device != null && device.isTryingBind && connectorState == ConnectorState.CONNECTED) {
+            saveDevice(device)
+        }
+        combineState(device, isAdapterEnabled, connectorState)
+    }.stateIn(applicationScope, SharingStarted.Eagerly, ConnectorState.NO_DEVICE)
+
+    init {
+        applicationScope.launch {
+            //Connect or disconnect when device changed
+            internalStorage.flowAuthedUserId.flatMapLatest {
+                if (it == null) {
+                    flowOf(null)
+                } else {
+                    userDao.flowUserForConnect(it)
+                }
+            }.combine(flowDevice) { user, device ->
+                ConnectionParam(user, device)
+            }.collect {
+                if (it.device == null || it.user == null) {
+                    connector.close()
+                } else {
+                    connector.connect(
+                        address = it.device.address,
+                        userId = it.user.id.toString(),
+                        bindOrLogin = it.device.isTryingBind,
+                        sex = it.user.sex,
+                        age = it.user.age,
+                        height = it.user.height.toFloat(),
+                        weight = it.user.weight.toFloat(),
+                    )
+                }
+            }
+        }
+        applicationScope.launch {
+            flowState.collect {
+                Timber.tag(TAG).e("state:%s", it)
+            }
+        }
+    }
+
+    override val flowBattery: StateFlow<FcBatteryStatus?> = flowState
+        .filter { it == ConnectorState.CONNECTED }
+        .flatMapLatest {
+            Observable
+                .interval(1000, 7500, TimeUnit.MILLISECONDS)
+                .flatMap {
+                    connector.settingsFeature().requestBattery().toObservable()
+                }
+                .retryWhen {
+                    it.flatMap { throwable ->
+                        if (throwable is BleDisconnectedException) {
+                            //not retry when disconnected
+                            Observable.error(throwable)
+                        } else {
+                            //retry when failed
+                            Observable.timer(7500, TimeUnit.MILLISECONDS)
+                        }
+                    }
+                }
+                .asFlow()
+                .catch {
+                    //catch avoid crash
+                }
+        }
+        .stateIn(applicationScope, SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000L), null)
+
+    override fun bind(address: String, name: String) {
+        val userId = internalStorage.flowAuthedUserId.value
+        if (userId == null) {
+            Timber.tag(TAG).w("bind error because no authed user")
+            return
+        }
+        deviceFromMemory.value = ConnectorDevice(address, name, true)
+        applicationScope.launchWithLog {
+            configDao.clearDeviceBind(userId)
+        }
+    }
+
+    override fun rebind() {
+        val device = flowDevice.value
+        if (device == null) {
+            Timber.tag(TAG).w("rebind error because no device")
+            return
+        }
+        bind(device.address, device.name)
+    }
+
+    override fun cancelBind() {
+        val device = deviceFromMemory.value
+        if (device != null && device.isTryingBind) {
+            deviceFromMemory.value = null
+        }
+    }
+
+    override suspend fun unbind() {
+        connector.settingsFeature().unbindUser()
+            .ignoreElement().onErrorComplete()
+            .andThen(
+                connector.settingsFeature().unbindAudioDevice().onErrorComplete()
+            ).await()
+        clearDevice()
+    }
+
+    override suspend fun reset() {
+        connector.settingsFeature().deviceReset().await()
+        clearDevice()
+    }
+
+    /**
+     * Save device with current user
+     */
+    private suspend fun saveDevice(device: ConnectorDevice) {
+        val userId = internalStorage.flowAuthedUserId.value
+        if (userId == null) {
+            Timber.tag(TAG).w("saveDevice error because no authed user")
+            deviceFromMemory.value = null
+        } else {
+            deviceFromMemory.value = device.copy(isTryingBind = false)
+            val entity = DeviceBindEntity(userId, device.address, device.name)
+            configDao.insertDeviceBind(entity)
+        }
+    }
+
+    /**
+     * Clear current user's device
+     */
+    private suspend fun clearDevice() {
+        deviceFromMemory.value = null
+        internalStorage.flowAuthedUserId.value?.let { userId ->
+            configDao.clearDeviceBind(userId)
+        }
+    }
+
+    override fun getNextRetrySeconds(): Int {
+        return 0L.coerceAtLeast((connector.getNextRetryTime() - System.currentTimeMillis()) / 1000).toInt()
+    }
+
+    override fun getDisconnectedReason(): FcDisconnectedReason {
+        return connector.getDisconnectedReason()
+    }
+
+    override val configFeature: FcConfigFeature = connector.configFeature()
+    override val settingsFeature: FcSettingsFeature = connector.settingsFeature()
+
+    override fun disconnect() {
+        connector.disconnect()
+    }
+
+    override fun reconnect() {
+        connector.reconnect()
+    }
+
+    override fun newDfuManager(): FcDfuManager {
+        return connector.newDfuManager(true)
+    }
+
+    override fun syncData() {
+        applicationScope.launch {
+            connector.dataFeature().syncData().asFlow()
+                .onStart {
+                    Timber.tag(TAG).i("syncData onStart")
+                }
+                .onCompletion {
+                    Timber.tag(TAG).i(it, "syncData onCompletion")
+                }
+                .catch {
+                }
+                .collect {
+
+                }
+            Timber.tag(TAG).i("syncData finish")
+        }
+    }
+
+    companion object {
+        private const val TAG = "DeviceManager"
+    }
+
+    private data class ConnectionParam(
+        val user: UserForConnect?,
+        val device: ConnectorDevice?,
+    )
+}
+
+private fun simpleState(state: FcConnectorState): ConnectorState {
+    return when {
+        state == FcConnectorState.DISCONNECTED -> ConnectorState.DISCONNECTED
+        state == FcConnectorState.PRE_CONNECTING -> ConnectorState.PRE_CONNECTING
+        state <= FcConnectorState.PRE_CONNECTED -> {
+            ConnectorState.CONNECTING
+        }
+        else -> {
+            ConnectorState.CONNECTED
+        }
+    }
+}
+
+private fun combineState(device: ConnectorDevice?, isAdapterEnabled: Boolean, connectorState: ConnectorState): ConnectorState {
+    return if (device == null) {
+        ConnectorState.NO_DEVICE
+    } else if (!isAdapterEnabled) {
+        ConnectorState.BT_DISABLED
+    } else {
+        connectorState
+    }
+}
+

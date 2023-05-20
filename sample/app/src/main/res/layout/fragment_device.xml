@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="ignoreParentState">
+
+            <FrameLayout
+                android:id="@+id/item_device_bind"
+                style="@style/Widget.Sample.PreferenceBase">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/device_bind"
+                    android:textAppearance="?textAppearanceSubtitle2"
+                    app:drawableStartCompat="@drawable/ic_baseline_add_24"
+                    app:drawableTint="?colorOnSurface"/>
+
+            </FrameLayout>
+
+            <com.github.kilnn.tool.widget.preference.PreferenceRelativeLayout
+                android:id="@+id/item_device_info"
+                style="@style/Widget.Sample.PreferenceView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/img_device"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_device_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textAppearance="?textAppearanceSubtitle1"
+                        android:textColor="?android:textColorPrimary"
+                        tools:text="X20-123H"/>
+
+                    <TextView
+                        android:id="@+id/tv_device_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textAppearance="?textAppearanceCaption"
+                        android:textColor="?android:textColorSecondary"/>
+
+                    <com.topstep.fitcloud.sample2.ui.widget.BatteryImageView
+                        android:id="@+id/battery_view"
+                        android:layout_width="28dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="6dp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_device"
+                    android:layout_width="61dp"
+                    android:layout_height="61dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_device_default"/>
+
+            </com.github.kilnn.tool.widget.preference.PreferenceRelativeLayout>
+
+        </FrameLayout>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_device_config"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_config"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_power_save_mode"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_power_save_mode"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_dial"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_dial"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_modify_logo"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_modify_logo"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_version_info"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/version_info"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,280 +1,181 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">sample</string>
+    <string name="app_name">Fc2Sample</string>
 
-    <string name="action_prompt">Hint</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="action_sure">Sure</string>
-    <string name="action_scan">Scan</string>
-    <string name="action_close">Close</string>
-    <string name="action_stop_scan">Stop Scan</string>
+    <string name="percent_param" translatable="false"><xliff:g id="params1">%1$d</xliff:g>%%</string>
+
+    <!--Account-->
+    <string name="account_sign_in">Sign In</string>
+    <string name="account_input_username_hint">Input username</string>
+    <string name="account_input_password_hint">Input password</string>
+    <string name="account_no">No account?</string>
+    <string name="account_sign_up">Sign Up</string>
+    <string name="account_input_height_hint">Input height(cm),such as \"175\"</string>
+    <string name="account_input_weight_hint">Input weight(kg),such as \"60\"</string>
+    <string name="account_sex_male">Male</string>
+    <string name="account_sex_female">Female</string>
+    <string name="account_height_error">Please enter a reasonable height</string>
+    <string name="account_weight_error">Please enter a reasonable weight</string>
+    <string name="account_input_age_hint">Input age,such as \"20\"</string>
+    <string name="account_age_error">Please enter a reasonable age</string>
+    <string name="account_sign_up_success">Sign up success</string>
+    <string name="account_sign_out">Sign out</string>
+    <string name="account_sign_out_ing">Sign out…</string>
+    <string name="account_edit_user_info">Edit User Info</string>
+
+    <!--Error-->
+    <string name="error_user_exist">User already exist</string>
+    <string name="error_user_not_exist">User not exist</string>
+    <string name="error_password_incorrect">Password incorrect</string>
+    <string name="error_device_un_support">Device UnSupport this feature</string>
+
+    <!--Action-->
+    <string name="action_loading">Loading…</string>
+    <string name="action_search">Search</string>
+    <string name="action_turn_on">Turn On</string>
+    <string name="action_grant">Grant</string>
+    <string name="action_to_set">To Set</string>
     <string name="action_save">Save</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_add">Add</string>
 
-    <string name="operation_failed">Failed</string>
-    <string name="operation_success">Success</string>
-
-    <string name="dialog_msg_location_feature">Scanning Bluetooth needs to turn on the location function to use，turn on or turn off?</string>
-    <string name="permission_dialog_title">Hint</string>
-    <string name="permission_dialog_rationale_sure">Grant Permissions</string>
-    <string name="permission_dialog_rationale_cancel">Refuse</string>
-    <string name="permission_dialog_setting_message">Some of the permissions we need are rejected by you or the system  errors to cause the application to fail, please manually authorize the "Settings" page, otherwise the feature will not work properly.</string>
-    <string name="permission_dialog_setting_sure">To set</string>
-    <string name="permission_dialog_setting_cancel">Cancel</string>
-    <string name="permission_dialog_rationale_location">If  you do not have permission to locate, you may not be able to scan and connect the bracelet properly.</string>
-    <string name="permission_dialog_rationale_storage">If you do not have permissions to read and write file, you may not be able to access files.</string>
-    <string name="permission_dialog_rationale_camera">If you do not have permission to take photos, you may not be able to use the camera function.</string>
-
-    <string name="action_connect">Connect</string>
-    <string name="action_disconnect">Disconnect</string>
-    <string name="state_connecting">Connecting&#8230;</string>
-    <string name="state_connect_failed">Connect Failed</string>
-    <string name="state_connect_success">Connect Success</string>
-    <string name="state_active_disconnect">Active disconnect</string>
-    <string name="state_passive_disconnect">Passive disconnect</string>
-    <string name="toast_device_disconnected">Device Disconnected</string>
-    <string name="toast_device_not_support">Device does not support this feature</string>
-
-    <string name="toast_connect_login_tips">Connect with Login Mode</string>
-    <string name="toast_connect_bind_tips">Connect with Bind Mode，APP will clear today\'s Step Data</string>
-
-    <string name="clear_bind">Clear Bond</string>
-    <string name="dialog_clear_bind_title">Clear User Bond State</string>
-    <string name="dialog_clear_bind_msg">
-        The user bond state is a local variable cache in SharedPreferences. \
-        It decides what mode, bind or login to use when connecting the wristband. \
-        More information see also the develop document in Github. \
-
-        Are you sure to clear the user bond state?
-    </string>
-
-    <string name="op1">1.Configs</string>
-    <string name="op2">2.Alarm</string>
-    <string name="op3">3.Notification</string>
-    <string name="op4">4.Wristband Active Message</string>
-    <string name="op5">5.Real time data</string>
-    <string name="op6">6.Sync data</string>
-    <string name="op7">7.DFU</string>
-    <string name="op8">8.Simple Command</string>
-    <string name="op9">9.Dial Library</string>
-    <string name="op10">10.Dial Component</string>
-    <string name="op11">11.Sport Push</string>
-
-    <string name="configs_version_info">1.Wristband Version Info</string>
-    <string name="configs_notification">2.Notification Config</string>
-    <string name="configs_blood_pressure">3.Blood Pressure Config</string>
-    <string name="configs_drink_water">4.Drink Water Config</string>
-    <string name="configs_function">5.Function Config</string>
-    <string name="configs_healthy">6.Healthy Monitor Config</string>
-    <string name="configs_sedentary">7.Sedentary Config</string>
-    <string name="configs_page">8.Page Config</string>
-    <string name="configs_turn_wrist_lighting">9.Turn Wrist Lighting Config</string>
-    <string name="configs_warn_heart_rate">10.Warn Heart Rate Config</string>
-    <string name="configs_warn_blood_pressure">11.Warn BloodPressure Config</string>
-    <string name="configs_dnd">12.DND</string>
-
-    <string name="notification_config_phone_call">Call alert</string>
-    <string name="notification_config_sms">SMS</string>
-    <string name="notification_config_qq">QQ</string>
-    <string name="notification_config_wechat">WeChat</string>
-    <string name="notification_config_facebook">Facebook</string>
-    <string name="notification_config_twitter">Twitter</string>
-    <string name="notification_config_linkedin">Linkedin</string>
-    <string name="notification_config_instagram">Instagram</string>
-    <string name="notification_config_pinterest">Pinterest</string>
-    <string name="notification_config_whatsapp">WhatsApp</string>
-    <string name="notification_config_line">Line</string>
-    <string name="notification_config_facebook_msg">Facebook Messenger</string>
-    <string name="notification_config_kakaotalk">Kakao Talk</string>
-    <string name="notification_config_skype">Skype</string>
-    <string name="notification_config_snapchat">Snapchat</string>
-    <string name="notification_config_email">Email</string>
-    <string name="notification_config_telegram">Telegram</string>
-    <string name="notification_config_viber">Viber</string>
-    <string name="notification_config_calendar">Calendar</string>
-    <string name="notification_config_others">Others App</string>
-
-    <string name="page_config_suggest">Because of the special UI of the wristband, it is not recommended to configure the page.</string>
-    <string-array name="page_names">
-        <item>Time</item>
-        <item>Steps</item>
-        <item>Distance</item>
-        <item>Calories</item>
-        <item>Sleep</item>
-        <item>Heart rate</item>
-        <item>Oxygen</item>
-        <item>Blood pressure</item>
-        <item>Weather</item>
-        <item>Find Phone</item>
-        <item>ID</item>
-        <item>StopWatch</item>
-    </string-array>
-
-    <string name="tip_load_error">Load failed, click reload</string>
-    <string name="tip_simple">Too simple.No examples are needed.!!!</string>
-
-    <string name="ds_alarm_opened_count"><xliff:g id="params">%1$d</xliff:g> alarm clocks have been turned on</string>
-    <string name="ds_alarm_no_data">No alarm clock</string>
-    <string name="ds_alarm_limit_count">Can only add 5 alarm clocks</string>
-    <string name="ds_alarm_delete">Delete</string>
-    <string name="ds_alarm_delete_message">Are you sure to delete the alarm clock?</string>
-    <string name="ds_alarm_repeat">Repeat</string>
-    <string name="ds_alarm_repeat_every_day">Everyday</string>
-    <string name="ds_alarm_repeat_never">Once</string>
-    <string name="ds_alarm_repeat_workdays">Weekday</string>
-    <string name="ds_alarm_repeat_weekends">Weekend</string>
-    <string name="ds_alarm_label">Label</string>
-
-    <string name="ds_alarm_list">Alarm List</string>
-    <string name="ds_alarm_am">A.M</string>
-    <string name="ds_alarm_pm">P.M</string>
-    <string name="ds_alarm_add">Add Alarm Clock</string>
-    <string name="ds_alarm_edit">Edit Alarm Clock</string>
-
-    <string name="ds_alarm_repeat_00">Monday</string>
-    <string name="ds_alarm_repeat_01">Tuesday</string>
-    <string name="ds_alarm_repeat_02">Wednesday</string>
-    <string name="ds_alarm_repeat_03">Thursday</string>
-    <string name="ds_alarm_repeat_04">Friday</string>
-    <string name="ds_alarm_repeat_05">Saturday</string>
-    <string name="ds_alarm_repeat_06">Sunday</string>
-    <string name="ds_alarm_repeat_00_simple">Mon</string>
-    <string name="ds_alarm_repeat_01_simple">Tue</string>
-    <string name="ds_alarm_repeat_02_simple">Wed</string>
-    <string name="ds_alarm_repeat_03_simple">Thu</string>
-    <string name="ds_alarm_repeat_04_simple">Fri</string>
-    <string name="ds_alarm_repeat_05_simple">Sat</string>
-    <string name="ds_alarm_repeat_06_simple">Sun</string>
-
-    <string name="camera_control">Camera control</string>
-
-    <string name="real_time_data_start">Start</string>
-    <string name="real_time_data_stop">Stop</string>
-    <string name="heart_rate">Heart rate</string>
-    <string name="oxygen">Oxygen</string>
-    <string name="blood_pressure">Blood pressure</string>
-    <string name="respiratory_rate">Respiratory rate</string>
-    <string name="heart_rate_value">Heart rate:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="oxygen_value">Oxygen:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="blood_pressure_value">Blood pressure:<xliff:g id="params1">%1$d</xliff:g>   <xliff:g id="params2">%2$d</xliff:g></string>
-    <string name="respiratory_rate_value">Respiratory rate:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="ecg_sample">Ecg Sample:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="ecg_value">Ecg Value:<xliff:g id="params">%1$s</xliff:g></string>
-
-    <string name="check_remote_update">Check Remote DFU file</string>
-    <string name="select_local_update">Select Local DFU File</string>
-
-    <!--Dfu State-->
-    <string name="dfu_state_dfu_file">Prepare file &#8230;</string>
-    <string name="dfu_state_dfu_mode">Enter DFU &#8230;</string>
-    <string name="dfu_state_dfu_device">Searching &#8230;</string>
-    <string name="dfu_state_dfu_process">Prepare &#8230;</string>
-
-    <!--Dfu Progress-->
-    <string name="dfu_progress_start">Upgrading &#8230;</string>
-    <string name="dfu_progress_completed">Upgrade completed</string>
-    <string name="dfu_success">DFU succeed</string>
-    <string name="dfu_failed">DFU failed</string>
-    <string name="percentage"><xliff:g id="params">%1$s</xliff:g>%%</string>
-
-    <string name="ble_not_support">Your device doesn\'t support Bluetooth 4.0</string>
-    <string name="bt_not_open">Bluetooth is not on</string>
-    <string name="device_disconnected">Device disconnected</string>
-    <string name="dfu_error_file_format">DFU file format error</string>
-    <string name="dfu_error_file_not_exist">DFU file doesn\'t exist</string>
-    <string name="dfu_error_file_download">Firmware download failed</string>
-    <string name="dfu_error_enter_dfu_failed">Device fails to enter DFU mode</string>
-    <string name="dfu_error_low_battery">Low battery.Device fails to enter DFU mode</string>
-    <string name="dfu_error_service_not_ready">DFU is not ready</string>
-    <string name="dfu_error_scan_failed">Failed to start search</string>
-    <string name="dfu_error_device_not_found">Device not found</string>
-
-    <string name="device_sync_data_busy">Sync data, unable to perform this operation</string>
-    <string name="sync_data">Sync Data</string>
-    <string name="sync_data_state_failed_disconnected">Sync Failed. Device disconnected</string>
-    <string name="sync_data_state_failed_checking_ecg">Sync Failed. Device checking ecg</string>
-    <string name="sync_data_state_failed_saving_ecg">Sync Failed. Device saving ecg</string>
-    <string name="sync_data_state_failed_unknown">Sync Failed. Unknown</string>
-    <string name="sync_data_state_start">Sync Start</string>
-    <string name="sync_data_state_progress">Sync Progress:<xliff:g id="params">%1$d</xliff:g>%%</string>
-    <string name="sync_data_state_success">Sync Success</string>
-
-    <string name="view_heart_rate_data">View Heart Rate Data</string>
-    <string name="view_oxygen_data">View Oxygen Data</string>
-    <string name="view_blood_pressure_data">View BloodPressure Data</string>
-    <string name="view_respiratory_rate_data">View Respiratory Rate Data</string>
-    <string name="view_healthy_data_tips">This data is similar to heart rate data. Please refer to heart rate data practice.</string>
-
-    <string name="view_sleep_data">View Sleep Data</string>
-    <string name="deep_sleep_hour_minute">Deep Sleep:<xliff:g id="params1">%1$d</xliff:g> hr <xliff:g id="params2">%2$d</xliff:g> min</string>
-    <string name="light_sleep_hour_minute">Light Sleep:<xliff:g id="params1">%1$d</xliff:g> hr <xliff:g id="params2">%2$d</xliff:g> min</string>
-    <string name="sober_sleep_hour_minute">Sober Sleep:<xliff:g id="params1">%1$d</xliff:g> hr <xliff:g id="params2">%2$d</xliff:g> min</string>
-
-    <string name="view_sport_data">View Sport Data</string>
-    <string name="view_sport_type_ride">Ride</string>
-    <string name="view_sport_type_od">Outdoor Running</string>
-    <string name="view_sport_type_id">Indoor Running</string>
-    <string name="view_sport_type_walk">Walk</string>
-    <string name="view_sport_type_climb">Climb</string>
-    <string name="view_sport_type_bb">Basketball</string>
-    <string name="view_sport_type_swim">Swim</string>
-    <string name="view_sport_type_badminton">Badminton</string>
-    <string name="view_sport_type_football">Football</string>
-    <string name="view_sport_type_elliptical_trainer">Elliptical Trainer</string>
-    <string name="view_sport_type_yoga">Yoga</string>
-    <string name="view_sport_type_ping_pong">Ping pong</string>
-    <string name="view_sport_type_rope_skipping">Rope skipping</string>
-
-    <string name="view_sport_data_calories">Calories:<xliff:g id="params1">%1$s</xliff:g>kCal</string>
-    <string name="view_sport_data_step">Steps:<xliff:g id="params1">%1$d</xliff:g></string>
-    <string name="view_sport_data_distance">Distance:<xliff:g id="params1">%1$s</xliff:g>Km</string>
-    <string name="view_sport_data_hr">HeartRate:<xliff:g id="params1">%1$d</xliff:g></string>
-
-    <string name="view_ecg_data">View Ecg Data</string>
-    <string name="view_ecg_data_sample">Sampling Rate:<xliff:g id="params1">%1$d</xliff:g></string>
-
-    <string name="view_step_data">View Step Data</string>
-    <string name="view_step_data_total_step">Total Step:<xliff:g id="params1">%1$d</xliff:g></string>
-
-    <string name="err_network">Error network</string>
-    <string name="err_data">Error data</string>
-    <string name="err_unknown">Error Unknown</string>
-    <string name="feature_location_request_for_ble_scan">蓝牙扫描需要开启定位功能才能正常使用，是否开启？</string>
+    <!--Tips-->
+    <string name="tip_prompt">Hint</string>
+    <string name="tip_none">None</string>
+    <string name="tip_i_know">I know</string>
     <string name="tip_please_wait">Please wait&#8230;</string>
+    <string name="tip_loading_error">Loading fail. Click retry</string>
     <string name="tip_save_success">Save success</string>
-    <string name="sync_data_ongoing">Syncing data</string>
-    <string name="err_ble_time_out">Instruction timeout</string>
-    <string name="err_ble_format">Instruction error</string>
-    <string name="action_edit">Edit</string>
-    <string name="action_completed">Done</string>
-    <string name="tip_current_no_data">No data</string>
+    <string name="tip_success">Success</string>
+    <string name="tip_failed">Failed</string>
+    <string name="tip_download_failed">Download failed</string>
+    <string name="tip_current_no_data">No data yet</string>
+    <string name="tip_load_error">Load failed, click reload</string>
 
-    <string name="ds_dial_center">Dial Center</string>
-    <string name="ds_dial_mine">My Dial</string>
-    <string name="ds_dial_sync">Sync Dial</string>
-    <string name="ds_dial_downloading">Downloading&#8230;</string>
-    <string name="ds_dial_syncing">Synchronizing&#8230;</string>
-    <string name="ds_dial_sync_success">Successful synchronization</string>
+    <!--Permission-->
+    <string name="permission_explain_msg">Following permissions are required. Do you want to request for the next step?</string>
+    <string name="permission_to_settings_msg">Permission request failed. Do you want to enter the System Settings to grant these permissions?</string>
 
-    <string name="ds_dial_custom">Dial custom</string>
-    <string name="ds_dial_set_dial">Set as watch face</string>
-    <string name="version_download_failed_check_sd_card">Download failed. Make sure that your SD card is installed properly and has enough space.</string>
-    <string name="version_download_failed">Download failed</string>
-    <string name="ds_dial_error_none_shape">You need to upgrade the current firmware before synchronizing the watchface.</string>
-    <string name="ds_dial_error_none_style">This bracelet is currently not supported for upgrade</string>
+    <string name="module_sync">Sync</string>
+    <string name="module_realtime">Realtime</string>
+    <string name="module_combine">Combine</string>
+
+    <!--Device-->
+    <string name="device_module">Device</string>
+    <string name="device_bind">Bind Device</string>
+    <string name="device_scan_bind">Scan code binding</string>
+    <string name="device_others">Other devices</string>
+    <string name="device_others_des">Devices bonded or connected will not appear in search results</string>
+    <string name="device_bonded">Bonded device</string>
+    <string name="device_connected">Connected device</string>
+    <string name="device_bind_tips1">Make sure the watch is fully charged</string>
+    <string name="device_bind_tips2">Keep the watch and the mobile phone within 0.5 meters</string>
+    <string name="device_bind_tips3">Search for places with few Bluetooth devices</string>
+    <string name="device_bind_tips4">Make sure the watch is not bonded or connected by another phone</string>
+    <string name="device_scan_tips_location_service">Location Services is disabled and devices may not be discoverable.</string>
+    <string name="device_scan_tips_error">Scanning error occurred</string>
+    <string name="device_scan_tips_delay">Please wait a few seconds and try again</string>
+    <string name="device_scan_tips_restart">Please wait a few seconds and try again, or restart bluetooth or mobile phone</string>
+    <string name="device_cancel_bind">Cancel Bind</string>
+    <string name="device_unbind">Unbind</string>
+    <string name="device_unbind_confirm_msg">Are you sure to unbind this device?</string>
+    <string name="device_bind_success">Bind success</string>
+    <string name="device_rebind">Rebind</string>
+    <string name="device_reconnect">Reconnect</string>
+    <string name="device_connect_auth_login_failed">The device may have been bound to another phone.</string>
+    <string name="device_connect_auth_bind_failed">The device cancel bind or no response</string>
+    <string name="device_connect_bg_run_settings">If the connection is unstable, try setting the option to run in the background.</string>
+    <string name="device_disconnect_help">Unable to connect？</string>
+
+    <string name="device_state_no_device">No device</string>
+    <string name="device_state_bt_disabled">Bluetooth is disabled</string>
+    <string name="device_state_disconnected">Disconnected</string>
+    <string name="device_state_connecting">Connecting</string>
+    <string name="device_state_connected">Connected</string>
+
+    <string name="connect_help">Connect Help</string>
+    <string name="connect_help_title1">If the connection fails several times, please check the following options</string>
+    <string name="connect_help_no_scan_permission">No scan permission</string>
+    <string name="connect_help_location_service_disabled">Location service disabled</string>
+    <string name="connect_help_title2">If the connection fails several times, please try the following operations</string>
+    <string name="connect_help_restart_app">Restart the app</string>
+    <string name="connect_help_restart_bluetooth">Restart the bluetooth</string>
+    <string name="connect_help_restart_device">Restart the watch</string>
+    <string name="connect_help_restart_phone">Restart the phone</string>
+
+    <string name="device_scan_bind_tips1">This is a simulated code scanning page, developers need to complete the scanning function by themselves</string>
+    <string name="device_scan_bind_tips2">Now suppose the scan was successful, and the following string was obtained:</string>
+    <string name="device_scan_bind_tips3">Click the button below, it will return within 3 seconds after the parsing is successful</string>
+    <string name="device_scan_bind_parser">Parser</string>
+
+    <string name="bg_run_settings_module">Background Running settings</string>
+    <string name="bg_run_settings_des">You need to make some system settings so that APP can run in the background for a long time, for example:</string>
+    <string name="bg_run_settings_1">Ignore battery optimization</string>
+    <string name="bg_run_settings_2">Disabled power-saving mode</string>
+    <string name="bg_run_settings_3">Allow background auto-start</string>
+    <string name="bg_run_settings_4">Add white list to the system manager</string>
+
+    <!--Device Config-->
+    <string name="ds_config">Device Config</string>
+    <string name="ds_config_start_time">Start Time</string>
+    <string name="ds_config_end_time">End Time</string>
+    <string name="ds_dnd_config">DND Config</string>
+    <string name="ds_dnd_config_all_day">DND All Day</string>
+    <string name="ds_dnd_config_all_day_des">The following settings will be ignored if you turn on DND all-day</string>
+    <string name="ds_dnd_config_period_time">DND Period Time</string>
+
+    <!--Power save mode-->
+    <string name="ds_power_save_mode">Power Save Mode</string>
+
+    <!--Version-->
+    <string name="version_upgrade_param">Upgrade(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="version_info">Version Info</string>
+    <string name="version_hardware_update">Hardware Update</string>
+    <string name="version_latest_version_code">Latest version:</string>
+    <string name="version_update_content">Latest content:</string>
+    <string name="version_is_latest_version">Already the latest version</string>
+    <string name="version_note_title">Note</string>
+    <string name="version_note_hardware1">1. Please keep the Bluetooth connection normally, and the distance between the mobile phone and the wristband is within 0.5 meters.</string>
+    <string name="version_note_hardware2">2. Please keep the battery power above 20%.</string>
+    <string name="version_dfu_unsupport_flash">Flash firmware upgrade is not supported at this time</string>
+    <string name="version_upgrade">Upgrade</string>
+
+    <!--Device Settings:Dfu-->
+    <string name="ds_push_start">Push(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="ds_push_select_replace">Select the position to be replaced</string>
+    <string name="ds_push_success">Push Success</string>
+    <string name="ds_push_fail">Push Fail(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="ds_dfu_downloading">Downloading&#8230;</string>
+    <string name="ds_dfu_preparing">Preparing&#8230;</string>
+    <string name="ds_dfu_pushing">Pushing&#8230;</string>
+    <string name="ds_dfu_error_insufficient_storage">Not enough storage space</string>
+    <string name="ds_dfu_error_low_battery">Low battery</string>
+    <string name="ds_dfu_error_device_not_found">No device found</string>
+    <string name="ds_dfu_tips_location_service">Location Services is disabled, and upgrade/push operations may fail</string>
+
+    <!--Modify Logo-->
+    <string name="ds_modify_logo">Modify Boot/Shutdown Logo</string>
+    <string name="ds_modify_logo_boot">Boot</string>
+    <string name="ds_modify_logo_shutdown">Shutdown</string>
+    <string name="ds_modify_logo_gif_tips1">1.If the boot logo is the same as the shutdown logo, just set any one. Do not repeat settings</string>
+    <string name="ds_modify_logo_gif_tips2">2.A GIF image that is too large may cause failure</string>
+    <string name="ds_modify_logo_gif_tips3">3.Watch screen size is <xliff:g id="param">%1$s</xliff:g>. If the selected GIF image\'s size is different, it may be deformed</string>
+
+    <!--Get Photo-->
+    <string name="action_take_photo">Take Pictures</string>
+    <string name="action_choose_photo">Select</string>
     <string name="photo_select_failed">Choose failed</string>
     <string name="photo_crop_failed">Reduction failed</string>
     <string name="photo_take_failed">Take photo failed</string>
     <string name="photo_take_success">Take photo success</string>
-    <string name="ds_dial_background">Background</string>
-    <string name="ds_dial_style">Style</string>
-    <string name="ds_dial_position">Position</string>
-    <string name="ds_dial_create">Dial is being generated</string>
-    <string name="ds_dial_create_failed">Build failed</string>
-    <string name="dial_select_replace">Select the dial to be replaced</string>
-    <string name="ds_dial_img_over_tips">Add up to 5 pictures</string>
 
-    <string name="ds_dial_component_title">Dial Component</string>
-    <string name="ds_dial_component_edit">Edit Component</string>
-    <string name="ds_dial_component">Component<xliff:g id="params1">%1$d</xliff:g></string>
+    <!--Dial-->
+    <string name="ds_dial">Dial</string>
+    <string name="ds_dial_library">Dial Library</string>
+    <string name="ds_dial_library_des">The dial library feature allows you to access the dial on the FitCloud server and push it to your device.</string>
+    <string name="ds_dial_custom">Dial Custom</string>
+    <string name="ds_dial_custom_des">The custom dial feature allows you to customize your dial using pictures from photos/albums, as well as optional styles</string>
+    <string name="ds_dial_component">Dial Component</string>
+    <string name="ds_dial_component_des">The dial component feature allows you to switch between existing dials on the device and change their style.</string>
+    <string name="ds_dial_none_feature">Your device does not support any dial feature</string>
+
+    <string name="ds_dial_error_shape">Not supported, please try to upgrade the APP to the latest version</string>
+
 </resources>

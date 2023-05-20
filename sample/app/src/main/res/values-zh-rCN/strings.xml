@@ -1,280 +1,179 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">sample</string>
+    <string name="app_name">Fc2Sample</string>
 
-    <string name="action_prompt">提示</string>
-    <string name="action_cancel">取消</string>
-    <string name="action_sure">确认</string>
-    <string name="action_scan">扫描</string>
-    <string name="action_close">关闭</string>
-    <string name="action_stop_scan">停止扫描</string>
+    <!--Account-->
+    <string name="account_sign_in">登录</string>
+    <string name="account_input_username_hint">输入用户名</string>
+    <string name="account_input_password_hint">输入密码</string>
+    <string name="account_no">没有账号?</string>
+    <string name="account_sign_up">注册</string>
+    <string name="account_input_height_hint">输入身高(厘米),如\"175\"</string>
+    <string name="account_input_weight_hint">输入体重(千克),如\"60\"</string>
+    <string name="account_sex_male">男</string>
+    <string name="account_sex_female">女</string>
+    <string name="account_height_error">请输入合理范围的身高</string>
+    <string name="account_weight_error">请输入合理范围的体重</string>
+    <string name="account_input_age_hint">请输入年龄，如\"20\"</string>
+    <string name="account_age_error">请输入合理范围的年龄</string>
+    <string name="account_sign_up_success">注册成功</string>
+    <string name="account_sign_out">退出账号</string>
+    <string name="account_sign_out_ing">退出账号…</string>
+    <string name="account_edit_user_info">编辑个人资料</string>
+
+    <!--Error-->
+    <string name="error_user_exist">该用户已存在</string>
+    <string name="error_user_not_exist">该用户不存在</string>
+    <string name="error_password_incorrect">密码不正确</string>
+    <string name="error_device_un_support">设备不支持此功能</string>
+
+    <!--Action-->
+    <string name="action_loading">加载中…</string>
+    <string name="action_search">搜索</string>
+    <string name="action_turn_on">开启</string>
+    <string name="action_grant">授权</string>
+    <string name="action_to_set">去设置</string>
     <string name="action_save">保存</string>
-    <string name="action_delete">删除</string>
-    <string name="action_add">添加</string>
 
-    <string name="operation_failed">操作失败</string>
-    <string name="operation_success">操作成功</string>
-
-    <string name="dialog_msg_location_feature">蓝牙扫描需要开启定位功能才能正常使用，是否开启？</string>
-    <string name="permission_dialog_title">提示</string>
-    <string name="permission_dialog_rationale_sure">授予权限</string>
-    <string name="permission_dialog_rationale_cancel">拒绝</string>
-    <string name="permission_dialog_setting_message">我们需要的一些权限被您拒绝或者系统发生错误导致申请失败，请您到设置页面手动授权，否则功能无法正常使用</string>
-    <string name="permission_dialog_setting_sure">去设置</string>
-    <string name="permission_dialog_setting_cancel">取消</string>
-    <string name="permission_dialog_rationale_location">如果没有定位权限，您可能无法正常的扫描和连接手环。</string>
-    <string name="permission_dialog_rationale_storage">如果没有文件读写权限，您可能无法读写和选择文件。</string>
-    <string name="permission_dialog_rationale_camera">如果没有拍照权限，您可能无法使用拍照功能。</string>
-
-    <string name="action_connect">连接</string>
-    <string name="action_disconnect">断开连接</string>
-    <string name="state_connecting">连接中&#8230;</string>
-    <string name="state_connect_failed">连接失败</string>
-    <string name="state_connect_success">连接成功</string>
-    <string name="state_active_disconnect">主动断开连接</string>
-    <string name="state_passive_disconnect">被动断开连接</string>
-    <string name="toast_device_disconnected">设备未连接</string>
-    <string name="toast_device_not_support">设备不支持此功能</string>
-
-    <string name="toast_connect_login_tips">使用Login模式连接</string>
-    <string name="toast_connect_bind_tips">使用Bind模式连接，APP清除当天的步数数据</string>
-
-    <string name="clear_bind">清除绑定</string>
-    <string name="dialog_clear_bind_title">清除用户绑定状态</string>
-    <string name="dialog_clear_bind_msg">
-        用户绑定状态是一个缓存在SharedPreferences的本地变量。\
-        它决定在连接手环时，使用何种模式，绑定或者登陆。\
-        更多的信息请参考Github上的开发文档。\
-
-       确定要清除用户绑定状态吗？
-    </string>
-
-    <string name="op1">1.手环配置</string>
-    <string name="op2">2.闹钟</string>
-    <string name="op3">3.消息通知</string>
-    <string name="op4">4.手环主动消息</string>
-    <string name="op5">5.实时数据</string>
-    <string name="op6">6.同步数据</string>
-    <string name="op7">7.DFU</string>
-    <string name="op8">8.简单指令</string>
-    <string name="op9">9.表盘库</string>
-    <string name="op10">10.表盘组件</string>
-    <string name="op11">11.运动推送</string>
-
-    <string name="configs_version_info">1.手环版本信息</string>
-    <string name="configs_notification">2.通知配置</string>
-    <string name="configs_blood_pressure">3.血压配置</string>
-    <string name="configs_drink_water">4.喝水提醒配置</string>
-    <string name="configs_function">5.功能配置</string>
-    <string name="configs_healthy">6.健康监测配置</string>
-    <string name="configs_sedentary">7.久坐提醒配置</string>
-    <string name="configs_page">8.页面配置</string>
-    <string name="configs_turn_wrist_lighting">9.翻腕亮屏配置</string>
-    <string name="configs_warn_heart_rate">10.心率预警配置</string>
-    <string name="configs_warn_blood_pressure">11.血压预警配置</string>
-    <string name="configs_dnd">12.免打扰配置</string>
-
-    <string name="notification_config_phone_call">电话提醒</string>
-    <string name="notification_config_sms">短信提醒</string>
-    <string name="notification_config_qq">QQ</string>
-    <string name="notification_config_wechat">WeChat</string>
-    <string name="notification_config_facebook">Facebook</string>
-    <string name="notification_config_twitter">Twitter</string>
-    <string name="notification_config_linkedin">Linkedin</string>
-    <string name="notification_config_instagram">Instagram</string>
-    <string name="notification_config_pinterest">Pinterest</string>
-    <string name="notification_config_whatsapp">WhatsApp</string>
-    <string name="notification_config_line">Line</string>
-    <string name="notification_config_facebook_msg">Facebook Messenger</string>
-    <string name="notification_config_kakaotalk">Kakao Talk</string>
-    <string name="notification_config_skype">Skype</string>
-    <string name="notification_config_snapchat">Snapchat</string>
-    <string name="notification_config_email">Email</string>
-    <string name="notification_config_telegram">Telegram</string>
-    <string name="notification_config_viber">Viber</string>
-    <string name="notification_config_calendar">Calendar</string>
-    <string name="notification_config_others">其他APP</string>
-
-    <string name="page_config_suggest">由于手环UI特殊性，不建议设置页面配置</string>
-    <string-array name="page_names">
-        <item>时间</item>
-        <item>步数</item>
-        <item>距离</item>
-        <item>卡路里</item>
-        <item>睡眠</item>
-        <item>心率</item>
-        <item>血氧</item>
-        <item>血压</item>
-        <item>天气</item>
-        <item>查找手机</item>
-        <item>ID</item>
-        <item>秒表</item>
-    </string-array>
-
-    <string name="tip_load_error">加载失败，点击重新加载</string>
-    <string name="tip_simple">太简单了，需要个毛的例子啊！！！</string>
-
-    <string name="ds_alarm_opened_count">开启<xliff:g id="params">%1$d</xliff:g>个闹钟</string>
-    <string name="ds_alarm_no_data">暂无闹钟</string>
-    <string name="ds_alarm_limit_count">最多只能添加5个闹钟</string>
-    <string name="ds_alarm_delete">删除闹钟</string>
-    <string name="ds_alarm_delete_message">确定要删除该闹钟吗？</string>
-    <string name="ds_alarm_repeat">重复</string>
-    <string name="ds_alarm_repeat_every_day">每天</string>
-    <string name="ds_alarm_repeat_never">永不</string>
-    <string name="ds_alarm_repeat_workdays">工作日</string>
-    <string name="ds_alarm_repeat_weekends">周末</string>
-    <string name="ds_alarm_label">标签</string>
-
-    <string name="ds_alarm_list">闹钟列表</string>
-    <string name="ds_alarm_am">上午</string>
-    <string name="ds_alarm_pm">下午</string>
-    <string name="ds_alarm_add">添加闹钟</string>
-    <string name="ds_alarm_edit">编辑闹钟</string>
-
-    <string name="ds_alarm_repeat_00">周一</string>
-    <string name="ds_alarm_repeat_01">周二</string>
-    <string name="ds_alarm_repeat_02">周三</string>
-    <string name="ds_alarm_repeat_03">周四</string>
-    <string name="ds_alarm_repeat_04">周五</string>
-    <string name="ds_alarm_repeat_05">周六</string>
-    <string name="ds_alarm_repeat_06">周日</string>
-    <string name="ds_alarm_repeat_00_simple">周一</string>
-    <string name="ds_alarm_repeat_01_simple">周二</string>
-    <string name="ds_alarm_repeat_02_simple">周三</string>
-    <string name="ds_alarm_repeat_03_simple">周四</string>
-    <string name="ds_alarm_repeat_04_simple">周五</string>
-    <string name="ds_alarm_repeat_05_simple">周六</string>
-    <string name="ds_alarm_repeat_06_simple">周日</string>
-
-    <string name="camera_control">拍照控制</string>
-
-    <string name="real_time_data_start">开始</string>
-    <string name="real_time_data_stop">结束</string>
-    <string name="heart_rate">心率</string>
-    <string name="oxygen">血氧</string>
-    <string name="blood_pressure">血压</string>
-    <string name="respiratory_rate">呼吸频率</string>
-    <string name="heart_rate_value">心率:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="oxygen_value">血氧:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="blood_pressure_value">血压:<xliff:g id="params1">%1$d</xliff:g>   <xliff:g id="params2">%2$d</xliff:g></string>
-    <string name="respiratory_rate_value">呼吸频率:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="ecg_sample">心电采样率:<xliff:g id="params">%1$d</xliff:g></string>
-    <string name="ecg_value">心电值:<xliff:g id="params">%1$s</xliff:g></string>
-
-    <string name="check_remote_update">检查远程DFU文件</string>
-    <string name="select_local_update">选择本地DFU文件</string>
-
-    <!--Dfu State-->
-    <string name="dfu_state_dfu_file">准备文件 &#8230;</string>
-    <string name="dfu_state_dfu_mode">进入DFU &#8230;</string>
-    <string name="dfu_state_dfu_device">搜索 &#8230;</string>
-    <string name="dfu_state_dfu_process">准备 &#8230;</string>
-
-    <!--Dfu Progress-->
-    <string name="dfu_progress_start">升级中 &#8230;</string>
-    <string name="dfu_progress_completed">升级完成</string>
-    <string name="dfu_success">DFU成功</string>
-    <string name="dfu_failed">DFU失败</string>
-    <string name="percentage"><xliff:g id="params">%1$s</xliff:g>%%</string>
-
-    <string name="ble_not_support">您的设备不支持蓝牙4.0</string>
-    <string name="bt_not_open">蓝牙未开启</string>
-    <string name="device_disconnected">设备断开连接</string>
-    <string name="dfu_error_file_format">DFU文件格式错误</string>
-    <string name="dfu_error_file_not_exist">DFU文件不存在</string>
-    <string name="dfu_error_file_download">固件下载失败</string>
-    <string name="dfu_error_enter_dfu_failed">设备进入DFU模式失败</string>
-    <string name="dfu_error_low_battery">电量不足.设备进入DFU模式失败</string>
-    <string name="dfu_error_service_not_ready">DFU服务未就绪</string>
-    <string name="dfu_error_scan_failed">开始扫描失败</string>
-    <string name="dfu_error_device_not_found">设备未发现</string>
-
-    <string name="device_sync_data_busy">正在同步数据，不能进行该操作</string>
-    <string name="sync_data">同步数据</string>
-    <string name="sync_data_state_failed_disconnected">同步失败，设备断开连接</string>
-    <string name="sync_data_state_failed_checking_ecg">同步失败，设备正在检测心电</string>
-    <string name="sync_data_state_failed_saving_ecg">同步失败，设备正在保存心电</string>
-    <string name="sync_data_state_failed_unknown">同步失败，未知原因</string>
-    <string name="sync_data_state_start">同步开始</string>
-    <string name="sync_data_state_progress">同步进度:<xliff:g id="params">%1$d</xliff:g>%%</string>
-    <string name="sync_data_state_success">同步成功</string>
-
-    <string name="view_heart_rate_data">查看心率数据</string>
-    <string name="view_oxygen_data">查看血氧数据</string>
-    <string name="view_blood_pressure_data">查看血压数据</string>
-    <string name="view_respiratory_rate_data">查看呼吸频率数据</string>
-    <string name="view_healthy_data_tips">该数据与心率数据类似，请参考心率数据做法</string>
-
-    <string name="view_sleep_data">查看睡眠数据</string>
-    <string name="deep_sleep_hour_minute">深睡:<xliff:g id="params1">%1$d</xliff:g>小时<xliff:g id="params2">%2$d</xliff:g>分钟</string>
-    <string name="light_sleep_hour_minute">浅睡:<xliff:g id="params1">%1$d</xliff:g>小时<xliff:g id="params2">%2$d</xliff:g>分钟</string>
-    <string name="sober_sleep_hour_minute">清醒:<xliff:g id="params1">%1$d</xliff:g>小时<xliff:g id="params2">%2$d</xliff:g>分钟</string>
-
-    <string name="view_sport_data">查看运动数据</string>
-    <string name="view_sport_type_ride">骑行</string>
-    <string name="view_sport_type_od">室外跑步</string>
-    <string name="view_sport_type_id">室内跑步</string>
-    <string name="view_sport_type_walk">健走</string>
-    <string name="view_sport_type_climb">登山</string>
-    <string name="view_sport_type_bb">篮球</string>
-    <string name="view_sport_type_swim">游泳</string>
-    <string name="view_sport_type_badminton">羽毛球</string>
-    <string name="view_sport_type_football">足球</string>
-    <string name="view_sport_type_elliptical_trainer">椭圆机</string>
-    <string name="view_sport_type_yoga">瑜伽</string>
-    <string name="view_sport_type_ping_pong">乒乓球</string>
-    <string name="view_sport_type_rope_skipping">跳绳</string>
-
-    <string name="view_sport_data_calories">卡路里:<xliff:g id="params1">%1$s</xliff:g>千卡</string>
-    <string name="view_sport_data_step">步数:<xliff:g id="params1">%1$d</xliff:g></string>
-    <string name="view_sport_data_distance">距离:<xliff:g id="params1">%1$s</xliff:g>千米</string>
-    <string name="view_sport_data_hr">心率:<xliff:g id="params1">%1$d</xliff:g></string>
-
-    <string name="view_ecg_data">查看心电数据</string>
-    <string name="view_ecg_data_sample">采样率:<xliff:g id="params1">%1$d</xliff:g></string>
-
-    <string name="view_step_data">查看步数数据</string>
-    <string name="view_step_data_total_step">总步数:<xliff:g id="params1">%1$d</xliff:g></string>
-
-    <string name="err_network">网络异常</string>
-    <string name="err_data">数据异常</string>
-    <string name="err_unknown">未知异常</string>
-    <string name="feature_location_request_for_ble_scan">蓝牙扫描需要开启定位功能才能正常使用，是否开启？</string>
-    <string name="tip_please_wait">请稍后…</string>
+    <!--Tips-->
+    <string name="tip_prompt">提示</string>
+    <string name="tip_none">无</string>
+    <string name="tip_i_know">我知道了</string>
+    <string name="tip_please_wait">请稍后&#8230;</string>
+    <string name="tip_loading_error">加载失败，点击重试</string>
     <string name="tip_save_success">保存成功</string>
-    <string name="sync_data_ongoing">正在同步</string>
-    <string name="err_ble_time_out">指令超时</string>
-    <string name="err_ble_format">指令错误</string>
-    <string name="action_edit">编辑</string>
-    <string name="action_completed">完成</string>
+    <string name="tip_success">成功</string>
+    <string name="tip_failed">失败</string>
+    <string name="tip_download_failed">下载失败</string>
     <string name="tip_current_no_data">暂无数据</string>
+    <string name="tip_load_error">加载失败，点击重试</string>
 
-    <string name="ds_dial_center">表盘中心</string>
-    <string name="ds_dial_mine">我的表盘</string>
-    <string name="ds_dial_sync">同步表盘</string>
-    <string name="ds_dial_downloading">下载中…</string>
-    <string name="ds_dial_syncing">同步中&#8230;</string>
-    <string name="ds_dial_sync_success">同步成功</string>
+    <!--Permission-->
+    <string name="permission_explain_msg">需要以下权限，是否请求以便进行下一步操作？</string>
+    <string name="permission_to_settings_msg">权限请求失败，是否进入系统设置中授予权限？</string>
 
-    <string name="ds_dial_custom">自定义表盘</string>
-    <string name="ds_dial_set_dial">设为表盘</string>
-    <string name="version_download_failed_check_sd_card">下载失败，请确保您的SD卡正确安装并有足够的空间</string>
-    <string name="version_download_failed">下载失败</string>
-    <string name="ds_dial_error_none_shape">暂不支持此手环升级，请尝试升级至最新版本</string>
-    <string name="ds_dial_error_none_style">暂不支持此手环升级</string>
+    <string name="module_sync">同步</string>
+    <string name="module_realtime">实时</string>
+    <string name="module_combine">结合</string>
+
+    <!--Device-->
+    <string name="device_module">设备</string>
+    <string name="device_bind">绑定设备</string>
+    <string name="device_scan_bind">扫码绑定</string>
+    <string name="device_others">其他设备</string>
+    <string name="device_others_des">已配对或已连接的设备不会出现在搜索结果里</string>
+    <string name="device_bonded">已配对设备</string>
+    <string name="device_connected">已连接设备</string>
+    <string name="device_bind_tips1">确保手表电量充足</string>
+    <string name="device_bind_tips2">保持手表跟手机在0.5米之内</string>
+    <string name="device_bind_tips3">在蓝牙设备少的地方搜索</string>
+    <string name="device_bind_tips4">确保手表未被其他手机配对或连接</string>
+    <string name="device_scan_tips_location_service">定位服务已禁用，可能会无法搜索到设备。</string>
+    <string name="device_scan_tips_error">扫描发生错误</string>
+    <string name="device_scan_tips_delay">请稍等几秒再尝试扫描</string>
+    <string name="device_scan_tips_restart">请稍等几秒再尝试扫描，或者重启蓝牙或者手机</string>
+    <string name="device_cancel_bind">取消绑定</string>
+    <string name="device_unbind">解除绑定</string>
+    <string name="device_unbind_confirm_msg">确定要解绑该设备吗?</string>
+    <string name="device_bind_success">绑定成功</string>
+    <string name="device_rebind">重新绑定</string>
+    <string name="device_reconnect">重新连接</string>
+    <string name="device_connect_auth_login_failed">手表可能绑定过其他手机</string>
+    <string name="device_connect_auth_bind_failed">手表取消绑定或无响应</string>
+    <string name="device_connect_bg_run_settings">如果连接不稳定，可尝试设置后台运行选项。</string>
+    <string name="device_disconnect_help">无法连接？</string>
+
+    <string name="device_state_no_device">设备未绑定</string>
+    <string name="device_state_bt_disabled">蓝牙未开启</string>
+    <string name="device_state_disconnected">未连接</string>
+    <string name="device_state_connecting">连接中</string>
+    <string name="device_state_connected">已连接</string>
+
+    <string name="connect_help">连接帮助</string>
+    <string name="connect_help_title1">若多次连接失败，请检查以下选项</string>
+    <string name="connect_help_no_scan_permission">无扫描权限</string>
+    <string name="connect_help_location_service_disabled">定位服务已禁用</string>
+    <string name="connect_help_title2">若多次连接失败，请尝试以下操作</string>
+    <string name="connect_help_restart_app">重启应用</string>
+    <string name="connect_help_restart_bluetooth">重启蓝牙</string>
+    <string name="connect_help_restart_device">重启手表</string>
+    <string name="connect_help_restart_phone">重启手机</string>
+
+    <string name="device_scan_bind_tips1">这是一个模拟的扫码界面，开发者需要自己完成扫码功能</string>
+    <string name="device_scan_bind_tips2">现在假设扫码成功，并获取了如下字符串：</string>
+    <string name="device_scan_bind_tips3">点击下方按钮，解析成功后将在3秒内返回</string>
+    <string name="device_scan_bind_parser">解析</string>
+
+    <string name="bg_run_settings_module">后台运行设置</string>
+    <string name="bg_run_settings_des">你需要进行一些系统设置，使APP能够长时间运行在后台，例如：</string>
+    <string name="bg_run_settings_1">忽略电池优化</string>
+    <string name="bg_run_settings_2">关闭省电模式</string>
+    <string name="bg_run_settings_3">允许后台自启动</string>
+    <string name="bg_run_settings_4">在系统管家中加入白名单</string>
+
+    <!--Device Config-->
+    <string name="ds_config">设备配置</string>
+    <string name="ds_config_start_time">开始时间</string>
+    <string name="ds_config_end_time">结束时间</string>
+    <string name="ds_dnd_config">勿扰配置</string>
+    <string name="ds_dnd_config_all_day">全天免打扰</string>
+    <string name="ds_dnd_config_all_day_des">如果开启全天免打扰，则下面的设置会被忽略</string>
+    <string name="ds_dnd_config_period_time">某段时间免打扰</string>
+
+    <!--Power save mode-->
+    <string name="ds_power_save_mode">省电模式</string>
+
+    <!--Version-->
+    <string name="version_upgrade_param">升级(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="version_info">版本信息</string>
+    <string name="version_hardware_update">硬件更新</string>
+    <string name="version_latest_version_code">最新版本：</string>
+    <string name="version_update_content">更新内容：</string>
+    <string name="version_is_latest_version">已是最新版本</string>
+    <string name="version_note_title">注意</string>
+    <string name="version_note_hardware1">1、请保持蓝牙正常连接，手机与手表距离0.5米内。</string>
+    <string name="version_note_hardware2">2、请保持手表电量在20%以上。</string>
+    <string name="version_dfu_unsupport_flash">暂不支持flash固件升级</string>
+    <string name="version_upgrade">升级</string>
+
+    <!--Device Settings:Dfu-->
+    <string name="ds_push_start">开始推送(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="ds_push_select_replace">选择替换的位置</string>
+    <string name="ds_push_success">推送成功</string>
+    <string name="ds_push_fail">推送失败(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="ds_dfu_downloading">下载中…</string>
+    <string name="ds_dfu_preparing">准备中&#8230;</string>
+    <string name="ds_dfu_pushing">推送中&#8230;</string>
+    <string name="ds_dfu_error_insufficient_storage">无可用存储空间</string>
+    <string name="ds_dfu_error_low_battery">电量不足</string>
+    <string name="ds_dfu_error_device_not_found">未发现设备</string>
+    <string name="ds_dfu_tips_location_service">定位服务已禁用, 升级/推送等操作可能会失败</string>
+
+    <!--Modify Logo-->
+    <string name="ds_modify_logo">修改开关机Logo</string>
+    <string name="ds_modify_logo_boot">开机</string>
+    <string name="ds_modify_logo_shutdown">关机</string>
+    <string name="ds_modify_logo_gif_tips1">1.如果开机logo和关机logo一样，设置任意一个即可。请勿重复设置</string>
+    <string name="ds_modify_logo_gif_tips2">2.太大的GIF图片，可能会导致失败</string>
+    <string name="ds_modify_logo_gif_tips3">3.手表屏幕尺寸为<xliff:g id="param">%1$s</xliff:g>。所选的GIF图片尺寸如果不一样，可能会变形</string>
+
+    <!--Get Photo-->
+    <string name="action_take_photo">拍照</string>
+    <string name="action_choose_photo">选取</string>
     <string name="photo_select_failed">选择失败</string>
     <string name="photo_crop_failed">裁减失败</string>
     <string name="photo_take_failed">拍照失败</string>
     <string name="photo_take_success">拍照成功</string>
-    <string name="ds_dial_background">背景</string>
-    <string name="ds_dial_style">样式</string>
-    <string name="ds_dial_position">位置</string>
-    <string name="ds_dial_create">正在生成表盘</string>
-    <string name="ds_dial_create_failed">生成失败</string>
-    <string name="dial_select_replace">选择替换的表盘</string>
-    <string name="ds_dial_img_over_tips">最多添加5张图片</string>
 
-    <string name="ds_dial_component_title">表盘组件</string>
-    <string name="ds_dial_component_edit">编辑组件</string>
-    <string name="ds_dial_component">组件<xliff:g id="params1">%1$d</xliff:g></string>
+    <!--Dial-->
+    <string name="ds_dial">表盘</string>
+    <string name="ds_dial_library">表盘库</string>
+    <string name="ds_dial_library_des">表盘库功能允许您访问FitCloud服务器上的表盘，并推送到您的设备。</string>
+    <string name="ds_dial_custom">自定义表盘</string>
+    <string name="ds_dial_custom_des">自定义表盘功能允许您使用拍照/相册中的图片，以及可选的样式来定制您的表盘</string>
+    <string name="ds_dial_component">表盘组件</string>
+    <string name="ds_dial_component_des">表盘组件功能允许您切换设备上已经存在表盘，以及更改它们的样式。</string>
+    <string name="ds_dial_none_feature">您的设备不支持任何表盘功能</string>
+
+    <string name="ds_dial_error_shape">暂不支持，请尝试升级APP至最新版本</string>
+
 </resources>

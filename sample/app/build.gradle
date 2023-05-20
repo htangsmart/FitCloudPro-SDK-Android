@@ -1,26 +1,28 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
 
 android {
-    compileSdkVersion 30
+    compileSdk 33
     defaultConfig {
-        applicationId "com.github.kilnn.wristband2.sample"
-        minSdkVersion 21
-        targetSdkVersion 30
+        applicationId "com.topstep.fitcloud.sample2"
+        minSdk 21
+        targetSdk 32
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation":
-                                     "$projectDir/schemas".toString()]
+                arguments += [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
             }
         }
-
-        manifestPlaceholders = [
-                FileAuthorities: 'com.github.kilnn.wristband2.sample.fileprovider',
-        ]
-        buildConfigField("String", "FileAuthorities", '"com.github.kilnn.wristband2.sample.fileprovider"')
     }
     buildTypes {
         release {
@@ -28,85 +30,108 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        viewBinding = true
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
-}
 
-repositories {
-    flatDir {
-        dirs 'libs'
+    viewBinding {
+        enabled = true
     }
+    namespace 'com.topstep.fitcloud.sample2'
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+
+    //Required
+    implementation files('libs/libraryCore_v2.0.0.aar')
+    implementation files('libs/libraryProtocol2_v2.0.0.aar')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
+    implementation "androidx.core:core-ktx:$androidx_core_version"
+    implementation "androidx.annotation:annotation:$annotation_version"
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
+    implementation "com.polidea.rxandroidble3:rxandroidble:$rxandroidble_version"
+
+    //Optional. Dfu function for Realtek chip
+    implementation files('libs/libraryDfu8762C_v2.0.0.aar')
+    //Optional. Dfu function for Nordic chip
+    implementation 'no.nordicsemi.android:dfu:2.2.2'
+    //Optional. Download files for Dfu function.
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    //Optional. Built-in music control function
+    implementation 'androidx.media:media:1.6.0'
+    //Optional. DialWriter and LogoWriter function
+    implementation 'androidx.palette:palette-ktx:1.0.0'
+    //Optional. LogoWriter function
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
+
+//    //Optional. Some APIs compatible with 1.x.x are provided to minimize changes during migration.
+//    implementation files(':libraryCompat2')
+
+    //Base
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
-    //RxJava2 and RxAndroid
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //JetPack-Lifecycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
 
-    //RxAndroidBle
-    implementation 'com.polidea.rxandroidble2:rxandroidble:1.11.1'
+    //JetPack-ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    implementation "androidx.activity:activity-ktx:1.6.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
 
-    //lib core function
-    implementation(name: 'libraryCore_v1.1.9', ext: 'aar')
+    //JetPack-SplashScreen
+    implementation "androidx.core:core-splashscreen:$splash_screen_version"
 
-    //lib dfu function. Optional. If your app need dfu function.
-    implementation(name: 'libraryDfu_v1.0.6', ext: 'aar')
+    //JetPack-Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
 
-    //room
-    implementation 'androidx.room:room-runtime:2.2.5'
-    implementation 'androidx.room:room-rxjava2:2.2.5'
-    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    //JetPack-Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    //json
-    implementation 'com.alibaba:fastjson:1.1.72.android'
+    //JetPack-DataStore
+    implementation "androidx.datastore:datastore:$datastore_version"
+    implementation "androidx.datastore:datastore-preferences:$datastore_version"
 
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    //moshi
+    implementation "com.squareup.moshi:moshi:1.14.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
 
-    //glide
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    implementation 'com.github.bumptech.glide:okhttp3-integration:4.12.0'
+    //permission
+    implementation 'com.guolindev.permissionx:permissionx:1.7.1'
 
     //retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
-    //matisse
-    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx3:$kotlin_coroutines_version"
 
-    //JetPack-Activity/Fragment
-    implementation "androidx.activity:activity-ktx:1.2.2"
-    implementation "androidx.fragment:fragment-ktx:1.3.2"
+    implementation 'androidx.multidex:multidex:2.0.1'
 
-    //log
-    implementation "com.jakewharton.timber:timber:4.7.1"
+    implementation 'com.github.kilnn:wheelview:1.0.2'
 
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.1"
+    //glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.4.3"
-
-    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
-    implementation(name: 'Lib_WheelView-release', ext: 'aar')
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
