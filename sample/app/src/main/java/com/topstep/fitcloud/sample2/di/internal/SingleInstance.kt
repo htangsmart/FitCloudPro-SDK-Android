@@ -14,6 +14,8 @@ import com.topstep.fitcloud.sample2.data.net.ApiClient
 import com.topstep.fitcloud.sample2.data.net.json.*
 import com.topstep.fitcloud.sample2.data.storage.InternalStorage
 import com.topstep.fitcloud.sample2.data.storage.InternalStorageImpl
+import com.topstep.fitcloud.sample2.data.wh.WomenHealthRepository
+import com.topstep.fitcloud.sample2.data.wh.WomenHealthRepositoryImpl
 
 object SingleInstance {
 
@@ -38,12 +40,21 @@ object SingleInstance {
 
     val authManager: AuthManager by lazy { AuthManagerImpl(internalStorage, appDatabase) }
 
+    val womenHealthRepository: WomenHealthRepository by lazy {
+        WomenHealthRepositoryImpl(
+            CoroutinesInstance.applicationScope,
+            internalStorage,
+            appDatabase
+        )
+    }
+
     val deviceManager: DeviceManager by lazy {
         DeviceManagerImpl(
             applicationContext,
             CoroutinesInstance.applicationScope,
             internalStorage,
-            appDatabase
+            womenHealthRepository,
+            appDatabase,
         )
     }
 

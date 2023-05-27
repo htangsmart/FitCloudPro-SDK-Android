@@ -53,9 +53,8 @@ sealed class LaunchNavigation {
 }
 
 class LaunchViewMode : ViewModel() {
-    fun getLaunchNavigation(): LaunchNavigation {
-        val userId = Injector.getAuthedUserIdOrNull()
-        return if (userId != null) {
+    suspend fun getLaunchNavigation(): LaunchNavigation {
+        return if (Injector.getAuthManager().hasAuthedUser()) {
             LaunchNavigation.NavToMain
         } else {
             LaunchNavigation.NavToSignIn

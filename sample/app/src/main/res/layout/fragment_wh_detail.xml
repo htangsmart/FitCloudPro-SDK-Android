@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:windowBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp">
+
+            <TextView
+                android:id="@+id/tv_goto_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:text="@string/wh_goto_today"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/img_arrow_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/tv_year_month"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+                app:tint="?colorOnSurface"/>
+
+            <TextView
+                android:id="@+id/tv_year_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/img_arrow_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tv_year_month"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                app:tint="?colorOnSurface"/>
+
+        </RelativeLayout>
+
+        <com.topstep.fitcloud.sample2.ui.combine.wh.WhCalendarView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_legend_pregnancy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="4dp">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tv_legend_pregnancy1,tv_legend_pregnancy2,tv_legend_pregnancy3"
+                app:flow_horizontalBias="0"
+                app:flow_horizontalGap="8dp"
+                app:flow_horizontalStyle="packed"
+                app:flow_verticalGap="8dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_legend_pregnancy1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_pregnancy_early"
+                app:drawableStartCompat="@drawable/ic_wh_legend_pregnancy_early"/>
+
+            <TextView
+                android:id="@+id/tv_legend_pregnancy2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_pregnancy_mid"
+                app:drawableStartCompat="@drawable/ic_wh_legend_pregnancy_middle"/>
+
+            <TextView
+                android:id="@+id/tv_legend_pregnancy3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_pregnancy_later"
+                app:drawableStartCompat="@drawable/ic_wh_legend_pregnancy_later"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_legend_menstruation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="4dp">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tv_legend_menstruation1,tv_legend_menstruation2,tv_legend_menstruation3,tv_legend_menstruation4"
+                app:flow_horizontalBias="0"
+                app:flow_horizontalGap="8dp"
+                app:flow_horizontalStyle="packed"
+                app:flow_verticalGap="8dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_legend_menstruation1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_menstruation_remind_menstruation"
+                app:drawableStartCompat="@drawable/ic_wh_legend_menstruation"/>
+
+            <TextView
+                android:id="@+id/tv_legend_menstruation2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_menstruation_remind_safe"
+                app:drawableStartCompat="@drawable/ic_wh_legend_safe"/>
+
+            <TextView
+                android:id="@+id/tv_legend_menstruation3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_menstruation_remind_ovulation"
+                app:drawableStartCompat="@drawable/ic_wh_legend_ovulation"/>
+
+            <TextView
+                android:id="@+id/tv_legend_menstruation4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="4dp"
+                android:text="@string/wh_menstruation_remind_ovulation_day"
+                app:drawableStartCompat="@drawable/ic_wh_legend_ovulation_day"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <TextView
+                android:id="@+id/tv_select_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_select_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="4dp">
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tv_select_info1,tv_select_info2"
+                app:flow_horizontalBias="0"
+                app:flow_horizontalGap="8dp"
+                app:flow_horizontalStyle="packed"
+                app:flow_verticalGap="8dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_select_info1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_select_info2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_pregnancy_due_date"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceSummary=" "
+            app:preferenceTitle="@string/wh_set_due_date"
+            app:showPreferenceSummary="true"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_begin_operation"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:visibility="gone"
+            app:preferenceTitle="@string/wh_menstruation_start"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_end_operation"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:visibility="gone"
+            app:preferenceTitle="@string/wh_menstruation_end"/>
+
+        <TextView
+            android:id="@+id/item_no_operation"
+            style="@style/Widget.Sample.PreferenceView"
+            android:gravity="center"
+            android:text="@string/wh_no_operation_future"
+            android:textColor="?android:textColorSecondary"
+            android:visibility="gone"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_latest"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceSummary=" "
+            app:preferenceTitle="@string/wh_menstruation_latest"
+            app:showPreferenceSummary="true"/>
+
+    </LinearLayout>
+</ScrollView>

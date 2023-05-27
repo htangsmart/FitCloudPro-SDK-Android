@@ -7,6 +7,7 @@ import com.topstep.fitcloud.sample2.data.user.UserInfoRepository
 import com.topstep.fitcloud.sample2.data.user.UserInfoRepositoryImpl
 import com.topstep.fitcloud.sample2.data.version.VersionRepository
 import com.topstep.fitcloud.sample2.data.version.VersionRepositoryImpl
+import com.topstep.fitcloud.sample2.data.wh.WomenHealthRepository
 import com.topstep.fitcloud.sample2.di.internal.CoroutinesInstance
 import com.topstep.fitcloud.sample2.di.internal.SingleInstance
 import kotlinx.coroutines.CoroutineScope
@@ -21,12 +22,8 @@ object Injector {
         return SingleInstance.authManager
     }
 
-    fun getAuthedUserIdOrNull(): Long? {
-        return SingleInstance.authManager.getAuthedUserIdOrNull()
-    }
-
     fun requireAuthedUserId(): Long {
-        return getAuthedUserIdOrNull()!!
+        return SingleInstance.authManager.getAuthedUserIdOrNull()!!
     }
 
     fun getDeviceManager(): DeviceManager {
@@ -50,5 +47,9 @@ object Injector {
 
     fun getApplicationScope(): CoroutineScope {
         return CoroutinesInstance.applicationScope
+    }
+
+    fun getWomenHealthRepository(): WomenHealthRepository {
+        return SingleInstance.womenHealthRepository
     }
 }

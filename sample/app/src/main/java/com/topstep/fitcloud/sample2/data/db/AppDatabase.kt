@@ -5,15 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
+import com.topstep.fitcloud.sample2.data.entity.MenstruationTimelineEntity
 import com.topstep.fitcloud.sample2.data.entity.UserEntity
+import com.topstep.fitcloud.sample2.data.entity.WomenHealthConfigEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.asExecutor
 
 @Database(
-    version = 1,
+    version = 2,
     entities = [
         UserEntity::class,
         DeviceBindEntity::class,
+        WomenHealthConfigEntity::class, MenstruationTimelineEntity::class
     ],
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -21,6 +24,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     abstract fun configDao(): ConfigDao
+
+    abstract fun womenHealthDao(): WomenHealthDao
 
     companion object {
         private const val DB_NAME = "db_sample2"

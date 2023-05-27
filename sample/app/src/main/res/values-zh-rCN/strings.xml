@@ -1,6 +1,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Fc2Sample</string>
 
+    <string name="percent_param" translatable="false"><xliff:g id="params1">%1$d</xliff:g>%%</string>
+
     <!--Account-->
     <string name="account_sign_in">登录</string>
     <string name="account_input_username_hint">输入用户名</string>
@@ -33,6 +35,7 @@
     <string name="action_grant">授权</string>
     <string name="action_to_set">去设置</string>
     <string name="action_save">保存</string>
+    <string name="action_start">开始</string>
 
     <!--Tips-->
     <string name="tip_prompt">提示</string>
@@ -46,6 +49,7 @@
     <string name="tip_download_failed">下载失败</string>
     <string name="tip_current_no_data">暂无数据</string>
     <string name="tip_load_error">加载失败，点击重试</string>
+    <string name="tip_disabled">未开启</string>
 
     <!--Permission-->
     <string name="permission_explain_msg">需要以下权限，是否请求以便进行下一步操作？</string>
@@ -175,5 +179,96 @@
     <string name="ds_dial_none_feature">您的设备不支持任何表盘功能</string>
 
     <string name="ds_dial_error_shape">暂不支持，请尝试升级APP至最新版本</string>
+
+    <!--WomenHealth-->
+    <string name="wh_women_health">女性健康</string>
+    <string name="wh_settings">女性健康设置</string>
+    <string name="wh_mode_menstruation">经期</string>
+    <string name="wh_mode_pregnancy_prepare">备孕期</string>
+    <string name="wh_mode_pregnancy">怀孕期</string>
+    <string name="wh_menstruation_days_info">周期<xliff:g id="params1">%1$d</xliff:g>天，经期<xliff:g id="params2">%2$d</xliff:g>天</string>
+    <string name="wh_menstruation_due_date_info">预产期 <xliff:g id="params1">%1$s</xliff:g></string>
+    <string name="wh_due_date">预产期</string>
+    <string name="wh_menstruation_settings">经期设置</string>
+    <string name="wh_pregnancy_prepare_settings">备孕期设置</string>
+    <string name="wh_pregnancy_settings">怀孕期设置</string>
+    <string name="wh_menstruation_duration_tips">您的月经大概持续几天？</string>
+    <string name="wh_menstruation_duration">经期长度</string>
+    <string name="wh_menstruation_cycle_tips">两次月经开始日大概间隔多久？</string>
+    <string name="wh_menstruation_cycle">周期长度</string>
+    <string name="wh_menstruation_latest">最近一次经期</string>
+    <string name="wh_menstruation_advance">经期开始提醒</string>
+    <string name="wh_device_remind">设备提醒</string>
+    <string name="wh_remind_time">提醒时间</string>
+    <string name="wh_mode_menstruation_name">经期模式</string>
+    <string name="wh_mode_pregnancy_prepare_name">备孕模式</string>
+    <string name="wh_mode_pregnancy_name">怀孕模式</string>
+    <string name="wh_menstruation_advance_param">提前<xliff:g id="params1">%1$d</xliff:g>天</string>
+    <string name="wh_due_date_tips">预产期是哪天呢？</string>
+    <string name="wh_set_due_date">设置预产期</string>
+    <string name="wh_calculate_due_date">计算预产期</string>
+    <string name="wh_pregnancy_remind">怀孕期提醒</string>
+    <string name="wh_pregnancy_remind_select_tips">选择提醒方式</string>
+    <string name="wh_pregnancy_remind_type1">距离预产期天数</string>
+    <string name="wh_pregnancy_remind_type2">已怀孕天数</string>
+    <string name="wh_pregnancy_remind_info1">距离预产期还有<xliff:g id="params1">%1$d</xliff:g>天</string>
+    <string name="wh_pregnancy_remind_info2">已怀孕<xliff:g id="params1">%1$d</xliff:g>周<xliff:g id="params2">%2$d</xliff:g>天</string>
+    <string name="wh_goto_today">回今天</string>
+    <string name="wh_pregnancy_early">孕早期</string>
+    <string name="wh_pregnancy_mid">孕中期</string>
+    <string name="wh_pregnancy_later">孕晚期</string>
+    <string name="wh_menstruation_remind_next">距离月经期还有<xliff:g id="params1">%1$d</xliff:g>天</string>
+    <string name="wh_menstruation_remind_menstruation_days">月经期 第<xliff:g id="params1">%1$d</xliff:g>天</string>
+    <string name="wh_menstruation_remind_menstruation">月经期</string>
+    <string name="wh_menstruation_remind_safe">安全期</string>
+    <string name="wh_menstruation_remind_ovulation">排卵期</string>
+    <string name="wh_menstruation_remind_ovulation_day">排卵日</string>
+    <string name="wh_menstruation_rate">怀孕率<xliff:g id="params1">%1$d</xliff:g>%%</string>
+    <string name="wh_menstruation_start">月经开始</string>
+    <string name="wh_menstruation_end">月经结束</string>
+    <string name="wh_no_operation_past">过去日期，无法操作</string>
+    <string name="wh_no_operation_future">未来日期，无法操作</string>
+    <string name="wh_no_operation_start">经期开始，无法操作</string>
+    <string name="wh_home_page_title">女性健康 (<xliff:g id="params1">%1$s</xliff:g>)</string>
+    <string name="wh_set_calendar_title">选择要跳转的年月</string>
+
+    <!--Unit-->
+    <string name="unit_year">年</string>
+    <string name="unit_month">月</string>
+    <string name="unit_day">日</string>
+    <string name="unit_day_count">天</string>
+    <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>天</string>
+
+    <!--Alarms-->
+    <string name="ds_alarm">手表闹钟</string>
+    <string name="ds_alarm_no_data">暂无闹钟</string>
+    <string name="ds_alarm_limit_count">最多只能添加5个闹钟</string>
+    <string name="ds_alarm_label">标签</string>
+    <string name="ds_alarm_am">上午</string>
+    <string name="ds_alarm_pm">下午</string>
+    <string name="ds_alarm_add">添加闹钟</string>
+    <string name="ds_alarm_edit">编辑闹钟</string>
+    <string name="ds_alarm_repeat_every_day">每天</string>
+    <string name="ds_alarm_repeat_never">永不</string>
+    <string name="ds_alarm_repeat_workdays">工作日</string>
+    <string name="ds_alarm_repeat_weekends">周末</string>
+    <string name="ds_alarm_repeat_00">周一</string>
+    <string name="ds_alarm_repeat_01">周二</string>
+    <string name="ds_alarm_repeat_02">周三</string>
+    <string name="ds_alarm_repeat_03">周四</string>
+    <string name="ds_alarm_repeat_04">周五</string>
+    <string name="ds_alarm_repeat_05">周六</string>
+    <string name="ds_alarm_repeat_06">周日</string>
+    <string name="ds_alarm_repeat_00_simple">周一</string>
+    <string name="ds_alarm_repeat_01_simple">周二</string>
+    <string name="ds_alarm_repeat_02_simple">周三</string>
+    <string name="ds_alarm_repeat_03_simple">周四</string>
+    <string name="ds_alarm_repeat_04_simple">周五</string>
+    <string name="ds_alarm_repeat_05_simple">周六</string>
+    <string name="ds_alarm_repeat_06_simple">周日</string>
+    <string name="ds_alarm_delete">删除闹钟</string>
+    <string name="ds_alarm_repeat">重复</string>
+    <string name="ds_alarm_delete_message">确定要删除该闹钟吗？</string>
+    <string name="ds_alarm_label_default">闹钟</string>
 
 </resources>

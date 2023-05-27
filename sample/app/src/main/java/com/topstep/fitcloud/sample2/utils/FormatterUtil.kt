@@ -1,8 +1,11 @@
 package com.topstep.fitcloud.sample2.utils
 
+import android.text.format.DateFormat
+import com.github.kilnn.wheellayout.WheelIntFormatter
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 object FormatterUtil {
@@ -22,28 +25,49 @@ object FormatterUtil {
         DECIMAL_2_FORMAT.roundingMode = RoundingMode.DOWN
     }
 
-    /**
-     * 格式化整数
-     * 使用format，而不是[Int.toString]，是为了国际化
-     */
     fun intStr(value: Int): String {
         return String.format(systemLocale, "%d", value)
     }
 
     /**
-     * 格式化保留一位小数的数字
-     * DecimalFormat只接受double类型，而float强转double会改变数值，如2.8f变成2.799999999..
-     * 所以使用[Float.toString().toDouble()]的形式，保证数值不会改变
+     * Keep one decimal place
      */
     fun decimal1Str(value: Float): String {
         return DECIMAL_1_FORMAT.format(value.toString().toDouble())
     }
 
     /**
-     * 格式化保留两位小数的数字
+     * Keep two decimal places
      */
     fun decimal2Str(value: Float): String {
         return DECIMAL_2_FORMAT.format(value.toString().toDouble())
+    }
+
+    ///////////////// SimpleDateFormat /////////////////
+    private fun getDateFormat(skeleton: String): SimpleDateFormat {
+        var pattern = DateFormat.getBestDateTimePattern(systemLocale, skeleton)
+        pattern = pattern
+            .replace(",".toRegex(), "")
+            .replace("'à'".toRegex(), "")
+            .replace(" {2,}".toRegex(), " ")
+        return SimpleDateFormat(pattern, systemLocale)
+    }
+
+    fun getFormatterYYYYMMM(): SimpleDateFormat {
+        return getDateFormat("yyyy-MMM")
+    }
+
+    fun getFormatterYYYYMMMdd(): SimpleDateFormat {
+        return getDateFormat("yyyy-MMM-dd")
+    }
+
+    //////////////// WheelIntFormatter //////////////////
+    fun getGenericWheelIntFormatter(): WheelIntFormatter {
+        return object : WheelIntFormatter {
+            override fun format(index: Int, value: Int): String {
+                return intStr(value)
+            }
+        }
     }
 
     ////////////// Time format////////////
@@ -53,6 +77,10 @@ object FormatterUtil {
 
     fun hmm(hour: Int, minute: Int): String {
         return String.format(systemLocale, "%d:%02d", hour, minute)
+    }
+
+    fun minute2Duration(minute: Int): String {
+        return String.format(systemLocale, "%02d:%02d", minute / 60, minute % 60)
     }
 
 }

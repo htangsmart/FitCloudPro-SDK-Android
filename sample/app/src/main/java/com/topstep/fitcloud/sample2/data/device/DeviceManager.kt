@@ -1,24 +1,32 @@
 package com.topstep.fitcloud.sample2.data.device
 
 import android.content.Context
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ProcessLifecycleOwner
 import com.polidea.rxandroidble3.exceptions.BleDisconnectedException
 import com.topstep.fitcloud.sample2.data.db.AppDatabase
 import com.topstep.fitcloud.sample2.data.db.UserForConnect
 import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
 import com.topstep.fitcloud.sample2.data.entity.toModel
 import com.topstep.fitcloud.sample2.data.storage.InternalStorage
+import com.topstep.fitcloud.sample2.data.wh.WomenHealthRepository
 import com.topstep.fitcloud.sample2.fcSDK
 import com.topstep.fitcloud.sample2.model.device.ConnectorDevice
 import com.topstep.fitcloud.sample2.model.device.ConnectorState
+import com.topstep.fitcloud.sample2.model.wh.WomenHealthConfig
 import com.topstep.fitcloud.sample2.utils.launchWithLog
+import com.topstep.fitcloud.sample2.utils.runCatchingWithLog
 import com.topstep.fitcloud.sdk.connector.FcConnectorState
 import com.topstep.fitcloud.sdk.connector.FcDisconnectedReason
 import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
 import com.topstep.fitcloud.sdk.v2.features.FcConfigFeature
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
+import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
+import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
 import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
@@ -100,6 +108,7 @@ internal class DeviceManagerImpl(
     context: Context,
     private val applicationScope: CoroutineScope,
     private val internalStorage: InternalStorage,
+    private val womenHealthRepository: WomenHealthRepository,
     appDatabase: AppDatabase,
 ) : DeviceManager {
 
@@ -184,7 +193,58 @@ internal class DeviceManagerImpl(
         applicationScope.launch {
             flowState.collect {
                 Timber.tag(TAG).e("state:%s", it)
+                if (it == ConnectorState.CONNECTED) {
+                    onConnected()
+                }
             }
+        }
+        applicationScope.launch {
+            womenHealthRepository.flowCurrent.drop(1).collectLatest {
+                delay(1000)
+                if (flowState.value == ConnectorState.CONNECTED) {
+                    setWomenHealth(it)
+                }
+            }
+        }
+    }
+
+    private fun onConnected() {
+        val userId = internalStorage.flowAuthedUserId.value
+        if (userId != null) {
+            applicationScope.launchWithLog {
+                //设置女性健康
+                runCatchingWithLog {
+                    val config = womenHealthRepository.flowCurrent.value
+                    setWomenHealth(config)
+                }
+
+                if (ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+                    syncData()
+                }
+            }
+        } else {
+            Timber.tag(TAG).w("onConnected error because no authed user")
+        }
+    }
+
+    private suspend fun setWomenHealth(config: WomenHealthConfig?) {
+        Timber.tag(TAG).i("device set WomenHealth")
+        //手环不支持女性健康功能，直接返回
+        if (!configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.WOMEN_HEALTH)) {
+            return
+        }
+        val appConfig = womenHealthRepository.getConfigForDevice(config) ?: return
+        val deviceConfig = configFeature.getWomenHealthConfig()
+
+        if (appConfig.getMode() == FcWomenHealthConfig.Mode.NONE
+            && deviceConfig.getMode() == FcWomenHealthConfig.Mode.NONE
+        ) {
+            //都是NONE，那么不用在变了
+            return
+        }
+        if (appConfig != deviceConfig) {
+            Timber.tag(TAG).i("device apply WomenHealth")
+            connector.configFeature().setWomenHealthConfig(appConfig).await()
         }
     }
 

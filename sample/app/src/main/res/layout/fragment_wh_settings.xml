@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:id="@+id/layout_menstruation_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:text="@string/wh_menstruation_duration_tips"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_duration"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/wh_menstruation_duration"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_menstruation_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:text="@string/wh_menstruation_cycle_tips"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_cycle"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/wh_menstruation_cycle"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_latest"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary=" "
+                app:preferenceTitle="@string/wh_menstruation_latest"
+                app:showPreferenceSummary="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_pregnancy_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:text="@string/wh_due_date_tips"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_pregnancy_due_date"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary=" "
+                app:preferenceTitle="@string/wh_set_due_date"
+                app:showPreferenceSummary="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_pregnancy_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="12dp"
+                android:text="@string/wh_calculate_due_date"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_pregnancy_latest"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary=" "
+                app:preferenceTitle="@string/wh_menstruation_latest"
+                app:showPreferenceSummary="true"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_pregnancy_cycle"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/wh_menstruation_cycle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_remind_advance"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary=" "
+                app:preferenceTitle="@string/wh_menstruation_advance"
+                app:showPreferenceSummary="true"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_remind_type"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary=" "
+                app:preferenceTitle="@string/wh_pregnancy_remind"
+                app:showPreferenceSummary="true"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_remind_device"
+                style="@style/Widget.Sample.PreferenceView.Item.Switch"
+                app:preferenceTitle="@string/wh_device_remind"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_remind_time"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/wh_remind_time"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_commit"
+            style="@style/Widget.Sample.Button.Unelevated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="@string/action_start"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -35,6 +35,7 @@
     <string name="action_grant">Grant</string>
     <string name="action_to_set">To Set</string>
     <string name="action_save">Save</string>
+    <string name="action_start">Start</string>
 
     <!--Tips-->
     <string name="tip_prompt">Hint</string>
@@ -48,6 +49,7 @@
     <string name="tip_download_failed">Download failed</string>
     <string name="tip_current_no_data">No data yet</string>
     <string name="tip_load_error">Load failed, click reload</string>
+    <string name="tip_disabled">Disabled</string>
 
     <!--Permission-->
     <string name="permission_explain_msg">Following permissions are required. Do you want to request for the next step?</string>
@@ -177,5 +179,96 @@
     <string name="ds_dial_none_feature">Your device does not support any dial feature</string>
 
     <string name="ds_dial_error_shape">Not supported, please try to upgrade the APP to the latest version</string>
+
+    <!--WomenHealth-->
+    <string name="wh_women_health">Women\'s Health</string>
+    <string name="wh_settings">Women\'s Health Settings</string>
+    <string name="wh_mode_menstruation">Menstrual Period</string>
+    <string name="wh_mode_pregnancy_prepare">Preparation of Pregnancy</string>
+    <string name="wh_mode_pregnancy">Pregnancy Period</string>
+    <string name="wh_menstruation_days_info">Period <xliff:g id="params1">%1$d</xliff:g> days, menstrual period <xliff:g id="params2">%2$d</xliff:g> days</string>
+    <string name="wh_menstruation_due_date_info">Due date <xliff:g id="params1">%1$s</xliff:g></string>
+    <string name="wh_due_date">Due date</string>
+    <string name="wh_menstruation_settings">Period Setting</string>
+    <string name="wh_pregnancy_prepare_settings">Preparation of Pregnancy Setting　</string>
+    <string name="wh_pregnancy_settings">Pregnancy Setting</string>
+    <string name="wh_menstruation_duration_tips">How many days does your menstruation last?</string>
+    <string name="wh_menstruation_duration">Menstrual Length</string>
+    <string name="wh_menstruation_cycle_tips">How many days between the two menstrual start days</string>
+    <string name="wh_menstruation_cycle">Cycle Length</string>
+    <string name="wh_menstruation_latest">Most Recent Menstruation</string>
+    <string name="wh_menstruation_advance">Menstruation Start Reminder</string>
+    <string name="wh_device_remind">Device Reminder</string>
+    <string name="wh_remind_time">Reminder time</string>
+    <string name="wh_mode_menstruation_name">Menstrual Pattern</string>
+    <string name="wh_mode_pregnancy_prepare_name">Pregnancy Mode</string>
+    <string name="wh_mode_pregnancy_name">Pregnancy Pattern</string>
+    <string name="wh_menstruation_advance_param"><xliff:g id="params1">%1$d</xliff:g> days in advance</string>
+    <string name="wh_due_date_tips">What is the expected date of delivery?</string>
+    <string name="wh_set_due_date">Set Due Date</string>
+    <string name="wh_calculate_due_date">Calculate Due Date</string>
+    <string name="wh_pregnancy_remind">Pregnancy Reminder</string>
+    <string name="wh_pregnancy_remind_select_tips">Choose Reminder</string>
+    <string name="wh_pregnancy_remind_type1">Days from due date</string>
+    <string name="wh_pregnancy_remind_type2">Days of pregnancy</string>
+    <string name="wh_pregnancy_remind_info1"><xliff:g id="params1">%1$d</xliff:g> days before the due date</string>
+    <string name="wh_pregnancy_remind_info2">Pregnant <xliff:g id="params1">%1$d</xliff:g> week <xliff:g id="params2">%2$d</xliff:g> days</string>
+    <string name="wh_goto_today">Back to today</string>
+    <string name="wh_pregnancy_early">Early Pregnancy</string>
+    <string name="wh_pregnancy_mid">Second Trimester</string>
+    <string name="wh_pregnancy_later">Third Trimester</string>
+    <string name="wh_menstruation_remind_next"><xliff:g id="params1">%1$d</xliff:g> days before the menstrual period</string>
+    <string name="wh_menstruation_remind_menstruation_days">Menstrual period Day <xliff:g id="params1">%1$d</xliff:g></string>
+    <string name="wh_menstruation_remind_menstruation">Menstrual period</string>
+    <string name="wh_menstruation_remind_safe">Security Period</string>
+    <string name="wh_menstruation_remind_ovulation">Ovulation Period</string>
+    <string name="wh_menstruation_remind_ovulation_day">Ovulation Day</string>
+    <string name="wh_menstruation_rate">Pregnancy rate<xliff:g id="params1">%1$d</xliff:g>%%</string>
+    <string name="wh_menstruation_start">Start of menstruation</string>
+    <string name="wh_menstruation_end">End of menstruation　</string>
+    <string name="wh_no_operation_past">Past date, inoperable</string>
+    <string name="wh_no_operation_future">Future date, unable to operate</string>
+    <string name="wh_no_operation_start">Start of menstruation, unable to operate</string>
+    <string name="wh_home_page_title">Women\'s Health (<xliff:g id="params1">%1$s</xliff:g>)</string>
+    <string name="wh_set_calendar_title">Select the year and month to jump</string>
+
+    <!--Unit-->
+    <string name="unit_year">y</string>
+    <string name="unit_month">m</string>
+    <string name="unit_day">d</string>
+    <string name="unit_day_count">days</string>
+    <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>days</string>
+
+    <!--Alarms-->
+    <string name="ds_alarm">Alarms</string>
+    <string name="ds_alarm_no_data">No alarm clock</string>
+    <string name="ds_alarm_limit_count">Can only add 5 alarm clocks</string>
+    <string name="ds_alarm_label">Label</string>
+    <string name="ds_alarm_am">A.M</string>
+    <string name="ds_alarm_pm">P.M</string>
+    <string name="ds_alarm_add">Add Alarm Clock</string>
+    <string name="ds_alarm_edit">Edit Alarm Clock</string>
+    <string name="ds_alarm_repeat_every_day">Everyday</string>
+    <string name="ds_alarm_repeat_never">Once</string>
+    <string name="ds_alarm_repeat_workdays">Weekday</string>
+    <string name="ds_alarm_repeat_weekends">Weekend</string>
+    <string name="ds_alarm_repeat_00">Monday</string>
+    <string name="ds_alarm_repeat_01">Tuesday</string>
+    <string name="ds_alarm_repeat_02">Wednesday</string>
+    <string name="ds_alarm_repeat_03">Thursday</string>
+    <string name="ds_alarm_repeat_04">Friday</string>
+    <string name="ds_alarm_repeat_05">Saturday</string>
+    <string name="ds_alarm_repeat_06">Sunday</string>
+    <string name="ds_alarm_repeat_00_simple">Mon</string>
+    <string name="ds_alarm_repeat_01_simple">Tue</string>
+    <string name="ds_alarm_repeat_02_simple">Wed</string>
+    <string name="ds_alarm_repeat_03_simple">Thu</string>
+    <string name="ds_alarm_repeat_04_simple">Fri</string>
+    <string name="ds_alarm_repeat_05_simple">Sat</string>
+    <string name="ds_alarm_repeat_06_simple">Sun</string>
+    <string name="ds_alarm_delete">Delete</string>
+    <string name="ds_alarm_repeat">Repeat</string>
+    <string name="ds_alarm_delete_message">Are you sure to delete the alarm clock?</string>
+    <string name="ds_alarm_label_default">Alarm</string>
 
 </resources>

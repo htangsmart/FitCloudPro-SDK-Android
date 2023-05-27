@@ -33,6 +33,7 @@ import com.github.kilnn.tool.dialog.prompt.PromptDialogHolder
 import com.github.kilnn.tool.system.SystemUtil
 import com.github.kilnn.tool.widget.item.PreferenceItem
 import com.polidea.rxandroidble3.exceptions.BleDisconnectedException
+import com.squareup.moshi.Moshi
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.AccountException
 import com.topstep.fitcloud.sdk.exception.FcUnSupportFeatureException
@@ -141,6 +142,16 @@ inline fun <T, R> T.runCatchingWithLog(block: T.() -> R): Result<R> {
         Timber.w(e)
         Result.failure(e)
     }
+}
+
+inline fun <reified T> Moshi.toJsonObject(str: String?): T? {
+    return runCatchingWithLog {
+        if (str.isNullOrEmpty()) {
+            null
+        } else {
+            this.adapter(T::class.java).fromJson(str)
+        }
+    }.getOrNull()
 }
 
 fun flowBluetoothAdapterState(context: Context) = callbackFlow {

@@ -13,6 +13,8 @@ interface AuthManager {
      */
     fun getAuthedUserIdOrNull(): Long?
 
+    suspend fun hasAuthedUser(): Boolean
+
     /**
      * Sign in
      * @param name User name
@@ -46,6 +48,11 @@ internal class AuthManagerImpl(
 
     override fun getAuthedUserIdOrNull(): Long? {
         return internalStorage.flowAuthedUserId.value
+    }
+
+    override suspend fun hasAuthedUser(): Boolean {
+        val userId = getAuthedUserIdOrNull() ?: return false
+        return userDao.isUserExist(userId)
     }
 
     /**

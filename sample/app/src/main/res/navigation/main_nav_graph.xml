@@ -53,6 +53,15 @@
         <action
             android:id="@+id/toEditUserInfo"
             app:destination="@id/editUserInfoFragment"/>
+
+        <action
+            android:id="@+id/toWhHomePage"
+            app:destination="@id/whHomePageFragment"/>
+
+        <action
+            android:id="@+id/toWhDetail"
+            app:destination="@id/whDetailFragment"/>
+
     </fragment>
 
     <fragment
@@ -167,5 +176,38 @@
     <fragment
         android:id="@+id/editUserInfoFragment"
         android:name="com.topstep.fitcloud.sample2.ui.combine.EditUserInfoFragment"
-        android:label="@string/account_edit_user_info"/>
+        android:label="@string/account_edit_user_info"
+        tools:layout="@layout/fragment_edit_user_info"/>
+
+    <fragment
+        android:id="@+id/whHomePageFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.wh.WhHomePageFragment"
+        android:label="@string/wh_women_health"
+        tools:layout="@layout/fragment_wh_home_page">
+        <action
+            android:id="@+id/toWhSettings"
+            app:destination="@id/whSettingsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/whSettingsFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.wh.WhSettingsFragment"
+        tools:layout="@layout/fragment_wh_settings">
+        <argument
+            android:name="mode"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/toWhDetail"
+            app:destination="@id/whDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/whDetailFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.wh.WhDetailFragment"
+        tools:layout="@layout/fragment_wh_detail">
+        <argument
+            android:name="mode"
+            app:argType="integer"/>
+    </fragment>
+
 </navigation>

@@ -84,4 +84,9 @@
         <item name="showPreferenceIndicator">false</item>
     </style>
 
+    <style name="Widget.Sample.PreferenceView.Item.Image">
+        <item name="preferenceType">type_image</item>
+        <item name="showPreferenceIndicator">false</item>
+    </style>
+
 </resources>

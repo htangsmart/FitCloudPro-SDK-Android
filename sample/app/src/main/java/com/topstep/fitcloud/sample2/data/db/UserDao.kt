@@ -30,6 +30,13 @@ abstract class UserDao {
         sex: Boolean,
         age: Int
     )
+
+    @Query("SELECT COUNT(*) FROM UserEntity WHERE id=:userId")
+    protected abstract suspend fun queryUserCount(userId: Long): Int
+
+    suspend fun isUserExist(userId: Long): Boolean {
+        return queryUserCount(userId) > 0
+    }
 }
 
 internal data class UserForConnect(

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,12 +17,21 @@
             android:orientation="vertical"
             android:showDividers="middle">
 
-            <TextView
-                android:id="@+id/tv_edit_user_info"
-                style="@style/Widget.Sample.PreferenceBase"
-                android:gravity="center_vertical"
-                android:text="@string/account_edit_user_info"
-                android:textAppearance="?textAppearanceSubtitle1"/>
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_user_info"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/account_edit_user_info"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_women_health"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/wh_women_health"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_women_health_detail"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                android:visibility="gone"
+                app:preferenceTitle=""/>
 
         </LinearLayout>
     </ScrollView>
