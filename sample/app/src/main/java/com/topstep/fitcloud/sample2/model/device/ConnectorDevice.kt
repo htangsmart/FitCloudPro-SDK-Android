@@ -1,6 +1,11 @@
 package com.topstep.fitcloud.sample2.model.device
 
-data class ConnectorDevice(
+import com.topstep.fitcloud.sample2.data.device.DeviceManager
+
+/**
+ * ToNote:Avoid declare as a data class, because the [DeviceManager.rebind] need trigger connection, even when the device is not changed
+ */
+class ConnectorDevice(
     /**
      * Device mac address
      */
@@ -15,4 +20,8 @@ data class ConnectorDevice(
      * Is trying to bind
      */
     val isTryingBind: Boolean
-)
+) {
+    override fun toString(): String {
+        return "[address:$address name:$name isTryingBind:$isTryingBind]"
+    }
+}

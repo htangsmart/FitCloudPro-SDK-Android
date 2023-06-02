@@ -325,7 +325,9 @@ internal class DeviceManagerImpl(
             Timber.tag(TAG).w("saveDevice error because no authed user")
             deviceFromMemory.value = null
         } else {
-            deviceFromMemory.value = device.copy(isTryingBind = false)
+            deviceFromMemory.value = ConnectorDevice(
+                device.address, device.name, false
+            )
             val entity = DeviceBindEntity(userId, device.address, device.name)
             configDao.insertDeviceBind(entity)
         }
