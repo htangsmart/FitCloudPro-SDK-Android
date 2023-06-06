@@ -1,3 +1,7 @@
+# 2023-06-06
+## 发布libraryCore_v1.2.0.aar
+1.解决lcd 25形状错误的bug
+
 # 2023-04-25
 ## 发布libraryDfu_v1.0.7.aar
 1.升级至原厂OTA库3.6.4版本
