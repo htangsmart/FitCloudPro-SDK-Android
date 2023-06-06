@@ -28,15 +28,23 @@ class TaskGetDialCustomCompat {
         return withContext(Dispatchers.IO) {
             if (param.isGUI) {
                 val list: List<DialInfoComplex> = apiClient.getDialCustomGUI(param.lcd, param.toolVersion).awaitFirst()
-                if (list.isEmpty()//数组不为空
-                    || list[0].components.isNullOrEmpty()//取第一个对象，里面需要有组件
-                    || list[0].components!![0].urls.isNullOrEmpty()//组件里需要有有样式
-                ) throw UnSupportCustomException()
-
+                if (list.isEmpty()) {//数组不能为空
+                    throw UnSupportCustomException()
+                }
+                val dialInfo = list[0]//取第一个对象
+                val components = dialInfo.components
+                if (components.isNullOrEmpty()) {//里面需要有组件
+                    throw UnSupportCustomException()
+                }
+                val urls = components[0].urls
+                if (urls.isNullOrEmpty()) {//组件里需要有有样式
+                    throw UnSupportCustomException()
+                }
                 val styleBaseOnWidth = param.shape.width() * 2//新的GUI协议自定义表盘，图片都是放大两倍，所以就是Shape.width()*2
-                val dialInfo = list[0]
-                val styles: List<DialCustomCompat.Style> = list[0].components!![0].urls!!.map {
-                    DialCustomCompat.Style(Uri.parse(it), styleBaseOnWidth, dialInfo.binUrl, dialInfo.binSize)
+                val styles = ArrayList<DialCustomCompat.Style>(urls.size)
+                for (styleIndex in urls.indices) {
+                    val url = urls[styleIndex]
+                    styles.add(DialCustomCompat.Style(styleIndex, Uri.parse(url), styleBaseOnWidth, dialInfo.binUrl, dialInfo.binSize))
                 }
 
                 DialCustomCompat(
@@ -61,6 +69,7 @@ class TaskGetDialCustomCompat {
                         if (support.styleName == dial.styleName) {
                             styles.add(
                                 DialCustomCompat.Style(
+                                    styles.size,
                                     Utils.getUriFromDrawableResId(context, support.resId),
                                     DialDrawer.STYLE_BASE_ON_WIDTH,//旧协议的自定义表盘，样式基于800像素设计的
                                     dial.binUrl,

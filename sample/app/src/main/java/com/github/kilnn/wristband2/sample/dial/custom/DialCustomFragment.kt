@@ -12,6 +12,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.lifecycle.lifecycleScope
+import com.github.kilnn.wristband2.sample.ConnectActivity
 import com.github.kilnn.wristband2.sample.R
 import com.github.kilnn.wristband2.sample.databinding.DialogDialCustomBinding
 import com.github.kilnn.wristband2.sample.dfu.DfuDialogFragment
@@ -31,11 +32,13 @@ class DialCustomFragment : AppCompatDialogFragment() {
         val isGUI: Boolean,
         val binUrl: String,
         val backgroundUri: Uri,
+        val styleIndex: Int,
         val styleUri: Uri,
         val shape: DialDrawer.Shape,
         val scaleType: DialDrawer.ScaleType,
         val position: DialDrawer.Position,
         val styleBaseOnWidth: Int,
+        val spaceIndex: Int,
         val binFlag: Byte
     ) : Parcelable {
 
@@ -43,10 +46,12 @@ class DialCustomFragment : AppCompatDialogFragment() {
             parcel.readByte() != 0.toByte(),
             parcel.readString() ?: "",
             parcel.readParcelable(Uri::class.java.classLoader)!!,
+            parcel.readInt(),
             parcel.readParcelable(Uri::class.java.classLoader)!!,
             parcel.readParcelable(DialDrawer.Shape::class.java.classLoader)!!,
             scaleType = DialDrawer.ScaleType.fromId(parcel.readInt()),
             position = DialDrawer.Position.fromId(parcel.readInt()),
+            parcel.readInt(),
             parcel.readInt(),
             parcel.readByte()
         )
@@ -55,11 +60,13 @@ class DialCustomFragment : AppCompatDialogFragment() {
             parcel.writeByte(if (isGUI) 1 else 0)
             parcel.writeString(binUrl)
             parcel.writeParcelable(backgroundUri, flags)
+            parcel.writeInt(styleIndex)
             parcel.writeParcelable(styleUri, flags)
             parcel.writeParcelable(shape, flags)
             parcel.writeInt(scaleType.id)
             parcel.writeInt(position.id)
             parcel.writeInt(styleBaseOnWidth)
+            parcel.writeInt(spaceIndex)
             parcel.writeByte(binFlag)
         }
 
@@ -165,8 +172,7 @@ class DialCustomFragment : AppCompatDialogFragment() {
         override fun onError(errorType: Int, errorCode: Int) {
             DfuDialogFragment.toastError(context, errorType, errorCode)
 
-            //TODO 如果当升级失败时，需要立即回连，那么你要在这里调用连接
-            // manager.connect()
+            ConnectActivity.sendReconnectAction(requireContext())
 
             dismissAllowingStateLoss()
         }
@@ -186,8 +192,10 @@ class DialCustomFragment : AppCompatDialogFragment() {
             viewBind.progressBar.progress = 100
             isCancelable = true
 
-            //TODO 如果当升级成功时，需要立即回连，那么你要在这里调用连接
-            // manager.connect()
+            ConnectActivity.sendReconnectAction(requireContext())
+            if (param.isGUI) {
+                ConnectActivity.sendDialComponentAction(requireContext(), param.spaceIndex, param.styleIndex)
+            }
 
             lifecycleScope.launch {
                 delay(3000)

@@ -9,8 +9,10 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kilnn.wristband2.sample.R
 import com.github.kilnn.wristband2.sample.databinding.ActivityDialCustomBinding
-import com.github.kilnn.wristband2.sample.dial.*
-import com.github.kilnn.wristband2.sample.dial.custom.*
+import com.github.kilnn.wristband2.sample.dial.DialBinSelectFragment
+import com.github.kilnn.wristband2.sample.dial.DialFileHelper
+import com.github.kilnn.wristband2.sample.dial.MyDialViewEngine
+import com.github.kilnn.wristband2.sample.dial.State
 import com.github.kilnn.wristband2.sample.dial.task.UnSupportLcdException
 import com.github.kilnn.wristband2.sample.utils.AndPermissionHelper
 import com.github.kilnn.wristband2.sample.utils.Utils
@@ -94,7 +96,7 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
                             DialBinSelectFragment.newInstance(state.result.param, selectBinSize).show(supportFragmentManager, null)
                         } else {
                             //没有多表盘信息，直接升级
-                            showDialCustomDialog(0.toByte())
+                            showDialCustomDialog(0, 0.toByte())
                         }
                     }
                 }
@@ -141,7 +143,7 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
                     styleAdapter.shape = shape
                     positionAdapter.shape = shape
                     bgRawSources = DialFileHelper.loadDialCustomBgFiles(this, shape)
-                    viewBind.viewPager.adapter = DialCustomPagerAdapter(bgGridView, styleGridView, positionGridView, it.param.isGUI)//GUI协议时，不显示styles选择
+                    viewBind.viewPager.adapter = DialCustomPagerAdapter(bgGridView, styleGridView, positionGridView)
                     viewBind.lceView.lceShowContent()
                     adjustData()
                 }
@@ -217,11 +219,11 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
         }
     }
 
-    override fun onDialBinSelect(binFlag: Byte) {
-        showDialCustomDialog(binFlag)
+    override fun onDialBinSelect(spaceIndex: Int, binFlag: Byte) {
+        showDialCustomDialog(spaceIndex, binFlag)
     }
 
-    private fun showDialCustomDialog(binFlag: Byte) {
+    private fun showDialCustomDialog(spaceIndex: Int, binFlag: Byte) {
         val groupCustomResult = this.groupCustomResult ?: return
         val dialCustomCompat = groupCustomResult.custom
 
@@ -232,11 +234,13 @@ class DialCustomActivity : BaseSelectPictureActivity(), DialBinSelectFragment.Li
             groupCustomResult.param.isGUI,
             selectedStyle.binUrl,
             selectedBackground,
+            selectedStyle.styleIndex,
             selectedStyle.styleUri,
             viewBind.dialView.shape,
             viewBind.dialView.backgroundScaleType,
             viewBind.dialView.stylePosition,
             selectedStyle.styleBaseOnWidth,
+            spaceIndex,
             binFlag
         )
         DialCustomFragment.newInstance(param).show(supportFragmentManager, null)

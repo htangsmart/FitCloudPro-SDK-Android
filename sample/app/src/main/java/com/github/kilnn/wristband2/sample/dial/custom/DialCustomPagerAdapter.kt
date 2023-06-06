@@ -10,19 +10,10 @@ class DialCustomPagerAdapter(
     backgroundView: View,
     styleView: View,
     positionView: View,
-
-    /**
-     * 是否除去styleView
-     */
-    excludeStyleView: Boolean
 ) : PagerAdapter() {
 
     private val context: Context = backgroundView.context
-    private val views: Array<View> = if (excludeStyleView) {
-        arrayOf(backgroundView, positionView)
-    } else {
-        arrayOf(backgroundView, styleView, positionView)
-    }
+    private val views: Array<View> = arrayOf(backgroundView, styleView, positionView)
 
     override fun getCount(): Int {
         return views.size
@@ -47,19 +38,11 @@ class DialCustomPagerAdapter(
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        val resId = if (views.size == 2) {
-            when (position) {
-                0 -> R.string.ds_dial_background
-                1 -> R.string.ds_dial_position
-                else -> throw IllegalArgumentException()
-            }
-        } else {
-            when (position) {
-                0 -> R.string.ds_dial_background
-                1 -> R.string.ds_dial_style
-                2 -> R.string.ds_dial_position
-                else -> throw IllegalArgumentException()
-            }
+        val resId = when (position) {
+            0 -> R.string.ds_dial_background
+            1 -> R.string.ds_dial_style
+            2 -> R.string.ds_dial_position
+            else -> throw IllegalArgumentException()
         }
         return context.resources.getString(resId)
     }

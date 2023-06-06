@@ -83,7 +83,8 @@ class TaskGetDialParam {
 
         val dialBinParamList = ArrayList<DialBinParam>(localDials.size)
 
-        for (local in localDials) {
+        for (index in localDials.indices) {
+            val local = localDials[index]
             //1.根据dialNum，匹配手环上的信息和服务器返回的信息
             var remote: DialInfoComplex? = null
             if (local.dialType == DialSubBinInfo.TYPE_NORMAL || local.dialType == DialSubBinInfo.TYPE_NONE) {
@@ -128,6 +129,7 @@ class TaskGetDialParam {
 
             dialBinParamList.add(
                 DialBinParam(
+                    index,
                     local.dialType,
                     local.dialNum,
                     local.binVersion,

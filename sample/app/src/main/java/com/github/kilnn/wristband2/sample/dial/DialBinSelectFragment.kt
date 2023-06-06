@@ -48,7 +48,7 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
     }
 
     interface Listener {
-        fun onDialBinSelect(binFlag: Byte)
+        fun onDialBinSelect(spaceIndex: Int, binFlag: Byte)
     }
 
     private var listener: Listener? = null
@@ -90,7 +90,7 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
         viewBind.btnSure.isEnabled = adapter.hasSelectBinFlag()
         viewBind.btnSure.text = getString(R.string.action_sure) + "（" + Utils.fileSizeStr(binSize) + "）"
         viewBind.btnSure.setOnClickListener {
-            listener?.onDialBinSelect(adapter.getSelectBinFlag())
+            listener?.onDialBinSelect(adapter.getSelectItem().spaceIndex, adapter.getSelectItem().binFlag)
             dismissAllowingStateLoss()
         }
 
@@ -152,8 +152,8 @@ class DialBinSelectFragment : AppCompatDialogFragment() {
             return selectPosition != -1
         }
 
-        fun getSelectBinFlag(): Byte {
-            return dialBinParams[selectPosition].binFlag
+        fun getSelectItem(): DialBinParam {
+            return dialBinParams[selectPosition]
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InnerViewHolder {

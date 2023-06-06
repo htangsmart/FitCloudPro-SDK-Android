@@ -2,8 +2,11 @@ package com.github.kilnn.wristband2.sample;
 
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -43,6 +46,9 @@ import io.reactivex.functions.Consumer;
 @SuppressWarnings("ResultOfMethodCallIgnored")
 @SuppressLint("CheckResult")
 public class ConnectActivity extends BaseActivity {
+
+    private static final String ACTION_RECONNECT = BuildConfig.APPLICATION_ID + ".action.reconnect";
+    private static final String ACTION_DIAL_COMPONENT = BuildConfig.APPLICATION_ID + ".action.dialcomponent";
 
     private static final String TAG = "ConnectActivity";
 
@@ -95,6 +101,15 @@ public class ConnectActivity extends BaseActivity {
                             } else {
                                 toast(R.string.toast_connect_login_tips);
                             }
+
+                            if (System.currentTimeMillis() - dialComponentTime < 60 * 1000) {
+                                //Connect back within 1 minute, then setDialComponents
+                                dialComponentTime = 0;
+                                mWristbandManager.setDialComponents(
+                                        dialComponentSpaceIndex,
+                                        new byte[]{(byte) dialComponentStyleIndex}
+                                ).onErrorComplete().subscribe();
+                            }
                         } else {
                             mStateTv.setText(R.string.state_connecting);
                             updateConnectBtn(true, false);
@@ -121,7 +136,29 @@ public class ConnectActivity extends BaseActivity {
             }
         });
         connect();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ACTION_RECONNECT);
+        filter.addAction(ACTION_DIAL_COMPONENT);
+        registerReceiver(mReceiver, filter);
     }
+
+    private long dialComponentTime = 0;
+    private int dialComponentSpaceIndex = 0;
+    private int dialComponentStyleIndex = 0;
+
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (ACTION_RECONNECT.equals(intent.getAction())) {
+                connect();
+            } else if (ACTION_DIAL_COMPONENT.equals(intent.getAction())) {
+                //Save dial component params, at setting it after reconnect
+                dialComponentTime = System.currentTimeMillis();
+                dialComponentSpaceIndex = intent.getIntExtra("spaceIndex", 0);
+                dialComponentStyleIndex = intent.getIntExtra("styleIndex", 0);
+            }
+        }
+    };
 
     private void connect() {
         boolean isBind = DbMock.isUserBind(this, mBluetoothDevice, mUser);
@@ -146,6 +183,7 @@ public class ConnectActivity extends BaseActivity {
         mStateDisposable.dispose();
         mErrorDisposable.dispose();
         mWristbandManager.close();
+        unregisterReceiver(mReceiver);
     }
 
     @Override
@@ -290,4 +328,14 @@ public class ConnectActivity extends BaseActivity {
         }
     }
 
+    public static void sendReconnectAction(Context context) {
+        context.sendBroadcast(new Intent(ACTION_RECONNECT));
+    }
+
+    public static void sendDialComponentAction(Context context, int spaceIndex, int styleIndex) {
+        Intent intent = new Intent(ACTION_DIAL_COMPONENT);
+        intent.putExtra("spaceIndex", spaceIndex);
+        intent.putExtra("styleIndex", styleIndex);
+        context.sendBroadcast(intent);
+    }
 }

@@ -19,6 +19,7 @@ class DialCustomCompat(
     }
 
     data class Style(
+        val styleIndex: Int,
         val styleUri: Uri,
         /**
          * 样式基于多大的宽度设计的

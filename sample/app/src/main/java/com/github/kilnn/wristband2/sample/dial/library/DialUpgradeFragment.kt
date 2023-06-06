@@ -50,7 +50,7 @@ class DialUpgradeFragment : AppCompatDialogFragment(), DialBinSelectFragment.Lis
         }
     }
 
-    override fun onDialBinSelect(binFlag: Byte) {
+    override fun onDialBinSelect(spaceIndex: Int, binFlag: Byte) {
         startSyncDial(binFlag)
     }
 

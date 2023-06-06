@@ -7,6 +7,7 @@ import com.htsmart.wristband2.bean.WristbandVersion
 import com.htsmart.wristband2.dfu.DfuManager
 
 data class DialBinParam(
+    val spaceIndex: Int,
     /**
      * 表盘类型
      * [DialSubBinInfo.TYPE_NONE] 表盘不可被覆盖
@@ -60,6 +61,7 @@ data class DialBinParam(
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readByte(),
         parcel.readInt(),
         parcel.readInt(),
@@ -72,6 +74,7 @@ data class DialBinParam(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(spaceIndex)
         parcel.writeByte(dialType)
         parcel.writeInt(dialNum)
         parcel.writeInt(binVersion)
