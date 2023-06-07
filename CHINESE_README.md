@@ -968,9 +968,9 @@ GameSkin{
 当手环自己改变日程时，使用`WristbandManager#observerWristbandMessage()`监听`WristbandManager#MSG_CHANGE_SCHEDULE`消息
 
 ### 6.11、收款码和名片
-当`WristbandVersion#isExtCollectionCode`为true时，表示手环支持收款码功能。使用`WristbandManager#getSupportQrCode`查询手表支持哪些类型的收款码
+当`WristbandVersion#isExtCollectionCode`为true时，表示手环支持收款码功能。使用`WristbandManager#requestSupportQrCodes`查询手表支持哪些类型的收款码
 
-当`WristbandVersion#isExtBusinessCard`为true时，表示手环支持名片码功能。使用`WristbandManager#getSupportQrCode`查询手表支持哪些类型的名片码
+当`WristbandVersion#isExtBusinessCard`为true时，表示手环支持名片码功能。使用`WristbandManager#requestSupportQrCodes`查询手表支持哪些类型的名片码
 
 当`WristbandVersion#extNucleicAcidCode`为true时，表示手环支持核酸码功能。
 

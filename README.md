@@ -982,9 +982,9 @@ You can use `WristbandManager#setAllowWristbandChangeSchedule(boolean allow)` to
 When the bracelet changes the schedule by itself, use `WristbandManager#observerWristbandMessage()` to monitor the `WristbandManager#MSG_CHANGE_SCHEDULE` message
 
 ### 6.11. Collection code and business card
-When `WristbandVersion#isExtCollectionCode` is true, it means that the bracelet supports the collection code function. Use `WristbandManager#getSupportQrCode` to query which types of payment codes the watch supports
+When `WristbandVersion#isExtCollectionCode` is true, it means that the bracelet supports the collection code function. Use `WristbandManager#requestSupportQrCodes` to query which types of payment codes the watch supports
 
-When `WristbandVersion#isExtBusinessCard` is true, it means that the bracelet supports the business card function. Use `WristbandManager#getSupportQrCode` to query which types of payment codes the watch supports
+When `WristbandVersion#isExtBusinessCard` is true, it means that the bracelet supports the business card function. Use `WristbandManager#requestSupportQrCodes` to query which types of payment codes the watch supports
 
 When `WristbandVersion#isExtNucleicAcidCode` is true, it indicates that the bracelet supports the nucleic acid code function.
 
