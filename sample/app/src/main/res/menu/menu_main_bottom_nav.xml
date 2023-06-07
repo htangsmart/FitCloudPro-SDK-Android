@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/deviceFragment"
+        android:icon="@drawable/ic_device_black_18dp"
+        android:title="@string/device_module"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/syncFragment"
+        android:icon="@drawable/ic_sync_black_18dp"
+        android:title="@string/module_sync"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/realtimeFragment"
+        android:icon="@drawable/ic_realtime_black_18dp"
+        android:title="@string/module_realtime"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/combineFragment"
+        android:icon="@drawable/ic_combine_black_18dp"
+        android:title="@string/module_combine"
+        app:showAsAction="ifRoom"/>
+
+</menu>

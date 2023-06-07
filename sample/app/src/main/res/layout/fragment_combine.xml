@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_sign_out"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="?dividerVertical"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_user_info"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/account_edit_user_info"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_women_health"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/wh_women_health"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_women_health_detail"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                android:visibility="gone"
+                app:preferenceTitle=""/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/account_sign_out"/>
+
+</RelativeLayout>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FcSyncData</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>libraryProtocol2</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":libraryProtocol2:dokkaHtml/release">androidJvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="libraryProtocol2::com.topstep.fitcloud.sdk.v2.model.data/FcSyncData///PointingToDeclaration//-2029165615">
+  <div class="breadcrumbs"><a href="../../../index.html">libraryProtocol2</a><span class="delimiter">/</span><a href="../index.html">com.topstep.fitcloud.sdk.v2.model.data</a><span class="delimiter">/</span><span class="current">FcSyncData</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Fc</span><wbr></wbr><span>Sync</span><wbr></wbr><span><span>Data</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">FcSyncData</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>data<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>deviceInfo<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/index.html">FcDeviceInfo</a></span></span><span class="token punctuation">)</span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1362567151%2FConstructors%2F-2029165615" anchor-label="FcSyncData" id="-1362567151%2FConstructors%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-fc-sync-data.html"><span>Fc</span><wbr></wbr><span>Sync</span><wbr></wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1362567151%2FConstructors%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">data<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">deviceInfo<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/index.html">FcDeviceInfo</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-539660620%2FFunctions%2F-2029165615" anchor-label="toBloodPressure" id="-539660620%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-blood-pressure.html"><span>to</span><wbr></wbr><span>Blood</span><wbr></wbr><span><span>Pressure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-539660620%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-blood-pressure.html"><span class="token function">toBloodPressure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-blood-pressure-data/index.html">FcBloodPressureData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-605066904%2FFunctions%2F-2029165615" anchor-label="toBloodPressureMeasure" id="-605066904%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-blood-pressure-measure.html"><span>to</span><wbr></wbr><span>Blood</span><wbr></wbr><span>Pressure</span><wbr></wbr><span><span>Measure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-605066904%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-blood-pressure-measure.html"><span class="token function">toBloodPressureMeasure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-blood-pressure-measure-data/index.html">FcBloodPressureMeasureData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1681017930%2FFunctions%2F-2029165615" anchor-label="toEcg" id="1681017930%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-ecg.html"><span>to</span><wbr></wbr><span><span>Ecg</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1681017930%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-ecg.html"><span class="token function">toEcg</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-ecg-data/index.html">FcEcgData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="779351765%2FFunctions%2F-2029165615" anchor-label="toGame" id="779351765%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-game.html"><span>to</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="779351765%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-game.html"><span class="token function">toGame</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-game-data/index.html">FcGameData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1159862857%2FFunctions%2F-2029165615" anchor-label="toGps" id="1159862857%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-gps.html"><span>to</span><wbr></wbr><span><span>Gps</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1159862857%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-gps.html"><span class="token function">toGps</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-gps-data/index.html">FcGpsData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1081836461%2FFunctions%2F-2029165615" anchor-label="toHeartRate" id="1081836461%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-heart-rate.html"><span>to</span><wbr></wbr><span>Heart</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1081836461%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-heart-rate.html"><span class="token function">toHeartRate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-heart-rate-data/index.html">FcHeartRateData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="906984015%2FFunctions%2F-2029165615" anchor-label="toHeartRateMeasure" id="906984015%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-heart-rate-measure.html"><span>to</span><wbr></wbr><span>Heart</span><wbr></wbr><span>Rate</span><wbr></wbr><span><span>Measure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="906984015%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-heart-rate-measure.html"><span class="token function">toHeartRateMeasure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-heart-rate-data/index.html">FcHeartRateData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1764972135%2FFunctions%2F-2029165615" anchor-label="toOxygen" id="1764972135%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-oxygen.html"><span>to</span><wbr></wbr><span><span>Oxygen</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1764972135%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-oxygen.html"><span class="token function">toOxygen</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-oxygen-data/index.html">FcOxygenData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1373766229%2FFunctions%2F-2029165615" anchor-label="toOxygenMeasure" id="1373766229%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-oxygen-measure.html"><span>to</span><wbr></wbr><span>Oxygen</span><wbr></wbr><span><span>Measure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1373766229%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-oxygen-measure.html"><span class="token function">toOxygenMeasure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-oxygen-data/index.html">FcOxygenData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-862131486%2FFunctions%2F-2029165615" anchor-label="toPressure" id="-862131486%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-pressure.html"><span>to</span><wbr></wbr><span><span>Pressure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-862131486%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-pressure.html"><span class="token function">toPressure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-pressure-data/index.html">FcPressureData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="226131322%2FFunctions%2F-2029165615" anchor-label="toPressureMeasure" id="226131322%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-pressure-measure.html"><span>to</span><wbr></wbr><span>Pressure</span><wbr></wbr><span><span>Measure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="226131322%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-pressure-measure.html"><span class="token function">toPressureMeasure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-pressure-data/index.html">FcPressureData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1255650967%2FFunctions%2F-2029165615" anchor-label="toRespiratoryRate" id="-1255650967%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-respiratory-rate.html"><span>to</span><wbr></wbr><span>Respiratory</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1255650967%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-respiratory-rate.html"><span class="token function">toRespiratoryRate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-respiratory-rate-data/index.html">FcRespiratoryRateData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-121108205%2FFunctions%2F-2029165615" anchor-label="toRespiratoryRateMeasure" id="-121108205%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-respiratory-rate-measure.html"><span>to</span><wbr></wbr><span>Respiratory</span><wbr></wbr><span>Rate</span><wbr></wbr><span><span>Measure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-121108205%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-respiratory-rate-measure.html"><span class="token function">toRespiratoryRateMeasure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-respiratory-rate-data/index.html">FcRespiratoryRateData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1071166268%2FFunctions%2F-2029165615" anchor-label="toSleep" id="1071166268%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-sleep.html"><span>to</span><wbr></wbr><span><span>Sleep</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1071166268%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-sleep.html"><span class="token function">toSleep</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-sleep-data/index.html">FcSleepData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1036367167%2FFunctions%2F-2029165615" anchor-label="toSport" id="1036367167%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-sport.html"><span>to</span><wbr></wbr><span><span>Sport</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1036367167%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-sport.html"><span class="token function">toSport</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-sport-data/index.html">FcSportData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1199850811%2FFunctions%2F-2029165615" anchor-label="toStep" id="1199850811%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-step.html"><span>to</span><wbr></wbr><span><span>Step</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1199850811%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-step.html"><span class="token function">toStep</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-step-data/index.html">FcStepData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1811195583%2FFunctions%2F-2029165615" anchor-label="toTemperature" id="1811195583%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-temperature.html"><span>to</span><wbr></wbr><span><span>Temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1811195583%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-temperature.html"><span class="token function">toTemperature</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-temperature-data/index.html">FcTemperatureData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-143778051%2FFunctions%2F-2029165615" anchor-label="toTemperatureMeasure" id="-143778051%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-temperature-measure.html"><span>to</span><wbr></wbr><span>Temperature</span><wbr></wbr><span><span>Measure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-143778051%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-temperature-measure.html"><span class="token function">toTemperatureMeasure</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-fc-temperature-data/index.html">FcTemperatureData</a><span class="token operator">&gt;</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1978143772%2FFunctions%2F-2029165615" anchor-label="toTodayTotal" id="-1978143772%2FFunctions%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-today-total.html"><span>to</span><wbr></wbr><span>Today</span><wbr></wbr><span><span>Total</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1978143772%2FFunctions%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="to-today-total.html"><span class="token function">toTodayTotal</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-fc-today-total-data/index.html">FcTodayTotalData</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="79886360%2FProperties%2F-2029165615" anchor-label="data" id="79886360%2FProperties%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="data.html"><span><span>data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="79886360%2FProperties%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="data.html">data</a><span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><span class="token keyword"></span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token operator">?</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1295924962%2FProperties%2F-2029165615" anchor-label="deviceInfo" id="-1295924962%2FProperties%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="device-info.html"><span>device</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1295924962%2FProperties%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="device-info.html">deviceInfo</a><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/index.html">FcDeviceInfo</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1333459592%2FProperties%2F-2029165615" anchor-label="type" id="1333459592%2FProperties%2F-2029165615" data-filterable-set=":libraryProtocol2:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":libraryProtocol2:dokkaHtml/release" data-filterable-set=":libraryProtocol2:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="type.html"><span><span>type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1333459592%2FProperties%2F-2029165615"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":libraryProtocol2:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="type.html">type</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>

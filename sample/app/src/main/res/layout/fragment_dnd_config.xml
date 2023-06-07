@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_all_day"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceSummary="@string/ds_dnd_config_all_day_des"
+            app:preferenceTitle="@string/ds_dnd_config_all_day"
+            app:showPreferenceSummary="true"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_period_time"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_dnd_config_period_time"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_start_time"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_marginStart="12dp"
+            app:preferenceTitle="@string/ds_config_start_time"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_end_time"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_marginStart="12dp"
+            app:preferenceTitle="@string/ds_config_end_time"/>
+
+    </LinearLayout>
+
+</ScrollView>

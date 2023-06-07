@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.auth.SignInFragment"
+        android:label="@string/account_sign_in">
+        <action
+            android:id="@+id/toSignUp"
+            app:destination="@id/signUpFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.auth.SignUpFragment"
+        android:label="@string/account_sign_up"/>
+
+</navigation>

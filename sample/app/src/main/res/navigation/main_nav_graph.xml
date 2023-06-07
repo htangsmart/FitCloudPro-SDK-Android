@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/deviceFragment">
+
+    <fragment
+        android:id="@+id/deviceFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.DeviceFragment"
+        android:label="@string/device_module"
+        tools:layout="@layout/fragment_device">
+        <action
+            android:id="@+id/toDeviceBind"
+            app:destination="@id/deviceBindFragment"/>
+        <action
+            android:id="@+id/toConnectHelp"
+            app:destination="@id/connectHelpFragment"/>
+        <action
+            android:id="@+id/toBgRunSettings"
+            app:destination="@id/bgRunSettingsFragment"/>
+        <action
+            android:id="@+id/toDeviceConfig"
+            app:destination="@id/deviceConfigFragment"/>
+        <action
+            android:id="@+id/toPowerSaveMode"
+            app:destination="@id/powerSaveModeFragment"/>
+        <action
+            android:id="@+id/toDialHomePage"
+            app:destination="@id/dialHomePageFragment"/>
+        <action
+            android:id="@+id/toModifyLogo"
+            app:destination="@id/modifyLogoFragment"/>
+        <action
+            android:id="@+id/toHardwareUpgrade"
+            app:destination="@id/hardwareUpgradeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/syncFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.SyncFragment"
+        android:label="@string/module_sync"/>
+
+    <fragment
+        android:id="@+id/realtimeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.RealtimeFragment"
+        android:label="@string/module_realtime"
+        tools:layout="@layout/fragment_realtime"/>
+
+    <fragment
+        android:id="@+id/combineFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.CombineFragment"
+        android:label="@string/module_combine">
+        <action
+            android:id="@+id/toEditUserInfo"
+            app:destination="@id/editUserInfoFragment"/>
+
+        <action
+            android:id="@+id/toWhHomePage"
+            app:destination="@id/whHomePageFragment"/>
+
+        <action
+            android:id="@+id/toWhDetail"
+            app:destination="@id/whDetailFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/deviceBindFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.bind.DeviceBindFragment"
+        android:label="@string/device_bind"
+        tools:layout="@layout/fragment_device_bind">
+        <action
+            android:id="@+id/toDeviceQrCode"
+            app:destination="@id/deviceQrCodeFragment"/>
+        <action
+            android:id="@+id/toConnectHelp"
+            app:destination="@id/connectHelpFragment"/>
+        <action
+            android:id="@+id/toBgRunSettings"
+            app:destination="@id/bgRunSettingsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/deviceQrCodeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.bind.DeviceQrCodeFragment"
+        android:label="@string/device_scan_bind"
+        tools:layout="@layout/fragment_device_qr_code"/>
+
+    <fragment
+        android:id="@+id/connectHelpFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.bind.ConnectHelpFragment"
+        android:label="@string/connect_help"
+        tools:layout="@layout/fragment_connect_help"/>
+
+    <fragment
+        android:id="@+id/bgRunSettingsFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.bgrun.BgRunSettingsFragment"
+        android:label="@string/bg_run_settings_module"
+        tools:layout="@layout/fragment_bg_run_settings"/>
+
+    <fragment
+        android:id="@+id/deviceConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.DeviceConfigFragment"
+        android:label="@string/ds_config"
+        tools:layout="@layout/fragment_device_config">
+        <action
+            android:id="@+id/toDndConfig"
+            app:destination="@id/dndConfigFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/dndConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.DNDConfigFragment"
+        android:label="@string/ds_dnd_config"
+        tools:layout="@layout/fragment_dnd_config"/>
+
+    <fragment
+        android:id="@+id/powerSaveModeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.PowerSaveModeFragment"
+        android:label="@string/ds_power_save_mode"
+        tools:layout="@layout/fragment_power_save_mode"/>
+
+    <fragment
+        android:id="@+id/dialHomePageFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.dial.DialHomePageFragment"
+        android:label="@string/ds_dial"
+        tools:layout="@layout/fragment_dial_home_page">
+        <action
+            android:id="@+id/toLibrary"
+            app:destination="@id/dialLibraryFragment"/>
+
+        <action
+            android:id="@+id/toCustom"
+            app:destination="@id/dialCustomFragment"/>
+
+        <action
+            android:id="@+id/toComponent"
+            app:destination="@id/dialComponentFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/dialLibraryFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.dial.library.DialLibraryFragment"
+        android:label="@string/ds_dial_library"
+        tools:layout="@layout/fragment_dial_library"/>
+
+    <fragment
+        android:id="@+id/dialCustomFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.dial.custom.DialCustomFragment"
+        android:label="@string/ds_dial_custom"
+        tools:layout="@layout/fragment_dial_custom"/>
+
+    <fragment
+        android:id="@+id/dialComponentFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.dial.component.DialComponentFragment"
+        android:label="@string/ds_dial_component"
+        tools:layout="@layout/fragment_dial_component"/>
+
+    <fragment
+        android:id="@+id/modifyLogoFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.logo.ModifyLogoFragment"
+        android:label="@string/ds_modify_logo"
+        tools:layout="@layout/fragment_modify_logo"/>
+
+    <fragment
+        android:id="@+id/hardwareUpgradeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.HardwareUpgradeFragment"
+        android:label="@string/version_hardware_update"
+        tools:layout="@layout/fragment_hardware_upgrade">
+        <argument
+            android:name="info"
+            app:argType="com.topstep.fitcloud.sample2.model.version.HardwareUpgradeInfo"
+            app:nullable="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/editUserInfoFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.EditUserInfoFragment"
+        android:label="@string/account_edit_user_info"
+        tools:layout="@layout/fragment_edit_user_info"/>
+
+    <fragment
+        android:id="@+id/whHomePageFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.wh.WhHomePageFragment"
+        android:label="@string/wh_women_health"
+        tools:layout="@layout/fragment_wh_home_page">
+        <action
+            android:id="@+id/toWhSettings"
+            app:destination="@id/whSettingsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/whSettingsFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.wh.WhSettingsFragment"
+        tools:layout="@layout/fragment_wh_settings">
+        <argument
+            android:name="mode"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/toWhDetail"
+            app:destination="@id/whDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/whDetailFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.combine.wh.WhDetailFragment"
+        tools:layout="@layout/fragment_wh_detail">
+        <argument
+            android:name="mode"
+            app:argType="integer"/>
+    </fragment>
+
+</navigation>

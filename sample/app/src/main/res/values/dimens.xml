@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--兼容[R.layout.dialog_device_connect]页面两个icon与中间的距离，以便当某些语言文字太长时，能够不变形-->
+    <item name="dialog_device_connect_progress_dot_margin" type="dimen">0dp</item>
+    <item name="dialog_device_connect_min_height" type="dimen">96dp</item>
+</resources>

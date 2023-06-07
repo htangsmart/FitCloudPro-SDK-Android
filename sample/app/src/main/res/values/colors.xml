@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 
-    <color name="sleep_chart_color_deep">#4D65BD</color>
-    <color name="sleep_chart_color_light">#8AA6E7</color>
-    <color name="sleep_chart_color_sober">#A7D6E0</color>
-
+    <color name="wh_pregnancy_color_early">#ffffac00</color>
+    <color name="wh_pregnancy_color_middle">#ffff8baf</color>
+    <color name="wh_pregnancy_color_later">#ff43d3f6</color>
+    <color name="wh_menstruation_color_menstruation">#ff978e</color>
+    <color name="wh_menstruation_color_safe">#48d151</color>
+    <color name="wh_menstruation_color_ovulation">#876aea</color>
 </resources>
