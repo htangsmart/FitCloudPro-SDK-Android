@@ -42,6 +42,13 @@ android {
         enabled = true
     }
     namespace 'com.topstep.fitcloud.sample2'
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def fileName = "fcsample2-${variant.buildType.name}-v${versionName}.apk"
+            outputFileName = fileName
+        }
+    }
 }
 
 dependencies {
