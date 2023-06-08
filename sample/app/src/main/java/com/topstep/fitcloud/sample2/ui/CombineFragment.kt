@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.github.kilnn.tool.widget.ktx.clickTrigger
+import com.topstep.fitcloud.sample2.BuildConfig
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.databinding.FragmentCombineBinding
 import com.topstep.fitcloud.sample2.di.Injector
@@ -52,6 +53,7 @@ class CombineFragment : BaseFragment(R.layout.fragment_combine) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewBind.tvVersion.text = "v" + BuildConfig.VERSION_NAME
         viewBind.itemUserInfo.clickTrigger {
             findNavController().navigate(CombineFragmentDirections.toEditUserInfo())
         }

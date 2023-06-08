@@ -3,12 +3,14 @@ package com.topstep.fitcloud.sample2.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.NavHostController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.topstep.fitcloud.sample2.BuildConfig
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.ui.base.BaseActivity
 import com.topstep.fitcloud.sample2.utils.findNavControllerInNavHost
@@ -34,6 +36,7 @@ class MainActivity : BaseActivity() {
             val shouldVisible = id == R.id.deviceFragment || id == R.id.syncFragment || id == R.id.realtimeFragment || id == R.id.combineFragment
             bottomNavigationView.isVisible = shouldVisible
         }
+        Toast.makeText(this, "v" + BuildConfig.VERSION_NAME, Toast.LENGTH_LONG).show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
