@@ -104,9 +104,18 @@
         android:label="@string/ds_config"
         tools:layout="@layout/fragment_device_config">
         <action
+            android:id="@+id/toPageConfig"
+            app:destination="@id/pageConfigFragment"/>
+        <action
             android:id="@+id/toDndConfig"
             app:destination="@id/dndConfigFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/pageConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.PageConfigFragment"
+        android:label="@string/ds_page_config"
+        tools:layout="@layout/fragment_page_config"/>
 
     <fragment
         android:id="@+id/dndConfigFragment"

@@ -116,6 +116,23 @@
 
     <!--Device Config-->
     <string name="ds_config">设备配置</string>
+
+    <string name="ds_page_config">页面配置</string>
+    <string-array name="ds_page_names">
+        <item>时间</item>
+        <item>步数</item>
+        <item>距离</item>
+        <item>卡路里</item>
+        <item>睡眠</item>
+        <item>心率</item>
+        <item>血氧</item>
+        <item>血压</item>
+        <item>天气</item>
+        <item>查找手机</item>
+        <item>ID</item>
+        <item>秒表</item>
+    </string-array>
+
     <string name="ds_config_start_time">开始时间</string>
     <string name="ds_config_end_time">结束时间</string>
     <string name="ds_dnd_config">勿扰配置</string>

@@ -26,6 +26,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewBind.itemPage.clickTrigger(block = blockClick)
         viewBind.itemDnd.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
@@ -36,6 +37,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
             }
             launch {
                 deviceManager.configFeature.observerDeviceInfo().asFlow().collect {
+                    viewBind.itemPage.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SETTING_PAGE_CONFIG)
                     viewBind.itemDnd.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.DND)
                 }
             }
@@ -44,10 +46,12 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
 
     private val blockClick: (View) -> Unit = { view ->
         when (view) {
+            viewBind.itemPage -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toPageConfig())
+            }
             viewBind.itemDnd -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toDndConfig())
             }
-
         }
     }
 

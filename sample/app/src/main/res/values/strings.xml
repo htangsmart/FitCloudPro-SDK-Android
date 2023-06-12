@@ -116,6 +116,23 @@
 
     <!--Device Config-->
     <string name="ds_config">Device Config</string>
+
+    <string name="ds_page_config">Page Config</string>
+    <string-array name="ds_page_names">
+        <item>Time</item>
+        <item>Steps</item>
+        <item>Distance</item>
+        <item>Calories</item>
+        <item>Sleep</item>
+        <item>Heart rate</item>
+        <item>Oxygen</item>
+        <item>Blood pressure</item>
+        <item>Weather</item>
+        <item>Find Phone</item>
+        <item>ID</item>
+        <item>StopWatch</item>
+    </string-array>
+
     <string name="ds_config_start_time">Start Time</string>
     <string name="ds_config_end_time">End Time</string>
     <string name="ds_dnd_config">DND Config</string>

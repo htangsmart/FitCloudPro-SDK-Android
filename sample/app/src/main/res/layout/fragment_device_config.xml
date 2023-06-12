@@ -13,6 +13,13 @@
         android:showDividers="middle">
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_page"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_page_config"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_dnd"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             android:layout_width="match_parent"
