@@ -51,14 +51,14 @@ class DatePickerDialogFragment : AppCompatDialogFragment() {
             .setTitle(args.title)
             .setView(layout)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                (parentFragment as? Listener)?.datePickerDialogCallback(tag, layout.getDate().toDate())
+                (parentFragment as? Listener)?.onDialogDatePicker(tag, layout.getDate().toDate())
             }
             .setNegativeButton(android.R.string.cancel, null)
             .create()
     }
 
     interface Listener {
-        fun datePickerDialogCallback(tag: String?, date: Date)
+        fun onDialogDatePicker(tag: String?, date: Date)
     }
 
     @Keep

@@ -44,14 +44,14 @@ class SelectIntDialogFragment : AppCompatDialogFragment() {
             .setTitle(args.title)
             .setView(layout)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.dialogSelectInt(tag, layout.getValue() * args.multiples)
+                listener?.onDialogSelectInt(tag, layout.getValue() * args.multiples)
             }
             .setNegativeButton(android.R.string.cancel, null)
             .create()
     }
 
     interface Listener {
-        fun dialogSelectInt(tag: String?, selectValue: Int)
+        fun onDialogSelectInt(tag: String?, selectValue: Int)
         fun dialogSelectIntFormat(tag: String?, value: Int): String {
             return FormatterUtil.intStr(value)
         }

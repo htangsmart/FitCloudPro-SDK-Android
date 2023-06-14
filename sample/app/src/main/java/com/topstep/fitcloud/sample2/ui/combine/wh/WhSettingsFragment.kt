@@ -274,10 +274,7 @@ class WhSettingsFragment : BaseFragment(R.layout.fragment_wh_settings),
     private val tagRemindType = "remind_type"
     private val tagRemindTime = "remind_time"
 
-    //Save
-    private val tagChangeMode = "change_mode"
-
-    override fun dialogSelectInt(tag: String?, selectValue: Int) {
+    override fun onDialogSelectInt(tag: String?, selectValue: Int) {
         when (tag) {
             tagDuration -> {
                 config = config.copy(duration = selectValue)
@@ -314,7 +311,7 @@ class WhSettingsFragment : BaseFragment(R.layout.fragment_wh_settings),
         }
     }
 
-    override fun datePickerDialogCallback(tag: String?, date: Date) {
+    override fun onDialogDatePicker(tag: String?, date: Date) {
         when (tag) {
             tagLatest -> {
                 config = config.copy(latest = date)
@@ -339,7 +336,7 @@ class WhSettingsFragment : BaseFragment(R.layout.fragment_wh_settings),
         }
     }
 
-    override fun dialogChoiceInt(tag: String?, selectValue: Int) {
+    override fun onDialogChoiceInt(tag: String?, selectValue: Int) {
         if (tag == tagRemindType) {
             config = config.copy(remindType = selectValue)
             updateRemindType()

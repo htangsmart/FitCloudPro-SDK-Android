@@ -113,7 +113,7 @@ class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_conf
         }
     }
 
-    override fun dialogSelectInt(tag: String?, selectValue: Int) {
+    override fun onDialogSelectInt(tag: String?, selectValue: Int) {
         if (DIALOG_INTERVAL_TIME == tag) {
             config.toBuilder().setInterval(selectValue).create().saveConfig()
         }

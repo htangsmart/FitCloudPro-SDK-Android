@@ -27,7 +27,7 @@ class ChoiceIntDialogFragment : AppCompatDialogFragment() {
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(args.title)
             .setSingleChoiceItems(args.items, checkItem) { dialog, position ->
-                (parentFragment as? Listener)?.dialogChoiceInt(
+                (parentFragment as? Listener)?.onDialogChoiceInt(
                     tag, if (args.values == null) {
                         position
                     } else {
@@ -40,7 +40,7 @@ class ChoiceIntDialogFragment : AppCompatDialogFragment() {
     }
 
     interface Listener {
-        fun dialogChoiceInt(tag: String?, selectValue: Int)
+        fun onDialogChoiceInt(tag: String?, selectValue: Int)
     }
 
     @Keep

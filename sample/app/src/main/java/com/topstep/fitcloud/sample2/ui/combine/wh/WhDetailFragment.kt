@@ -258,7 +258,7 @@ class WhDetailFragment : BaseFragment(R.layout.fragment_wh_detail), CompoundButt
     private val tagPregnancyDueDate = "pregnancy_due_date"
     private val tagLatest = "latest"
 
-    override fun datePickerDialogCallback(tag: String?, date: Date) {
+    override fun onDialogDatePicker(tag: String?, date: Date) {
         when (tag) {
             tagSetCalendar -> {
                 viewBind.calendarView.yearMonth = date
