@@ -107,6 +107,9 @@
             android:id="@+id/toPageConfig"
             app:destination="@id/pageConfigFragment"/>
         <action
+            android:id="@+id/toFunctionConfig"
+            app:destination="@id/functionConfigFragment"/>
+        <action
             android:id="@+id/toDndConfig"
             app:destination="@id/dndConfigFragment"/>
     </fragment>
@@ -116,6 +119,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.config.PageConfigFragment"
         android:label="@string/ds_page_config"
         tools:layout="@layout/fragment_page_config"/>
+
+    <fragment
+        android:id="@+id/functionConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.FunctionConfigFragment"
+        android:label="@string/ds_function_config"
+        tools:layout="@layout/fragment_function_config"/>
 
     <fragment
         android:id="@+id/dndConfigFragment"

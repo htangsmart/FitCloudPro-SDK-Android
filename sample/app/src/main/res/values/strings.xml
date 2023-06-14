@@ -116,6 +116,8 @@
 
     <!--Device Config-->
     <string name="ds_config">Device Config</string>
+    <string name="ds_config_start_time">Start Time</string>
+    <string name="ds_config_end_time">End Time</string>
 
     <string name="ds_page_config">Page Config</string>
     <string-array name="ds_page_names">
@@ -133,8 +135,16 @@
         <item>StopWatch</item>
     </string-array>
 
-    <string name="ds_config_start_time">Start Time</string>
-    <string name="ds_config_end_time">End Time</string>
+    <string name="ds_function_config">Function Config</string>
+    <string name="ds_wear_right_hand">Right Hand Wearing</string>
+    <string name="ds_enhanced_measurement">Enhanced Measurement</string>
+    <string name="ds_time_format_12_hour">Time Format-12 Hour</string>
+    <string name="ds_length_unit_imperial">Length Units-Imperial(miles, feet)</string>
+    <string name="ds_temperature_unit_fahrenheit">Temperature Units-Fahrenheit(℉)</string>
+    <string name="ds_display_weather">Display Weather</string>
+    <string name="ds_disconnect_reminder">Disconnect Reminder</string>
+    <string name="ds_display_exercise_goal">Display Exercise Goal</string>
+
     <string name="ds_dnd_config">DND Config</string>
     <string name="ds_dnd_config_all_day">DND All Day</string>
     <string name="ds_dnd_config_all_day_des">The following settings will be ignored if you turn on DND all-day</string>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_wear_right_hand"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_wear_right_hand"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_enhanced_measurement"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_enhanced_measurement"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_time_format_12_hour"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_time_format_12_hour"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_length_unit_imperial"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_length_unit_imperial"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_temperature_unit_fahrenheit"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_temperature_unit_fahrenheit"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_display_weather"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_display_weather"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_disconnect_reminder"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_disconnect_reminder"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_display_exercise_goal"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_display_exercise_goal"/>
+
+    </LinearLayout>
+
+</ScrollView>
