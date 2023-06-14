@@ -118,6 +118,7 @@
     <string name="ds_config">Device Config</string>
     <string name="ds_config_start_time">Start Time</string>
     <string name="ds_config_end_time">End Time</string>
+    <string name="ds_config_interval_time">Interval Time</string>
 
     <string name="ds_page_config">Page Config</string>
     <string-array name="ds_page_names">
@@ -144,6 +145,34 @@
     <string name="ds_display_weather">Display Weather</string>
     <string name="ds_disconnect_reminder">Disconnect Reminder</string>
     <string name="ds_display_exercise_goal">Display Exercise Goal</string>
+
+    <string name="ds_health_monitor_config">Health Monitor Config</string>
+
+    <string name="ds_heart_rate_alarm">Heart Rate Warning Reminder</string>
+    <string name="ds_heart_rate_alarm_des">Warning when the heart rate continues to exceed the warning value</string>
+    <string name="ds_heart_rate_alarm_static">Normal HR Alarm</string>
+    <string name="ds_heart_rate_alarm_static_des">Remind when the normal heart rate continues to exceed the alarm value for 15 minutes</string>
+    <string name="ds_heart_rate_alarm_static_value">Normal HR Alarm Value</string>
+    <string name="ds_heart_rate_alarm_dynamic">Sports HR Alarm Value</string>
+    <string name="ds_heart_rate_alarm_dynamic_des">Remind when the sports heart rate continues to exceed the alarm value for 10 seconds</string>
+    <string name="ds_heart_rate_alarm_dynamic_value">Sports HR Alarm Value</string>
+    <string name="ds_heart_rate_alarm_value">Alarm Value</string>
+    <string name="ds_health_alarm_dialog_msg1">1. When the heart rate warning function is turned on, the standby time of the watch will be affected.</string>
+    <string name="ds_health_alarm_dialog_msg2">2. To ensure monitoring accuracy, please wear tight watch.</string>
+
+    <string name="ds_blood_pressure_alarm">Blood Pressure Warning Reminder</string>
+    <string name="ds_blood_pressure_alarm_des">Warning when blood pressure continues to exceed the warning value</string>
+    <string name="ds_blood_pressure_alarm_sbp_range">Systolic Alarm Range</string>
+    <string name="ds_blood_pressure_alarm_dbp_range">Diastolic Alarm Range</string>
+    <string name="ds_blood_pressure_alarm_upper">Upper Alarm Value</string>
+    <string name="ds_blood_pressure_alarm_lower">Lower Alarm Value</string>
+    <string name="ds_blood_pressure_alarm_upper_des">Hypertension warning when systolic blood pressure continues to exceed the upper limit for 15 minutes</string>
+    <string name="ds_blood_pressure_alarm_lower_des">Hypotension warning when systolic blood pressure remains below than the lower limit for 15 minutes</string>
+    <string name="ds_blood_pressure_alarm_sbp_upper">BP Systolic Upper Alarm Value</string>
+    <string name="ds_blood_pressure_alarm_sbp_lower">BP Systolic Lower Alarm Value</string>
+    <string name="ds_blood_pressure_alarm_dbp_upper">Diastolic Upper Alarm Value</string>
+    <string name="ds_blood_pressure_alarm_dbp_lower">BP Diastolic Lower Alarm Value</string>
+    <string name="ds_blood_pressure_conflict_msg">The blood pressure alarm value you set is too close to the private blood pressure reference value to avoid false alarm, please reset.</string>
 
     <string name="ds_dnd_config">DND Config</string>
     <string name="ds_dnd_config_all_day">DND All Day</string>
@@ -265,6 +294,8 @@
     <string name="unit_day">d</string>
     <string name="unit_day_count">days</string>
     <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>days</string>
+    <string name="unit_minute">min</string>
+    <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> minutes</string>
 
     <!--Alarms-->
     <string name="ds_alarm">Alarms</string>

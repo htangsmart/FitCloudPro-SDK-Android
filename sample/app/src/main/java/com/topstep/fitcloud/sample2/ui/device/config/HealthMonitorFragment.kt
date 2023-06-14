@@ -3,33 +3,47 @@ package com.topstep.fitcloud.sample2.ui.device.config
 import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
+import androidx.core.view.isVisible
 import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.device.flowStateConnected
-import com.topstep.fitcloud.sample2.databinding.FragmentDndConfigBinding
+import com.topstep.fitcloud.sample2.databinding.FragmentHealthMonitorConfigBinding
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
 import com.topstep.fitcloud.sample2.ui.dialog.*
 import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
-import com.topstep.fitcloud.sdk.v2.model.config.FcDNDConfig
+import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
+import com.topstep.fitcloud.sdk.v2.model.config.FcHealthMonitorConfig
 import com.topstep.fitcloud.sdk.v2.model.config.toBuilder
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
 import kotlinx.coroutines.rx3.await
 
-class DNDConfigFragment : BaseFragment(R.layout.fragment_dnd_config), CompoundButton.OnCheckedChangeListener, TimePickerDialogFragment.Listener {
+/**
+ * **Document**
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fchealthmonitorconfig
+ *
+ * ***Description**
+ * Display and modify the config of data monitor
+ *
+ * **Usage**
+ * 1. [HealthMonitorFragment]
+ * Display and modify
+ */
+class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_config), CompoundButton.OnCheckedChangeListener,
+    TimePickerDialogFragment.Listener, SelectIntDialogFragment.Listener {
 
-    private val viewBind: FragmentDndConfigBinding by viewBinding()
+    private val viewBind: FragmentHealthMonitorConfigBinding by viewBinding()
 
     private val deviceManager = Injector.getDeviceManager()
     private val applicationScope = Injector.getApplicationScope()
 
-    private lateinit var config: FcDNDConfig
+    private lateinit var config: FcHealthMonitorConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        config = deviceManager.configFeature.getDNDConfig()
+        config = deviceManager.configFeature.getHealthMonitorConfig()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,11 +53,14 @@ class DNDConfigFragment : BaseFragment(R.layout.fragment_dnd_config), CompoundBu
             launch {
                 deviceManager.flowStateConnected().collect {
                     viewBind.layoutContent.setAllChildEnabled(it)
+                    viewBind.itemIntervalTime.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.HEALTH_MONITOR_CONFIG_INTERVAL)
+                    viewBind.itemHeartRateAlarm.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.HEART_RATE_ALARM)
+                    viewBind.itemBloodPressureAlarm.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE_ALARM)
                     updateUI()
                 }
             }
             launch {
-                deviceManager.configFeature.observerDNDConfig().asFlow().collect {
+                deviceManager.configFeature.observerHealthMonitorConfig().asFlow().collect {
                     if (config != it) {
                         config = it
                         updateUI()
@@ -52,18 +69,18 @@ class DNDConfigFragment : BaseFragment(R.layout.fragment_dnd_config), CompoundBu
             }
         }
 
-        viewBind.itemAllDay.getSwitchView().setOnCheckedChangeListener(this)
-        viewBind.itemPeriodTime.getSwitchView().setOnCheckedChangeListener(this)
+        viewBind.itemIsEnabled.getSwitchView().setOnCheckedChangeListener(this)
         viewBind.itemStartTime.clickTrigger(block = blockClick)
         viewBind.itemEndTime.clickTrigger(block = blockClick)
+        viewBind.itemIntervalTime.clickTrigger(block = blockClick)
+        viewBind.itemHeartRateAlarm.clickTrigger(block = blockClick)
+        viewBind.itemBloodPressureAlarm.clickTrigger(block = blockClick)
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
         if (buttonView.isPressed) {
-            if (buttonView == viewBind.itemAllDay.getSwitchView()) {
-                config.toBuilder().setEnableAllDay(isChecked).create().saveConfig()
-            } else if (buttonView == viewBind.itemPeriodTime.getSwitchView()) {
-                config.toBuilder().setEnabledPeriodTime(isChecked).create().saveConfig()
+            if (buttonView == viewBind.itemIsEnabled.getSwitchView()) {
+                config.toBuilder().setEnabled(isChecked).create().saveConfig()
             }
         }
     }
@@ -76,6 +93,15 @@ class DNDConfigFragment : BaseFragment(R.layout.fragment_dnd_config), CompoundBu
             viewBind.itemEndTime -> {
                 showEndTimeDialog(config.getEnd())
             }
+            viewBind.itemIntervalTime -> {
+                showIntervalDialog(config.getInterval(), 5, 720)
+            }
+            viewBind.itemHeartRateAlarm -> {
+
+            }
+            viewBind.itemBloodPressureAlarm -> {
+
+            }
         }
     }
 
@@ -87,25 +113,31 @@ class DNDConfigFragment : BaseFragment(R.layout.fragment_dnd_config), CompoundBu
         }
     }
 
-    private fun FcDNDConfig.saveConfig() {
-        applicationScope.launchWithLog {
-            deviceManager.configFeature.setDNDConfig(this@saveConfig).await()
+    override fun dialogSelectInt(tag: String?, selectValue: Int) {
+        if (DIALOG_INTERVAL_TIME == tag) {
+            config.toBuilder().setInterval(selectValue).create().saveConfig()
         }
-        this@DNDConfigFragment.config = this
+    }
+
+    private fun FcHealthMonitorConfig.saveConfig() {
+        applicationScope.launchWithLog {
+            deviceManager.configFeature.setHealthMonitorConfig(this@saveConfig).await()
+        }
+        this@HealthMonitorFragment.config = this
         updateUI()
     }
 
     private fun updateUI() {
         val isConfigEnabled = viewBind.layoutContent.isEnabled
 
-        viewBind.itemAllDay.getSwitchView().isChecked = config.isEnabledAllDay()
-        viewBind.itemPeriodTime.getSwitchView().isChecked = config.isEnabledPeriodTime()
+        viewBind.itemIsEnabled.getSwitchView().isChecked = config.isEnabled()
         if (isConfigEnabled) {//When device is disconnected, disabled the click event
-            viewBind.itemStartTime.isEnabled = config.isEnabledPeriodTime()
-            viewBind.itemEndTime.isEnabled = config.isEnabledPeriodTime()
+            viewBind.layoutDetail.setAllChildEnabled(config.isEnabled())
         }
+
         viewBind.itemStartTime.getTextView().text = FormatterUtil.minute2Hmm(config.getStart())
         viewBind.itemEndTime.getTextView().text = FormatterUtil.minute2Hmm(config.getEnd())
+        viewBind.itemIntervalTime.getTextView().text = getString(R.string.unit_minute_param, config.getInterval())
     }
 
 }

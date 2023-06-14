@@ -118,6 +118,7 @@
     <string name="ds_config">设备配置</string>
     <string name="ds_config_start_time">开始时间</string>
     <string name="ds_config_end_time">结束时间</string>
+    <string name="ds_config_interval_time">间隔时间</string>
 
     <string name="ds_page_config">页面配置</string>
     <string-array name="ds_page_names">
@@ -144,6 +145,34 @@
     <string name="ds_display_weather">显示天气</string>
     <string name="ds_disconnect_reminder">断开提醒</string>
     <string name="ds_display_exercise_goal">显示锻炼目标</string>
+
+    <string name="ds_health_monitor_config">健康监测配置</string>
+
+    <string name="ds_heart_rate_alarm">心率预警提醒</string>
+    <string name="ds_heart_rate_alarm_des">心率持续超过预警值时提醒</string>
+    <string name="ds_heart_rate_alarm_static">静态心率预警</string>
+    <string name="ds_heart_rate_alarm_static_des">非活动状态心率持续超过预警值15分钟时提醒</string>
+    <string name="ds_heart_rate_alarm_static_value">静态心率预警值</string>
+    <string name="ds_heart_rate_alarm_dynamic">动态心率预警</string>
+    <string name="ds_heart_rate_alarm_dynamic_des">单次运动状态下心率持续超过预警值10秒时提醒</string>
+    <string name="ds_heart_rate_alarm_dynamic_value">动态心率预警值</string>
+    <string name="ds_heart_rate_alarm_value">预警值</string>
+    <string name="ds_health_alarm_dialog_msg1">1.预警功能开启会影响手表的待机时间</string>
+    <string name="ds_health_alarm_dialog_msg2">2.为确保检测准确性，请戴紧手表</string>
+
+    <string name="ds_blood_pressure_alarm">血压预警提醒</string>
+    <string name="ds_blood_pressure_alarm_des">血压持续超过预警值时提醒</string>
+    <string name="ds_blood_pressure_alarm_sbp_range">收缩压范围</string>
+    <string name="ds_blood_pressure_alarm_dbp_range">舒张压范围</string>
+    <string name="ds_blood_pressure_alarm_upper">上限值</string>
+    <string name="ds_blood_pressure_alarm_lower">下限值</string>
+    <string name="ds_blood_pressure_alarm_upper_des">持续15分钟超过上限值报警高血压</string>
+    <string name="ds_blood_pressure_alarm_lower_des">持续15分钟低于下限值报警低血压</string>
+    <string name="ds_blood_pressure_alarm_sbp_upper">收缩压上限值</string>
+    <string name="ds_blood_pressure_alarm_sbp_lower">收缩压下限值</string>
+    <string name="ds_blood_pressure_alarm_dbp_upper">舒张压上限值</string>
+    <string name="ds_blood_pressure_alarm_dbp_lower">舒张压下限值</string>
+    <string name="ds_blood_pressure_conflict_msg">你设置的血压报警值与私人血压参考值过于接近或差值过大，避免误报，请重新设定</string>
 
     <string name="ds_dnd_config">勿扰配置</string>
     <string name="ds_dnd_config_all_day">全天免打扰</string>
@@ -265,6 +294,8 @@
     <string name="unit_day">日</string>
     <string name="unit_day_count">天</string>
     <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>天</string>
+    <string name="unit_minute">分钟</string>
+    <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> 分钟</string>
 
     <!--Alarms-->
     <string name="ds_alarm">手表闹钟</string>

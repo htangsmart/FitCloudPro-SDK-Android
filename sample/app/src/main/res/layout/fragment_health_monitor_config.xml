@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_is_enabled"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_health_monitor_config"/>
+
+        <LinearLayout
+            android:id="@+id/layout_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_start_time"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/ds_config_start_time"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_end_time"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/ds_config_end_time"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_interval_time"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/ds_config_interval_time"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_heart_rate_alarm"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary="@string/ds_heart_rate_alarm_des"
+                app:preferenceTitle="@string/ds_heart_rate_alarm"
+                app:showPreferenceSummary="true"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_blood_pressure_alarm"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary="@string/ds_blood_pressure_alarm_des"
+                app:preferenceTitle="@string/ds_blood_pressure_alarm"
+                app:showPreferenceSummary="true"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

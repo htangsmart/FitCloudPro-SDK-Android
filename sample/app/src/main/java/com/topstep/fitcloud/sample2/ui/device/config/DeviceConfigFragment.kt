@@ -28,6 +28,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
         super.onViewCreated(view, savedInstanceState)
         viewBind.itemPage.clickTrigger(block = blockClick)
         viewBind.itemFunction.clickTrigger(block = blockClick)
+        viewBind.itemHealthMonitor.clickTrigger(block = blockClick)
         viewBind.itemDnd.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
@@ -52,6 +53,9 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
             }
             viewBind.itemFunction -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toFunctionConfig())
+            }
+            viewBind.itemHealthMonitor -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toHealthMonitor())
             }
             viewBind.itemDnd -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toDndConfig())
