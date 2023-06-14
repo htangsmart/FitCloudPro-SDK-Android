@@ -7,14 +7,14 @@ import androidx.core.view.isVisible
 import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.device.flowStateConnected
-import com.topstep.fitcloud.sample2.databinding.FragmentHealthMonitorConfigBinding
+import com.topstep.fitcloud.sample2.databinding.FragmentSedentaryConfigBinding
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
 import com.topstep.fitcloud.sample2.ui.dialog.*
 import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
-import com.topstep.fitcloud.sdk.v2.model.config.FcHealthMonitorConfig
+import com.topstep.fitcloud.sdk.v2.model.config.FcSedentaryConfig
 import com.topstep.fitcloud.sdk.v2.model.config.toBuilder
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
@@ -22,28 +22,28 @@ import kotlinx.coroutines.rx3.await
 
 /**
  * **Document**
- * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fchealthmonitorconfig
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fcsedentaryconfig
  *
  * ***Description**
- * Display and modify the config of data monitor
+ * Display and modify the config of sedentary reminder
  *
  * **Usage**
- * 1. [HealthMonitorFragment]
+ * 1. [SedentaryConfigFragment]
  * Display and modify
  */
-class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_config), CompoundButton.OnCheckedChangeListener,
+class SedentaryConfigFragment : BaseFragment(R.layout.fragment_sedentary_config), CompoundButton.OnCheckedChangeListener,
     TimePickerDialogFragment.Listener, SelectIntDialogFragment.Listener {
 
-    private val viewBind: FragmentHealthMonitorConfigBinding by viewBinding()
+    private val viewBind: FragmentSedentaryConfigBinding by viewBinding()
 
     private val deviceManager = Injector.getDeviceManager()
     private val applicationScope = Injector.getApplicationScope()
 
-    private lateinit var config: FcHealthMonitorConfig
+    private lateinit var config: FcSedentaryConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        config = deviceManager.configFeature.getHealthMonitorConfig()
+        config = deviceManager.configFeature.getSedentaryConfig()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,14 +53,12 @@ class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_conf
             launch {
                 deviceManager.flowStateConnected().collect {
                     viewBind.layoutContent.setAllChildEnabled(it)
-                    viewBind.itemIntervalTime.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.HEALTH_MONITOR_CONFIG_INTERVAL)
-                    viewBind.itemHeartRateAlarm.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.HEART_RATE_ALARM)
-                    viewBind.itemBloodPressureAlarm.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE_ALARM)
+                    viewBind.itemIntervalTime.isVisible = deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.SEDENTARY_CONFIG_INTERVAL)
                     updateUI()
                 }
             }
             launch {
-                deviceManager.configFeature.observerHealthMonitorConfig().asFlow().collect {
+                deviceManager.configFeature.observerSedentaryConfig().asFlow().collect {
                     if (config != it) {
                         config = it
                         updateUI()
@@ -73,8 +71,6 @@ class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_conf
         viewBind.itemStartTime.clickTrigger(block = blockClick)
         viewBind.itemEndTime.clickTrigger(block = blockClick)
         viewBind.itemIntervalTime.clickTrigger(block = blockClick)
-        viewBind.itemHeartRateAlarm.clickTrigger(block = blockClick)
-        viewBind.itemBloodPressureAlarm.clickTrigger(block = blockClick)
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
@@ -94,13 +90,7 @@ class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_conf
                 showEndTimeDialog(config.getEnd())
             }
             viewBind.itemIntervalTime -> {
-                showIntervalDialog(config.getInterval(), 5, 720)
-            }
-            viewBind.itemHeartRateAlarm -> {
-
-            }
-            viewBind.itemBloodPressureAlarm -> {
-
+                showIntervalDialog(config.getInterval(), 10, 720)
             }
         }
     }
@@ -119,11 +109,11 @@ class HealthMonitorFragment : BaseFragment(R.layout.fragment_health_monitor_conf
         }
     }
 
-    private fun FcHealthMonitorConfig.saveConfig() {
+    private fun FcSedentaryConfig.saveConfig() {
         applicationScope.launchWithLog {
-            deviceManager.configFeature.setHealthMonitorConfig(this@saveConfig).await()
+            deviceManager.configFeature.setSedentaryConfig(this@saveConfig).await()
         }
-        this@HealthMonitorFragment.config = this
+        this@SedentaryConfigFragment.config = this
         updateUI()
     }
 

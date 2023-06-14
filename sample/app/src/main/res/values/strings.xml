@@ -147,6 +147,7 @@
     <string name="ds_display_exercise_goal">Display Exercise Goal</string>
 
     <string name="ds_health_monitor_config">Health Monitor Config</string>
+    <string name="ds_sedentary_config">Sedentary Reminder Config</string>
 
     <string name="ds_heart_rate_alarm">Heart Rate Warning Reminder</string>
     <string name="ds_heart_rate_alarm_des">Warning when the heart rate continues to exceed the warning value</string>

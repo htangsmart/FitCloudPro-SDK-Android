@@ -147,6 +147,7 @@
     <string name="ds_display_exercise_goal">显示锻炼目标</string>
 
     <string name="ds_health_monitor_config">健康监测配置</string>
+    <string name="ds_sedentary_config">久坐提醒配置</string>
 
     <string name="ds_heart_rate_alarm">心率预警提醒</string>
     <string name="ds_heart_rate_alarm_des">心率持续超过预警值时提醒</string>

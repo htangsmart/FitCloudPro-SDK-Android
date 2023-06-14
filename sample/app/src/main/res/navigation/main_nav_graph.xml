@@ -110,13 +110,15 @@
             android:id="@+id/toFunctionConfig"
             app:destination="@id/functionConfigFragment"/>
         <action
-            android:id="@+id/toHealthMonitor"
+            android:id="@+id/toHealthMonitorConfig"
             app:destination="@id/healthMonitorConfigFragment"/>
+        <action
+            android:id="@+id/toSedentaryConfig"
+            app:destination="@id/sedentaryConfigFragment"/>
         <action
             android:id="@+id/toDndConfig"
             app:destination="@id/dndConfigFragment"/>
     </fragment>
-
 
     <fragment
         android:id="@+id/pageConfigFragment"
@@ -132,9 +134,15 @@
 
     <fragment
         android:id="@+id/healthMonitorConfigFragment"
-        android:name="com.topstep.fitcloud.sample2.ui.device.config.HealthMonitorFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.HealthMonitorConfigFragment"
         android:label="@string/ds_health_monitor_config"
         tools:layout="@layout/fragment_health_monitor_config"/>
+
+    <fragment
+        android:id="@+id/sedentaryConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.SedentaryConfigFragment"
+        android:label="@string/ds_sedentary_config"
+        tools:layout="@layout/fragment_sedentary_config"/>
 
     <fragment
         android:id="@+id/dndConfigFragment"
