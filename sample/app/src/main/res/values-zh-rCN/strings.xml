@@ -148,6 +148,13 @@
 
     <string name="ds_health_monitor_config">健康监测配置</string>
     <string name="ds_sedentary_config">久坐提醒配置</string>
+    <string name="ds_drink_water_config">喝水提醒配置</string>
+
+    <string name="ds_blood_pressure_config">血压参考值配置</string>
+    <string name="ds_sbp">收缩压</string>
+    <string name="ds_dbp">舒张压</string>
+
+    <string name="ds_turn_wrist_lighting_config">抬腕亮屏配置</string>
 
     <string name="ds_heart_rate_alarm">心率预警提醒</string>
     <string name="ds_heart_rate_alarm_des">心率持续超过预警值时提醒</string>
@@ -297,6 +304,7 @@
     <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>天</string>
     <string name="unit_minute">分钟</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> 分钟</string>
+    <string name="unit_mmhg">mmHg</string>
 
     <!--Alarms-->
     <string name="ds_alarm">手表闹钟</string>

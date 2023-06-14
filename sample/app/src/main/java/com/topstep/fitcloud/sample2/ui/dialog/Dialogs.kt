@@ -26,3 +26,33 @@ fun Fragment.showIntervalDialog(value: Int, from: Int, to: Int) {
         des = requireContext().getString(R.string.unit_minute)
     ).show(childFragmentManager, DIALOG_INTERVAL_TIME)
 }
+
+const val SBP_MIN = 50
+const val SBP_DEFAULT = 125
+const val SBP_MAX = 200
+const val DBP_MIN = 20
+const val DBP_DEFAULT = 80
+const val DBP_MAX = 120
+const val DIALOG_DBP = "dbp"
+const val DIALOG_SBP = "sbp"
+fun Fragment.showDbpDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = DBP_MIN,
+        max = DBP_MAX,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_dbp),
+        des = getString(R.string.unit_mmhg)
+    ).show(childFragmentManager, DIALOG_DBP)
+}
+
+fun Fragment.showSbpDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = SBP_MIN,
+        max = SBP_MAX,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_sbp),
+        des = getString(R.string.unit_mmhg)
+    ).show(childFragmentManager, DIALOG_SBP)
+}

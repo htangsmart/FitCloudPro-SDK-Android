@@ -116,6 +116,15 @@
             android:id="@+id/toSedentaryConfig"
             app:destination="@id/sedentaryConfigFragment"/>
         <action
+            android:id="@+id/toDrinkWaterConfig"
+            app:destination="@id/drinkWaterConfigFragment"/>
+        <action
+            android:id="@+id/toBpConfig"
+            app:destination="@id/bpConfigFragment"/>
+        <action
+            android:id="@+id/toTurnWristLightingConfig"
+            app:destination="@id/turnWristLightingConfigFragment"/>
+        <action
             android:id="@+id/toDndConfig"
             app:destination="@id/dndConfigFragment"/>
     </fragment>
@@ -143,6 +152,24 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.config.SedentaryConfigFragment"
         android:label="@string/ds_sedentary_config"
         tools:layout="@layout/fragment_sedentary_config"/>
+
+    <fragment
+        android:id="@+id/drinkWaterConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.DrinkWaterConfigFragment"
+        android:label="@string/ds_drink_water_config"
+        tools:layout="@layout/fragment_drink_water_config"/>
+
+    <fragment
+        android:id="@+id/bpConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.BloodPressureConfigFragment"
+        android:label="@string/ds_blood_pressure_config"
+        tools:layout="@layout/fragment_blood_pressure_config"/>
+
+    <fragment
+        android:id="@+id/turnWristLightingConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.TurnWristLightingConfigFragment"
+        android:label="@string/ds_turn_wrist_lighting_config"
+        tools:layout="@layout/fragment_turn_wrist_lighting_config"/>
 
     <fragment
         android:id="@+id/dndConfigFragment"

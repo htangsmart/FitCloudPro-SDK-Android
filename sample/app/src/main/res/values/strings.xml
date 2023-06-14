@@ -148,6 +148,13 @@
 
     <string name="ds_health_monitor_config">Health Monitor Config</string>
     <string name="ds_sedentary_config">Sedentary Reminder Config</string>
+    <string name="ds_drink_water_config">Drink Water Reminder Config</string>
+
+    <string name="ds_blood_pressure_config">Blood Pressure Reference Config</string>
+    <string name="ds_sbp">Systolic pressure</string>
+    <string name="ds_dbp">Diastolic pressure</string>
+
+    <string name="ds_turn_wrist_lighting_config">Raise to Wake Config</string>
 
     <string name="ds_heart_rate_alarm">Heart Rate Warning Reminder</string>
     <string name="ds_heart_rate_alarm_des">Warning when the heart rate continues to exceed the warning value</string>
@@ -297,6 +304,7 @@
     <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>days</string>
     <string name="unit_minute">min</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> minutes</string>
+    <string name="unit_mmhg">mmHg</string>
 
     <!--Alarms-->
     <string name="ds_alarm">Alarms</string>

@@ -30,6 +30,9 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
         viewBind.itemFunction.clickTrigger(block = blockClick)
         viewBind.itemHealthMonitor.clickTrigger(block = blockClick)
         viewBind.itemSedentary.clickTrigger(block = blockClick)
+        viewBind.itemDrinkWater.clickTrigger(block = blockClick)
+        viewBind.itemBloodPressure.clickTrigger(block = blockClick)
+        viewBind.itemTurnWristLighting.clickTrigger(block = blockClick)
         viewBind.itemDnd.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
@@ -41,6 +44,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
             launch {
                 deviceManager.configFeature.observerDeviceInfo().asFlow().collect {
                     viewBind.itemPage.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SETTING_PAGE_CONFIG)
+                    viewBind.itemBloodPressure.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE) and !it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE_AIR_PUMP)
                     viewBind.itemDnd.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.DND)
                 }
             }
@@ -60,6 +64,15 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
             }
             viewBind.itemSedentary -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toSedentaryConfig())
+            }
+            viewBind.itemDrinkWater -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toDrinkWaterConfig())
+            }
+            viewBind.itemBloodPressure -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toBpConfig())
+            }
+            viewBind.itemTurnWristLighting -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toTurnWristLightingConfig())
             }
             viewBind.itemDnd -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toDndConfig())

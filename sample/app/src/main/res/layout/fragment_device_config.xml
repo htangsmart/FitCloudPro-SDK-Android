@@ -41,6 +41,27 @@
             app:preferenceTitle="@string/ds_sedentary_config"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_drink_water"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_drink_water_config"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_blood_pressure"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_blood_pressure_config"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_turn_wrist_lighting"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_turn_wrist_lighting_config"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_dnd"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             android:layout_width="match_parent"

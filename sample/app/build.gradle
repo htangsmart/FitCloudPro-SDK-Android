@@ -55,8 +55,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     //Required
-    implementation files('libs/libraryCore_v2.0.2-alpha1.aar')
-    implementation files('libs/libraryProtocol2_v2.0.2-alpha1.aar')
+    implementation files('libs/libraryCore_v2.0.2-alpha2.aar')
+    implementation files('libs/libraryProtocol2_v2.0.2-alpha2.aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.annotation:annotation:$annotation_version"
