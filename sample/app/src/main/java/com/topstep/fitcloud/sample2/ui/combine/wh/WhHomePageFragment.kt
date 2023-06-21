@@ -6,16 +6,46 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.topstep.fitcloud.sample2.R
+import com.topstep.fitcloud.sample2.data.device.DeviceManager
 import com.topstep.fitcloud.sample2.databinding.FragmentWhHomePageBinding
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.model.wh.WomenHealthConfig
 import com.topstep.fitcloud.sample2.model.wh.WomenHealthMode
+import com.topstep.fitcloud.sample2.ui.CombineFragment
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
 import com.topstep.fitcloud.sample2.utils.launchRepeatOnStarted
 import com.topstep.fitcloud.sample2.utils.viewLifecycle
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
+import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import kotlinx.coroutines.launch
 
+/**
+ * **Document**
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fcwomenhealthconfig
+ *
+ * ***Description**
+ * Due to historical legacy issues, when reading this config from the device, only partial data may be returned.
+ * Therefore, it is recommended not to read this config from the device, but always follow the config in your APP.
+ *
+ * The function of Women Health Sample does not depend on the config on the device, and all data are saved in the local storage(Room database) of the APP.
+ * Send this config to the device only when it changes.
+ *
+ * **Usage**
+ * 1. [CombineFragment]
+ * Display the Women Health function entrance
+ *
+ * 2.[WhHomePageFragment]
+ * Women Health home page fragment to select which mode to use
+ *
+ * 3.[WhSettingsFragment]
+ * Set the config of a certain mode
+ *
+ * 4.[WhDetailFragment]
+ * Display and modify detail info of a certain mode
+ *
+ * 5.[DeviceManager]
+ * Apply the config to device if [FcDeviceInfo.Feature.WOMEN_HEALTH] is supported
+ */
 class WhHomePageFragment : BaseFragment(R.layout.fragment_wh_home_page) {
 
     private val viewBind: FragmentWhHomePageBinding by viewBinding()
