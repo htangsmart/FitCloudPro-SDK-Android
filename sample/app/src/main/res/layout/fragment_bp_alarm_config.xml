@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_is_enabled"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceSummary="@string/ds_blood_pressure_alarm_des"
+            app:preferenceTitle="@string/ds_blood_pressure_alarm"
+            app:showPreferenceSummary="true"/>
+
+        <LinearLayout
+            android:id="@+id/layout_sbp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Widget.Sample.PreferenceBase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:text="@string/ds_blood_pressure_alarm_sbp_range"
+                android:textAppearance="?textAppearanceCaption"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_sbp_upper"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary="@string/ds_blood_pressure_alarm_upper_des"
+                app:preferenceTextMinWidth="96dp"
+                app:preferenceTitle="@string/ds_blood_pressure_alarm_upper"
+                app:showPreferenceSummary="true"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_sbp_lower"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary="@string/ds_blood_pressure_alarm_lower_des"
+                app:preferenceTextMinWidth="96dp"
+                app:preferenceTitle="@string/ds_blood_pressure_alarm_lower"
+                app:showPreferenceSummary="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_dbp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Widget.Sample.PreferenceBase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:text="@string/ds_blood_pressure_alarm_dbp_range"
+                android:textAppearance="?textAppearanceCaption"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_dbp_upper"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary="@string/ds_blood_pressure_alarm_upper_des"
+                app:preferenceTextMinWidth="96dp"
+                app:preferenceTitle="@string/ds_blood_pressure_alarm_upper"
+                app:showPreferenceSummary="true"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_dbp_lower"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceSummary="@string/ds_blood_pressure_alarm_lower_des"
+                app:preferenceTextMinWidth="96dp"
+                app:preferenceTitle="@string/ds_blood_pressure_alarm_lower"
+                app:showPreferenceSummary="true"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

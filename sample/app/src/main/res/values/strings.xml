@@ -165,8 +165,6 @@
     <string name="ds_heart_rate_alarm_dynamic_des">Remind when the sports heart rate continues to exceed the alarm value for 10 seconds</string>
     <string name="ds_heart_rate_alarm_dynamic_value">Sports HR Alarm Value</string>
     <string name="ds_heart_rate_alarm_value">Alarm Value</string>
-    <string name="ds_health_alarm_dialog_msg1">1. When the heart rate warning function is turned on, the standby time of the watch will be affected.</string>
-    <string name="ds_health_alarm_dialog_msg2">2. To ensure monitoring accuracy, please wear tight watch.</string>
 
     <string name="ds_blood_pressure_alarm">Blood Pressure Warning Reminder</string>
     <string name="ds_blood_pressure_alarm_des">Warning when blood pressure continues to exceed the warning value</string>
@@ -305,6 +303,9 @@
     <string name="unit_minute">min</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> minutes</string>
     <string name="unit_mmhg">mmHg</string>
+    <string name="unit_mmhg_param"><xliff:g id="params1">%1$s</xliff:g>mmHg</string>
+    <string name="unit_bmp">BMP</string>
+    <string name="unit_bmp_unit"><xliff:g id="params1">%1$d</xliff:g> BMP</string>
 
     <!--Alarms-->
     <string name="ds_alarm">Alarms</string>

@@ -56,3 +56,76 @@ fun Fragment.showSbpDialog(value: Int) {
         des = getString(R.string.unit_mmhg)
     ).show(childFragmentManager, DIALOG_SBP)
 }
+
+const val DIALOG_HR_STATIC = "hr_static"
+const val DIALOG_HR_DYNAMIC = "hr_dynamic"
+fun Fragment.showHrStaticDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 10,
+        max = 15,
+        multiples = 10,
+        value = value,
+        title = getString(R.string.ds_heart_rate_alarm_static),
+        des = getString(R.string.unit_bmp)
+    ).show(childFragmentManager, DIALOG_HR_STATIC)
+}
+
+fun Fragment.showHrDynamicDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 100,
+        max = 200,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_heart_rate_alarm_dynamic),
+        des = getString(R.string.unit_bmp)
+    ).show(childFragmentManager, DIALOG_HR_DYNAMIC)
+}
+
+
+const val DIALOG_SBP_UPPER = "sbp_upper"
+const val DIALOG_SBP_LOWER = "sbp_lower"
+const val DIALOG_DBP_UPPER = "dbp_upper"
+const val DIALOG_DBP_LOWER = "dbp_lower"
+fun Fragment.showSbpUpperDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 90,
+        max = 180,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_blood_pressure_alarm_sbp_upper),
+        des = getString(R.string.unit_mmhg)
+    ).show(childFragmentManager, DIALOG_SBP_UPPER)
+}
+
+fun Fragment.showSbpLowerDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 60,
+        max = 120,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_blood_pressure_alarm_sbp_lower),
+        des = getString(R.string.unit_mmhg)
+    ).show(childFragmentManager, DIALOG_SBP_LOWER)
+}
+
+fun Fragment.showDbpUpperDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 60,
+        max = 120,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_blood_pressure_alarm_dbp_upper),
+        des = getString(R.string.unit_mmhg)
+    ).show(childFragmentManager, DIALOG_DBP_UPPER)
+}
+
+fun Fragment.showDbpLowerDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 40,
+        max = 100,
+        multiples = 1,
+        value = value,
+        title = getString(R.string.ds_blood_pressure_alarm_dbp_lower),
+        des = getString(R.string.unit_mmhg)
+    ).show(childFragmentManager, DIALOG_DBP_LOWER)
+}

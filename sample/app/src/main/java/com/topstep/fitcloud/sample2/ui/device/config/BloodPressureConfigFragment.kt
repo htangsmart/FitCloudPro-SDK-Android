@@ -37,7 +37,7 @@ import kotlinx.coroutines.rx3.await
  * 2. [BloodPressureConfigFragment]
  * Display and modify
  *
- * 3. [BloodPressureAlarmConfigFragment]
+ * 3. [BpAlarmConfigFragment]
  * Check conflict
  */
 class BloodPressureConfigFragment : BaseFragment(R.layout.fragment_blood_pressure_config), CompoundButton.OnCheckedChangeListener,

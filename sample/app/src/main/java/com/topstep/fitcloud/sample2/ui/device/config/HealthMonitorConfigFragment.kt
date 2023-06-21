@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.device.flowStateConnected
@@ -97,10 +98,10 @@ class HealthMonitorConfigFragment : BaseFragment(R.layout.fragment_health_monito
                 showIntervalDialog(config.getInterval(), 5, 720)
             }
             viewBind.itemHeartRateAlarm -> {
-
+                findNavController().navigate(HealthMonitorConfigFragmentDirections.toHrAlarmConfig())
             }
             viewBind.itemBloodPressureAlarm -> {
-
+                findNavController().navigate(HealthMonitorConfigFragmentDirections.toBpAlarmConfig())
             }
         }
     }

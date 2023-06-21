@@ -145,7 +145,26 @@
         android:id="@+id/healthMonitorConfigFragment"
         android:name="com.topstep.fitcloud.sample2.ui.device.config.HealthMonitorConfigFragment"
         android:label="@string/ds_health_monitor_config"
-        tools:layout="@layout/fragment_health_monitor_config"/>
+        tools:layout="@layout/fragment_health_monitor_config">
+        <action
+            android:id="@+id/toHrAlarmConfig"
+            app:destination="@id/hrAlarmConfigFragment"/>
+        <action
+            android:id="@+id/toBpAlarmConfig"
+            app:destination="@id/bpAlarmConfigFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/hrAlarmConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.HrAlarmConfigFragment"
+        android:label="@string/ds_heart_rate_alarm"
+        tools:layout="@layout/fragment_hr_alarm_config"/>
+
+    <fragment
+        android:id="@+id/bpAlarmConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.BpAlarmConfigFragment"
+        android:label="@string/ds_blood_pressure_alarm"
+        tools:layout="@layout/fragment_bp_alarm_config"/>
 
     <fragment
         android:id="@+id/sedentaryConfigFragment"

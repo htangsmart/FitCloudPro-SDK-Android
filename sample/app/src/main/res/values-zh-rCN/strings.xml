@@ -165,8 +165,6 @@
     <string name="ds_heart_rate_alarm_dynamic_des">单次运动状态下心率持续超过预警值10秒时提醒</string>
     <string name="ds_heart_rate_alarm_dynamic_value">动态心率预警值</string>
     <string name="ds_heart_rate_alarm_value">预警值</string>
-    <string name="ds_health_alarm_dialog_msg1">1.预警功能开启会影响手表的待机时间</string>
-    <string name="ds_health_alarm_dialog_msg2">2.为确保检测准确性，请戴紧手表</string>
 
     <string name="ds_blood_pressure_alarm">血压预警提醒</string>
     <string name="ds_blood_pressure_alarm_des">血压持续超过预警值时提醒</string>
@@ -305,6 +303,9 @@
     <string name="unit_minute">分钟</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> 分钟</string>
     <string name="unit_mmhg">mmHg</string>
+    <string name="unit_mmhg_param"><xliff:g id="params1">%1$s</xliff:g>mmHg</string>
+    <string name="unit_bmp">次/分</string>
+    <string name="unit_bmp_unit"><xliff:g id="params1">%1$d</xliff:g>次/分</string>
 
     <!--Alarms-->
     <string name="ds_alarm">手表闹钟</string>
