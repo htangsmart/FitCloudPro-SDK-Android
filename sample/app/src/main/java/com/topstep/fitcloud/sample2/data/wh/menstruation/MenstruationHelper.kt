@@ -144,7 +144,7 @@ class MenstruationHelper(
 
     suspend fun getConfigForDevice(config: WomenHealthConfig?): FcWomenHealthConfig {
         val builder = FcWomenHealthConfig.Builder()
-        if (config != null) {
+        if (config != null && config.remindDevice) {
             val calendar = Calendar.getInstance()
             builder.setMode(config.mode)
             builder.setMenstruationRemindAdvance(config.remindAdvance)

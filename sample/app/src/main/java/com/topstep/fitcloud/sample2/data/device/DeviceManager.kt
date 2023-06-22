@@ -229,7 +229,7 @@ internal class DeviceManagerImpl(
 
     private suspend fun setWomenHealth(config: WomenHealthConfig?) {
         Timber.tag(TAG).i("device set WomenHealth")
-        //手环不支持女性健康功能，直接返回
+        //The device don't support, return
         if (!configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.WOMEN_HEALTH)) {
             return
         }
@@ -239,7 +239,7 @@ internal class DeviceManagerImpl(
         if (appConfig.getMode() == FcWomenHealthConfig.Mode.NONE
             && deviceConfig.getMode() == FcWomenHealthConfig.Mode.NONE
         ) {
-            //都是NONE，那么不用在变了
+            //It's all NONE, so there's no need to change anymore
             return
         }
         if (appConfig != deviceConfig) {
