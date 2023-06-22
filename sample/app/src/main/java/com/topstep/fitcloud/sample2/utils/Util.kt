@@ -239,6 +239,16 @@ fun fileSizeStr(bytes: Long, showZero: Boolean = false): String {
     }
 }
 
+internal const val KM_TO_MI = 0.6213712f //1 km=0.6213712 mi
+
+fun Float.km2mi(): Float {
+    return this * KM_TO_MI
+}
+
+fun Float.mi2km(): Float {
+    return this / KM_TO_MI
+}
+
 fun glideShowImage(imageView: ImageView, uri: Any?, inRecyclerView: Boolean = true, placeholder: Int = R.drawable.ic_default_image_place_holder) {
     val builder = Glide.with(imageView.context)
         .load(uri)

@@ -1,6 +1,7 @@
 package com.topstep.fitcloud.sample2.di
 
 import com.topstep.fitcloud.sample2.data.auth.AuthManager
+import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.device.DeviceManager
 import com.topstep.fitcloud.sample2.data.device.DialRepository
 import com.topstep.fitcloud.sample2.data.user.UserInfoRepository
@@ -51,5 +52,9 @@ object Injector {
 
     fun getWomenHealthRepository(): WomenHealthRepository {
         return SingleInstance.womenHealthRepository
+    }
+
+    fun getExerciseGoalRepository(): ExerciseGoalRepository {
+        return SingleInstance.exerciseGoalRepository
     }
 }

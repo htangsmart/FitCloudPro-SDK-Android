@@ -5,6 +5,8 @@ import com.squareup.moshi.Moshi
 import com.topstep.fitcloud.sample2.MyApplication
 import com.topstep.fitcloud.sample2.data.auth.AuthManager
 import com.topstep.fitcloud.sample2.data.auth.AuthManagerImpl
+import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
+import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepositoryImpl
 import com.topstep.fitcloud.sample2.data.db.AppDatabase
 import com.topstep.fitcloud.sample2.data.device.DeviceManager
 import com.topstep.fitcloud.sample2.data.device.DeviceManagerImpl
@@ -54,6 +56,7 @@ object SingleInstance {
             CoroutinesInstance.applicationScope,
             internalStorage,
             womenHealthRepository,
+            exerciseGoalRepository,
             appDatabase,
         )
     }
@@ -64,6 +67,14 @@ object SingleInstance {
             moshi,
             deviceManager,
             apiClient.apiService
+        )
+    }
+
+    val exerciseGoalRepository: ExerciseGoalRepository by lazy {
+        ExerciseGoalRepositoryImpl(
+            CoroutinesInstance.applicationScope,
+            internalStorage,
+            appDatabase
         )
     }
 }

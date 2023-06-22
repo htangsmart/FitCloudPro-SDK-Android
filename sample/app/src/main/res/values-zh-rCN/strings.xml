@@ -303,6 +303,12 @@
     <string name="wh_home_page_title">女性健康 (<xliff:g id="params1">%1$s</xliff:g>)</string>
     <string name="wh_set_calendar_title">选择要跳转的年月</string>
 
+    <!--Exercise Goal-->
+    <string name="exercise_goal">运动目标</string>
+    <string name="exercise_goal_step">步数</string>
+    <string name="exercise_goal_distance">距离</string>
+    <string name="exercise_goal_calories">卡路里</string>
+
     <!--Unit-->
     <string name="unit_year">年</string>
     <string name="unit_month">月</string>
@@ -317,6 +323,14 @@
     <string name="unit_bmp_unit"><xliff:g id="params1">%1$d</xliff:g>次/分</string>
     <string name="unit_level_param"><xliff:g id="params1">%1$d</xliff:g>级</string>
     <string name="unit_second_param"><xliff:g id="params1">%1$d</xliff:g>秒</string>
+    <string name="unit_km">千米</string>
+    <string name="unit_mi">公里</string>
+    <string name="unit_step">步</string>
+    <string name="unit_k_calories">千卡</string>
+    <string name="unit_km_param"><xliff:g id="params1">%1$s</xliff:g> 千米</string>
+    <string name="unit_mi_param"><xliff:g id="params1">%1$s</xliff:g> 公里</string>
+    <string name="unit_step_param"><xliff:g id="params1">%1$d</xliff:g> 步</string>
+    <string name="unit_k_calories_param"><xliff:g id="params1">%1$s</xliff:g>千卡</string>
 
     <!--Alarms-->
     <string name="ds_alarm">手表闹钟</string>

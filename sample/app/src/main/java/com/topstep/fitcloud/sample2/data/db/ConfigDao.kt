@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
+import com.topstep.fitcloud.sample2.data.entity.ExerciseGoalEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -18,4 +19,10 @@ abstract class ConfigDao {
 
     @Query("DELETE FROM DeviceBindEntity WHERE userId=:userId")
     abstract suspend fun clearDeviceBind(userId: Long)
+
+    @Query("SELECT * FROM ExerciseGoalEntity WHERE userId=:userId")
+    abstract fun flowExerciseGoal(userId: Long): Flow<ExerciseGoalEntity?>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertExerciseGoal(vararg configs: ExerciseGoalEntity)
 }

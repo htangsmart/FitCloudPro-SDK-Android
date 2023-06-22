@@ -303,20 +303,34 @@
     <string name="wh_home_page_title">Women\'s Health (<xliff:g id="params1">%1$s</xliff:g>)</string>
     <string name="wh_set_calendar_title">Select the year and month to jump</string>
 
+    <!--Exercise Goal-->
+    <string name="exercise_goal">Exercise Goal</string>
+    <string name="exercise_goal_step">Step</string>
+    <string name="exercise_goal_distance">Distance</string>
+    <string name="exercise_goal_calories">Calories</string>
+
     <!--Unit-->
     <string name="unit_year">y</string>
     <string name="unit_month">m</string>
     <string name="unit_day">d</string>
     <string name="unit_day_count">days</string>
-    <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>days</string>
+    <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g> days</string>
     <string name="unit_minute">min</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> minutes</string>
     <string name="unit_mmhg">mmHg</string>
-    <string name="unit_mmhg_param"><xliff:g id="params1">%1$s</xliff:g>mmHg</string>
+    <string name="unit_mmhg_param"><xliff:g id="params1">%1$s</xliff:g> mmHg</string>
     <string name="unit_bmp">BMP</string>
     <string name="unit_bmp_unit"><xliff:g id="params1">%1$d</xliff:g> BMP</string>
     <string name="unit_level_param"><xliff:g id="params1">%1$d</xliff:g> Level</string>
     <string name="unit_second_param"><xliff:g id="params1">%1$d</xliff:g> Seconds</string>
+    <string name="unit_km">km</string>
+    <string name="unit_mi">mi</string>
+    <string name="unit_step">steps</string>
+    <string name="unit_k_calories">kCal</string>
+    <string name="unit_km_param"><xliff:g id="params1">%1$s</xliff:g> km</string>
+    <string name="unit_mi_param"><xliff:g id="params1">%1$s</xliff:g> mi</string>
+    <string name="unit_step_param"><xliff:g id="params1">%1$d</xliff:g> steps</string>
+    <string name="unit_k_calories_param"><xliff:g id="params1">%1$s</xliff:g> kCal</string>
 
     <!--Alarms-->
     <string name="ds_alarm">Alarms</string>

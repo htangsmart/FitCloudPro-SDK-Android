@@ -4,18 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
-import com.topstep.fitcloud.sample2.data.entity.MenstruationTimelineEntity
-import com.topstep.fitcloud.sample2.data.entity.UserEntity
-import com.topstep.fitcloud.sample2.data.entity.WomenHealthConfigEntity
+import com.topstep.fitcloud.sample2.data.entity.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.asExecutor
 
 @Database(
-    version = 2,
+    version = 3,
     entities = [
         UserEntity::class,
-        DeviceBindEntity::class,
+        DeviceBindEntity::class, ExerciseGoalEntity::class,
         WomenHealthConfigEntity::class, MenstruationTimelineEntity::class
     ],
 )

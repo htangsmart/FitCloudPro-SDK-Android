@@ -17,14 +17,6 @@
             android:orientation="vertical"
             android:showDividers="middle">
 
-            <TextView
-                android:id="@+id/tv_version"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:minHeight="36dp"
-                android:textAppearance="?textAppearanceSubtitle1"/>
-
             <com.github.kilnn.tool.widget.item.PreferenceItem
                 android:id="@+id/item_user_info"
                 style="@style/Widget.Sample.PreferenceView.Item.Text"
@@ -40,6 +32,11 @@
                 style="@style/Widget.Sample.PreferenceView.Item.Text"
                 android:visibility="gone"
                 app:preferenceTitle=""/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_exercise_goal"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/exercise_goal"/>
 
         </LinearLayout>
     </ScrollView>

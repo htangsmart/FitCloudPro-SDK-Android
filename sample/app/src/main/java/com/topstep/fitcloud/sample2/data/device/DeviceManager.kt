@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.polidea.rxandroidble3.exceptions.BleDisconnectedException
+import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.db.AppDatabase
 import com.topstep.fitcloud.sample2.data.db.UserForConnect
 import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
@@ -109,6 +110,7 @@ internal class DeviceManagerImpl(
     private val applicationScope: CoroutineScope,
     private val internalStorage: InternalStorage,
     private val womenHealthRepository: WomenHealthRepository,
+    private val exerciseGoalRepository: ExerciseGoalRepository,
     appDatabase: AppDatabase,
 ) : DeviceManager {
 
@@ -199,6 +201,15 @@ internal class DeviceManagerImpl(
             }
         }
         applicationScope.launch {
+            exerciseGoalRepository.flowCurrent.drop(1).collect {
+                if (flowState.value == ConnectorState.CONNECTED) {
+                    applicationScope.launchWithLog {
+                        settingsFeature.setExerciseGoal(it.step, (it.distance * 1000_00).toInt(), it.calorie * 1000).await()
+                    }
+                }
+            }
+        }
+        applicationScope.launch {
             womenHealthRepository.flowCurrent.drop(1).collectLatest {
                 delay(1000)
                 if (flowState.value == ConnectorState.CONNECTED) {
@@ -212,7 +223,13 @@ internal class DeviceManagerImpl(
         val userId = internalStorage.flowAuthedUserId.value
         if (userId != null) {
             applicationScope.launchWithLog {
-                //设置女性健康
+                runCatchingWithLog {
+                    Timber.tag(TAG).i("setExerciseGoal")
+                    exerciseGoalRepository.flowCurrent.value.let {
+                        settingsFeature.setExerciseGoal(it.step, (it.distance * 1000_00).toInt(), it.calorie * 1000).await()
+                    }
+                }
+
                 runCatchingWithLog {
                     val config = womenHealthRepository.flowCurrent.value
                     setWomenHealth(config)

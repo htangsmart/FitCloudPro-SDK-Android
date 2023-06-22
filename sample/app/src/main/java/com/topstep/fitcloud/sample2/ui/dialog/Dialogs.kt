@@ -222,3 +222,27 @@ fun Fragment.showScreenLongTimeBrightDurationDialog(config: FcScreenVibrateConfi
         titleResId = R.string.ds_screen_long_time_bright_duration
     )?.show(childFragmentManager, DIALOG_SCREEN_LONG_TIME_BRIGHT_DURATION)
 }
+
+const val DIALOG_EXERCISE_STEP = "exercise_step"
+fun Fragment.showExerciseStepDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 1,
+        max = 50,
+        multiples = 1000,
+        value = value,
+        title = getString(R.string.exercise_goal_step),
+        des = getString(R.string.unit_step)
+    ).show(childFragmentManager, DIALOG_EXERCISE_STEP)
+}
+
+const val DIALOG_EXERCISE_CALORIE = "exercise_calorie"
+fun Fragment.showExerciseCalorieDialog(value: Int) {
+    SelectIntDialogFragment.newInstance(
+        min = 1,
+        max = 50,
+        multiples = 30,
+        value = value,
+        title = getString(R.string.exercise_goal_calories),
+        des = getString(R.string.unit_k_calories)
+    ).show(childFragmentManager, DIALOG_EXERCISE_CALORIE)
+}

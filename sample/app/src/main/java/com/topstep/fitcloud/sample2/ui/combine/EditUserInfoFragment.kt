@@ -46,7 +46,7 @@ class EditUserInfoFragment : BaseFragment(R.layout.fragment_edit_user_info) {
             return
         }
         val weight = viewBind.editWeight.text.trim().toString().toIntOrNull() ?: return
-        if (height !in 20..300) {
+        if (weight !in 20..300) {
             promptToast.showInfo(R.string.account_weight_error)
             return
         }

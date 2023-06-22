@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.github.kilnn.tool.widget.ktx.clickTrigger
-import com.topstep.fitcloud.sample2.BuildConfig
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.databinding.FragmentCombineBinding
 import com.topstep.fitcloud.sample2.di.Injector
@@ -22,6 +21,7 @@ import com.topstep.fitcloud.sample2.utils.shareInView
 import com.topstep.fitcloud.sample2.utils.showFailed
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.FcConnector
+import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.delay
@@ -44,6 +44,11 @@ import java.util.*
  * Due to historical legacy issues, when reading this config from the device, only partial data may be returned.
  * Therefore, it is recommended not to read this config from the device, but always follow the config in your APP.
  *
+ * <p>
+ * 3. Exercise Goal
+ * Most devices can only [FcSettingsFeature.setExerciseGoal] and cannot read them from the device.
+ * So this part of the data needs to be stored in the APP, such as the database.
+ *
  */
 class CombineFragment : BaseFragment(R.layout.fragment_combine) {
 
@@ -53,7 +58,6 @@ class CombineFragment : BaseFragment(R.layout.fragment_combine) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBind.tvVersion.text = "v" + BuildConfig.VERSION_NAME
         viewBind.itemUserInfo.clickTrigger {
             findNavController().navigate(CombineFragmentDirections.toEditUserInfo())
         }
@@ -64,7 +68,10 @@ class CombineFragment : BaseFragment(R.layout.fragment_combine) {
             val mode = womenHealthRepository.flowCurrent.value?.mode ?: return@clickTrigger
             findNavController().navigate(CombineFragmentDirections.toWhDetail(mode))
         }
-        viewBind.btnSignOut.setOnClickListener {
+        viewBind.itemExerciseGoal.clickTrigger {
+            findNavController().navigate(CombineFragmentDirections.toExerciseGoal())
+        }
+        viewBind.btnSignOut.clickTrigger {
             viewModel.signOut()
         }
         lifecycle.launchRepeatOnStarted {
