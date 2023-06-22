@@ -185,6 +185,15 @@
     <string name="ds_dnd_config_all_day_des">The following settings will be ignored if you turn on DND all-day</string>
     <string name="ds_dnd_config_period_time">DND Period Time</string>
 
+    <string name="ds_screen_vibrate">Screen And Vibrate Config</string>
+    <string name="ds_vibration_intensity">Vibration strength</string>
+    <string name="ds_screen_brightness">Screen Brightness</string>
+    <string name="ds_screen_bright_duration">Duration of Bright Screen</string>
+    <string name="ds_screen_turn_wrist_bright_duration">Duration When Bright by Raise Hand</string>
+    <string name="ds_screen_long_time_bright">Bright Screen For Long Time</string>
+    <string name="ds_screen_long_time_bright_duration">Duration</string>
+    <string name="ds_screen_always_bright">Keep the screen on</string>
+
     <!--Power save mode-->
     <string name="ds_power_save_mode">Power Save Mode</string>
 
@@ -306,6 +315,8 @@
     <string name="unit_mmhg_param"><xliff:g id="params1">%1$s</xliff:g>mmHg</string>
     <string name="unit_bmp">BMP</string>
     <string name="unit_bmp_unit"><xliff:g id="params1">%1$d</xliff:g> BMP</string>
+    <string name="unit_level_param"><xliff:g id="params1">%1$d</xliff:g> Level</string>
+    <string name="unit_second_param"><xliff:g id="params1">%1$d</xliff:g> Seconds</string>
 
     <!--Alarms-->
     <string name="ds_alarm">Alarms</string>

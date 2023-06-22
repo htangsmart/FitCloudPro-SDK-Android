@@ -34,6 +34,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
         viewBind.itemBloodPressure.clickTrigger(block = blockClick)
         viewBind.itemTurnWristLighting.clickTrigger(block = blockClick)
         viewBind.itemDnd.clickTrigger(block = blockClick)
+        viewBind.itemScreenVibrate.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
             launch {
@@ -42,10 +43,13 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
                 }
             }
             launch {
-                deviceManager.configFeature.observerDeviceInfo().asFlow().collect {
+                deviceManager.configFeature.observerDeviceInfo().startWithItem(
+                    deviceManager.configFeature.getDeviceInfo()
+                ).asFlow().collect {
                     viewBind.itemPage.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SETTING_PAGE_CONFIG)
                     viewBind.itemBloodPressure.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE) and !it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE_AIR_PUMP)
                     viewBind.itemDnd.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.DND)
+                    viewBind.itemScreenVibrate.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SCREEN_VIBRATE)
                 }
             }
         }
@@ -76,6 +80,9 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
             }
             viewBind.itemDnd -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toDndConfig())
+            }
+            viewBind.itemScreenVibrate -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toScreenVibrateConfig())
             }
         }
     }

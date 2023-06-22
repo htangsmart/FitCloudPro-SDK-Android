@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_vibrate"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_vibration_intensity"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_brightness"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_screen_brightness"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_bright_duration"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_screen_bright_duration"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_turn_wrist_bright_duration"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_screen_turn_wrist_bright_duration"/>
+
+        <LinearLayout
+            android:id="@+id/layout_lt_bright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_lt_bright_is_enabled"
+                style="@style/Widget.Sample.PreferenceView.Item.Switch"
+                app:preferenceTitle="@string/ds_screen_long_time_bright"/>
+
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_lt_bright_duration"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                android:layout_marginStart="12dp"
+                app:preferenceTitle="@string/ds_screen_long_time_bright_duration"/>
+
+        </LinearLayout>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_always_bright"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_screen_always_bright"/>
+
+    </LinearLayout>
+
+</ScrollView>

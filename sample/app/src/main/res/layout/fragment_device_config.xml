@@ -68,6 +68,13 @@
             android:layout_height="wrap_content"
             app:preferenceTitle="@string/ds_dnd_config"/>
 
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_screen_vibrate"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_screen_vibrate"/>
+
     </LinearLayout>
 
 </ScrollView>

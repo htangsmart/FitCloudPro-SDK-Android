@@ -127,6 +127,9 @@
         <action
             android:id="@+id/toDndConfig"
             app:destination="@id/dndConfigFragment"/>
+        <action
+            android:id="@+id/toScreenVibrateConfig"
+            app:destination="@id/screenVibrateConfigFragment"/>
     </fragment>
 
     <fragment
@@ -195,6 +198,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.config.DNDConfigFragment"
         android:label="@string/ds_dnd_config"
         tools:layout="@layout/fragment_dnd_config"/>
+
+    <fragment
+        android:id="@+id/screenVibrateConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.ScreenVibrateConfigFragment"
+        android:label="@string/ds_screen_vibrate"
+        tools:layout="@layout/fragment_screen_vibrate_config"/>
 
     <fragment
         android:id="@+id/powerSaveModeFragment"

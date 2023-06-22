@@ -185,6 +185,15 @@
     <string name="ds_dnd_config_all_day_des">如果开启全天免打扰，则下面的设置会被忽略</string>
     <string name="ds_dnd_config_period_time">某段时间免打扰</string>
 
+    <string name="ds_screen_vibrate">屏幕和震动配置</string>
+    <string name="ds_vibration_intensity">震动强度</string>
+    <string name="ds_screen_brightness">屏幕亮度</string>
+    <string name="ds_screen_bright_duration">亮屏时长</string>
+    <string name="ds_screen_turn_wrist_bright_duration">翻腕亮屏时长</string>
+    <string name="ds_screen_long_time_bright">长时间亮屏</string>
+    <string name="ds_screen_long_time_bright_duration">持续时间</string>
+    <string name="ds_screen_always_bright">保持亮屏</string>
+
     <!--Power save mode-->
     <string name="ds_power_save_mode">省电模式</string>
 
@@ -306,6 +315,8 @@
     <string name="unit_mmhg_param"><xliff:g id="params1">%1$s</xliff:g>mmHg</string>
     <string name="unit_bmp">次/分</string>
     <string name="unit_bmp_unit"><xliff:g id="params1">%1$d</xliff:g>次/分</string>
+    <string name="unit_level_param"><xliff:g id="params1">%1$d</xliff:g>级</string>
+    <string name="unit_second_param"><xliff:g id="params1">%1$d</xliff:g>秒</string>
 
     <!--Alarms-->
     <string name="ds_alarm">手表闹钟</string>
