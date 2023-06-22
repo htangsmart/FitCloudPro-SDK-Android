@@ -20,7 +20,7 @@ import kotlinx.coroutines.rx3.await
 
 /**
  * **Document**
- * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fcdrinkwaterconfig
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/04.Device-info-and-configs#fcdrinkwaterconfig
  *
  * ***Description**
  * Display and modify the config of drink water reminder

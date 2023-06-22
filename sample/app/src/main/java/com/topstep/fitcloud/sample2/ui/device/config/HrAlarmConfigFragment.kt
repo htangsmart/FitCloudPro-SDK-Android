@@ -24,7 +24,7 @@ import kotlinx.coroutines.rx3.await
 
 /**
  * **Document**
- * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fcheartratealarmconfig
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/04.Device-info-and-configs#fcheartratealarmconfig
  *
  * ***Description**
  * Display and modify the config of heart rate alarm

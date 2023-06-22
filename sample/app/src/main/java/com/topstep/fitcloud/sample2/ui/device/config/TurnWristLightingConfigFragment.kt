@@ -20,7 +20,7 @@ import kotlinx.coroutines.rx3.await
 
 /**
  * **Document**
- * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fcturnwristlightingconfig
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/04.Device-info-and-configs#fcturnwristlightingconfig
  *
  * ***Description**
  * Display and modify the config of raise hand to lighting the device

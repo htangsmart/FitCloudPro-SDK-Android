@@ -26,7 +26,7 @@ import kotlinx.coroutines.rx3.await
 
 /**
  * **Document**
- * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/4.Device-info-and-configs#fcpageconfig
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/04.Device-info-and-configs#fcpageconfig
  *
  * ***Description**
  * Display and modify the page displayed on the device
