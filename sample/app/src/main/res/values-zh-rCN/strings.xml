@@ -42,7 +42,6 @@
     <string name="tip_none">无</string>
     <string name="tip_i_know">我知道了</string>
     <string name="tip_please_wait">请稍后&#8230;</string>
-    <string name="tip_loading_error">加载失败，点击重试</string>
     <string name="tip_save_success">保存成功</string>
     <string name="tip_success">成功</string>
     <string name="tip_failed">失败</string>
@@ -193,6 +192,19 @@
     <string name="ds_screen_long_time_bright">长时间亮屏</string>
     <string name="ds_screen_long_time_bright_duration">持续时间</string>
     <string name="ds_screen_always_bright">保持亮屏</string>
+
+    <!--QR Codes-->
+    <string name="ds_qr_codes">二维码</string>
+    <string name="ds_qr_codes_tips">此功能使用假的的二维码数据，实际应用中，开发者需要自己把二维码解析成字符串。</string>
+    <string name="ds_collection_code">收款码</string>
+    <string name="ds_collection_code_wechat">微信</string>
+    <string name="ds_collection_code_alipay">支付宝</string>
+    <string name="ds_collection_code_paypal">PayPal</string>
+    <string name="ds_business_card">名片</string>
+    <string name="ds_business_card_facebook">Facebook</string>
+    <string name="ds_business_card_whatsapp">WhatsApp</string>
+    <string name="ds_business_card_twitter">Twitter</string>
+    <string name="ds_nucleic_acid_code">核酸码</string>
 
     <!--Power save mode-->
     <string name="ds_power_save_mode">省电模式</string>

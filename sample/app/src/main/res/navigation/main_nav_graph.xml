@@ -22,6 +22,9 @@
             android:id="@+id/toDeviceConfig"
             app:destination="@id/deviceConfigFragment"/>
         <action
+            android:id="@+id/toQrCodes"
+            app:destination="@id/qrCodesFragment"/>
+        <action
             android:id="@+id/toPowerSaveMode"
             app:destination="@id/powerSaveModeFragment"/>
         <action
@@ -204,6 +207,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.config.ScreenVibrateConfigFragment"
         android:label="@string/ds_screen_vibrate"
         tools:layout="@layout/fragment_screen_vibrate_config"/>
+
+    <fragment
+        android:id="@+id/qrCodesFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.qrcode.QrCodesFragment"
+        android:label="@string/ds_qr_codes"
+        tools:layout="@layout/fragment_qr_codes"/>
 
     <fragment
         android:id="@+id/powerSaveModeFragment"

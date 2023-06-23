@@ -50,7 +50,7 @@ class PowerSaveModeFragment : BaseFragment(R.layout.fragment_power_save_mode),
                             viewBind.loadingView.showLoading()
                         }
                         is Fail -> {
-                            viewBind.loadingView.showError(R.string.tip_loading_error)
+                            viewBind.loadingView.showError(R.string.tip_load_error)
                         }
                         is Success -> {
                             viewBind.loadingView.visibility = View.GONE

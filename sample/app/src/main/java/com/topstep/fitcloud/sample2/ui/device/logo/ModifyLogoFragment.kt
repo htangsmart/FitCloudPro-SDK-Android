@@ -50,7 +50,7 @@ class ModifyLogoFragment : GetPhotoFragment(R.layout.fragment_modify_logo) {
                             viewBind.loadingView.showLoading()
                         }
                         is Fail -> {
-                            viewBind.loadingView.showError(R.string.tip_loading_error)
+                            viewBind.loadingView.showError(R.string.tip_load_error)
                         }
                         is Success -> {
                             val shape = async()

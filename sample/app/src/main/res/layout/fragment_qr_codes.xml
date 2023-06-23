@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.topstep.fitcloud.sample2.ui.widget.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="?dividerVertical"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/ds_qr_codes_tips"
+                android:textAppearance="?textAppearanceSubtitle1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:divider="?dividerVertical"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="32dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/ds_collection_code"
+                    android:textAppearance="?textAppearanceHeadline6"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_collection_code_wechat"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_collection_code_wechat"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_collection_code_alipay"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_collection_code_alipay"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_collection_code_paypal"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_collection_code_paypal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:divider="?dividerVertical"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="32dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/ds_business_card"
+                    android:textAppearance="?textAppearanceHeadline6"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_business_card_facebook"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_business_card_facebook"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_business_card_whatsapp"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_business_card_whatsapp"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_business_card_twitter"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_business_card_twitter"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:divider="?dividerVertical"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="32dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/ds_nucleic_acid_code"
+                    android:textAppearance="?textAppearanceHeadline6"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_nucleic_acid_code"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_nucleic_acid_code"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</FrameLayout>
