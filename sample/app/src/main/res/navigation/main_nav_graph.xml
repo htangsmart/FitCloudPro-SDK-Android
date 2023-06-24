@@ -25,6 +25,9 @@
             android:id="@+id/toQrCodes"
             app:destination="@id/qrCodesFragment"/>
         <action
+            android:id="@+id/toAlarm"
+            app:destination="@id/alarmFragment"/>
+        <action
             android:id="@+id/toPowerSaveMode"
             app:destination="@id/powerSaveModeFragment"/>
         <action
@@ -213,6 +216,10 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.qrcode.QrCodesFragment"
         android:label="@string/ds_qr_codes"
         tools:layout="@layout/fragment_qr_codes"/>
+
+    <fragment
+        android:id="@+id/alarmFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.alarm.AlarmFragment"/>
 
     <fragment
         android:id="@+id/powerSaveModeFragment"

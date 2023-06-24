@@ -47,6 +47,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemDeviceInfo.clickTrigger(block = blockClick)
         viewBind.itemDeviceConfig.clickTrigger(block = blockClick)
         viewBind.itemQrCodes.clickTrigger(block = blockClick)
+        viewBind.itemAlarm.clickTrigger(block = blockClick)
         viewBind.itemPowerSaveMode.clickTrigger(block = blockClick)
         viewBind.itemDial.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
@@ -134,6 +135,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemQrCodes -> {
                 findNavController().navigate(DeviceFragmentDirections.toQrCodes())
+            }
+            viewBind.itemAlarm -> {
+                findNavController().navigate(DeviceFragmentDirections.toAlarm())
             }
             viewBind.itemPowerSaveMode -> {
                 findNavController().navigate(DeviceFragmentDirections.toPowerSaveMode())

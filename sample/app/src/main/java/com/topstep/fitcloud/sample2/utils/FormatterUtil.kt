@@ -70,6 +70,14 @@ object FormatterUtil {
         }
     }
 
+    fun get02dWheelIntFormatter(): WheelIntFormatter {
+        return object : WheelIntFormatter {
+            override fun format(index: Int, value: Int): String {
+                return String.format(systemLocale, "%02d", value)
+            }
+        }
+    }
+
     ////////////// Time format////////////
     fun minute2Hmm(minute: Int): String {
         return hmm(minute / 60, minute % 60)

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/alarmListFragment">
+
+    <fragment
+        android:id="@+id/alarmListFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.alarm.AlarmListFragment"
+        tools:layout="@layout/fragment_alarm_list">
+        <action
+            android:id="@+id/toAlarmDetail"
+            app:destination="@id/alarmDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/alarmDetailFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.alarm.AlarmDetailFragment"
+        tools:layout="@layout/fragment_alarm_detail">
+        <argument
+            android:name="position"
+            app:argType="integer"/>
+    </fragment>
+
+</navigation>

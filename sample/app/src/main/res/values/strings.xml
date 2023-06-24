@@ -36,6 +36,7 @@
     <string name="action_to_set">To Set</string>
     <string name="action_save">Save</string>
     <string name="action_start">Start</string>
+    <string name="action_retry">Retry</string>
 
     <!--Tips-->
     <string name="tip_prompt">Hint</string>
@@ -49,6 +50,9 @@
     <string name="tip_current_no_data">No data yet</string>
     <string name="tip_load_error">Load failed, click reload</string>
     <string name="tip_disabled">Disabled</string>
+    <string name="tip_setting_loading">Setting up…</string>
+    <string name="tip_setting_fail">Setup failed, do you want to try again?</string>
+    <string name="tip_setting_success">Setup success</string>
 
     <!--Permission-->
     <string name="permission_explain_msg">Following permissions are required. Do you want to request for the next step?</string>
@@ -327,6 +331,7 @@
     <string name="unit_day">d</string>
     <string name="unit_day_count">days</string>
     <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g> days</string>
+    <string name="unit_hour">hr</string>
     <string name="unit_minute">min</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> minutes</string>
     <string name="unit_mmhg">mmHg</string>
@@ -373,7 +378,6 @@
     <string name="ds_alarm_repeat_06_simple">Sun</string>
     <string name="ds_alarm_delete">Delete</string>
     <string name="ds_alarm_repeat">Repeat</string>
-    <string name="ds_alarm_delete_message">Are you sure to delete the alarm clock?</string>
     <string name="ds_alarm_label_default">Alarm</string>
 
 </resources>

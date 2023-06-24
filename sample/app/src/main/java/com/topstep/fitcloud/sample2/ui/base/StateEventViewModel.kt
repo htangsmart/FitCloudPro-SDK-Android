@@ -4,13 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.topstep.fitcloud.sample2.ui.base.AsyncEvent.OnFail
 import com.topstep.fitcloud.sample2.ui.base.AsyncEvent.OnSuccess
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Job
+import com.topstep.fitcloud.sample2.utils.runCatchingWithLog
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.launch
 import kotlin.reflect.KProperty1
 
 abstract class StateEventViewModel<State, Event>(initState: State) : ViewModel() {
@@ -67,3 +66,49 @@ abstract class AsyncViewModel<S>(initState: S) : StateEventViewModel<S, AsyncEve
 data class SingleAsyncState<T>(
     val async: Async<T> = Uninitialized
 )
+
+abstract class SingleAsyncAction<T>(
+    private val coroutineScope: CoroutineScope,
+    initState: Async<T>
+) {
+    private val _flowState = MutableStateFlow(initState)
+    val flowState = _flowState.asStateFlow()
+
+    private var job: Job? = null
+
+    fun isSuccess(): Boolean {
+        return job?.isCompleted != false && _flowState.value !is Fail
+    }
+
+    fun cancel() {
+        job?.cancel()
+        coroutineScope.launch {
+            _flowState.emit(Uninitialized)
+        }
+    }
+
+    fun retry() {
+        execute(0)
+    }
+
+    fun execute(delay: Long = 1000) {
+        job?.cancel()
+        job = coroutineScope.launch {
+            _flowState.emit(Loading())
+            //Delay by 1 second to avoid frequent modifications
+            if (delay > 0) {
+                delay(delay)
+            }
+            runCatchingWithLog {
+                action()
+            }.onSuccess {
+                _flowState.emit(Success(it))
+            }.onFailure {
+                _flowState.emit(Fail(it))
+            }
+        }
+    }
+
+    abstract suspend fun action(): T
+
+}

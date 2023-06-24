@@ -65,7 +65,7 @@ class DfuViewModel : ViewModel() {
 }
 
 /**
- * Dfu通用的提示消息
+ * General prompt message for Dfu
  */
 fun PromptDialogHolder.showDfuFail(context: Context, throwable: Throwable) {
     Timber.w(throwable)

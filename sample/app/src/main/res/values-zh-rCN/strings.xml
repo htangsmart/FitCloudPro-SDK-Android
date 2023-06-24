@@ -36,6 +36,7 @@
     <string name="action_to_set">去设置</string>
     <string name="action_save">保存</string>
     <string name="action_start">开始</string>
+    <string name="action_retry">重试</string>
 
     <!--Tips-->
     <string name="tip_prompt">提示</string>
@@ -49,6 +50,9 @@
     <string name="tip_current_no_data">暂无数据</string>
     <string name="tip_load_error">加载失败，点击重试</string>
     <string name="tip_disabled">未开启</string>
+    <string name="tip_setting_loading">正在设置…</string>
+    <string name="tip_setting_fail">设置失败，是否重试？</string>
+    <string name="tip_setting_success">设置成功</string>
 
     <!--Permission-->
     <string name="permission_explain_msg">需要以下权限，是否请求以便进行下一步操作？</string>
@@ -327,6 +331,7 @@
     <string name="unit_day">日</string>
     <string name="unit_day_count">天</string>
     <string name="unit_day_count_param"><xliff:g id="params1">%1$d</xliff:g>天</string>
+    <string name="unit_hour">小时</string>
     <string name="unit_minute">分钟</string>
     <string name="unit_minute_param"><xliff:g id="params1">%1$d</xliff:g> 分钟</string>
     <string name="unit_mmhg">mmHg</string>
@@ -373,7 +378,6 @@
     <string name="ds_alarm_repeat_06_simple">周日</string>
     <string name="ds_alarm_delete">删除闹钟</string>
     <string name="ds_alarm_repeat">重复</string>
-    <string name="ds_alarm_delete_message">确定要删除该闹钟吗？</string>
     <string name="ds_alarm_label_default">闹钟</string>
 
 </resources>
