@@ -28,6 +28,9 @@
             android:id="@+id/toAlarm"
             app:destination="@id/alarmFragment"/>
         <action
+            android:id="@+id/toContacts"
+            app:destination="@id/contactsFragment"/>
+        <action
             android:id="@+id/toPowerSaveMode"
             app:destination="@id/powerSaveModeFragment"/>
         <action
@@ -220,6 +223,12 @@
     <fragment
         android:id="@+id/alarmFragment"
         android:name="com.topstep.fitcloud.sample2.ui.device.alarm.AlarmFragment"/>
+
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.contacts.ContactsFragment"
+        android:label="@string/ds_contacts"
+        tools:layout="@layout/fragment_contacts"/>
 
     <fragment
         android:id="@+id/powerSaveModeFragment"

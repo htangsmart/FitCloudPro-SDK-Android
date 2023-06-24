@@ -48,6 +48,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemDeviceConfig.clickTrigger(block = blockClick)
         viewBind.itemQrCodes.clickTrigger(block = blockClick)
         viewBind.itemAlarm.clickTrigger(block = blockClick)
+        viewBind.itemContacts.clickTrigger(block = blockClick)
         viewBind.itemPowerSaveMode.clickTrigger(block = blockClick)
         viewBind.itemDial.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
@@ -89,6 +90,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                     viewBind.itemQrCodes.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.COLLECTION_CODE) ||
                             it.isSupportFeature(FcDeviceInfo.Feature.BUSINESS_CARD) ||
                             it.isSupportFeature(FcDeviceInfo.Feature.NUCLEIC_ACID_CODE)
+                    viewBind.itemContacts.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CONTACTS)
                     viewBind.itemPowerSaveMode.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.POWER_SAVE_MODE)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
                 }
@@ -138,6 +140,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemAlarm -> {
                 findNavController().navigate(DeviceFragmentDirections.toAlarm())
+            }
+            viewBind.itemContacts -> {
+                findNavController().navigate(DeviceFragmentDirections.toContacts())
             }
             viewBind.itemPowerSaveMode -> {
                 findNavController().navigate(DeviceFragmentDirections.toPowerSaveMode())

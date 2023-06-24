@@ -380,4 +380,8 @@
     <string name="ds_alarm_repeat">重复</string>
     <string name="ds_alarm_label_default">闹钟</string>
 
+    <!--Contacts-->
+    <string name="ds_contacts">常用联系人</string>
+    <string name="ds_contacts_tips1">最多可添加10位常用联系人。</string>
+
 </resources>

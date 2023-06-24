@@ -380,4 +380,8 @@
     <string name="ds_alarm_repeat">Repeat</string>
     <string name="ds_alarm_label_default">Alarm</string>
 
+    <!--Contacts-->
+    <string name="ds_contacts">Frequent Contacts</string>
+    <string name="ds_contacts_tips1">Up to 10 favorite contacts can be added.</string>
+
 </resources>

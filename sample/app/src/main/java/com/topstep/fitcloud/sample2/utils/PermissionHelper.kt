@@ -85,6 +85,14 @@ object PermissionHelper {
         )
     }
 
+    fun requestContacts(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
+        requestPermission(
+            fragment, arrayListOf(
+                Manifest.permission.READ_CONTACTS,
+            ), grantResult
+        )
+    }
+
     private fun hasPermissions(context: Context, permissions: ArrayList<String>?): Boolean {
         if (permissions.isNullOrEmpty()) return true
         for (permission in permissions) {

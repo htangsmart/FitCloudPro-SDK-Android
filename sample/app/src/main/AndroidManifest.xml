@@ -6,6 +6,13 @@
         android:name="android.hardware.bluetooth_le"
         android:required="true"/>
 
+    <!--For internet-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!--For camera or code scanning-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!--For ble scan or weather or sport-->
     <uses-permission-sdk-23
         android:name="android.permission.ACCESS_FINE_LOCATION"
         tools:node="remove"/>
@@ -23,7 +30,8 @@
         android:name="android.permission.BLUETOOTH_ADMIN"
         tools:node="replace"/>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--For SMS/call monitor and device contacts-->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:name="com.topstep.fitcloud.sample2.MyApplication"
