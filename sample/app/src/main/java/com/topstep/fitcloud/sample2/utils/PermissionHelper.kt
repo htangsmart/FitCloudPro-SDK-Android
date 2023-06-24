@@ -76,6 +76,15 @@ object PermissionHelper {
         requestPermission(fragment, permissions, grantResult)
     }
 
+    fun requestWeatherLocation(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
+        requestPermission(
+            fragment, arrayListOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+            ), grantResult
+        )
+    }
+
     private fun hasPermissions(context: Context, permissions: ArrayList<String>?): Boolean {
         if (permissions.isNullOrEmpty()) return true
         for (permission in permissions) {

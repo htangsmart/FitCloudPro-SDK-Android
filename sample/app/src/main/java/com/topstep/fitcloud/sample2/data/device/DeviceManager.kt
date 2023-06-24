@@ -23,6 +23,7 @@ import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
 import com.topstep.fitcloud.sdk.v2.features.FcConfigFeature
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
+import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
 import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
 import io.reactivex.rxjava3.core.Observable
@@ -42,6 +43,11 @@ interface DeviceManager {
     val flowState: StateFlow<ConnectorState>
 
     val flowBattery: StateFlow<FcBatteryStatus?>
+
+    /**
+     * Does need weather
+     */
+    fun flowWeatherRequire(): Flow<Boolean>
 
     /**
      * Trying bind a new device.
@@ -290,6 +296,24 @@ internal class DeviceManagerImpl(
                 }
         }
         .stateIn(applicationScope, SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000L), null)
+
+    override fun flowWeatherRequire(): Flow<Boolean> {
+        return flowDevice.flatMapLatest {
+            if (it == null || it.isTryingBind) {
+                flowOf(false)
+            } else {
+                connector.configFeature().observerAnyChanged().filter { type ->
+                    type == FcConfigFeature.TYPE_DEVICE_INFO || type == FcConfigFeature.TYPE_FUNCTION_CONFIG
+                }.debounce(1000, TimeUnit.MILLISECONDS).startWithItem(0).asFlow()
+                    .map {
+                        val deviceInfo = connector.configFeature().getDeviceInfo()
+                        val functionConfig = connector.configFeature().getFunctionConfig()
+                        deviceInfo.isSupportFeature(FcDeviceInfo.Feature.WEATHER) &&
+                                functionConfig.isFlagEnabled(FcFunctionConfig.Flag.WEATHER_DISPLAY)
+                    }
+            }
+        }
+    }
 
     override fun bind(address: String, name: String) {
         val userId = internalStorage.flowAuthedUserId.value

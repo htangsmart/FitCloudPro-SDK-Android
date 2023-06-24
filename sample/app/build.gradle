@@ -117,6 +117,9 @@ dependencies {
     implementation "androidx.datastore:datastore:$datastore_version"
     implementation "androidx.datastore:datastore-preferences:$datastore_version"
 
+    //JetPack-WorkManager
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+
     //moshi
     implementation "com.squareup.moshi:moshi:1.14.0"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"

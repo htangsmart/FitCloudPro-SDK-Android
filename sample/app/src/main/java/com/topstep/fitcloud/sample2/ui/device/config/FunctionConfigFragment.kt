@@ -1,17 +1,17 @@
 package com.topstep.fitcloud.sample2.ui.device.config
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.widget.CompoundButton
+import com.github.kilnn.tool.system.SystemUtil
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.device.flowStateConnected
 import com.topstep.fitcloud.sample2.databinding.FragmentFunctionConfigBinding
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
-import com.topstep.fitcloud.sample2.utils.launchRepeatOnStarted
-import com.topstep.fitcloud.sample2.utils.launchWithLog
-import com.topstep.fitcloud.sample2.utils.setAllChildEnabled
-import com.topstep.fitcloud.sample2.utils.viewLifecycle
+import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.config.toBuilder
@@ -93,6 +93,16 @@ class FunctionConfigFragment : BaseFragment(R.layout.fragment_function_config), 
                     FcFunctionConfig.Flag.TEMPERATURE_UNIT
                 }
                 viewBind.itemDisplayWeather.getSwitchView() -> {
+                    if (isChecked) {
+                        //General weather function depends on location function
+                        if (!SystemUtil.isLocationEnabled(requireContext())) {
+                            buttonView.isChecked = false
+                            requireContext().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                            return
+                        }
+                        PermissionHelper.requestWeatherLocation(this) {
+                        }
+                    }
                     FcFunctionConfig.Flag.WEATHER_DISPLAY
                 }
                 viewBind.itemDisconnectReminder.getSwitchView() -> {
