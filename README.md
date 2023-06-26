@@ -8,8 +8,8 @@
 3. Api Change: `FcFunctionConfig.WEATHER_SWITCH` rename to `FcFunctionConfig.WEATHER_DISPLAY`
 4. Api Change: `FcFunctionConfig.EXERCISE_TARGET` rename to `FcFunctionConfig.EXERCISE_GOAL_DISPLAY`
 5. Api Change: `FcBloodPressureConfig.isPrivateMode` rename to `FcBloodPressureConfig.isEnabled`
-6. Api Change: `FcSpecialFeature.requestLanguage` move to `FcSettingsConfig.requestLanguage`
-7. Api Change: `FcSpecialFeature.requestExerciseGoal` move to `FcSettingsConfig.requestExerciseGoal`
+6. Api Change: `FcSpecialFeature.requestLanguage` move to `FcSettingsFeature.requestLanguage`
+7. Api Change: `FcSpecialFeature.requestExerciseGoal` move to `FcSettingsFeature.requestExerciseGoal`
 
 # v2.0.1(2023-06-07)
 
