@@ -4,8 +4,8 @@ import com.topstep.fitcloud.sample2.data.auth.AuthManager
 import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.device.DeviceManager
 import com.topstep.fitcloud.sample2.data.device.DialRepository
+import com.topstep.fitcloud.sample2.data.device.SyncDataRepository
 import com.topstep.fitcloud.sample2.data.user.UserInfoRepository
-import com.topstep.fitcloud.sample2.data.user.UserInfoRepositoryImpl
 import com.topstep.fitcloud.sample2.data.version.VersionRepository
 import com.topstep.fitcloud.sample2.data.version.VersionRepositoryImpl
 import com.topstep.fitcloud.sample2.data.wh.WomenHealthRepository
@@ -32,7 +32,7 @@ object Injector {
     }
 
     fun getUserInfoRepository(): UserInfoRepository {
-        return UserInfoRepositoryImpl(SingleInstance.appDatabase)
+        return SingleInstance.userInfoRepository
     }
 
     fun getVersionRepository(): VersionRepository {
@@ -56,5 +56,9 @@ object Injector {
 
     fun getExerciseGoalRepository(): ExerciseGoalRepository {
         return SingleInstance.exerciseGoalRepository
+    }
+
+    fun getSyncDataRepository(): SyncDataRepository {
+        return SingleInstance.syncDataRepository
     }
 }

@@ -16,7 +16,7 @@ abstract class UserDao {
 
     @RewriteQueriesToDropUnusedColumns
     @Query("SELECT * FROM UserEntity WHERE id=:userId")
-    internal abstract fun flowUserForConnect(userId: Long): Flow<UserForConnect>
+    internal abstract fun flowUserInfo(userId: Long): Flow<UserInfo>
 
     @RewriteQueriesToDropUnusedColumns
     @Query("SELECT * FROM UserEntity WHERE id=:userId")
@@ -38,11 +38,3 @@ abstract class UserDao {
         return queryUserCount(userId) > 0
     }
 }
-
-internal data class UserForConnect(
-    val id: Long,
-    val height: Int,//user height(cm)
-    val weight: Int,//user weight(kg)
-    val sex: Boolean,//True for male, false for female
-    val age: Int
-)

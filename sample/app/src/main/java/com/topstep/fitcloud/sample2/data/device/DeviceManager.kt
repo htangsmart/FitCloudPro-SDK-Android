@@ -1,39 +1,47 @@
 package com.topstep.fitcloud.sample2.data.device
 
 import android.content.Context
+import androidx.annotation.IntDef
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.polidea.rxandroidble3.exceptions.BleDisconnectedException
 import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.db.AppDatabase
-import com.topstep.fitcloud.sample2.data.db.UserForConnect
 import com.topstep.fitcloud.sample2.data.entity.DeviceBindEntity
 import com.topstep.fitcloud.sample2.data.entity.toModel
 import com.topstep.fitcloud.sample2.data.storage.InternalStorage
+import com.topstep.fitcloud.sample2.data.user.UserInfoRepository
 import com.topstep.fitcloud.sample2.data.wh.WomenHealthRepository
 import com.topstep.fitcloud.sample2.fcSDK
 import com.topstep.fitcloud.sample2.model.device.ConnectorDevice
 import com.topstep.fitcloud.sample2.model.device.ConnectorState
+import com.topstep.fitcloud.sample2.model.user.UserInfo
 import com.topstep.fitcloud.sample2.model.wh.WomenHealthConfig
 import com.topstep.fitcloud.sample2.utils.launchWithLog
 import com.topstep.fitcloud.sample2.utils.runCatchingWithLog
 import com.topstep.fitcloud.sdk.connector.FcConnectorState
 import com.topstep.fitcloud.sdk.connector.FcDisconnectedReason
+import com.topstep.fitcloud.sdk.exception.FcSyncBusyException
 import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
 import com.topstep.fitcloud.sdk.v2.features.FcConfigFeature
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
+import com.topstep.fitcloud.sdk.v2.model.data.FcSyncData
+import com.topstep.fitcloud.sdk.v2.model.data.FcSyncDataType
+import com.topstep.fitcloud.sdk.v2.model.data.FcSyncState
 import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
 import kotlinx.coroutines.rx3.await
 import timber.log.Timber
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 interface DeviceManager {
@@ -43,6 +51,17 @@ interface DeviceManager {
     val flowState: StateFlow<ConnectorState>
 
     val flowBattery: StateFlow<FcBatteryStatus?>
+
+    /**
+     * Sync data state of [FcSyncState].
+     * Null for current no any sync state
+     */
+    val flowSyncState: StateFlow<Int?>
+
+    /**
+     * [SyncEvent]
+     */
+    val flowSyncEvent: Flow<Int>
 
     /**
      * Does need weather
@@ -98,6 +117,23 @@ interface DeviceManager {
     fun newDfuManager(): FcDfuManager
 
     fun syncData()
+
+    @IntDef(
+        SyncEvent.SYNCING,
+        SyncEvent.SUCCESS,
+        SyncEvent.FAIL_DISCONNECT,
+        SyncEvent.FAIL,
+    )
+    @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD)
+    @Retention(AnnotationRetention.BINARY)
+    annotation class SyncEvent {
+        companion object {
+            const val SYNCING = 0//正在同步
+            const val SUCCESS = 1//同步成功
+            const val FAIL_DISCONNECT = 2//同步失败，因为连接断开
+            const val FAIL = 3//同步失败
+        }
+    }
 }
 
 fun DeviceManager.flowStateConnected(): Flow<Boolean> {
@@ -115,15 +151,16 @@ internal class DeviceManagerImpl(
     context: Context,
     private val applicationScope: CoroutineScope,
     private val internalStorage: InternalStorage,
+    private val userInfoRepository: UserInfoRepository,
     private val womenHealthRepository: WomenHealthRepository,
     private val exerciseGoalRepository: ExerciseGoalRepository,
+    private val syncDataRepository: SyncDataRepository,
     appDatabase: AppDatabase,
 ) : DeviceManager {
 
     private val fcSDK = context.fcSDK
     private val connector = fcSDK.connector
     private val configDao = appDatabase.configDao()
-    private val userDao = appDatabase.userDao()
 
     /**
      * Manually control the current device
@@ -171,16 +208,16 @@ internal class DeviceManagerImpl(
         combineState(device, isAdapterEnabled, connectorState)
     }.stateIn(applicationScope, SharingStarted.Eagerly, ConnectorState.NO_DEVICE)
 
+    override val flowSyncState: StateFlow<Int?> = connector.dataFeature()
+        .observerSyncState().asFlow().stateIn(applicationScope, SharingStarted.Lazily, null)
+
+    private val _flowSyncEvent = Channel<Int>()
+    override val flowSyncEvent = _flowSyncEvent.receiveAsFlow()
+
     init {
         applicationScope.launch {
             //Connect or disconnect when device changed
-            internalStorage.flowAuthedUserId.flatMapLatest {
-                if (it == null) {
-                    flowOf(null)
-                } else {
-                    userDao.flowUserForConnect(it)
-                }
-            }.combine(flowDevice) { user, device ->
+            userInfoRepository.flowCurrent.combine(flowDevice) { user, device ->
                 ConnectionParam(user, device)
             }.collect {
                 if (it.device == null || it.user == null) {
@@ -229,6 +266,13 @@ internal class DeviceManagerImpl(
         val userId = internalStorage.flowAuthedUserId.value
         if (userId != null) {
             applicationScope.launchWithLog {
+                if (connector.isBindOrLogin()) {//This connection is in binding mode
+                    //Clear the Step data of the day
+                    runCatchingWithLog {
+                        syncDataRepository.saveTodayStep(userId, null)
+                    }
+                }
+
                 runCatchingWithLog {
                     Timber.tag(TAG).i("setExerciseGoal")
                     exerciseGoalRepository.flowCurrent.value.let {
@@ -408,20 +452,96 @@ internal class DeviceManagerImpl(
     }
 
     override fun syncData() {
+        if (connector.dataFeature().isSyncing()) {
+            return
+        }
         applicationScope.launch {
             connector.dataFeature().syncData().asFlow()
                 .onStart {
                     Timber.tag(TAG).i("syncData onStart")
+                    _flowSyncEvent.send(DeviceManager.SyncEvent.SYNCING)
                 }
                 .onCompletion {
                     Timber.tag(TAG).i(it, "syncData onCompletion")
+                    when (it) {
+                        null -> {
+                            _flowSyncEvent.send(DeviceManager.SyncEvent.SUCCESS)
+                        }
+                        is BleDisconnectedException -> {
+                            _flowSyncEvent.send(DeviceManager.SyncEvent.FAIL_DISCONNECT)
+                        }
+                        !is FcSyncBusyException -> {
+                            _flowSyncEvent.send(DeviceManager.SyncEvent.FAIL)
+                        }
+                    }
                 }
                 .catch {
                 }
                 .collect {
-
+                    saveSyncData(it)
                 }
             Timber.tag(TAG).i("syncData finish")
+        }
+    }
+
+    private suspend fun saveSyncData(data: FcSyncData) {
+        Timber.tag(TAG).i("saveSyncData:%d", data.type)
+        val userId = internalStorage.flowAuthedUserId.value ?: return
+
+        when (data.type) {
+            FcSyncDataType.STEP -> syncDataRepository.saveStep(
+                userId, data.toStep(), configFeature.getDeviceInfo().isSupportFeature(
+                    FcDeviceInfo.Feature.STEP_EXTRA
+                )
+            )
+
+//            FcSyncDataType.SLEEP -> {
+//                data.toSleep()?.sortedBy { it.timestamp }?.let {
+//                    dataRepository.saveSleepDeviceData(userId, it)
+//                }
+//            }
+//
+            FcSyncDataType.HEART_RATE -> syncDataRepository.saveHeartRate(userId, data.toHeartRate())
+            FcSyncDataType.HEART_RATE_MEASURE -> syncDataRepository.saveHeartRate(userId, data.toHeartRateMeasure())
+
+            FcSyncDataType.OXYGEN -> syncDataRepository.saveOxygen(userId, data.toOxygen())
+            FcSyncDataType.OXYGEN_MEASURE -> syncDataRepository.saveOxygen(userId, data.toOxygenMeasure())
+
+            FcSyncDataType.BLOOD_PRESSURE -> syncDataRepository.saveBloodPressure(userId, data.toBloodPressure())
+            FcSyncDataType.BLOOD_PRESSURE_MEASURE -> syncDataRepository.saveBloodPressureMeasure(userId, data.toBloodPressureMeasure())
+
+            FcSyncDataType.TEMPERATURE -> syncDataRepository.saveTemperature(userId, data.toTemperature())
+            FcSyncDataType.TEMPERATURE_MEASURE -> syncDataRepository.saveTemperature(userId, data.toTemperatureMeasure())
+
+            FcSyncDataType.PRESSURE -> syncDataRepository.savePressure(userId, data.toPressure())
+            FcSyncDataType.PRESSURE_MEASURE -> syncDataRepository.savePressure(userId, data.toPressureMeasure())
+//
+//            FcSyncDataType.ECG -> {
+//                val device = connector.getDevice()?.address
+//                if (device.isNullOrEmpty()) {
+//                    Timber.tag(TAG).w("Sync ecg success,but address is null")
+//                } else {
+//                    DeviceDataUtils.parserEcgRecord(userId, device, data)?.let {
+//                        dataRepository.saveEcgDeviceData(userId, it)
+//                    }
+//                }
+//            }
+//
+//            FcSyncDataType.SPORT -> {
+//                data.toSport()?.let {
+//                    sportRepository.get().saveSportDeviceData(userId, it)
+//                }
+//            }
+//
+//            FcSyncDataType.GAME -> {
+//                //TODO
+//            }
+//
+//            FcSyncDataType.GPS -> {
+//                //TODO
+//            }
+//
+            FcSyncDataType.TODAY_TOTAL_DATA -> syncDataRepository.saveTodayStep(userId, data.toTodayTotal())
         }
     }
 
@@ -430,7 +550,7 @@ internal class DeviceManagerImpl(
     }
 
     private data class ConnectionParam(
-        val user: UserForConnect?,
+        val user: UserInfo?,
         val device: ConnectorDevice?,
     )
 }

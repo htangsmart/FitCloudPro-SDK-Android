@@ -58,7 +58,24 @@
     <string name="permission_explain_msg">Following permissions are required. Do you want to request for the next step?</string>
     <string name="permission_to_settings_msg">Permission request failed. Do you want to enter the System Settings to grant these permissions?</string>
 
+    <!--Sync-->
     <string name="module_sync">Sync</string>
+    <string name="sync_state_idle">Pull down to sync data</string>
+    <string name="sync_state_process">Syncing: <xliff:g id="param">%1$d</xliff:g>%%</string>
+    <string name="sync_data_success">Sync success</string>
+    <string name="sync_data_failed">Sync fail</string>
+
+    <string name="data_step">Step</string>
+    <string name="data_sleep">Sleep</string>
+    <string name="data_heart_rate">Heart Rate</string>
+    <string name="data_oxygen">Oxygen</string>
+    <string name="data_blood_pressure">Blood Pressure</string>
+    <string name="data_temperature">Temperature</string>
+    <string name="data_pressure">Pressure</string>
+    <string name="total_step">Total Steps：</string>
+    <string name="total_distance">Total Distance：</string>
+    <string name="total_calories">Total Calories：</string>
+
     <string name="module_realtime">Realtime</string>
     <string name="module_combine">Combine</string>
 
@@ -348,6 +365,8 @@
     <string name="unit_mi_param"><xliff:g id="params1">%1$s</xliff:g> mi</string>
     <string name="unit_step_param"><xliff:g id="params1">%1$d</xliff:g> steps</string>
     <string name="unit_k_calories_param"><xliff:g id="params1">%1$s</xliff:g> kCal</string>
+    <string name="unit_fahrenheit_param"><xliff:g id="params1">%1$s</xliff:g> ℉</string>
+    <string name="unit_centigrade_param"><xliff:g id="params1">%1$s</xliff:g> ℃</string>
 
     <!--Alarms-->
     <string name="ds_alarm">Alarms</string>

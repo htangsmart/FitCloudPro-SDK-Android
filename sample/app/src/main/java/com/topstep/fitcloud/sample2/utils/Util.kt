@@ -249,6 +249,32 @@ fun Float.mi2km(): Float {
     return this / KM_TO_MI
 }
 
+fun Float.celsius2Fahrenheit(): Float {
+    return this * 1.8f + 32
+}
+
+/**
+ * Calculate calories based on step length and number of steps
+ *
+ * @param km     Distance(km)
+ * @param weight Body weight(kg)
+ * @return Calories (kcal)
+ */
+fun km2Calories(km: Float, weight: Float): Float {
+    return 0.78f * weight * km
+}
+
+/**
+ * Calculate distance based on step length and number of steps
+ *
+ * @param step       step number
+ * @param stepLength Step length(m)
+ * @return Distance(km)
+ */
+fun step2Km(step: Int, stepLength: Float): Float {
+    return stepLength * step / 1000
+}
+
 fun glideShowImage(imageView: ImageView, uri: Any?, inRecyclerView: Boolean = true, placeholder: Int = R.drawable.ic_default_image_place_holder) {
     val builder = Glide.with(imageView.context)
         .load(uri)

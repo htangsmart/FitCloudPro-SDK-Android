@@ -47,7 +47,62 @@
     <fragment
         android:id="@+id/syncFragment"
         android:name="com.topstep.fitcloud.sample2.ui.SyncFragment"
-        android:label="@string/module_sync"/>
+        android:label="@string/module_sync">
+        <action
+            android:id="@+id/toStep"
+            app:destination="@id/stepFragment"/>
+        <action
+            android:id="@+id/toHeartRate"
+            app:destination="@id/heartRateFragment"/>
+        <action
+            android:id="@+id/toOxygen"
+            app:destination="@id/oxygenFragment"/>
+        <action
+            android:id="@+id/toBloodPressure"
+            app:destination="@id/bloodPressureFragment"/>
+        <action
+            android:id="@+id/toTemperature"
+            app:destination="@id/temperatureFragment"/>
+        <action
+            android:id="@+id/toPressure"
+            app:destination="@id/pressureFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/stepFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.StepFragment"
+        android:label="@string/data_step"
+        tools:layout="@layout/fragment_step"/>
+
+    <fragment
+        android:id="@+id/heartRateFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.HeartRateFragment"
+        android:label="@string/data_heart_rate"
+        tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/oxygenFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.OxygenFragment"
+        android:label="@string/data_oxygen"
+        tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/bloodPressureFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.BloodPressureFragment"
+        android:label="@string/data_blood_pressure"
+        tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/temperatureFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.TemperatureFragment"
+        android:label="@string/data_temperature"
+        tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/pressureFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.PressureFragment"
+        android:label="@string/data_pressure"
+        tools:layout="@layout/fragment_data_list"/>
 
     <fragment
         android:id="@+id/realtimeFragment"

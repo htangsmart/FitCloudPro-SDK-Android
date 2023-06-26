@@ -58,7 +58,24 @@
     <string name="permission_explain_msg">需要以下权限，是否请求以便进行下一步操作？</string>
     <string name="permission_to_settings_msg">权限请求失败，是否进入系统设置中授予权限？</string>
 
+    <!--Sync-->
     <string name="module_sync">同步</string>
+    <string name="sync_state_idle">下拉同步数据</string>
+    <string name="sync_state_process">正在同步: <xliff:g id="param">%1$d</xliff:g>%%</string>
+    <string name="sync_data_success">同步成功</string>
+    <string name="sync_data_failed">同步失败</string>
+
+    <string name="data_step">步数</string>
+    <string name="data_sleep">睡眠</string>
+    <string name="data_heart_rate">心率</string>
+    <string name="data_oxygen">血氧</string>
+    <string name="data_blood_pressure">血压</string>
+    <string name="data_temperature">体温</string>
+    <string name="data_pressure">压力</string>
+    <string name="total_step">总步数：</string>
+    <string name="total_distance">总距离：</string>
+    <string name="total_calories">总卡路里：</string>
+
     <string name="module_realtime">实时</string>
     <string name="module_combine">结合</string>
 
@@ -344,10 +361,12 @@
     <string name="unit_mi">公里</string>
     <string name="unit_step">步</string>
     <string name="unit_k_calories">千卡</string>
-    <string name="unit_km_param"><xliff:g id="params1">%1$s</xliff:g> 千米</string>
-    <string name="unit_mi_param"><xliff:g id="params1">%1$s</xliff:g> 公里</string>
+    <string name="unit_km_param"><xliff:g id="params1">%1$s</xliff:g>千米</string>
+    <string name="unit_mi_param"><xliff:g id="params1">%1$s</xliff:g>公里</string>
     <string name="unit_step_param"><xliff:g id="params1">%1$d</xliff:g> 步</string>
     <string name="unit_k_calories_param"><xliff:g id="params1">%1$s</xliff:g>千卡</string>
+    <string name="unit_fahrenheit_param"><xliff:g id="params1">%1$s</xliff:g> ℉</string>
+    <string name="unit_centigrade_param"><xliff:g id="params1">%1$s</xliff:g> ℃</string>
 
     <!--Alarms-->
     <string name="ds_alarm">手表闹钟</string>

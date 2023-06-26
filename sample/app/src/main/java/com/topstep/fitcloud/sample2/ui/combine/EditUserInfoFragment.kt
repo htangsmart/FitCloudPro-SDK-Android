@@ -8,7 +8,6 @@ import com.github.kilnn.tool.dialog.prompt.PromptAutoCancel
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.databinding.FragmentEditUserInfoBinding
 import com.topstep.fitcloud.sample2.di.Injector
-import com.topstep.fitcloud.sample2.model.user.UserInfo
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
 import com.topstep.fitcloud.sample2.utils.viewLifecycleScope
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
@@ -58,9 +57,7 @@ class EditUserInfoFragment : BaseFragment(R.layout.fragment_edit_user_info) {
         }
         lifecycleScope.launchWhenStarted {
             userInfoRepository.setUserInfo(
-                authedUserId, UserInfo(
-                    height, weight, sex, age
-                )
+                authedUserId, height, weight, sex, age
             )
             findNavController().popBackStack()
         }
