@@ -403,4 +403,13 @@
     <string name="ds_contacts">常用联系人</string>
     <string name="ds_contacts_tips1">最多可添加10位常用联系人。</string>
 
+    <!--Notification-->
+    <string name="notification_channel_core_name">核心</string>
+    <string name="notification_channel_core_des">核心交互操作的提醒</string>
+    <string name="notification_channel_device_des">设备名称和连接状态的提醒</string>
+    <string name="notification_channel_sport_des">正在进行运动的提醒</string>
+
+    <!--Sport-->
+    <string name="module_sport">运动</string>
+
 </resources>

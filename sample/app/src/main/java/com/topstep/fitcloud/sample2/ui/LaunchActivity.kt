@@ -1,10 +1,12 @@
 package com.topstep.fitcloud.sample2.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import com.topstep.fitcloud.sample2.DeviceService
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.ui.auth.AuthActivity
 import com.topstep.fitcloud.sample2.ui.base.BaseActivity
@@ -21,6 +23,7 @@ class LaunchActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        startService(Intent(this, DeviceService::class.java))
         installSplashScreen()
         lifecycleScope.launchWhenStarted {
             launchNavigation = viewModel.getLaunchNavigation()
