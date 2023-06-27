@@ -1,3 +1,7 @@
+# 2023-06-27
+## 发布libraryCore_v1.2.2.aar
+1.添加二维码扩展支。当 `WristbandVersion#isExtQrCodeExtension1`为true时，`WristbandManager#settingQrCode`支持 `WristbandManager#CULT_SIGN_IN`和 `WristbandManager#MULTI_MEDIA`两个类型的二维码。
+
 # 2023-06-09
 ## 发布libraryCore_v1.2.1.aar
 1.添加光伏数据相关指令
