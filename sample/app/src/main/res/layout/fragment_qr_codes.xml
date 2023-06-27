@@ -123,6 +123,34 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:divider="?dividerVertical"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="32dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/ds_nucleic_acid_code"
+                    android:textAppearance="?textAppearanceHeadline6"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_cult_sign_in"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_qr_code_cult_sign_in"/>
+
+                <com.github.kilnn.tool.widget.item.PreferenceItem
+                    android:id="@+id/item_multi_media"
+                    style="@style/Widget.Sample.PreferenceView.Item.Text"
+                    app:preferenceTitle="@string/ds_qr_code_multi_media"/>
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

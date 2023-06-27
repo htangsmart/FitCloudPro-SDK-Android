@@ -89,7 +89,8 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                 ).asFlow().collect {
                     viewBind.itemQrCodes.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.COLLECTION_CODE) ||
                             it.isSupportFeature(FcDeviceInfo.Feature.BUSINESS_CARD) ||
-                            it.isSupportFeature(FcDeviceInfo.Feature.NUCLEIC_ACID_CODE)
+                            it.isSupportFeature(FcDeviceInfo.Feature.NUCLEIC_ACID_CODE) ||
+                            it.isSupportFeature(FcDeviceInfo.Feature.QR_CODE_EXTENSION_1)
                     viewBind.itemContacts.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CONTACTS)
                     viewBind.itemPowerSaveMode.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.POWER_SAVE_MODE)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()

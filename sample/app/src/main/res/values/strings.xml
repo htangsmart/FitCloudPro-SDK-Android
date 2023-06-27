@@ -229,6 +229,9 @@
     <string name="ds_business_card_whatsapp">WhatsApp</string>
     <string name="ds_business_card_twitter">Twitter</string>
     <string name="ds_nucleic_acid_code">Nucleic Acid Code</string>
+    <string name="ds_qr_code_extension_1">Custom Qr Codes</string>
+    <string name="ds_qr_code_cult_sign_in">Cult SignIn</string>
+    <string name="ds_qr_code_multi_media">Multi Media</string>
 
     <!--Power save mode-->
     <string name="ds_power_save_mode">Power Save Mode</string>

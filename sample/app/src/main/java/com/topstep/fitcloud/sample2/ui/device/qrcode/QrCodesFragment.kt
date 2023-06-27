@@ -29,7 +29,8 @@ import kotlinx.coroutines.rx3.await
  *
  * **Usage**
  * 1. [DeviceFragment]
- * When either [FcDeviceInfo.Feature.COLLECTION_CODE] or [FcDeviceInfo.Feature.BUSINESS_CARD] or [FcDeviceInfo.Feature.NUCLEIC_ACID_CODE] is supported, the entrance is displayed
+ * When either [FcDeviceInfo.Feature.COLLECTION_CODE] or [FcDeviceInfo.Feature.BUSINESS_CARD]
+ * or [FcDeviceInfo.Feature.NUCLEIC_ACID_CODE] or [FcDeviceInfo.Feature.QR_CODE_EXTENSION_1]  is supported, the entrance is displayed
  *
  * 2. [QrCodesFragment]
  * Use [FcSettingsFeature.requestSupportQrCodes] to query support QR Codes and use [FcSettingsFeature.setQrCode] to setting them.
@@ -57,6 +58,9 @@ class QrCodesFragment : BaseFragment(R.layout.fragment_qr_codes) {
         viewBind.itemBusinessCardWhatsapp.clickTrigger(block = blockClick)
         viewBind.itemBusinessCardTwitter.clickTrigger(block = blockClick)
         viewBind.itemNucleicAcidCode.clickTrigger(block = blockClick)
+        viewBind.itemCultSignIn.clickTrigger(block = blockClick)
+        viewBind.itemMultiMedia.clickTrigger(block = blockClick)
+
         lifecycle.launchRepeatOnStarted {
             viewModel.flowState.collect {
                 when (it.async) {
@@ -73,6 +77,8 @@ class QrCodesFragment : BaseFragment(R.layout.fragment_qr_codes) {
                         viewBind.itemBusinessCardWhatsapp.isVisible = result.businessCardWhatsApp
                         viewBind.itemBusinessCardTwitter.isVisible = result.businessCardTwitter
                         viewBind.itemNucleicAcidCode.isVisible = result.nucleicAcidCode
+                        viewBind.itemCultSignIn.isVisible = result.cultSignIn
+                        viewBind.itemMultiMedia.isVisible = result.multiMedia
                     }
                     is Fail -> {
                         viewBind.loadingView.showError(R.string.tip_load_error)
@@ -141,6 +147,22 @@ class QrCodesFragment : BaseFragment(R.layout.fragment_qr_codes) {
                     ).await()
                 }
             }
+            viewBind.itemCultSignIn -> {
+                lifecycleScope.launchWithLog {
+                    deviceManager.settingsFeature.setQrCode(
+                        FcQrCodeType.CULT_SIGN_IN,
+                        "This is a Cult Sign In Custom QR codes"
+                    ).await()
+                }
+            }
+            viewBind.itemMultiMedia -> {
+                lifecycleScope.launchWithLog {
+                    deviceManager.settingsFeature.setQrCode(
+                        FcQrCodeType.MULTI_MEDIA,
+                        "This is a Cult Multi Media Custom QR codes"
+                    ).await()
+                }
+            }
         }
     }
 }
@@ -153,6 +175,8 @@ data class QrCodesSupport(
     val businessCardWhatsApp: Boolean,
     val businessCardTwitter: Boolean,
     val nucleicAcidCode: Boolean,
+    val cultSignIn: Boolean,
+    val multiMedia: Boolean,
 )
 
 class QrCodesViewModel : AsyncViewModel<SingleAsyncState<QrCodesSupport>>(SingleAsyncState()) {
@@ -173,6 +197,8 @@ class QrCodesViewModel : AsyncViewModel<SingleAsyncState<QrCodesSupport>>(Single
             var businessCardWhatsApp = false
             var businessCardTwitter = false
             var nucleicAcidCode = false
+            var cultSignIn = false
+            var multiMedia = false
             for (type in result) {
                 when (type) {
                     FcQrCodeType.COLLECTION_CODE_WECHAT -> collectionCodeWechat = true
@@ -182,6 +208,8 @@ class QrCodesViewModel : AsyncViewModel<SingleAsyncState<QrCodesSupport>>(Single
                     FcQrCodeType.BUSINESS_CARD_WHATSAPP -> businessCardWhatsApp = true
                     FcQrCodeType.BUSINESS_CARD_TWITTER -> businessCardTwitter = true
                     FcQrCodeType.NUCLEIC_ACID_CODE -> nucleicAcidCode = true
+                    FcQrCodeType.CULT_SIGN_IN -> cultSignIn = true
+                    FcQrCodeType.MULTI_MEDIA -> multiMedia = true
                 }
             }
             QrCodesSupport(
@@ -191,7 +219,9 @@ class QrCodesViewModel : AsyncViewModel<SingleAsyncState<QrCodesSupport>>(Single
                 businessCardFacebook,
                 businessCardWhatsApp,
                 businessCardTwitter,
-                nucleicAcidCode
+                nucleicAcidCode,
+                cultSignIn,
+                multiMedia
             )
         }.execute(SingleAsyncState<QrCodesSupport>::async) {
             copy(async = it)

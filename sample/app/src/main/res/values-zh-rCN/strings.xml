@@ -229,6 +229,9 @@
     <string name="ds_business_card_whatsapp">WhatsApp</string>
     <string name="ds_business_card_twitter">Twitter</string>
     <string name="ds_nucleic_acid_code">核酸码</string>
+    <string name="ds_qr_code_extension_1">自定义二维码</string>
+    <string name="ds_qr_code_cult_sign_in">Cult签到</string>
+    <string name="ds_qr_code_multi_media">多媒体</string>
 
     <!--Power save mode-->
     <string name="ds_power_save_mode">省电模式</string>
