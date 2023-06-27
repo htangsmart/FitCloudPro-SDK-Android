@@ -52,6 +52,9 @@
             android:id="@+id/toStep"
             app:destination="@id/stepFragment"/>
         <action
+            android:id="@+id/toSleep"
+            app:destination="@id/sleepFragment"/>
+        <action
             android:id="@+id/toHeartRate"
             app:destination="@id/heartRateFragment"/>
         <action
@@ -73,6 +76,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.sync.StepFragment"
         android:label="@string/data_step"
         tools:layout="@layout/fragment_step"/>
+
+    <fragment
+        android:id="@+id/sleepFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.SleepFragment"
+        android:label="@string/data_sleep"
+        tools:layout="@layout/fragment_sleep"/>
 
     <fragment
         android:id="@+id/heartRateFragment"

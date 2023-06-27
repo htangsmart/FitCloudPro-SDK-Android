@@ -18,6 +18,8 @@ interface SyncDataRepository {
 
     suspend fun saveTodayStep(userId: Long, data: FcTodayTotalData?)
 
+    suspend fun saveSleep(userId: Long, data: List<FcSleepData>?)
+
     suspend fun saveHeartRate(userId: Long, data: List<FcHeartRateData>?)
 
     suspend fun saveOxygen(userId: Long, data: List<FcOxygenData>?)
@@ -33,6 +35,8 @@ interface SyncDataRepository {
     suspend fun queryStep(userId: Long, date: Date): List<StepItemEntity>?
 
     suspend fun queryTodayStep(userId: Long): TodayStepData?
+
+    suspend fun querySleep(userId: Long, date: Date): List<SleepItemEntity>?
 
     suspend fun queryHeartRate(userId: Long, date: Date): List<HeartRateItemEntity>?
 
@@ -94,6 +98,22 @@ internal class SyncDataRepositoryImpl(
         }
     }
 
+    override suspend fun saveSleep(userId: Long, data: List<FcSleepData>?) {
+        if (data.isNullOrEmpty()) return
+        data.forEach {
+            val time = Date(it.timestamp)
+            val entities = it.items.map { item ->
+                SleepItemEntity(0, userId, time, Date(item.startTime), Date(item.endTime), item.status)
+            }
+            if (entities.isNotEmpty()) {
+                //Remove data that may conflict on this day, such as data obtained from two different device
+                val firstStartTime = entities.first().startTime
+                syncDao.deleteSleepAfter(userId, time, firstStartTime)
+                syncDao.insertSleep(entities)
+            }
+        }
+    }
+
     override suspend fun saveHeartRate(userId: Long, data: List<FcHeartRateData>?) {
         if (data.isNullOrEmpty()) return
         syncDao.insertHeartRate(
@@ -145,6 +165,12 @@ internal class SyncDataRepositoryImpl(
 
     override suspend fun queryTodayStep(userId: Long): TodayStepData? {
         return stringTypedDao.getTodayStepData(userId)
+    }
+
+    override suspend fun querySleep(userId: Long, date: Date): List<SleepItemEntity>? {
+        val calendar = Calendar.getInstance()
+        val time = DateTimeUtils.getDayStartTime(calendar, date)
+        return syncDao.querySleep(userId, time)
     }
 
     /**

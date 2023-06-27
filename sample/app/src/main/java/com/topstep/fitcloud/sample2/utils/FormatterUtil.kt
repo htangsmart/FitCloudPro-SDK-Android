@@ -83,6 +83,10 @@ object FormatterUtil {
         return hmm(minute / 60, minute % 60)
     }
 
+    fun second2Hmm(second: Int): String {
+        return minute2Hmm(second / 60)
+    }
+
     fun hmm(hour: Int, minute: Int): String {
         return String.format(systemLocale, "%d:%02d", hour, minute)
     }

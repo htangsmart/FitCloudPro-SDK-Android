@@ -10,13 +10,13 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.asExecutor
 
 @Database(
-    version = 4,
+    version = 5,
     entities = [
         UserEntity::class,
         DeviceBindEntity::class, ExerciseGoalEntity::class,
         WomenHealthConfigEntity::class, MenstruationTimelineEntity::class,
         StringTypedEntity::class,
-        StepItemEntity::class,
+        StepItemEntity::class, SleepItemEntity::class,
         HeartRateItemEntity::class, OxygenItemEntity::class, BloodPressureItemEntity::class, TemperatureItemEntity::class, PressureItemEntity::class
     ],
 )

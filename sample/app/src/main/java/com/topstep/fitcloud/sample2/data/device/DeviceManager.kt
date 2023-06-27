@@ -495,12 +495,8 @@ internal class DeviceManagerImpl(
                 )
             )
 
-//            FcSyncDataType.SLEEP -> {
-//                data.toSleep()?.sortedBy { it.timestamp }?.let {
-//                    dataRepository.saveSleepDeviceData(userId, it)
-//                }
-//            }
-//
+            FcSyncDataType.SLEEP -> syncDataRepository.saveSleep(userId, data.toSleep())
+
             FcSyncDataType.HEART_RATE -> syncDataRepository.saveHeartRate(userId, data.toHeartRate())
             FcSyncDataType.HEART_RATE_MEASURE -> syncDataRepository.saveHeartRate(userId, data.toHeartRateMeasure())
 
