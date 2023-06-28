@@ -34,6 +34,9 @@
             android:id="@+id/toPowerSaveMode"
             app:destination="@id/powerSaveModeFragment"/>
         <action
+            android:id="@+id/toSportPush"
+            app:destination="@id/sportPushFragment"/>
+        <action
             android:id="@+id/toDialHomePage"
             app:destination="@id/dialHomePageFragment"/>
         <action
@@ -347,6 +350,12 @@
             android:id="@+id/toComponent"
             app:destination="@id/dialComponentFragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/sportPushFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.sport.push.SportPushFragment"
+        android:label="@string/ds_sport_push"
+        tools:layout="@layout/fragment_sport_push"/>
 
     <fragment
         android:id="@+id/dialLibraryFragment"

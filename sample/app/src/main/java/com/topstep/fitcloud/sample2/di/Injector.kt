@@ -2,9 +2,7 @@ package com.topstep.fitcloud.sample2.di
 
 import com.topstep.fitcloud.sample2.data.auth.AuthManager
 import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
-import com.topstep.fitcloud.sample2.data.device.DeviceManager
-import com.topstep.fitcloud.sample2.data.device.DialRepository
-import com.topstep.fitcloud.sample2.data.device.SyncDataRepository
+import com.topstep.fitcloud.sample2.data.device.*
 import com.topstep.fitcloud.sample2.data.user.UserInfoRepository
 import com.topstep.fitcloud.sample2.data.version.VersionRepository
 import com.topstep.fitcloud.sample2.data.version.VersionRepositoryImpl
@@ -37,6 +35,13 @@ object Injector {
 
     fun getVersionRepository(): VersionRepository {
         return VersionRepositoryImpl(
+            SingleInstance.deviceManager,
+            SingleInstance.apiClient.apiService
+        )
+    }
+
+    fun getSportPushRepository(): SportPushRepository {
+        return SportPushRepositoryImpl(
             SingleInstance.deviceManager,
             SingleInstance.apiClient.apiService
         )

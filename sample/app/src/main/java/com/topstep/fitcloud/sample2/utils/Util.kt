@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.location.LocationManager
@@ -312,4 +313,14 @@ fun glideLoadDialStyle(context: Context, dialView: DialView, uri: Any, styleBase
                 dialView.setStyleBitmap(null, styleBaseOnWidth)
             }
         })
+}
+
+fun getGridSpanCount(context: Context, baseSpanCount: Int = 3): Int {
+    val orientation = context.resources.configuration.orientation
+    return if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+        baseSpanCount
+    } else {
+        val displayMetrics = context.resources.displayMetrics
+        return displayMetrics.widthPixels / (displayMetrics.heightPixels / baseSpanCount)
+    }
 }

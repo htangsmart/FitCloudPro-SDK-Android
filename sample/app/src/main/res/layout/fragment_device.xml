@@ -111,6 +111,11 @@
             app:preferenceTitle="@string/ds_power_save_mode"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_sport_push"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_sport_push"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_dial"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             app:preferenceTitle="@string/ds_dial"/>
