@@ -121,6 +121,11 @@
             app:preferenceTitle="@string/ds_modify_logo"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_epo_upgrade"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/epo_upgrade_manual"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_version_info"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             app:preferenceTitle="@string/version_info"/>

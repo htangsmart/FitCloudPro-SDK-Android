@@ -247,6 +247,10 @@
     <!--Power save mode-->
     <string name="ds_power_save_mode">Power Save Mode</string>
 
+    <!--EPO-->
+    <string name="epo_upgrade_manual">Manually Upgrade EPO</string>
+    <string name="epo_create_fail">Create EPO File Fail</string>
+
     <!--Version-->
     <string name="version_upgrade_param">Upgrade(<xliff:g id="param">%1$s</xliff:g>)</string>
     <string name="version_info">Version Info</string>

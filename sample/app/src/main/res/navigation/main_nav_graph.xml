@@ -40,6 +40,9 @@
             android:id="@+id/toModifyLogo"
             app:destination="@id/modifyLogoFragment"/>
         <action
+            android:id="@+id/toEpoUpgrade"
+            app:destination="@id/epoUpgradeFragment"/>
+        <action
             android:id="@+id/toHardwareUpgrade"
             app:destination="@id/hardwareUpgradeFragment"/>
     </fragment>
@@ -368,6 +371,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.logo.ModifyLogoFragment"
         android:label="@string/ds_modify_logo"
         tools:layout="@layout/fragment_modify_logo"/>
+
+    <fragment
+        android:id="@+id/epoUpgradeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.epo.EpoUpgradeFragment"
+        android:label="@string/epo_upgrade_manual"
+        tools:layout="@layout/fragment_epo_upgrade"/>
 
     <fragment
         android:id="@+id/hardwareUpgradeFragment"

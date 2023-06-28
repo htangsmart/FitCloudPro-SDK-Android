@@ -247,6 +247,10 @@
     <!--Power save mode-->
     <string name="ds_power_save_mode">省电模式</string>
 
+    <!--EPO-->
+    <string name="epo_upgrade_manual">手动更新EPO</string>
+    <string name="epo_create_fail">EPO文件创建失败</string>
+
     <!--Version-->
     <string name="version_upgrade_param">升级(<xliff:g id="param">%1$s</xliff:g>)</string>
     <string name="version_info">版本信息</string>

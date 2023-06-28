@@ -52,6 +52,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemPowerSaveMode.clickTrigger(block = blockClick)
         viewBind.itemDial.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
+        viewBind.itemEpoUpgrade.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
@@ -153,6 +154,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemModifyLogo -> {
                 findNavController().navigate(DeviceFragmentDirections.toModifyLogo())
+            }
+            viewBind.itemEpoUpgrade -> {
+                findNavController().navigate(DeviceFragmentDirections.toEpoUpgrade())
             }
             viewBind.itemVersionInfo -> {
                 viewModel.checkUpgrade()
