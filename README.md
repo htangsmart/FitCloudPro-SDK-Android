@@ -2,6 +2,10 @@
 
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v2.0.3(2023-06-28)
+1. Api Change: `FcDataFeature.requestLatestHealthData` move to `FcSettingsFeature.requestLatestHealthData`
+2. Add [Cricket Match](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/12.Customized-features#cricket-match) feature
+
 # v2.0.2(2023-06-26)
 
 1. Api Change: `FcFunctionConfig.STRENGTHEN_TEST` rename to `FcFunctionConfig.ENHANCED_MEASUREMENT`
