@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.kilnn.tool.widget.ktx.clickTrigger
@@ -37,7 +38,7 @@ abstract class DataListFragment<T> : BaseFragment() {
         return inflater.inflate(layoutId, container, false)
     }
 
-    private lateinit var btnDate: Button
+    protected lateinit var btnDate: Button
     private lateinit var recyclerView: RecyclerView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +50,7 @@ abstract class DataListFragment<T> : BaseFragment() {
             datePicker()
         }
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         recyclerView.adapter = adapter
         loadData(selectDate)
     }
@@ -86,6 +88,8 @@ class DataListAdapter<T>(
 
     var sources: List<T>? = null
 
+    var listener: Listener<T>? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
             ItemDataListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -95,6 +99,13 @@ class DataListAdapter<T>(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = sources?.get(position) ?: return
         holder.viewBind.text.text = valueFormat.format(holder.itemView.context, item)
+
+        holder.itemView.clickTrigger {
+            val actionPosition = holder.bindingAdapterPosition
+            if (actionPosition != RecyclerView.NO_POSITION) {
+                listener?.onItemClick(item)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -107,4 +118,7 @@ class DataListAdapter<T>(
 
     class ItemViewHolder(val viewBind: ItemDataListBinding) : RecyclerView.ViewHolder(viewBind.root)
 
+    interface Listener<T> {
+        fun onItemClick(item: T)
+    }
 }

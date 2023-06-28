@@ -72,12 +72,23 @@
     <string name="data_blood_pressure">Blood Pressure</string>
     <string name="data_temperature">Temperature</string>
     <string name="data_pressure">Pressure</string>
+    <string name="data_ecg">ECG</string>
+    <string name="data_sport">Sport</string>
+    <string name="data_game">Game</string>
     <string name="total_step">Total Steps：</string>
     <string name="total_distance">Total Distance：</string>
     <string name="total_calories">Total Calories：</string>
     <string name="deep_sleep">Deep Sleep：</string>
     <string name="light_sleep">Light Sleep：</string>
     <string name="awake_sleep">Awake：</string>
+    <string name="ecg_speed">Speed<xliff:g id="params">%1$d</xliff:g>mm/s</string>
+    <string name="ecg_amplitude">Amplitude<xliff:g id="params">%1$d</xliff:g>mm/mV</string>
+    <string name="game_type_0">Pet development</string>
+    <string name="game_type_1">2048</string>
+    <string name="game_type_2">Candy matching</string>
+    <string name="game_type_3">Jigsaw puzzle</string>
+    <string name="game_type_4">Airplane</string>
+    <string name="game_type_unknown">Unknown</string>
 
     <string name="module_realtime">Realtime</string>
     <string name="module_combine">Combine</string>

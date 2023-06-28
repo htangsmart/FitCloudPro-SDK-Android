@@ -72,12 +72,23 @@
     <string name="data_blood_pressure">血压</string>
     <string name="data_temperature">体温</string>
     <string name="data_pressure">压力</string>
+    <string name="data_ecg">心电</string>
+    <string name="data_sport">运动</string>
+    <string name="data_game">游戏</string>
     <string name="total_step">总步数：</string>
     <string name="total_distance">总距离：</string>
     <string name="total_calories">总卡路里：</string>
     <string name="deep_sleep">深睡：</string>
     <string name="light_sleep">浅睡：</string>
     <string name="awake_sleep">清醒：</string>
+    <string name="ecg_speed">走速<xliff:g id="params">%1$d</xliff:g>mm/s</string>
+    <string name="ecg_amplitude">增益<xliff:g id="params">%1$d</xliff:g>mm/mV</string>
+    <string name="game_type_0">宠物养成</string>
+    <string name="game_type_1">2048</string>
+    <string name="game_type_2">糖果消消乐</string>
+    <string name="game_type_3">拼图</string>
+    <string name="game_type_4">飞机大战</string>
+    <string name="game_type_unknown">未知</string>
 
     <string name="module_realtime">实时</string>
     <string name="module_combine">结合</string>

@@ -69,6 +69,15 @@
         <action
             android:id="@+id/toPressure"
             app:destination="@id/pressureFragment"/>
+        <action
+            android:id="@+id/toEcg"
+            app:destination="@id/ecgFragment"/>
+        <action
+            android:id="@+id/toSport"
+            app:destination="@id/sportFragment"/>
+        <action
+            android:id="@+id/toGame"
+            app:destination="@id/gameFragment"/>
     </fragment>
 
     <fragment
@@ -111,6 +120,24 @@
         android:id="@+id/pressureFragment"
         android:name="com.topstep.fitcloud.sample2.ui.sync.PressureFragment"
         android:label="@string/data_pressure"
+        tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/ecgFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.EcgFragment"
+        android:label="@string/data_ecg"
+        tools:layout="@layout/fragment_ecg"/>
+
+    <fragment
+        android:id="@+id/sportFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.SportFragment"
+        android:label="@string/data_sport"
+        tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.sync.GameFragment"
+        android:label="@string/data_game"
         tools:layout="@layout/fragment_data_list"/>
 
     <fragment

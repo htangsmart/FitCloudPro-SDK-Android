@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EcgGridView">
+        <!--Line color-->
+        <attr name="grid_line_color" format="color|reference"/>
+        <!--Line width-->
+        <attr name="grid_line_width" format="dimension"/>
+
+        <!--Draw how many grids vertically to determine the height of the view. If the view is set to height, then this value is invalid-->
+        <attr name="grid_vertical_count" format="integer"/>
+
+        <!--Draw thick lines, default to true-->
+        <attr name="grid_bold_line_enabled" format="boolean"/>
+        <!--The color of thick lines, if not set, will use line_ Color-->
+        <attr name="grid_bold_line_color" format="color|reference"/>
+        <!--The width of the thick line, if not set, will use line_width*1.5-->
+        <attr name="grid_bold_line_width" format="dimension"/>
+        <!--Each thick line is separated by a few regular lines in the middle, and by default, one thick line contains 5 small grids-->
+        <attr name="grid_bold_line_gap" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="EcgView">
+        <!--Line color-->
+        <attr name="ecg_line_color" format="color|reference"/>
+        <!--Line width-->
+        <attr name="ecg_line_width" format="dimension"/>
+
+        <!--Draw how many grids vertically to determine the height of the view. If the view is set to height, then this value is invalid-->
+        <attr name="ecg_grid_vertical_count" format="integer"/>
+
+        <!--The sampling rate of the data, in Hz. 100Hz represents 10ms of a data point-->
+        <attr name="ecg_sampling_rate" format="integer"/>
+        <!--Traveling speed in mm/s-->
+        <attr name="ecg_speed" format="integer"/>
+        <!--Gain in mm/mv-->
+        <attr name="ecg_amplitude" format="integer"/>
+    </declare-styleable>
+</resources>

@@ -28,9 +28,7 @@ import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
-import com.topstep.fitcloud.sdk.v2.model.data.FcSyncData
-import com.topstep.fitcloud.sdk.v2.model.data.FcSyncDataType
-import com.topstep.fitcloud.sdk.v2.model.data.FcSyncState
+import com.topstep.fitcloud.sdk.v2.model.data.*
 import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.CoroutineScope
@@ -466,6 +464,10 @@ internal class DeviceManagerImpl(
                     when (it) {
                         null -> {
                             _flowSyncEvent.send(DeviceManager.SyncEvent.SUCCESS)
+                            val userId = internalStorage.flowAuthedUserId.value
+                            if (userId != null) {
+                                syncDataRepository.clearSportGpsId(userId)
+                            }
                         }
                         is BleDisconnectedException -> {
                             _flowSyncEvent.send(DeviceManager.SyncEvent.FAIL_DISCONNECT)
@@ -489,11 +491,9 @@ internal class DeviceManagerImpl(
         val userId = internalStorage.flowAuthedUserId.value ?: return
 
         when (data.type) {
-            FcSyncDataType.STEP -> syncDataRepository.saveStep(
-                userId, data.toStep(), configFeature.getDeviceInfo().isSupportFeature(
-                    FcDeviceInfo.Feature.STEP_EXTRA
-                )
-            )
+            FcSyncDataType.STEP -> {
+                syncDataRepository.saveStep(userId, data.toStep(), data.deviceInfo.isSupportFeature(FcDeviceInfo.Feature.STEP_EXTRA))
+            }
 
             FcSyncDataType.SLEEP -> syncDataRepository.saveSleep(userId, data.toSleep())
 
@@ -511,32 +511,16 @@ internal class DeviceManagerImpl(
 
             FcSyncDataType.PRESSURE -> syncDataRepository.savePressure(userId, data.toPressure())
             FcSyncDataType.PRESSURE_MEASURE -> syncDataRepository.savePressure(userId, data.toPressureMeasure())
-//
-//            FcSyncDataType.ECG -> {
-//                val device = connector.getDevice()?.address
-//                if (device.isNullOrEmpty()) {
-//                    Timber.tag(TAG).w("Sync ecg success,but address is null")
-//                } else {
-//                    DeviceDataUtils.parserEcgRecord(userId, device, data)?.let {
-//                        dataRepository.saveEcgDeviceData(userId, it)
-//                    }
-//                }
-//            }
-//
-//            FcSyncDataType.SPORT -> {
-//                data.toSport()?.let {
-//                    sportRepository.get().saveSportDeviceData(userId, it)
-//                }
-//            }
-//
-//            FcSyncDataType.GAME -> {
-//                //TODO
-//            }
-//
-//            FcSyncDataType.GPS -> {
-//                //TODO
-//            }
-//
+
+            FcSyncDataType.ECG -> {
+                syncDataRepository.saveEcg(userId, data.toEcg(), data.deviceInfo.isSupportFeature(FcDeviceInfo.Feature.TI_ECG))
+            }
+
+            FcSyncDataType.GAME -> syncDataRepository.saveGame(userId, data.toGame())
+
+            FcSyncDataType.SPORT -> syncDataRepository.saveSport(userId, data.toSport())
+            FcSyncDataType.GPS -> syncDataRepository.saveGps(userId, data.toGps())
+
             FcSyncDataType.TODAY_TOTAL_DATA -> syncDataRepository.saveTodayStep(userId, data.toTodayTotal())
         }
     }

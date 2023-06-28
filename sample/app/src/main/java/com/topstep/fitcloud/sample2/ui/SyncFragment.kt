@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.device.DeviceManager
+import com.topstep.fitcloud.sample2.data.device.SyncDataRepository
 import com.topstep.fitcloud.sample2.databinding.FragmentSyncBinding
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
@@ -14,6 +15,7 @@ import com.topstep.fitcloud.sample2.ui.sync.*
 import com.topstep.fitcloud.sample2.utils.launchRepeatOnStarted
 import com.topstep.fitcloud.sample2.utils.viewLifecycle
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
+import com.topstep.fitcloud.sdk.v2.features.FcDataFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.data.FcSyncState
 import kotlinx.coroutines.flow.collectLatest
@@ -32,22 +34,34 @@ import kotlinx.coroutines.rx3.asFlow
  * Observer sync state and display available data types
  *
  * 2. [DeviceManager]
- * Sync and save data
+ * Execute [FcDataFeature.syncData] and emit [FcDataFeature.observerSyncState]
  *
- * 3. [HeartRateFragment]
+ * 3. [SyncDataRepository]
+ * Save sync data
+ *
+ * 4. [StepFragment]
+ * Display step data
+ *
+ * 5. [SleepFragment]
+ * Display sleep data
+ *
+ * 6. [HeartRateFragment]
  * Display heart rate data
  *
- * 4. [OxygenFragment]
+ * 7. [OxygenFragment]
  * Display oxygen data
  *
- * 5. [BloodPressureFragment]
+ * 8. [BloodPressureFragment]
  * Display blood pressure data
  *
- * 6. [TemperatureFragment]
+ * 9. [TemperatureFragment]
  * Display temperature data
  *
- * 7. [PressureFragment]
+ * 10. [PressureFragment]
  * Display pressure data
+ *
+ * 11. [EcgFragment]
+ * Display ECG data
  */
 class SyncFragment : BaseFragment(R.layout.fragment_sync) {
 
@@ -68,6 +82,9 @@ class SyncFragment : BaseFragment(R.layout.fragment_sync) {
         viewBind.itemBloodPressure.clickTrigger(block = blockClick)
         viewBind.itemTemperature.clickTrigger(block = blockClick)
         viewBind.itemPressure.clickTrigger(block = blockClick)
+        viewBind.itemEcg.clickTrigger(block = blockClick)
+        viewBind.itemSport.clickTrigger(block = blockClick)
+        viewBind.itemGame.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
             launch {
@@ -79,6 +96,9 @@ class SyncFragment : BaseFragment(R.layout.fragment_sync) {
                     viewBind.itemBloodPressure.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE)
                     viewBind.itemTemperature.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.TEMPERATURE)
                     viewBind.itemPressure.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.PRESSURE)
+                    viewBind.itemEcg.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.ECG)
+                    viewBind.itemSport.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SPORT)
+                    viewBind.itemGame.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GAME)
                 }
             }
             launch {
@@ -138,6 +158,15 @@ class SyncFragment : BaseFragment(R.layout.fragment_sync) {
             }
             viewBind.itemPressure -> {
                 findNavController().navigate(SyncFragmentDirections.toPressure())
+            }
+            viewBind.itemEcg -> {
+                findNavController().navigate(SyncFragmentDirections.toEcg())
+            }
+            viewBind.itemSport -> {
+                findNavController().navigate(SyncFragmentDirections.toSport())
+            }
+            viewBind.itemGame -> {
+                findNavController().navigate(SyncFragmentDirections.toGame())
             }
         }
     }

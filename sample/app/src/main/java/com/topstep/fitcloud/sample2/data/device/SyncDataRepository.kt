@@ -1,5 +1,6 @@
 package com.topstep.fitcloud.sample2.data.device
 
+import com.github.kilnn.tool.util.roundDown1
 import com.github.kilnn.tool.util.roundHalfUp3
 import com.topstep.fitcloud.sample2.data.db.AppDatabase
 import com.topstep.fitcloud.sample2.data.entity.*
@@ -32,6 +33,16 @@ interface SyncDataRepository {
 
     suspend fun savePressure(userId: Long, data: List<FcPressureData>?)
 
+    suspend fun saveEcg(userId: Long, data: List<FcEcgData>?, isTiEcg: Boolean)
+
+    suspend fun saveGame(userId: Long, data: List<FcGameData>?)
+
+    suspend fun saveSport(userId: Long, data: List<FcSportData>?)
+
+    suspend fun saveGps(userId: Long, data: List<FcGpsData>?)
+
+    suspend fun clearSportGpsId(userId: Long)
+
     suspend fun queryStep(userId: Long, date: Date): List<StepItemEntity>?
 
     suspend fun queryTodayStep(userId: Long): TodayStepData?
@@ -47,6 +58,12 @@ interface SyncDataRepository {
     suspend fun queryTemperature(userId: Long, date: Date): List<TemperatureItemEntity>?
 
     suspend fun queryPressure(userId: Long, date: Date): List<PressureItemEntity>?
+
+    suspend fun queryEcg(userId: Long): List<EcgRecordEntity>?
+
+    suspend fun queryGame(userId: Long): List<GameRecordEntity>?
+
+    suspend fun querySport(userId: Long): List<SportRecordEntity>?
 }
 
 internal class SyncDataRepositoryImpl(
@@ -156,6 +173,117 @@ internal class SyncDataRepositoryImpl(
         )
     }
 
+    override suspend fun saveEcg(userId: Long, data: List<FcEcgData>?, isTiEcg: Boolean) {
+        if (data.isNullOrEmpty()) return
+        syncDao.insertEcg(
+            data.map {
+                EcgRecordEntity(
+                    userId = userId,
+                    ecgId = UUID.randomUUID(),
+                    time = Date(it.timestamp),
+                    type = if (isTiEcg) {
+                        EcgRecordEntity.Type.TI
+                    } else {
+                        EcgRecordEntity.Type.NORMAL
+                    },
+                    samplingRate = it.samplingRate,
+                    detail = it.items,
+                )
+            }
+        )
+    }
+
+    override suspend fun saveGame(userId: Long, data: List<FcGameData>?) {
+        if (data.isNullOrEmpty()) return
+        syncDao.insertGame(
+            data.map {
+                GameRecordEntity(
+                    userId = userId,
+                    gameId = UUID.randomUUID(),
+                    time = Date(it.timestamp),
+                    type = it.type,
+                    duration = it.duration,
+                    score = it.score,
+                    level = it.level,
+                )
+            }
+        )
+    }
+
+    /**
+     * Filter sport.
+     *
+     * Data that is too short in time or not exercising enough will not be saved.
+     */
+    private fun filterSport(sportData: FcSportData): Boolean {
+        if (sportData.duration <= 300) {
+            return false
+        }
+        val isMainAttrDistance = SportRecordEntity.getSportMainAttr(sportData.type) == SportRecordEntity.SportMainAttr.DISTANCE
+        if (isMainAttrDistance) {
+            if (sportData.distance <= 0.1f) {//<=0.1km
+                return false
+            }
+        } else {
+            if (sportData.calories <= 5) {//<=5kCal
+                return false
+            }
+        }
+        return true
+    }
+
+    override suspend fun saveSport(userId: Long, data: List<FcSportData>?) {
+        if (data.isNullOrEmpty()) return
+        syncDao.insertSport(
+            data.filter {
+                filterSport(it)
+            }.map {
+                val sportId = UUID.randomUUID()
+                val time = Date(it.timestamp)
+                SportRecordEntity(
+                    userId = userId,
+                    sportId = sportId,
+                    time = time,
+                    duration = it.duration,
+                    distance = it.distance.roundDown1(),
+                    calorie = it.calories.roundDown1(),
+                    step = it.steps,
+                    climb = 0f,
+                    sportType = it.type,
+                    gpsId = it.sportId//ID associated with GPS data
+                )
+            }
+        )
+    }
+
+    override suspend fun saveGps(userId: Long, data: List<FcGpsData>?) {
+        if (data.isNullOrEmpty()) return
+        data.forEach {
+            val sportId = syncDao.querySportIdByGpsId(userId, it.sportId)
+            if (sportId != null) {
+                syncDao.insertGps(
+                    it.items.map { item ->
+                        SportGpsEntity(
+                            id = 0,
+                            sportId = sportId,
+                            duration = item.duration,
+                            lng = item.lng,
+                            lat = item.lat,
+                            altitude = item.altitude,
+                            satellites = item.satellites,
+                            isRestart = item.isRestart,
+                        )
+                    }
+                )
+                syncDao.clearGpsId(sportId)
+            }
+        }
+    }
+
+    override suspend fun clearSportGpsId(userId: Long) {
+        syncDao.clearGpsId(userId)
+    }
+
     override suspend fun queryStep(userId: Long, date: Date): List<StepItemEntity>? {
         val calendar = Calendar.getInstance()
         val start: Date = DateTimeUtils.getDayStartTime(calendar, date)
@@ -209,6 +337,18 @@ internal class SyncDataRepositoryImpl(
         val start: Date = DateTimeUtils.getDayStartTime(calendar, date)
         val end: Date = DateTimeUtils.getDayEndTime(calendar, date)
         return syncDao.queryPressureBetween(userId, start, end)
+    }
+
+    override suspend fun queryEcg(userId: Long): List<EcgRecordEntity>? {
+        return syncDao.queryEcg(userId)
+    }
+
+    override suspend fun queryGame(userId: Long): List<GameRecordEntity>? {
+        return syncDao.queryGame(userId)
+    }
+
+    override suspend fun querySport(userId: Long): List<SportRecordEntity>? {
+        return syncDao.querySport(userId)
     }
 
 }

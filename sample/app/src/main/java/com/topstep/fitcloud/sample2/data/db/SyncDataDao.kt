@@ -3,6 +3,7 @@ package com.topstep.fitcloud.sample2.data.db
 import androidx.room.*
 import com.topstep.fitcloud.sample2.data.entity.*
 import com.topstep.fitcloud.sample2.utils.room.TimeConverter
+import com.topstep.fitcloud.sample2.utils.room.UUIDConverter
 import com.topstep.fitcloud.sdk.v2.model.data.*
 import java.util.*
 
@@ -29,6 +30,18 @@ abstract class SyncDataDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertPressure(items: List<PressureItemEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertEcg(items: List<EcgRecordEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertGame(items: List<GameRecordEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertSport(items: List<SportRecordEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertGps(items: List<SportGpsEntity>)
 
     @Query("DELETE FROM StepItemEntity WHERE userId=:userId AND time BETWEEN :start AND :end")
     abstract suspend fun deleteStepBetween(userId: Long, @TypeConverters(TimeConverter::class) start: Date, @TypeConverters(TimeConverter::class) end: Date)
@@ -57,4 +70,22 @@ abstract class SyncDataDao {
     @Query("SELECT * FROM PressureItemEntity WHERE userId=:userId AND time BETWEEN :start AND :end ORDER BY time ASC")
     abstract suspend fun queryPressureBetween(userId: Long, @TypeConverters(TimeConverter::class) start: Date, @TypeConverters(TimeConverter::class) end: Date): List<PressureItemEntity>?
 
+    @Query("SELECT * FROM EcgRecordEntity WHERE userId=:userId ORDER BY time DESC")
+    abstract suspend fun queryEcg(userId: Long): List<EcgRecordEntity>?
+
+    @Query("SELECT * FROM GameRecordEntity WHERE userId=:userId ORDER BY time DESC")
+    abstract suspend fun queryGame(userId: Long): List<GameRecordEntity>?
+
+    @Query("SELECT sportId FROM SportRecordEntity WHERE userId=:userId AND gpsId=:gpsId")
+    @TypeConverters(UUIDConverter::class)
+    abstract suspend fun querySportIdByGpsId(userId: Long, gpsId: String): UUID?
+
+    @Query("UPDATE SportRecordEntity SET gpsId=NULL WHERE sportId=:sportId")
+    abstract suspend fun clearGpsId(@TypeConverters(UUIDConverter::class) sportId: UUID)
+
+    @Query("UPDATE SportRecordEntity SET gpsId=NULL WHERE userId=:userId")
+    abstract suspend fun clearGpsId(userId: Long)
+
+    @Query("SELECT * FROM SportRecordEntity WHERE userId=:userId AND gpsId is NULL ORDER BY time DESC")
+    abstract suspend fun querySport(userId: Long): List<SportRecordEntity>?
 }

@@ -17,7 +17,9 @@ import kotlinx.coroutines.asExecutor
         WomenHealthConfigEntity::class, MenstruationTimelineEntity::class,
         StringTypedEntity::class,
         StepItemEntity::class, SleepItemEntity::class,
-        HeartRateItemEntity::class, OxygenItemEntity::class, BloodPressureItemEntity::class, TemperatureItemEntity::class, PressureItemEntity::class
+        HeartRateItemEntity::class, OxygenItemEntity::class, BloodPressureItemEntity::class, TemperatureItemEntity::class, PressureItemEntity::class,
+        EcgRecordEntity::class, GameRecordEntity::class,
+        SportRecordEntity::class, SportGpsEntity::class
     ],
 )
 abstract class AppDatabase : RoomDatabase() {

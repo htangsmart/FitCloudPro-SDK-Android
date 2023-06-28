@@ -10,4 +10,7 @@
     <color name="wh_menstruation_color_menstruation">#ff978e</color>
     <color name="wh_menstruation_color_safe">#48d151</color>
     <color name="wh_menstruation_color_ovulation">#876aea</color>
+
+    <color name="ecg_grid_line_color">#FFFFD2B9</color>
+    <color name="ecg_line_color">#FF000000</color>
 </resources>
