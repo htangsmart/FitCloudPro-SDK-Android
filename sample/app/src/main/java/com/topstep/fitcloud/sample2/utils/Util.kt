@@ -49,7 +49,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 /**
- * 所有自己传递的Parcelable对象，都可以使用这个作为Key
+ * All Parcelable objects passed by oneself can use this as a Key
  */
 const val PARCEL_ARGS = "parcelArgs"
 const val FILE_PROVIDER_AUTHORITY = "com.topstep.fitcloud.sample2.fileprovider"
@@ -179,8 +179,7 @@ fun flowLocationServiceState(context: Context) = callbackFlow {
 }
 
 /**
- * 如果子视图 tag 为 "ignoreParentState"，那么不对其设置
- * 如果子视图 是SectionItem类型，那么不去设置子类型
+ * Set all child enabled or disabled.(Such as duplicateParentState)
  */
 fun ViewGroup.setAllChildEnabled(enabled: Boolean) {
     if (this.isEnabled != enabled) {
@@ -196,7 +195,6 @@ fun ViewGroup.setAllChildEnabled(enabled: Boolean) {
             child.isEnabled = enabled
         }
         if (child is ViewGroup && child !is PreferenceItem) {
-            //PreferenceItem不需要设置
             child.setAllChildEnabled(enabled)
         }
     }

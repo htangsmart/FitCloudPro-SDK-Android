@@ -62,6 +62,12 @@ import kotlinx.coroutines.rx3.asFlow
  *
  * 11. [EcgFragment]
  * Display ECG data
+ *
+ * 12. [SportFragment]
+ * Display sport data
+ *
+ * 13. [GameFragment]
+ * Display game data
  */
 class SyncFragment : BaseFragment(R.layout.fragment_sync) {
 

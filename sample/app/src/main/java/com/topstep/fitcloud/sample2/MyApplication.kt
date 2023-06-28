@@ -59,7 +59,6 @@ class MyApplication : MultiDexApplication() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        //配置改变，SystemLocale可能改变，重新设置下
         FormatterUtil.init(SystemUtil.getSystemLocal(this))
     }
 

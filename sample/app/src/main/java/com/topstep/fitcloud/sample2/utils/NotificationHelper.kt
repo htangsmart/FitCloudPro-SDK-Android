@@ -13,19 +13,8 @@ object NotificationHelper {
     private const val DEVICE_CHANNEL_ID = "Device"
     private const val SPORT_CHANNEL_ID = "Sport"
 
-    /**
-     * 查找手机的通知ID
-     */
     const val FIND_PHONE_NOTIFICATION_ID = 10001
-
-    /**
-     * DeviceService作为前台服务的通知ID
-     */
     const val DEVICE_SERVICE_NOTIFICATION_ID = 10002
-
-    /**
-     * SportService作为前台服务的通知ID
-     */
     const val SPORT_SERVICE_NOTIFICATION_ID = 10003
 
     /**

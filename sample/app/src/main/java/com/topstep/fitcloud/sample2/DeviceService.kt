@@ -77,7 +77,6 @@ class DeviceService : LifecycleService() {
             ConnectorState.CONNECTED -> getString(R.string.device_state_connected)
         }
 
-        // 设置启动的程序，如果存在则找出，否则新的启动
         val intent = Intent(Intent.ACTION_MAIN).apply {
             addCategory(Intent.CATEGORY_LAUNCHER)
             component = ComponentName(this@DeviceService, LaunchActivity::class.java)

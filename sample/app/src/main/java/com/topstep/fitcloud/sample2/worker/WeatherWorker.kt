@@ -142,9 +142,6 @@ class WeatherWorker constructor(
             WorkManager.getInstance(context).cancelUniqueWork(TAG_WEATHER_ONCE)
         }
 
-        /**
-         * 执行重复请求天气的任务
-         */
         fun executePeriodic(context: Context) {
             Timber.tag(TAG).i("executePeriodic")
             val constraints = Constraints.Builder()
@@ -157,9 +154,6 @@ class WeatherWorker constructor(
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(TAG_WEATHER_PERIODIC, ExistingPeriodicWorkPolicy.KEEP, builder.build())
         }
 
-        /**
-         * 执行一次请求天气的任务
-         */
         fun executeOnce(context: Context) {
             Timber.tag(TAG).i("executeOnce")
             val constraints = Constraints.Builder()
