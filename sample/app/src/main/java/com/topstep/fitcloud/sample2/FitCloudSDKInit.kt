@@ -130,6 +130,7 @@ private class FcSDKSingletonDelegate : ReadOnlyProperty<Context, FcSDK> {
                         FcBuiltInFeatures(
                             autoSetLanguage = true,
                             mediaControl = true,
+                            musicControl = true
                         )
                     )
                     .build()
