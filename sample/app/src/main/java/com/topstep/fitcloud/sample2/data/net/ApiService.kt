@@ -6,6 +6,7 @@ import com.topstep.fitcloud.sample2.data.bean.DialCustomStyleBean
 import com.topstep.fitcloud.sample2.data.bean.DialPacketComplexBean
 import com.topstep.fitcloud.sample2.data.bean.VersionBean
 import com.topstep.fitcloud.sample2.model.dial.DialPacket
+import com.topstep.fitcloud.sample2.model.game.push.GamePacket
 import com.topstep.fitcloud.sample2.model.sport.push.SportPacket
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -28,6 +29,13 @@ interface ApiService {
         @Field("hardwareInfo") hardwareInfo: String,
         @Field("uiVersion") uiVersion: String?
     ): ObjectNullable<VersionBean>
+
+    @POST(URL_GAME_PACKET_LIST)
+    @FormUrlEncoded
+    suspend fun listGamePacket(
+        @Field("hardwareInfo") hardwareInfo: String,
+        @Field("lang") lang: String
+    ): ListNullable<GamePacket>
 
     @POST(URL_SPORT_PACKET_LIST)
     @FormUrlEncoded

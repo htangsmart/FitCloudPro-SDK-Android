@@ -558,4 +558,15 @@
     <string name="sport_ui_type_114">Shooting</string>
     <string name="sport_ui_type_115">Marathon</string>
 
+    <!--Device Settings:Game push-->
+    <string name="ds_game_push">Game Push</string>
+    <string name="ds_game_center">Game centre</string>
+    <string name="ds_game_mine">My Game</string>
+    <string name="ds_game_detail">Game Details</string>
+    <string name="ds_download_count"><xliff:g id="params1">%1$s</xliff:g> downloads</string>
+    <string name="ds_game_style_select">The choice of style</string>
+    <string name="ds_game_description">Gaming strategy</string>
+    <string name="ds_game_number_limit">*Only up to 8 games can be installed</string>
+    <string name="ds_game_skin_used">Used</string>
+
 </resources>

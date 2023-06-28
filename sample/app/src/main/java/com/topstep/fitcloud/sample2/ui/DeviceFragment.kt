@@ -50,6 +50,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemAlarm.clickTrigger(block = blockClick)
         viewBind.itemContacts.clickTrigger(block = blockClick)
         viewBind.itemPowerSaveMode.clickTrigger(block = blockClick)
+        viewBind.itemGamePush.clickTrigger(block = blockClick)
         viewBind.itemSportPush.clickTrigger(block = blockClick)
         viewBind.itemDial.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
@@ -95,6 +96,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                             it.isSupportFeature(FcDeviceInfo.Feature.QR_CODE_EXTENSION_1)
                     viewBind.itemContacts.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CONTACTS)
                     viewBind.itemPowerSaveMode.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.POWER_SAVE_MODE)
+                    viewBind.itemGamePush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GAME_PUSH)
                     viewBind.itemSportPush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SPORT_PUSH)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
                 }
@@ -150,6 +152,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemPowerSaveMode -> {
                 findNavController().navigate(DeviceFragmentDirections.toPowerSaveMode())
+            }
+            viewBind.itemGamePush -> {
+                findNavController().navigate(DeviceFragmentDirections.toGamePush())
             }
             viewBind.itemSportPush -> {
                 findNavController().navigate(DeviceFragmentDirections.toSportPush())

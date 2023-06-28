@@ -1,5 +1,6 @@
 package com.topstep.fitcloud.sample2.di
 
+import com.topstep.fitcloud.sample2.MyApplication
 import com.topstep.fitcloud.sample2.data.auth.AuthManager
 import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.device.*
@@ -35,6 +36,14 @@ object Injector {
 
     fun getVersionRepository(): VersionRepository {
         return VersionRepositoryImpl(
+            SingleInstance.deviceManager,
+            SingleInstance.apiClient.apiService
+        )
+    }
+
+    fun getGameRepository(): GameRepository {
+        return GameRepositoryImpl(
+            MyApplication.instance,
             SingleInstance.deviceManager,
             SingleInstance.apiClient.apiService
         )

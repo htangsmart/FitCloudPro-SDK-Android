@@ -558,4 +558,15 @@
     <string name="sport_ui_type_114">射击</string>
     <string name="sport_ui_type_115">马拉松</string>
 
+    <!--Device Settings:Game push-->
+    <string name="ds_game_push">游戏推送</string>
+    <string name="ds_game_center">游戏中心</string>
+    <string name="ds_game_mine">我的游戏</string>
+    <string name="ds_game_detail">游戏详情</string>
+    <string name="ds_download_count"><xliff:g id="params1">%1$s</xliff:g>次下载</string>
+    <string name="ds_game_style_select">风格选择</string>
+    <string name="ds_game_description">游戏攻略</string>
+    <string name="ds_game_number_limit">*最多只能安装8个游戏</string>
+    <string name="ds_game_skin_used">已使用</string>
+
 </resources>
