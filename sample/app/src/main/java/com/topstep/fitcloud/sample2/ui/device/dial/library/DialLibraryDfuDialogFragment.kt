@@ -82,7 +82,7 @@ class DialLibraryDfuDialogFragment : AppCompatDialogFragment() {
             if (!dfuViewModel.isDfuIng()) {
                 PermissionHelper.requestBle(this) { granted ->
                     if (granted) {
-                        val binFlag = adapter?.getSelectBinFlag() ?: 0
+                        val binFlag = adapter?.getSelectedItem()?.binFlag ?: 0
                         dfuViewModel.startDfu(FcDfuManager.DfuType.DIAL, Uri.parse(dialPacket.binUrl), binFlag)
                     }
                 }
@@ -138,7 +138,7 @@ class DialLibraryDfuDialogFragment : AppCompatDialogFragment() {
     }
 
     private fun resetStateView() {
-        viewBind.stateView.isEnabled = adapter?.hasSelectBinFlag() ?: true
+        viewBind.stateView.isEnabled = adapter?.hasSelectedItem() ?: true
         viewBind.stateView.text = getString(R.string.ds_push_start, fileSizeStr(dialPacket.binSize))
     }
 

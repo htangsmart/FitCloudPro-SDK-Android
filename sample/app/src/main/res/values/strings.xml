@@ -37,6 +37,7 @@
     <string name="action_save">Save</string>
     <string name="action_start">Start</string>
     <string name="action_retry">Retry</string>
+    <string name="action_select">Select</string>
 
     <!--Tips-->
     <string name="tip_prompt">Hint</string>
@@ -302,8 +303,19 @@
     <string name="ds_dial_component">Dial Component</string>
     <string name="ds_dial_component_des">The dial component feature allows you to switch between existing dials on the device and change their style.</string>
     <string name="ds_dial_none_feature">Your device does not support any dial feature</string>
-
     <string name="ds_dial_error_shape">Not supported, please try to upgrade the APP to the latest version</string>
+    <string name="ds_dial_background">Background</string>
+    <string name="ds_dial_style">Style</string>
+    <string name="ds_dial_position">Position</string>
+    <string name="ds_dial_error_style">This watch is currently not supported for upgrade</string>
+    <string name="ds_dial_create">Create Dial(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="ds_dial_creating">Creating dial…</string>
+    <string name="ds_dial_create_fail">Failed to create dial</string>
+    <string name="ds_dial_position_top">Top</string>
+    <string name="ds_dial_position_bottom">Bottom</string>
+    <string name="ds_dial_position_left">Left</string>
+    <string name="ds_dial_position_right">Right</string>
+    <string name="ds_dial_component_edit">Edit Component</string>
 
     <!--WomenHealth-->
     <string name="wh_women_health">Women\'s Health</string>

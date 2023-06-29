@@ -37,6 +37,7 @@
     <string name="action_save">保存</string>
     <string name="action_start">开始</string>
     <string name="action_retry">重试</string>
+    <string name="action_select">选择</string>
 
     <!--Tips-->
     <string name="tip_prompt">提示</string>
@@ -302,8 +303,19 @@
     <string name="ds_dial_component">表盘组件</string>
     <string name="ds_dial_component_des">表盘组件功能允许您切换设备上已经存在表盘，以及更改它们的样式。</string>
     <string name="ds_dial_none_feature">您的设备不支持任何表盘功能</string>
-
     <string name="ds_dial_error_shape">暂不支持，请尝试升级APP至最新版本</string>
+    <string name="ds_dial_background">背景</string>
+    <string name="ds_dial_style">样式</string>
+    <string name="ds_dial_position">位置</string>
+    <string name="ds_dial_error_style">暂不支持此手表升级</string>
+    <string name="ds_dial_create">创建表盘(<xliff:g id="param">%1$s</xliff:g>)</string>
+    <string name="ds_dial_creating">创建表盘中…</string>
+    <string name="ds_dial_create_fail">创建表盘失败</string>
+    <string name="ds_dial_position_top">上</string>
+    <string name="ds_dial_position_bottom">下</string>
+    <string name="ds_dial_position_left">左</string>
+    <string name="ds_dial_position_right">右</string>
+    <string name="ds_dial_component_edit">编辑组件</string>
 
     <!--WomenHealth-->
     <string name="wh_women_health">女性健康</string>

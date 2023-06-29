@@ -65,12 +65,12 @@ class DialSpacePacketAdapter(
     /**
      * Selected position is available
      */
-    fun hasSelectBinFlag(): Boolean {
+    fun hasSelectedItem(): Boolean {
         return selectPosition != -1
     }
 
-    fun getSelectBinFlag(): Byte {
-        return items[selectPosition].binFlag
+    fun getSelectedItem(): DialSpacePacket {
+        return items[selectPosition]
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DialSpacePacketViewHolder {

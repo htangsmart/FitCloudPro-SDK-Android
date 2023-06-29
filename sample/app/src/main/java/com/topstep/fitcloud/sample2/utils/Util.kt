@@ -41,13 +41,13 @@ import com.topstep.fitcloud.sdk.exception.FcUnSupportFeatureException
 import com.topstep.fitcloud.sdk.v2.utils.dial.DialView
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.functions.Action
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.io.IOException
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 /**
  * All Parcelable objects passed by oneself can use this as a Key
@@ -313,6 +313,29 @@ fun glideLoadDialStyle(context: Context, dialView: DialView, uri: Any, styleBase
                 dialView.setStyleBitmap(null, styleBaseOnWidth)
             }
         })
+}
+
+suspend fun glideGetBitmap(context: Context, uri: Uri) = suspendCancellableCoroutine {
+    val request = Glide.with(context)
+    val target = request
+        .asBitmap()
+        .load(uri)
+        .into(object : CustomTarget<Bitmap?>() {
+            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                it.resume(resource)
+            }
+
+            override fun onLoadFailed(errorDrawable: Drawable?) {
+                it.resumeWithException(IOException())
+            }
+
+            override fun onLoadCleared(placeholder: Drawable?) {
+
+            }
+        })
+    it.invokeOnCancellation {
+        request.clear(target)
+    }
 }
 
 fun getGridSpanCount(context: Context, baseSpanCount: Int = 3): Int {

@@ -18,6 +18,7 @@ data class DialCustomParams(
 ) {
 
     data class Style(
+        val styleIndex: Int,
         val styleUri: Uri,
         /**
          * The style is designed based on what width.
@@ -29,6 +30,7 @@ data class DialCustomParams(
     ) : Parcelable {
 
         constructor(parcel: Parcel) : this(
+            parcel.readInt(),
             parcel.readParcelableCompat(Uri::class.java.classLoader)!!,
             parcel.readInt(),
             parcel.readString()!!,
@@ -36,6 +38,7 @@ data class DialCustomParams(
         )
 
         override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeInt(styleIndex)
             parcel.writeParcelable(styleUri, flags)
             parcel.writeInt(styleBaseOnWidth)
             parcel.writeString(binUrl)

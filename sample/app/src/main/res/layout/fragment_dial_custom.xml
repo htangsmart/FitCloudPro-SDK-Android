@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:windowBackground"
+    android:orientation="vertical">
 
-</ScrollView>
+    <com.github.kilnn.tool.widget.preference.PreferenceRelativeLayout
+        android:id="@+id/layout_location_service"
+        style="@style/Widget.Sample.PreferenceBase"
+        android:minHeight="0dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/btn_enable_location_service"
+            android:text="@string/ds_dfu_tips_location_service"
+            android:textColor="?colorError"/>
+
+        <Button
+            android:id="@+id/btn_enable_location_service"
+            style="@style/Widget.Sample.Button.Outlined.Round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="@string/action_turn_on"/>
+
+    </com.github.kilnn.tool.widget.preference.PreferenceRelativeLayout>
+
+    <com.topstep.fitcloud.sample2.ui.widget.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.topstep.fitcloud.sdk.v2.utils.dial.DialView
+                android:id="@+id/dial_view"
+                android:layout_width="232dp"
+                android:layout_height="232dp"
+                android:layout_gravity="center_horizontal"
+                app:dv_background_scale_type="center_crop"/>
+
+            <Button
+                android:id="@+id/btn_create_dial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:minWidth="156dp"
+                app:cornerRadius="64dp"
+                tools:text="@string/ds_dial_create"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/ds_dial_background"
+                android:textAppearance="?textAppearanceSubtitle1"/>
+
+            <Button
+                android:id="@+id/btn_select_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/action_select"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/ds_dial_style"
+                android:textAppearance="?textAppearanceSubtitle1"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/style_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/ds_dial_position"
+                android:textAppearance="?textAppearanceSubtitle1"/>
+
+            <RadioGroup
+                android:id="@+id/rg_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/ds_dial_position_top"/>
+
+                <RadioButton
+                    android:id="@+id/rb_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/ds_dial_position_bottom"/>
+
+                <RadioButton
+                    android:id="@+id/rb_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/ds_dial_position_left"/>
+
+                <RadioButton
+                    android:id="@+id/rb_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/ds_dial_position_right"/>
+            </RadioGroup>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

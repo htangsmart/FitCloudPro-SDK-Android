@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.github.kilnn.tool.dialog.prompt.PromptDialogHolder
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.di.Injector
+import com.topstep.fitcloud.sample2.di.internal.CoroutinesInstance.applicationScope
+import com.topstep.fitcloud.sample2.model.device.ConnectorState
 import com.topstep.fitcloud.sample2.utils.showFailed
 import com.topstep.fitcloud.sdk.exception.FcDfuException
 import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
@@ -14,10 +16,13 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
 import kotlinx.coroutines.rx3.await
+import kotlinx.coroutines.withTimeout
 import timber.log.Timber
 
 class DfuViewModel : ViewModel() {
@@ -49,6 +54,19 @@ class DfuViewModel : ViewModel() {
                 if (e !is CancellationException) {
                     _flowDfuEvent.send(DfuEvent.OnFail(e))
                 }
+            }
+        }
+    }
+
+    fun setGUICustomDialComponent(spaceIndex: Int, styleIndex: Int) {
+        applicationScope.launch {
+            try {
+                withTimeout(90 * 1000) {
+                    deviceManager.flowState.filter { it == ConnectorState.CONNECTED }.first()
+                }
+                deviceManager.settingsFeature.setDialComponent(spaceIndex, byteArrayOf(styleIndex.toByte())).await()
+            } catch (e: Exception) {
+                Timber.w(e)
             }
         }
     }

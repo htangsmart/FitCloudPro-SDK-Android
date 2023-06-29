@@ -11,6 +11,7 @@ import com.topstep.fitcloud.sdk.v2.model.settings.dial.FcDialSpace
  */
 @Keep
 data class DialSpacePacket(
+    val spaceIndex: Int,
     /**
      * Dial Type
      * [FcDialSpace.DIAL_TYPE_NONE]
@@ -67,6 +68,7 @@ data class DialSpacePacket(
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readByte(),
         parcel.readInt(),
         parcel.readInt(),
@@ -79,6 +81,7 @@ data class DialSpacePacket(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(spaceIndex)
         parcel.writeByte(dialType)
         parcel.writeInt(dialNum)
         parcel.writeInt(dialBinVersion)

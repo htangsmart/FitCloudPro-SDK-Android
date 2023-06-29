@@ -132,7 +132,8 @@ internal class DialRepositoryImpl constructor(
     private fun combinationData(dialSpaces: List<FcDialSpace>, dialPackets: List<DialPacketComplexBean>): List<DialSpacePacket> {
         val dialSpacePackets = ArrayList<DialSpacePacket>(dialSpaces.size)
 
-        for (space in dialSpaces) {
+        for (spaceIndex in dialSpaces.indices) {
+            val space = dialSpaces[spaceIndex]
             //1.According to dialNum, match the information on the device with the information returned by the server
             var packet: DialPacketComplexBean? = null
             if (space.dialType == FcDialSpace.DIAL_TYPE_NORMAL || space.dialType == FcDialSpace.DIAL_TYPE_NONE) {
@@ -171,6 +172,7 @@ internal class DialRepositoryImpl constructor(
 
             dialSpacePackets.add(
                 DialSpacePacket(
+                    spaceIndex,
                     space.dialType,
                     space.dialNum,
                     space.binVersion,
@@ -216,8 +218,10 @@ internal class DialRepositoryImpl constructor(
             //The "GUI dial format" image on the FitCloud server is doubled in size relative to the device screen size
             // So we need shape.width * 2
             val styleBaseOnWidth = dialPushParams.shape.width * 2
-            val styles = urls.map {
-                DialCustomParams.Style(Uri.parse(it), styleBaseOnWidth, dialPacket.binUrl, dialPacket.binSize)
+            val styles = ArrayList<DialCustomParams.Style>(urls.size)
+            for (styleIndex in urls.indices) {
+                val url = urls[styleIndex]
+                styles.add(DialCustomParams.Style(styleIndex, Uri.parse(url), styleBaseOnWidth, dialPacket.binUrl, dialPacket.binSize))
             }
             DialCustomParams(
                 //Use server image as default background
@@ -243,6 +247,7 @@ internal class DialRepositoryImpl constructor(
                     if (support.styleName == dial.styleName) {
                         styles.add(
                             DialCustomParams.Style(
+                                styles.size,
                                 ResourceUtil.getUriFromDrawableResId(context, support.resId),
                                 //The "Base dial format" image on the FitCloud SDK is design base on 800px
                                 DialDrawer.STYLE_BASE_ON_WIDTH,
