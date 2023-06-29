@@ -29,6 +29,9 @@ data class SportRecordEntity(
     val climb: Float,
     val sportType: Int,
 
+    /**
+     * If gpsId is not null, So I think this data is incomplete because its associated GPS data has not yet been synchronized from the device.
+     */
     val gpsId: String? = null,
 ) {
 

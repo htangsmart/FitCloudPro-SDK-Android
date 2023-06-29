@@ -466,6 +466,8 @@ internal class DeviceManagerImpl(
                             _flowSyncEvent.send(DeviceManager.SyncEvent.SUCCESS)
                             val userId = internalStorage.flowAuthedUserId.value
                             if (userId != null) {
+                                //Clear all gpsId every time synchronization is completed
+                                //Because if the synchronization is all successful, then GpsData and SportData should have all returned successfully.
                                 syncDataRepository.clearSportGpsId(userId)
                             }
                         }

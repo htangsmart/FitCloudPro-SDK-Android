@@ -80,12 +80,21 @@ abstract class SyncDataDao {
     @TypeConverters(UUIDConverter::class)
     abstract suspend fun querySportIdByGpsId(userId: Long, gpsId: String): UUID?
 
+    /**
+     * Clear gpsId if has associated GPS data
+     */
     @Query("UPDATE SportRecordEntity SET gpsId=NULL WHERE sportId=:sportId")
     abstract suspend fun clearGpsId(@TypeConverters(UUIDConverter::class) sportId: UUID)
 
+    /**
+     * Clear all gpsId every time synchronization is completed
+     */
     @Query("UPDATE SportRecordEntity SET gpsId=NULL WHERE userId=:userId")
     abstract suspend fun clearGpsId(userId: Long)
 
+    /**
+     * Only display devices with null gpsId
+     */
     @Query("SELECT * FROM SportRecordEntity WHERE userId=:userId AND gpsId is NULL ORDER BY time DESC")
     abstract suspend fun querySport(userId: Long): List<SportRecordEntity>?
 }

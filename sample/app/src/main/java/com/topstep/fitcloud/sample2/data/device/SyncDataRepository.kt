@@ -275,6 +275,7 @@ internal class SyncDataRepositoryImpl(
                         )
                     }
                 )
+                //FcSportData is associated with GPS data,then clear the gpsId
                 syncDao.clearGpsId(sportId)
             }
         }
