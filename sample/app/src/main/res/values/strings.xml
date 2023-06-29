@@ -65,6 +65,7 @@
     <string name="sync_state_process">Syncing: <xliff:g id="param">%1$d</xliff:g>%%</string>
     <string name="sync_data_success">Sync success</string>
     <string name="sync_data_failed">Sync fail</string>
+    <string name="sync_data_ongoing">Syncing data</string>
 
     <string name="data_step">Step</string>
     <string name="data_sleep">Sleep</string>
@@ -92,6 +93,15 @@
     <string name="game_type_unknown">Unknown</string>
 
     <string name="module_realtime">Realtime</string>
+    <string name="health_realtime">Health Realtime</string>
+    <string name="ecg_realtime">Ecg Realtime</string>
+    <string name="temperature_test_error1">Not wearing a watch</string>
+    <string name="temperature_test_error2">Body temperature is too high</string>
+    <string name="temperature_test_error3">Body temperature is too low</string>
+    <string name="health_start">Start</string>
+    <string name="health_stop">Stop</string>
+    <string name="health_stop_time">Stop(<xliff:g id="params">%1$d</xliff:g>)s</string>
+
     <string name="module_combine">Combine</string>
 
     <!--Device-->

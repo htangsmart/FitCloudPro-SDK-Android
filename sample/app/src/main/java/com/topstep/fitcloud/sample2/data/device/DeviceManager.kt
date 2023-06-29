@@ -24,6 +24,7 @@ import com.topstep.fitcloud.sdk.connector.FcDisconnectedReason
 import com.topstep.fitcloud.sdk.exception.FcSyncBusyException
 import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
 import com.topstep.fitcloud.sdk.v2.features.FcConfigFeature
+import com.topstep.fitcloud.sdk.v2.features.FcDataFeature
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
@@ -107,6 +108,8 @@ interface DeviceManager {
     val configFeature: FcConfigFeature
 
     val settingsFeature: FcSettingsFeature
+
+    val dataFeature: FcDataFeature
 
     fun disconnect()
 
@@ -436,6 +439,7 @@ internal class DeviceManagerImpl(
 
     override val configFeature: FcConfigFeature = connector.configFeature()
     override val settingsFeature: FcSettingsFeature = connector.settingsFeature()
+    override val dataFeature: FcDataFeature = connector.dataFeature()
 
     override fun disconnect() {
         connector.disconnect()

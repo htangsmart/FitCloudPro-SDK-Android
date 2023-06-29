@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="realtime"/>
+        android:divider="?dividerVertical"
+        android:orientation="vertical"
+        android:showDividers="middle">
 
-</LinearLayout>
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_health_realtime"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/health_realtime"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_ecg_realtime"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ecg_realtime"/>
+
+    </LinearLayout>
+
+</ScrollView>

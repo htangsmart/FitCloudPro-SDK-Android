@@ -153,7 +153,31 @@
         android:id="@+id/realtimeFragment"
         android:name="com.topstep.fitcloud.sample2.ui.RealtimeFragment"
         android:label="@string/module_realtime"
-        tools:layout="@layout/fragment_realtime"/>
+        tools:layout="@layout/fragment_realtime">
+        <action
+            android:id="@+id/toHealthRealtime"
+            app:destination="@id/healthRealtimeFragment"/>
+        <action
+            android:id="@+id/toEcgRealtime"
+            app:destination="@id/ecgRealtimeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/healthRealtimeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.realtime.HealthRealtimeFragment"
+        android:label="@string/health_realtime"
+        tools:layout="@layout/fragment_health_realtime">
+        <argument
+            android:name="healthType"
+            app:argType="integer"
+            app:nullable="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/ecgRealtimeFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.realtime.EcgRealtimeFragment"
+        android:label="@string/ecg_realtime"
+        tools:layout="@layout/fragment_ecg_realtime"/>
 
     <fragment
         android:id="@+id/combineFragment"

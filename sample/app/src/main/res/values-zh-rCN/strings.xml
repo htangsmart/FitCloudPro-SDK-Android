@@ -65,6 +65,7 @@
     <string name="sync_state_process">正在同步: <xliff:g id="param">%1$d</xliff:g>%%</string>
     <string name="sync_data_success">同步成功</string>
     <string name="sync_data_failed">同步失败</string>
+    <string name="sync_data_ongoing">Syncing data</string>
 
     <string name="data_step">步数</string>
     <string name="data_sleep">睡眠</string>
@@ -92,6 +93,15 @@
     <string name="game_type_unknown">未知</string>
 
     <string name="module_realtime">实时</string>
+    <string name="health_realtime">健康数据实时测量</string>
+    <string name="ecg_realtime">心电数据实时测量</string>
+    <string name="temperature_test_error1">未佩戴手表</string>
+    <string name="temperature_test_error2">体温过高</string>
+    <string name="temperature_test_error3">体温过低</string>
+    <string name="health_start">开始</string>
+    <string name="health_stop">结束</string>
+    <string name="health_stop_time">结束(<xliff:g id="params">%1$d</xliff:g>)s</string>
+
     <string name="module_combine">结合</string>
 
     <!--Device-->
