@@ -591,4 +591,22 @@
     <string name="ds_game_number_limit">*最多只能安装8个游戏</string>
     <string name="ds_game_skin_used">已使用</string>
 
+    <!--Device Settings:Third part app-->
+    <string name="ds_notification_config">通知配置</string>
+    <string name="ds_notification_telephony">电话</string>
+    <string name="ds_notification_sms">短信</string>
+    <string name="ds_notification_qq">QQ</string>
+    <string name="ds_notification_wechat">WeChat</string>
+    <string name="ds_notification_facebook">Facebook</string>
+    <string name="ds_notification_twitter">Twitter</string>
+    <string name="ds_notification_instagram">Instagram</string>
+    <string name="ds_notification_whatsapp">WhatsApp</string>
+    <string name="ds_notification_line">Line</string>
+    <string name="ds_notification_messenger">Facebook Messenger</string>
+    <string name="ds_notification_kakao_talk">Kakao Talk</string>
+    <string name="ds_notification_skype">Skype</string>
+    <string name="ds_notification_email">邮件</string>
+    <string name="ds_notification_others">其他应用</string>
+    <string name="ds_capture_notice_msg">第三方应用消息推送到手表设备,需要系统权限,是否立即开启?</string>
+
 </resources>

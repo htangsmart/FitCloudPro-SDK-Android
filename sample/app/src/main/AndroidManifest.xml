@@ -30,8 +30,26 @@
         android:name="android.permission.BLUETOOTH_ADMIN"
         tools:node="replace"/>
 
+    <!--Used for monitoring SMS messages-->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <!--部分手机(如小米)请求RECEIVE_SMS权限时不弹窗，所以在申请权限时，去读取短信以便触发权限弹窗。因此申请了READ_SMS权限
+    参考：https://blog.csdn.net/ZuoZuoShengHen/article/details/96184067
+    参考：https://github.com/guolindev/PermissionX/issues/66
+    -->
+    <uses-permission android:name="android.permission.READ_SMS"/>
     <!--For SMS/call monitor and device contacts-->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <!--Used for phone monitoring function-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+
+    <!--Used for answering (hanging up) phone functions-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ANSWER_PHONE_CALLS"/>
+
+    <!--Used to automatically reply to text messages when hanging up a phone call-->
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <!--For foreground service-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>

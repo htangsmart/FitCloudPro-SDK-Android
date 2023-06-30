@@ -591,4 +591,22 @@
     <string name="ds_game_number_limit">*Only up to 8 games can be installed</string>
     <string name="ds_game_skin_used">Used</string>
 
+    <!--Device Settings:Third part app-->
+    <string name="ds_notification_config">Notification Config</string>
+    <string name="ds_notification_telephony">Telephony</string>
+    <string name="ds_notification_sms">SMS</string>
+    <string name="ds_notification_qq">QQ</string>
+    <string name="ds_notification_wechat">WeChat</string>
+    <string name="ds_notification_facebook">Facebook</string>
+    <string name="ds_notification_twitter">Twitter</string>
+    <string name="ds_notification_instagram">Instagram</string>
+    <string name="ds_notification_whatsapp">WhatsApp</string>
+    <string name="ds_notification_line">Line</string>
+    <string name="ds_notification_messenger">Facebook Messenger</string>
+    <string name="ds_notification_kakao_talk">Kakao Talk</string>
+    <string name="ds_notification_skype">Skype</string>
+    <string name="ds_notification_email">Email</string>
+    <string name="ds_notification_others">Others App</string>
+    <string name="ds_capture_notice_msg">Pushing third-party application messages to the watch requires granting system permissions. Whether to open immediately?</string>
+
 </resources>

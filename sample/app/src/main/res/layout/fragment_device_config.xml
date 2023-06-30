@@ -20,6 +20,13 @@
             app:preferenceTitle="@string/ds_page_config"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_notification"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:preferenceTitle="@string/ds_notification_config"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_function"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             android:layout_width="match_parent"

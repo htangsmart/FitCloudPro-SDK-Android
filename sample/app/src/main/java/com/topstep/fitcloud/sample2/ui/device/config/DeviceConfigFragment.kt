@@ -27,6 +27,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBind.itemPage.clickTrigger(block = blockClick)
+        viewBind.itemNotification.clickTrigger(block = blockClick)
         viewBind.itemFunction.clickTrigger(block = blockClick)
         viewBind.itemHealthMonitor.clickTrigger(block = blockClick)
         viewBind.itemSedentary.clickTrigger(block = blockClick)
@@ -59,6 +60,9 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
         when (view) {
             viewBind.itemPage -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toPageConfig())
+            }
+            viewBind.itemNotification -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toNotificationConfig())
             }
             viewBind.itemFunction -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toFunctionConfig())

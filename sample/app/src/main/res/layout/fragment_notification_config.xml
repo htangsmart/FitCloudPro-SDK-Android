@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_telephony"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_telephony"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_sms"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_sms"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_qq"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_qq"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_wechat"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_wechat"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_facebook"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_facebook"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_twitter"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_twitter"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_instagram"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_instagram"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_whatsapp"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_whatsapp"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_line"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_line"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_messenger"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_messenger"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_kakao_talk"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_kakao_talk"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_skype"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_skype"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_email"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_email"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_others"
+            style="@style/Widget.Sample.PreferenceView.Item.Switch"
+            app:preferenceTitle="@string/ds_notification_others"/>
+
+    </LinearLayout>
+
+</ScrollView>

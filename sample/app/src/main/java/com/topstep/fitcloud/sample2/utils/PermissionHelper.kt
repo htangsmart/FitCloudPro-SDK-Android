@@ -93,6 +93,61 @@ object PermissionHelper {
         )
     }
 
+    /**
+     * Do you have the necessary permissions to receive Telephony notifications
+     */
+    fun hasReceiveTelephony(context: Context): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            hasPermissions(context, arrayListOf(Manifest.permission.READ_CALL_LOG, Manifest.permission.READ_PHONE_STATE))
+        } else {
+            hasPermissions(context, arrayListOf(Manifest.permission.READ_CALL_LOG))
+        }
+    }
+
+    /**
+     * Do you have the necessary permissions to receive SMS notifications
+     */
+    fun hasReceiveSms(context: Context): Boolean {
+        return hasPermissions(context, arrayListOf(Manifest.permission.RECEIVE_SMS))
+    }
+
+    private fun getTelephony(): ArrayList<String> {
+        val permissions = ArrayList<String>(6)
+        permissions.add(Manifest.permission.READ_CALL_LOG)
+        permissions.add(Manifest.permission.READ_PHONE_STATE)
+        permissions.add(Manifest.permission.READ_CONTACTS)
+        permissions.add(Manifest.permission.CALL_PHONE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            permissions.add(Manifest.permission.ANSWER_PHONE_CALLS)
+        }
+        permissions.add(Manifest.permission.SEND_SMS)
+        return permissions
+    }
+
+    private fun getSms(): ArrayList<String> {
+        return arrayListOf(
+            Manifest.permission.RECEIVE_SMS,
+            Manifest.permission.READ_SMS,
+            Manifest.permission.READ_CONTACTS
+        )
+    }
+
+    fun requestTelephony(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            grantResult.invoke(true)
+            return
+        }
+        requestPermission(fragment, getTelephony(), grantResult)
+    }
+
+    fun requestSms(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            grantResult.invoke(true)
+            return
+        }
+        requestPermission(fragment, getSms(), grantResult)
+    }
+
     private fun hasPermissions(context: Context, permissions: ArrayList<String>?): Boolean {
         if (permissions.isNullOrEmpty()) return true
         for (permission in permissions) {
