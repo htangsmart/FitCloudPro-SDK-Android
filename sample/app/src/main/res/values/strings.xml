@@ -609,4 +609,7 @@
     <string name="ds_notification_others">Others App</string>
     <string name="ds_capture_notice_msg">Pushing third-party application messages to the watch requires granting system permissions. Whether to open immediately?</string>
 
+    <!--Camera control-->
+    <string name="ds_camera_control">Camera Control</string>
+
 </resources>

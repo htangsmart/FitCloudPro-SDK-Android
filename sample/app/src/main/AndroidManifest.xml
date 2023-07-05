@@ -54,6 +54,21 @@
     <!--For foreground service-->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
+    <!--Used to vibration on the FindPhoneManager-->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!--Used to switch audio play on the FindPhoneManager-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
+    <!--Use for CameraActivity save picture on lower api version-->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"/>
+    <!--Used to start CameraActivity in the background-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <!--Used for the song push to read the audio files in the mobile phone-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:name="com.topstep.fitcloud.sample2.MyApplication"
         android:allowBackup="false"
@@ -78,6 +93,18 @@
         <activity android:name=".ui.auth.AuthActivity"/>
 
         <activity android:name=".ui.MainActivity"/>
+
+        <activity
+            android:name=".ui.camera.CameraActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:rotationAnimation="seamless"
+            android:screenOrientation="fullUser"
+            android:theme="@style/AppTheme.Camera"
+            tools:targetApi="o"/>
 
         <service
             android:name=".DeviceService"

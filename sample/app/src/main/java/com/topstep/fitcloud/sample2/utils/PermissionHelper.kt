@@ -26,6 +26,28 @@ object PermissionHelper {
         )
     }
 
+    fun requestAppCamera(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            grantResult.invoke(true)
+            return
+        }
+        val permissions = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            arrayListOf(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        } else {
+            arrayListOf(
+                Manifest.permission.CAMERA
+            )
+        }
+        requestPermission(fragment, permissions, grantResult)
+    }
+
+    fun hasCamera(context: Context): Boolean {
+        return hasPermissions(context, arrayListOf(Manifest.permission.CAMERA))
+    }
+
     /**
      * ToNote:This is the permission group based on app settings.
      * For more detailed permissions, please refer to the Android development documentation

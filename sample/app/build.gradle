@@ -133,6 +133,14 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
+    //JetPack-CameraX
+    implementation "androidx.camera:camera-core:$camerax_version"
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    implementation "androidx.camera:camera-view:$camerax_version"
+    implementation "androidx.camera:camera-extensions:$camerax_version"
+    implementation 'androidx.window:window:1.0.0'
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx3:$kotlin_coroutines_version"
 
     implementation 'androidx.multidex:multidex:2.0.1'

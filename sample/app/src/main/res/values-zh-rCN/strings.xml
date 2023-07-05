@@ -609,4 +609,7 @@
     <string name="ds_notification_others">其他应用</string>
     <string name="ds_capture_notice_msg">第三方应用消息推送到手表设备,需要系统权限,是否立即开启?</string>
 
+    <!--Camera control-->
+    <string name="ds_camera_control">相机控制</string>
+
 </resources>

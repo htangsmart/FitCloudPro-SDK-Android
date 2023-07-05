@@ -14,6 +14,7 @@ import com.topstep.fitcloud.sample2.model.device.ConnectorState
 import com.topstep.fitcloud.sample2.model.version.HardwareUpgradeInfo
 import com.topstep.fitcloud.sample2.model.version.hardwareInfoDisplay
 import com.topstep.fitcloud.sample2.ui.base.*
+import com.topstep.fitcloud.sample2.ui.camera.CameraActivity
 import com.topstep.fitcloud.sample2.ui.device.bind.DeviceConnectDialogFragment
 import com.topstep.fitcloud.sample2.utils.launchRepeatOnStarted
 import com.topstep.fitcloud.sample2.utils.setAllChildEnabled
@@ -53,6 +54,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemGamePush.clickTrigger(block = blockClick)
         viewBind.itemSportPush.clickTrigger(block = blockClick)
         viewBind.itemDial.clickTrigger(block = blockClick)
+        viewBind.itemCamera.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
         viewBind.itemEpoUpgrade.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
@@ -161,6 +163,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemDial -> {
                 findNavController().navigate(DeviceFragmentDirections.toDialHomePage())
+            }
+            viewBind.itemCamera -> {
+                CameraActivity.start(requireContext(), false)
             }
             viewBind.itemModifyLogo -> {
                 findNavController().navigate(DeviceFragmentDirections.toModifyLogo())
