@@ -612,4 +612,15 @@
     <!--Camera control-->
     <string name="ds_camera_control">相机控制</string>
 
+    <!--Device Settings:Find Phone-->
+    <string name="ds_find_phone_found">找到手机</string>
+    <string name="ds_find_phone_stop">点击停止查找</string>
+
+    <!--Others Feature-->
+    <string name="ds_other_features">其他功能</string>
+    <string name="ds_find_device">查找设备</string>
+    <string name="ds_device_reboot">重启</string>
+    <string name="ds_device_shutdown">关机</string>
+    <string name="ds_device_reset">恢复出厂设置</string>
+
 </resources>

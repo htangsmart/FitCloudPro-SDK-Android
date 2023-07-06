@@ -3,13 +3,8 @@ package com.topstep.fitcloud.sample2.utils
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.media.AudioAttributes
-import android.media.RingtoneManager
-import android.net.Uri
 import android.os.Build
-import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import com.topstep.fitcloud.sample2.R
 
 object NotificationHelper {
@@ -21,10 +16,6 @@ object NotificationHelper {
     const val FIND_PHONE_NOTIFICATION_ID = 10001
     const val DEVICE_SERVICE_NOTIFICATION_ID = 10002
     const val SPORT_SERVICE_NOTIFICATION_ID = 10003
-
-    /**
-     * 用于摇一摇拍照的通知
-     */
     const val CAMERA_NOTIFICATION_ID = 10004
 
     fun createCoreChannel(context: Context, notificationManager: NotificationManager) {

@@ -51,12 +51,14 @@ class MyApplication : MultiDexApplication() {
 
     private lateinit var applicationScope: CoroutineScope
     private lateinit var deviceManager: DeviceManager
+    private lateinit var findPhoneManager: FindPhoneManager
     private var requireWeather = false
 
     private fun initMainProcess() {
         fitCloudSDKInit(this)
         applicationScope = Injector.getApplicationScope()
         deviceManager = Injector.getDeviceManager()
+        findPhoneManager = FindPhoneManager(this, applicationScope, deviceManager)
         applicationScope.launch {
             deviceManager.flowWeatherRequire().collect {
                 Timber.i("flowWeatherRequire:%b", it)
@@ -80,12 +82,12 @@ class MyApplication : MultiDexApplication() {
             deviceManager.messageFeature.observerMessage().asFlow().collect {
                 Timber.i("receive msg:%d", it.type)
                 when (it.type) {
-//                    FcMessageType.FIND_PHONE -> {
-//                        findPhoneManager.get().start()
-//                    }
-//                    FcMessageType.STOP_FIND_PHONE -> {
-//                        findPhoneManager.get().stop()
-//                    }
+                    FcMessageType.FIND_PHONE -> {
+                        findPhoneManager.start()
+                    }
+                    FcMessageType.STOP_FIND_PHONE -> {
+                        findPhoneManager.stop()
+                    }
                     FcMessageType.CAMERA_WAKE_UP -> {
                         monitorCameraLaunch()
                         CameraActivity.start(this@MyApplication, true)

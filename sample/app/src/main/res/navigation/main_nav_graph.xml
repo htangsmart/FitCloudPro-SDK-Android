@@ -49,6 +49,9 @@
             android:id="@+id/toEpoUpgrade"
             app:destination="@id/epoUpgradeFragment"/>
         <action
+            android:id="@+id/toOtherFeatures"
+            app:destination="@id/otherFeaturesFragment"/>
+        <action
             android:id="@+id/toHardwareUpgrade"
             app:destination="@id/hardwareUpgradeFragment"/>
     </fragment>
@@ -425,6 +428,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.epo.EpoUpgradeFragment"
         android:label="@string/epo_upgrade_manual"
         tools:layout="@layout/fragment_epo_upgrade"/>
+
+    <fragment
+        android:id="@+id/otherFeaturesFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.OtherFeaturesFragment"
+        android:label="@string/ds_other_features"
+        tools:layout="@layout/fragment_other_features"/>
 
     <fragment
         android:id="@+id/hardwareUpgradeFragment"

@@ -612,4 +612,15 @@
     <!--Camera control-->
     <string name="ds_camera_control">Camera Control</string>
 
+    <!--Device Settings:Find Phone-->
+    <string name="ds_find_phone_found">Found mobile phone</string>
+    <string name="ds_find_phone_stop">Click to stop finding</string>
+
+    <!--Others Feature-->
+    <string name="ds_other_features">Other Features</string>
+    <string name="ds_find_device">Find Device</string>
+    <string name="ds_device_reboot">Device Reboot</string>
+    <string name="ds_device_shutdown">Device Shutdown</string>
+    <string name="ds_device_reset">Device Reset</string>
+
 </resources>

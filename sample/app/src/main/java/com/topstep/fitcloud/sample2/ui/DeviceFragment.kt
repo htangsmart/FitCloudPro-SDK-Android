@@ -57,6 +57,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemCamera.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
         viewBind.itemEpoUpgrade.clickTrigger(block = blockClick)
+        viewBind.itemOtherFeatures.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
@@ -172,6 +173,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemEpoUpgrade -> {
                 findNavController().navigate(DeviceFragmentDirections.toEpoUpgrade())
+            }
+            viewBind.itemOtherFeatures -> {
+                findNavController().navigate(DeviceFragmentDirections.toOtherFeatures())
             }
             viewBind.itemVersionInfo -> {
                 viewModel.checkUpgrade()
