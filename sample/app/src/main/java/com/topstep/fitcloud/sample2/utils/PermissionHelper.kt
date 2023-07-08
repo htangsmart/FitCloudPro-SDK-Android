@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.permissionx.guolindev.PermissionX
 import com.polidea.rxandroidble3.ClientComponent
 import com.polidea.rxandroidble3.RxBleClient
+import com.topstep.fitcloud.sample2.MyApplication
 import com.topstep.fitcloud.sample2.R
 
 object PermissionHelper {
@@ -159,7 +160,12 @@ object PermissionHelper {
             grantResult.invoke(true)
             return
         }
-        requestPermission(fragment, getTelephony(), grantResult)
+        requestPermission(fragment, getTelephony()) {
+            if (hasPermissions(fragment.requireContext(), arrayListOf(Manifest.permission.READ_PHONE_STATE))) {
+                MyApplication.instance.myTelephonyControl?.checkInitialize()
+            }
+            grantResult.invoke(it)
+        }
     }
 
     fun requestSms(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
@@ -167,7 +173,13 @@ object PermissionHelper {
             grantResult.invoke(true)
             return
         }
-        requestPermission(fragment, getSms(), grantResult)
+        val context = fragment.requireContext()
+        requestPermission(fragment, getSms()) {
+            if (hasReceiveSms(context)) {
+                PermissionTrigger.readSmsTest(context)
+            }
+            grantResult.invoke(it)
+        }
     }
 
     private fun hasPermissions(context: Context, permissions: ArrayList<String>?): Boolean {

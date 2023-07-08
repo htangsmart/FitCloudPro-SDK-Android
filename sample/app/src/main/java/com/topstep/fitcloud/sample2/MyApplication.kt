@@ -9,7 +9,9 @@ import android.content.IntentFilter
 import android.content.res.Configuration
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
 import com.github.kilnn.tool.system.SystemUtil
@@ -20,7 +22,9 @@ import com.topstep.fitcloud.sample2.ui.camera.CameraActivity
 import com.topstep.fitcloud.sample2.utils.FormatterUtil
 import com.topstep.fitcloud.sample2.utils.NotificationHelper
 import com.topstep.fitcloud.sample2.worker.WeatherWorker
+import com.topstep.fitcloud.sdk.v2.FcConnector
 import com.topstep.fitcloud.sdk.v2.model.message.FcMessageType
+import com.topstep.fitcloud.sdk.v2.utils.notification.PhoneStateListenerFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
@@ -54,11 +58,19 @@ class MyApplication : MultiDexApplication() {
     private lateinit var findPhoneManager: FindPhoneManager
     private var requireWeather = false
 
+    var myTelephonyControl: MyTelephonyControl? = null
+
     private fun initMainProcess() {
         fitCloudSDKInit(this)
         applicationScope = Injector.getApplicationScope()
         deviceManager = Injector.getDeviceManager()
         findPhoneManager = FindPhoneManager(this, applicationScope, deviceManager)
+
+        myTelephonyControl = MyTelephonyControl(this, fcSDK.connector, object : PhoneStateListenerFactory<MyPhoneStateListener> {
+            override fun createInstance(context: Context, connector: FcConnector): MyPhoneStateListener {
+                return MyPhoneStateListener(context, connector)
+            }
+        })
         applicationScope.launch {
             deviceManager.flowWeatherRequire().collect {
                 Timber.i("flowWeatherRequire:%b", it)
@@ -95,6 +107,15 @@ class MyApplication : MultiDexApplication() {
                 }
             }
         }
+        ProcessLifecycleOwner.get().lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onStart(owner: LifecycleOwner) {
+                myTelephonyControl?.checkInitialize()
+            }
+
+            override fun onStop(owner: LifecycleOwner) {
+
+            }
+        })
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
