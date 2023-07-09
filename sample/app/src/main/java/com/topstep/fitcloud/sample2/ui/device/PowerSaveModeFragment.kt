@@ -11,6 +11,7 @@ import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.databinding.FragmentPowerSaveModeBinding
 import com.topstep.fitcloud.sample2.di.Injector
+import com.topstep.fitcloud.sample2.ui.DeviceFragment
 import com.topstep.fitcloud.sample2.ui.base.*
 import com.topstep.fitcloud.sample2.ui.dialog.*
 import com.topstep.fitcloud.sample2.ui.widget.LoadingView
@@ -25,6 +26,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.await
 import timber.log.Timber
 
+/**
+ * **Document**
+ * https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki/10.Other-Features#power-save-mode
+ *
+ * ***Description**
+ * Display and modify the power save mode
+ *
+ * **Usage**
+ * 1. [DeviceFragment]
+ * According to whether [FcDeviceInfo.Feature.POWER_SAVE_MODE] supports, show or hide the entrance
+ *
+ * 2.[PowerSaveModeFragment]
+ * Display and modify
+ *
+ */
 class PowerSaveModeFragment : BaseFragment(R.layout.fragment_power_save_mode),
     CompoundButton.OnCheckedChangeListener, TimePickerDialogFragment.Listener, PromptDialogFragment.OnPromptListener {
 
