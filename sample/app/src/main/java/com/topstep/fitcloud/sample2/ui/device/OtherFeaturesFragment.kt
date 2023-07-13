@@ -26,19 +26,19 @@ class OtherFeaturesFragment : BaseFragment(R.layout.fragment_other_features) {
 
         viewBind.itemDeviceReboot.clickTrigger {
             viewLifecycleScope.launch {
-                deviceManager.settingsFeature.deviceReboot()
+                deviceManager.settingsFeature.deviceReboot().onErrorComplete().subscribe()
             }
         }
 
         viewBind.itemDeviceShutdown.clickTrigger {
             viewLifecycleScope.launch {
-                deviceManager.settingsFeature.deviceShutdown()
+                deviceManager.settingsFeature.deviceShutdown().onErrorComplete().subscribe()
             }
         }
 
         viewBind.itemDeviceReset.clickTrigger {
             viewLifecycleScope.launch {
-                deviceManager.settingsFeature.deviceReset()
+                deviceManager.settingsFeature.deviceReset().onErrorComplete().subscribe()
             }
         }
     }
