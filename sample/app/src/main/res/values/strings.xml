@@ -38,6 +38,7 @@
     <string name="action_start">Start</string>
     <string name="action_retry">Retry</string>
     <string name="action_select">Select</string>
+    <string name="action_add">Add</string>
 
     <!--Tips-->
     <string name="tip_prompt">Hint</string>
@@ -261,6 +262,24 @@
     <!--EPO-->
     <string name="epo_upgrade_manual">Manually Upgrade EPO</string>
     <string name="epo_create_fail">Create EPO File Fail</string>
+
+    <!--Cricket-->
+    <string name="cricket_match">Cricket Match</string>
+    <string name="cricket_match_id">Match ID:</string>
+    <string name="cricket_match_name">Match Name:</string>
+    <string name="cricket_match_time">Match Time:</string>
+    <string name="cricket_team_1_id">Team 1 ID:</string>
+    <string name="cricket_team_2_id">Team 2 ID:</string>
+    <string name="cricket_team_1_data">Team 1 Data(runs,wickets,overs,balls):</string>
+    <string name="cricket_team_2_data">Team 2 Data(runs,wickets,overs,balls):</string>
+    <string name="cricket_batsman_1_data">Batsman 1 Data(runs,balls):</string>
+    <string name="cricket_batsman_2_data">Batsman 2 Data(runs,balls):</string>
+    <string name="cricket_name">Name:</string>
+    <string name="cricket_bowler_data">Bowler Data:(runs,wickets,overs,balls)</string>
+    <string name="cricket_first_inning">First inning</string>
+    <string name="cricket_second_inning">Second inning</string>
+    <string name="cricket_crr">CRR</string>
+    <string name="cricket_rrr">RRR</string>
 
     <!--Version-->
     <string name="version_upgrade_param">Upgrade(<xliff:g id="param">%1$s</xliff:g>)</string>

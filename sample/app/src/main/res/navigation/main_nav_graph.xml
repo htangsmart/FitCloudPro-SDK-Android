@@ -54,6 +54,9 @@
         <action
             android:id="@+id/toHardwareUpgrade"
             app:destination="@id/hardwareUpgradeFragment"/>
+        <action
+            android:id="@+id/toCricket"
+            app:destination="@id/cricketFragment"/>
     </fragment>
 
     <fragment
@@ -151,6 +154,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.sync.GameFragment"
         android:label="@string/data_game"
         tools:layout="@layout/fragment_data_list"/>
+
+    <fragment
+        android:id="@+id/cricketFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.cricket.CricketFragment"
+        android:label="@string/cricket_match"
+        tools:layout="@layout/fragment_cricket"/>
 
     <fragment
         android:id="@+id/realtimeFragment"

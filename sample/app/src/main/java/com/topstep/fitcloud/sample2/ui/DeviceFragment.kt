@@ -57,6 +57,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemCamera.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
         viewBind.itemEpoUpgrade.clickTrigger(block = blockClick)
+        viewBind.itemCricket.clickTrigger(block = blockClick)
         viewBind.itemOtherFeatures.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
 
@@ -101,6 +102,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                     viewBind.itemPowerSaveMode.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.POWER_SAVE_MODE)
                     viewBind.itemGamePush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GAME_PUSH)
                     viewBind.itemSportPush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SPORT_PUSH)
+                    viewBind.itemCricket.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CRICKET_MATCH)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
                 }
             }
@@ -173,6 +175,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemEpoUpgrade -> {
                 findNavController().navigate(DeviceFragmentDirections.toEpoUpgrade())
+            }
+            viewBind.itemCricket -> {
+                findNavController().navigate(DeviceFragmentDirections.toCricket())
             }
             viewBind.itemOtherFeatures -> {
                 findNavController().navigate(DeviceFragmentDirections.toOtherFeatures())
