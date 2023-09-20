@@ -8,7 +8,7 @@ import com.topstep.fitcloud.sample2.databinding.ItemCricketBinding
 
 class CricketAdapter(val sources: List<CricketInfo>) : RecyclerView.Adapter<CricketAdapter.ItemViewHolder>() {
 
-    val selected: MutableSet<Int> = HashSet()
+    val selected: ArrayList<Int> = ArrayList(10)
     var listener: Listener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -33,7 +33,8 @@ class CricketAdapter(val sources: List<CricketInfo>) : RecyclerView.Adapter<Cric
             }
         }
         holder.viewBind.checkbox.setOnCheckedChangeListener(null)
-        holder.viewBind.checkbox.isChecked = selected.contains(position)
+        val selectedIndex = selected.indexOf(position)
+        holder.viewBind.checkbox.isChecked = selectedIndex != -1
         holder.viewBind.checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
             val actionPosition = holder.bindingAdapterPosition
             if (actionPosition != RecyclerView.NO_POSITION && buttonView.isPressed) {
@@ -42,7 +43,13 @@ class CricketAdapter(val sources: List<CricketInfo>) : RecyclerView.Adapter<Cric
                 } else {
                     selected.remove(actionPosition)
                 }
+                notifyDataSetChanged()
             }
+        }
+        if (selectedIndex == -1) {
+            holder.viewBind.tvIndex.text = null
+        } else {
+            holder.viewBind.tvIndex.text = (selectedIndex + 1).toString()
         }
     }
 

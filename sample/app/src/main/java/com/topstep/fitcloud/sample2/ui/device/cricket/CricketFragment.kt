@@ -89,11 +89,9 @@ class CricketFragment : BaseFragment(R.layout.fragment_cricket), CricketDialogFr
                 matches.add(item)
             }
         }
-        if (matches.isNotEmpty()) {
-            deviceManager.specialFeature.setCricketUpcomingMatches(matches).await()
-            Timber.i("send upcoming matches")
-            Timber.i(getJsonAdapter().toJson(matches))
-        }
+        deviceManager.specialFeature.setCricketUpcomingMatches(matches).await()
+        Timber.i("send upcoming matches")
+        Timber.i(getJsonAdapter().toJson(matches))
 
         //在发送Live
         matches.clear()
@@ -103,11 +101,9 @@ class CricketFragment : BaseFragment(R.layout.fragment_cricket), CricketDialogFr
                 matches.add(item)
             }
         }
-        if (matches.isNotEmpty()) {
-            deviceManager.specialFeature.setCricketLiveMatches(matches).await()
-            Timber.i("send live matches")
-            Timber.i(getJsonAdapter().toJson(matches))
-        }
+        deviceManager.specialFeature.setCricketLiveMatches(matches).await()
+        Timber.i("send live matches")
+        Timber.i(getJsonAdapter().toJson(matches))
 
         //在发送Result
         matches.clear()
@@ -117,11 +113,20 @@ class CricketFragment : BaseFragment(R.layout.fragment_cricket), CricketDialogFr
                 matches.add(item)
             }
         }
-        if (matches.isNotEmpty()) {
-            deviceManager.specialFeature.setCricketMatchesResults(matches).await()
-            Timber.i("send result matches")
-            Timber.i(getJsonAdapter().toJson(matches))
+        deviceManager.specialFeature.setCricketMatchesResults(matches).await()
+        Timber.i("send result matches")
+        Timber.i(getJsonAdapter().toJson(matches))
+
+        //发送Orders
+        val ids = ArrayList<Long>()
+        for (i in selected.indices) {
+            val item = sources.getOrNull(selected[i])
+            if (item != null) {
+                ids.add(item.matchId)
+            }
         }
+        Timber.i("send orders matches:$ids")
+        deviceManager.specialFeature.setCricketMatchesOrders(ids).await()
     }
 
     override fun onDestroyView() {
