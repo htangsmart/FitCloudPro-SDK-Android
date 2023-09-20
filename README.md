@@ -2,6 +2,15 @@
 
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v2.0.5(2023-09-20)
+1. Add `FcBuiltInFeatures.autoSetTime` settings. You can use the automatic time setting features, or use `FcSettingsFeature.setTime` manual. By default autoSetTime is enabled.
+2. Add `FcConfigFeature.refresh` to refresh configs manual.
+3. Add new device LCD support
+4. Add new types in `FcHabit`
+5. Add `FcSettingsFeature.requestSupportScheduleTypes` to request types support in `FcSchedule`
+6. Add Medal
+7. Fix bug:Reduce the probability of OTA failure
+
 # v2.0.4(2023-07-09)
 1. Api add:`FcConnector.mediaControlExitSilentMode`, When you use [FcBuiltInFeatures.mediaControl], but not use [FcBuiltInFeatures.telephonyControl] or not extent [AbsPhoneStateListener],use this method to set built-in media controller to exit silent mode  when you telephony enter idle state.
 
