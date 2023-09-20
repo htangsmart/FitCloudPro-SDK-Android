@@ -71,9 +71,12 @@ class ScanDevicesAdapter : RecyclerView.Adapter<ScanDevicesAdapter.DeviceViewHol
             //ToNote:Not updated when the rssi difference is small. This is to avoid frequent drawing of View when there are a large number of devices around
             val rssiChanged = abs(exist.rssi - result.rssi) > 5
             if (nameChanged || rssiChanged) {
-                exist.name = result.name
-                exist.rssi = result.rssi
-                sorter.recalculatePositionOfItemAt(existIndex)
+                val newItem = ScanDevice(
+                    exist.address,
+                    if (nameChanged) result.name else exist.name,
+                    if (rssiChanged) result.rssi else exist.rssi
+                )
+                sorter.updateItemAt(existIndex, newItem)
             }
         } else {
             val oldSize = sorter.size()
