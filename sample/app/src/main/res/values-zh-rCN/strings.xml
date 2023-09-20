@@ -259,9 +259,17 @@
     <!--Power save mode-->
     <string name="ds_power_save_mode">省电模式</string>
 
-    <!--EPO-->
-    <string name="epo_upgrade_manual">手动更新EPO</string>
-    <string name="epo_create_fail">EPO文件创建失败</string>
+    <!--GPS Hot start-->
+    <string name="gps_hot_start_settings">GPS热启动设置</string>
+    <string name="gps_hot_start_auto_update">手表GPS文件自动更新</string>
+    <string name="gps_hot_start_des">用于提升手表GPS位置的准确性</string>
+    <string name="gps_hot_start_test">测试</string>
+    <string name="gps_hot_start_test_immediately">立即更新</string>
+    <string name="gps_hot_start_test_delay_1_minute">延迟1分钟更新</string>
+    <string name="gps_hot_start_test_delay_3_minute">延迟3分钟更新</string>
+    <string name="gps_hot_start_test_delay_10_minute">延迟10分钟更新</string>
+    <string name="gps_hot_start_test_des">延迟时间只是大概时间，并不精准</string>
+    <string name="gps_hot_start_updating">GPS文件更新中</string>
 
     <!--Cricket-->
     <string name="cricket_match">板球比赛</string>

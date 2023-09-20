@@ -42,6 +42,7 @@ class ObjectNonNullJsonAdapter<T>(
         return ObjectNonNull(
             errorCode = result.errorCode,
             errorMsg = result.errorMsg,
+            time = result.time,
             data = data
         )
     }

@@ -4,6 +4,7 @@ import com.topstep.fitcloud.sample2.MyApplication
 import com.topstep.fitcloud.sample2.data.auth.AuthManager
 import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.device.*
+import com.topstep.fitcloud.sample2.data.gps.GpsHotStartRepository
 import com.topstep.fitcloud.sample2.data.user.UserInfoRepository
 import com.topstep.fitcloud.sample2.data.version.VersionRepository
 import com.topstep.fitcloud.sample2.data.version.VersionRepositoryImpl
@@ -74,5 +75,9 @@ object Injector {
 
     fun getSyncDataRepository(): SyncDataRepository {
         return SingleInstance.syncDataRepository
+    }
+
+    fun getGpsHotStartRepository(): GpsHotStartRepository {
+        return SingleInstance.gpsHotStartRepository
     }
 }

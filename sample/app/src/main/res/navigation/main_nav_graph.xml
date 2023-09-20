@@ -46,8 +46,8 @@
             android:id="@+id/toModifyLogo"
             app:destination="@id/modifyLogoFragment"/>
         <action
-            android:id="@+id/toEpoUpgrade"
-            app:destination="@id/epoUpgradeFragment"/>
+            android:id="@+id/toGpsHotStart"
+            app:destination="@id/gpsHotStartFragment"/>
         <action
             android:id="@+id/toOtherFeatures"
             app:destination="@id/otherFeaturesFragment"/>
@@ -433,10 +433,10 @@
         tools:layout="@layout/fragment_modify_logo"/>
 
     <fragment
-        android:id="@+id/epoUpgradeFragment"
-        android:name="com.topstep.fitcloud.sample2.ui.device.epo.EpoUpgradeFragment"
-        android:label="@string/epo_upgrade_manual"
-        tools:layout="@layout/fragment_epo_upgrade"/>
+        android:id="@+id/gpsHotStartFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.gps.GpsHotStartSettingsFragment"
+        android:label="@string/gps_hot_start_settings"
+        tools:layout="@layout/fragment_gps_hot_start_settings"/>
 
     <fragment
         android:id="@+id/otherFeaturesFragment"

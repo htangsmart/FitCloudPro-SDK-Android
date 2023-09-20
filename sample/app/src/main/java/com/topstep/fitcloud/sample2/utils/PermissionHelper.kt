@@ -99,7 +99,7 @@ object PermissionHelper {
         requestPermission(fragment, permissions, grantResult)
     }
 
-    fun requestWeatherLocation(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
+    fun requestLocation(fragment: Fragment, grantResult: ((Boolean) -> Unit)) {
         requestPermission(
             fragment, arrayListOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,

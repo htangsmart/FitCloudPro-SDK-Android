@@ -42,6 +42,7 @@ class ListNonNullJsonAdapter<T>(
         return ListNonNull(
             errorCode = result.errorCode,
             errorMsg = result.errorMsg,
+            time = result.time,
             data = data
         )
     }

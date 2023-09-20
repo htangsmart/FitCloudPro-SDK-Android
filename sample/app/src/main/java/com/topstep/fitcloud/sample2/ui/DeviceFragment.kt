@@ -56,7 +56,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemDial.clickTrigger(block = blockClick)
         viewBind.itemCamera.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
-        viewBind.itemEpoUpgrade.clickTrigger(block = blockClick)
+        viewBind.itemGpsHotStart.clickTrigger(block = blockClick)
         viewBind.itemCricket.clickTrigger(block = blockClick)
         viewBind.itemOtherFeatures.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
@@ -103,6 +103,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                     viewBind.itemGamePush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GAME_PUSH)
                     viewBind.itemSportPush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SPORT_PUSH)
                     viewBind.itemCricket.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CRICKET_MATCH)
+                    viewBind.itemGpsHotStart.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GPS_HOT_START)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
                 }
             }
@@ -173,8 +174,8 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             viewBind.itemModifyLogo -> {
                 findNavController().navigate(DeviceFragmentDirections.toModifyLogo())
             }
-            viewBind.itemEpoUpgrade -> {
-                findNavController().navigate(DeviceFragmentDirections.toEpoUpgrade())
+            viewBind.itemGpsHotStart -> {
+                findNavController().navigate(DeviceFragmentDirections.toGpsHotStart())
             }
             viewBind.itemCricket -> {
                 findNavController().navigate(DeviceFragmentDirections.toCricket())

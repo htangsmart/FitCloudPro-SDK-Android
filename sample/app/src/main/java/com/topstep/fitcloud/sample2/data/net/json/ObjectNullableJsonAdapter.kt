@@ -33,7 +33,7 @@ class ObjectNullableJsonAdapter<T>(
         Timber.tag("JsonAdapter").d("create new ObjectNullableJsonAdapter for ${types[0]}")
     }
 
-    private val options: JsonReader.Options = JsonReader.Options.of("errorCode", "errorMsg", "data")
+    private val options: JsonReader.Options = JsonReader.Options.of("errorCode", "errorMsg", "time", "data")
 
     private val intAdapter: JsonAdapter<Int> = moshi.adapter(Int::class.java, emptySet(), "errorCode")
 
@@ -48,13 +48,15 @@ class ObjectNullableJsonAdapter<T>(
     override fun fromJson(reader: JsonReader): ObjectNullable<T> {
         var errorCode: Int? = null
         var errorMsg: String? = null
+        var time: String? = null
         var data: T? = null
         reader.beginObject()
         while (reader.hasNext()) {
             when (reader.selectName(options)) {
                 0 -> errorCode = intAdapter.fromJson(reader) ?: throw Util.unexpectedNull("errorCode", "errorCode", reader)
                 1 -> errorMsg = nullableStringAdapter.fromJson(reader)
-                2 -> data = nullableTNullableAnyAdapter.fromJson(reader)
+                2 -> time = nullableStringAdapter.fromJson(reader)
+                3 -> data = nullableTNullableAnyAdapter.fromJson(reader)
                 -1 -> {
                     // Unknown name, skip it.
                     reader.skipName()
@@ -70,6 +72,7 @@ class ObjectNullableJsonAdapter<T>(
         return ObjectNullable(
             errorCode = resultErrorCode,
             errorMsg = errorMsg,
+            time = time,
             data = data
         )
     }
@@ -83,6 +86,8 @@ class ObjectNullableJsonAdapter<T>(
         intAdapter.toJson(writer, value.errorCode)
         writer.name("errorMsg")
         nullableStringAdapter.toJson(writer, value.errorMsg)
+        writer.name("time")
+        nullableStringAdapter.toJson(writer, value.time)
         writer.name("data")
         nullableTNullableAnyAdapter.toJson(writer, value.data)
         writer.endObject()

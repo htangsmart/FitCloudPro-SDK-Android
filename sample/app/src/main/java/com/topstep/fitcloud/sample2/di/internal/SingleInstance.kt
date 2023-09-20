@@ -9,6 +9,8 @@ import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepository
 import com.topstep.fitcloud.sample2.data.config.ExerciseGoalRepositoryImpl
 import com.topstep.fitcloud.sample2.data.db.AppDatabase
 import com.topstep.fitcloud.sample2.data.device.*
+import com.topstep.fitcloud.sample2.data.gps.GpsHotStartRepository
+import com.topstep.fitcloud.sample2.data.gps.GpsHotStartRepositoryImpl
 import com.topstep.fitcloud.sample2.data.net.ApiClient
 import com.topstep.fitcloud.sample2.data.net.json.*
 import com.topstep.fitcloud.sample2.data.storage.InternalStorage
@@ -63,6 +65,10 @@ object SingleInstance {
 
     val syncDataRepository: SyncDataRepository by lazy {
         SyncDataRepositoryImpl(appDatabase, userInfoRepository)
+    }
+
+    val gpsHotStartRepository: GpsHotStartRepository by lazy {
+        GpsHotStartRepositoryImpl(apiClient.apiService, internalStorage)
     }
 
     val deviceManager: DeviceManager by lazy {

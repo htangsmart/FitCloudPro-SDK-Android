@@ -21,11 +21,15 @@ import com.topstep.fitcloud.sample2.model.device.ConnectorState
 import com.topstep.fitcloud.sample2.ui.camera.CameraActivity
 import com.topstep.fitcloud.sample2.utils.FormatterUtil
 import com.topstep.fitcloud.sample2.utils.NotificationHelper
+import com.topstep.fitcloud.sample2.worker.GpsHotStartWorker
 import com.topstep.fitcloud.sample2.worker.WeatherWorker
 import com.topstep.fitcloud.sdk.v2.FcConnector
+import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.message.FcMessageType
 import com.topstep.fitcloud.sdk.v2.utils.notification.PhoneStateListenerFactory
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -104,6 +108,19 @@ class MyApplication : MultiDexApplication() {
                         monitorCameraLaunch()
                         CameraActivity.start(this@MyApplication, true)
                     }
+                }
+            }
+        }
+        applicationScope.launch {
+            Injector.getGpsHotStartRepository().flowAutoUpdateGps().combine(
+                deviceManager.configFeature.observerDeviceInfo().asFlow()
+            ) { autoUpdate, deviceInfo ->
+                autoUpdate && deviceInfo.isSupportFeature(FcDeviceInfo.Feature.GPS_HOT_START)
+            }.debounce(5000).collect {
+                if (it) {
+                    GpsHotStartWorker.cancelPeriodic(applicationContext)
+                } else {
+                    GpsHotStartWorker.executePeriodic(applicationContext)
                 }
             }
         }

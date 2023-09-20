@@ -9,13 +9,20 @@ import androidx.annotation.MainThread
 import com.polidea.rxandroidble3.LogConstants
 import com.polidea.rxandroidble3.LogOptions
 import com.polidea.rxandroidble3.RxBleClient
+import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sdk.v2.FcSDK
 import com.topstep.fitcloud.sdk.v2.features.FcBuiltInFeatures
+import com.topstep.fitcloud.sdk.v2.features.FcGpsHotStartProvider
+import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsEpoInfo
+import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsLocationInfo
+import com.topstep.fitcloud.sdk.v2.utils.Optional
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.exceptions.CompositeException
 import io.reactivex.rxjava3.exceptions.UndeliverableException
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import timber.log.Timber
+import java.io.File
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -130,7 +137,20 @@ private class FcSDKSingletonDelegate : ReadOnlyProperty<Context, FcSDK> {
                         FcBuiltInFeatures(
                             autoSetLanguage = true,
                             mediaControl = true,
-                            musicControl = true
+                            musicControl = true,
+                            gpsHotStartProvider = object : FcGpsHotStartProvider {
+                                override val logEnabled: Boolean = true
+
+                                override val fileDir: File? = null
+
+                                override fun requestGpsLocationInfo(): Single<Optional<FcGpsLocationInfo>> {
+                                    return Injector.getGpsHotStartRepository().requestGpsLocationInfo()
+                                }
+
+                                override fun requestGpsEpoInfo(): Single<Optional<FcGpsEpoInfo>> {
+                                    return Injector.getGpsHotStartRepository().requestGpsEpoInfo()
+                                }
+                            }
                         )
                     )
                     .build()

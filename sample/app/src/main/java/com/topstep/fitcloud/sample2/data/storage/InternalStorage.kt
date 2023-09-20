@@ -3,11 +3,14 @@ package com.topstep.fitcloud.sample2.data.storage
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.topstep.fitcloud.sample2.data.storage.InternalStorageImpl.PreferencesKeys.AUTHED_USER_ID
+import com.topstep.fitcloud.sample2.data.storage.InternalStorageImpl.PreferencesKeys.AUTO_UPDATE_GPS
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -23,6 +26,9 @@ internal interface InternalStorage {
      */
     suspend fun setAuthedUserId(userId: Long?)
 
+    suspend fun setAutoUpdateGps(auto: Boolean)
+
+    fun flowAutoUpdateGps(): Flow<Boolean>
 }
 
 internal class InternalStorageImpl(
@@ -53,6 +59,18 @@ internal class InternalStorageImpl(
         }
     }
 
+    override suspend fun setAutoUpdateGps(auto: Boolean) {
+        applicationContext.internalDataStore.edit {
+            it[AUTO_UPDATE_GPS] = auto
+        }
+    }
+
+    override fun flowAutoUpdateGps(): Flow<Boolean> {
+        return applicationContext.internalDataStore.data.map {
+            it[AUTO_UPDATE_GPS] ?: false
+        }
+    }
+
     /**
      * 是否是有效的用户ID
      */
@@ -62,6 +80,7 @@ internal class InternalStorageImpl(
 
     object PreferencesKeys {
         val AUTHED_USER_ID = longPreferencesKey("authed_user_id")
+        val AUTO_UPDATE_GPS = booleanPreferencesKey("auto_update_gps")
     }
 
     companion object {

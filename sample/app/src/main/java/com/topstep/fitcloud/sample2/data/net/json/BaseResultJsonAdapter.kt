@@ -25,7 +25,7 @@ class BaseResultJsonAdapter(
         Timber.tag("JsonAdapter").d("create new BaseResultJsonAdapter")
     }
 
-    private val options: JsonReader.Options = JsonReader.Options.of("errorCode", "errorMsg")
+    private val options: JsonReader.Options = JsonReader.Options.of("errorCode", "errorMsg", "time")
 
     private val intAdapter: JsonAdapter<Int> = moshi.adapter(Int::class.java, emptySet(), "errorCode")
 
@@ -39,11 +39,13 @@ class BaseResultJsonAdapter(
     override fun fromJson(reader: JsonReader): BaseResult {
         var errorCode: Int? = null
         var errorMsg: String? = null
+        var time: String? = null
         reader.beginObject()
         while (reader.hasNext()) {
             when (reader.selectName(options)) {
                 0 -> errorCode = intAdapter.fromJson(reader) ?: throw Util.unexpectedNull("errorCode", "errorCode", reader)
                 1 -> errorMsg = nullableStringAdapter.fromJson(reader)
+                2 -> time = nullableStringAdapter.fromJson(reader)
                 -1 -> {
                     // Unknown name, skip it.
                     reader.skipName()
@@ -58,7 +60,8 @@ class BaseResultJsonAdapter(
         }
         return BaseResult(
             errorCode = resultErrorCode,
-            errorMsg = errorMsg
+            errorMsg = errorMsg,
+            time = time
         )
     }
 
@@ -72,6 +75,8 @@ class BaseResultJsonAdapter(
         intAdapter.toJson(writer, value.errorCode)
         writer.name("errorMsg")
         nullableStringAdapter.toJson(writer, value.errorMsg)
+        writer.name("time")
+        nullableStringAdapter.toJson(writer, value.time)
         writer.endObject()
     }
 }

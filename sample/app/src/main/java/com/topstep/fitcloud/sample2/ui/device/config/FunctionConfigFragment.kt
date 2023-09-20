@@ -100,7 +100,7 @@ class FunctionConfigFragment : BaseFragment(R.layout.fragment_function_config), 
                             requireContext().startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
                             return
                         }
-                        PermissionHelper.requestWeatherLocation(this) {
+                        PermissionHelper.requestLocation(this) {
                         }
                     }
                     FcFunctionConfig.Flag.WEATHER_DISPLAY

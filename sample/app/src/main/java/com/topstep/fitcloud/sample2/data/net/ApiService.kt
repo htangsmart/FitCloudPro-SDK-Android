@@ -4,6 +4,7 @@ import androidx.annotation.VisibleForTesting
 import com.squareup.moshi.Moshi
 import com.topstep.fitcloud.sample2.data.bean.DialCustomStyleBean
 import com.topstep.fitcloud.sample2.data.bean.DialPacketComplexBean
+import com.topstep.fitcloud.sample2.data.bean.EpoFilesBean
 import com.topstep.fitcloud.sample2.data.bean.VersionBean
 import com.topstep.fitcloud.sample2.model.dial.DialPacket
 import com.topstep.fitcloud.sample2.model.game.push.GamePacket
@@ -71,6 +72,10 @@ interface ApiService {
         @Field("lcd") lcd: Int,
         @Field("toolVersion") toolVersion: String
     ): ListNullable<DialPacketComplexBean>
+
+    @POST("http://ssmartlink.com/v2/location/getEphemeris")
+    suspend fun getEpoFiles(): ObjectNonNull<EpoFilesBean>
+
 }
 
 suspend fun ApiService.findDialPacket(moshi: Moshi, dialNumbers: IntArray): ListNullable<DialPacketComplexBean> {

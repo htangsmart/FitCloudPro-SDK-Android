@@ -136,9 +136,9 @@
             app:preferenceTitle="@string/ds_modify_logo"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
-            android:id="@+id/item_epo_upgrade"
+            android:id="@+id/item_gps_hot_start"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
-            app:preferenceTitle="@string/epo_upgrade_manual"/>
+            app:preferenceTitle="@string/gps_hot_start_settings"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_cricket"
