@@ -57,6 +57,9 @@
         <action
             android:id="@+id/toCricket"
             app:destination="@id/cricketFragment"/>
+        <action
+            android:id="@+id/toSensorGame"
+            app:destination="@id/sensorGameCategoryFragment"/>
     </fragment>
 
     <fragment
@@ -443,6 +446,11 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.OtherFeaturesFragment"
         android:label="@string/ds_other_features"
         tools:layout="@layout/fragment_other_features"/>
+
+    <fragment
+        android:id="@+id/sensorGameCategoryFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.game.SensorGameCategoryFragment"
+        android:label="@string/ds_sensor_game"/>
 
     <fragment
         android:id="@+id/hardwareUpgradeFragment"

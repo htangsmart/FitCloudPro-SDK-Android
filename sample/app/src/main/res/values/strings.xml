@@ -39,6 +39,7 @@
     <string name="action_retry">Retry</string>
     <string name="action_select">Select</string>
     <string name="action_add">Add</string>
+    <string name="action_more">More</string>
 
     <!--Tips-->
     <string name="tip_prompt">Hint</string>
@@ -617,6 +618,9 @@
     <string name="ds_game_description">Gaming strategy</string>
     <string name="ds_game_number_limit">*Only up to 8 games can be installed</string>
     <string name="ds_game_skin_used">Used</string>
+
+    <!--Device Settings:Game-->
+    <string name="ds_sensor_game">Motion Sensing Game</string>
 
     <!--Device Settings:Third part app-->
     <string name="ds_notification_config">Notification Config</string>

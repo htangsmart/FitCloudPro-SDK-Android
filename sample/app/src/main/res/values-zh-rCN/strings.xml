@@ -39,6 +39,7 @@
     <string name="action_retry">重试</string>
     <string name="action_select">选择</string>
     <string name="action_add">添加</string>
+    <string name="action_more">更多</string>
 
     <!--Tips-->
     <string name="tip_prompt">提示</string>
@@ -617,6 +618,9 @@
     <string name="ds_game_description">游戏攻略</string>
     <string name="ds_game_number_limit">*最多只能安装8个游戏</string>
     <string name="ds_game_skin_used">已使用</string>
+
+    <!--Device Settings:Game-->
+    <string name="ds_sensor_game">体感游戏</string>
 
     <!--Device Settings:Third part app-->
     <string name="ds_notification_config">通知配置</string>

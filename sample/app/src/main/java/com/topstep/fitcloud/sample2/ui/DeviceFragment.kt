@@ -60,6 +60,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemCricket.clickTrigger(block = blockClick)
         viewBind.itemOtherFeatures.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
+        viewBind.itemSensorGame.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
             launch {
@@ -105,6 +106,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                     viewBind.itemCricket.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CRICKET_MATCH)
                     viewBind.itemGpsHotStart.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GPS_HOT_START)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
+                    viewBind.itemSensorGame.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GSENSOR_DATA)
                 }
             }
             launch {
@@ -187,6 +189,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                 viewModel.checkUpgrade()
 //If you jump directly , you can select a local file for OTA. This may be more convenient for testing
 //                findNavController().navigate(DeviceFragmentDirections.toHardwareUpgrade(null))
+            }
+            viewBind.itemSensorGame -> {
+                findNavController().navigate(DeviceFragmentDirections.toSensorGame())
             }
         }
     }

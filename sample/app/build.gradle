@@ -55,8 +55,8 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     //Required
-    implementation files('libs/libraryCore_v2.0.5.aar')
-    implementation files('libs/libraryProtocol2_v2.0.5.aar')
+    implementation files('libs/libraryCore_v2.0.6.aar')
+    implementation files('libs/libraryProtocol2_v2.0.6.aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.annotation:annotation:$annotation_version"
@@ -65,8 +65,10 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
     implementation "com.polidea.rxandroidble3:rxandroidble:$rxandroidble_version"
 
+    //Optional. Sensor game function
+    implementation files('libs/librarySensorGame_v2.0.6.aar')
     //Optional. Dfu function for Realtek chip
-    implementation files('libs/libraryDfu8762C_v2.0.5.aar')
+    implementation files('libs/libraryDfu8762C_v2.0.6.aar')
     //Optional. Dfu function for Nordic chip
     implementation 'no.nordicsemi.android:dfu:2.2.2'
     //Optional. Download files for Dfu function.
@@ -150,6 +152,8 @@ dependencies {
     //glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    implementation 'com.github.zhpanvip:bannerviewpager:3.5.12'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
