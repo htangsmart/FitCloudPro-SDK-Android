@@ -446,7 +446,7 @@ internal class DeviceManagerImpl(
     override val dataFeature: FcDataFeature = connector.dataFeature()
     override val messageFeature: FcMessageFeature = connector.messageFeature()
     override val specialFeature: FcSpecialFeature = connector.specialFeature()
-    override val sensorGameFeature: FcSensorGameFeature = connector.sensorGameFeature()
+    override val sensorGameFeature: FcSensorGameFeature by lazy { connector.sensorGameFeature() }
 
     override fun disconnect() {
         connector.disconnect()
