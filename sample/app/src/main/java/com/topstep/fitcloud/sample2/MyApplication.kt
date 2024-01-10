@@ -19,6 +19,7 @@ import com.topstep.fitcloud.sample2.data.device.DeviceManager
 import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.model.device.ConnectorState
 import com.topstep.fitcloud.sample2.ui.camera.CameraActivity
+import com.topstep.fitcloud.sample2.utils.AppLogger
 import com.topstep.fitcloud.sample2.utils.FormatterUtil
 import com.topstep.fitcloud.sample2.utils.NotificationHelper
 import com.topstep.fitcloud.sample2.worker.GpsHotStartWorker
@@ -54,6 +55,8 @@ class MyApplication : MultiDexApplication() {
     }
 
     private fun initAllProcess() {
+        AppLogger.init(this)
+        MyCrashHandler()
         FormatterUtil.init(SystemUtil.getSystemLocal(this))
     }
 

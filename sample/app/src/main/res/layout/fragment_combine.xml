@@ -38,6 +38,11 @@
                 style="@style/Widget.Sample.PreferenceView.Item.Text"
                 app:preferenceTitle="@string/exercise_goal"/>
 
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_log"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="@string/help_log"/>
+
         </LinearLayout>
     </ScrollView>
 

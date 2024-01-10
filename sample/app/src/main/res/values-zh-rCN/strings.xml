@@ -413,6 +413,9 @@
     <string name="exercise_goal_distance">距离</string>
     <string name="exercise_goal_calories">卡路里</string>
 
+    <!--Log-->
+    <string name="help_log">日志</string>
+
     <!--Unit-->
     <string name="unit_year">年</string>
     <string name="unit_month">月</string>

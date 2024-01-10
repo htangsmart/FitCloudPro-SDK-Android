@@ -12,7 +12,7 @@ android {
         minSdk 21
         targetSdk 32
         versionCode 1
-        versionName "1.0.7"
+        versionName "1.0.8"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -154,6 +154,8 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     implementation 'com.github.zhpanvip:bannerviewpager:3.5.12'
+
+    implementation 'com.tencent.mars:mars-xlog:1.2.5'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -413,6 +413,9 @@
     <string name="exercise_goal_distance">Distance</string>
     <string name="exercise_goal_calories">Calories</string>
 
+    <!--Log-->
+    <string name="help_log">Log</string>
+
     <!--Unit-->
     <string name="unit_year">y</string>
     <string name="unit_month">m</string>

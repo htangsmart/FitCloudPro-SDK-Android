@@ -15,10 +15,8 @@ import com.topstep.fitcloud.sample2.model.wh.MenstruationResult
 import com.topstep.fitcloud.sample2.model.wh.WomenHealthConfig
 import com.topstep.fitcloud.sample2.model.wh.WomenHealthMode
 import com.topstep.fitcloud.sample2.ui.base.*
-import com.topstep.fitcloud.sample2.utils.WomenHealthUtils
-import com.topstep.fitcloud.sample2.utils.launchRepeatOnStarted
-import com.topstep.fitcloud.sample2.utils.shareInView
-import com.topstep.fitcloud.sample2.utils.showFailed
+import com.topstep.fitcloud.sample2.ui.combine.LogShareDialogFragment
+import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.FcConnector
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
@@ -70,6 +68,16 @@ class CombineFragment : BaseFragment(R.layout.fragment_combine) {
         }
         viewBind.itemExerciseGoal.clickTrigger {
             findNavController().navigate(CombineFragmentDirections.toExerciseGoal())
+        }
+        viewBind.itemLog.clickTrigger {
+            viewLifecycleScope.launch {
+                val files = AppLogger.getLogFiles(requireContext())
+                if (files.isNullOrEmpty()) {
+                    promptToast.showFailed(R.string.tip_current_no_data)
+                    return@launch
+                }
+                LogShareDialogFragment.newInstance(files).show(childFragmentManager, null)
+            }
         }
         viewBind.btnSignOut.clickTrigger {
             viewModel.signOut()

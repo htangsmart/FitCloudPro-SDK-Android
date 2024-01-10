@@ -40,15 +40,15 @@ import kotlin.reflect.KProperty
 fun fitCloudSDKInit(application: Application) {
     //ToNote:1.Configure log
     //"FitCloudSDK" use the Timber to output log, so you need to configure the Timber
-    if (BuildConfig.DEBUG) {
-        Timber.plant(Timber.DebugTree())
-    } else {
-        Timber.plant(object : Timber.DebugTree() {
-            override fun isLoggable(tag: String?, priority: Int): Boolean {
-                return priority > Log.DEBUG
-            }
-        })
-    }
+//    if (BuildConfig.DEBUG) {
+//        Timber.plant(Timber.DebugTree())
+//    } else {
+//        Timber.plant(object : Timber.DebugTree() {
+//            override fun isLoggable(tag: String?, priority: Int): Boolean {
+//                return priority > Log.DEBUG
+//            }
+//        })
+//    }
     //The BLE function of "FitCloudSDK" is based on "RxAndroidBLE". So you also need to configure the log settings of "RxAndroidBLE"
     RxBleClient.updateLogOptions(
         LogOptions.Builder()
