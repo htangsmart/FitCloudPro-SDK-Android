@@ -1,5 +1,3 @@
-# [Version 1.x.x](https://github.com/htangsmart/FitCloudPro-SDK-Android/tree/master_v1)
-
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
 # v2.0.5(2023-09-20)
@@ -36,3 +34,5 @@
 
 # v2.0.0(2023-05-21)
 First version
+
+# [Version 1.x.x](https://github.com/htangsmart/FitCloudPro-SDK-Android/tree/master_v1)
