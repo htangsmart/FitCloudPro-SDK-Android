@@ -37,6 +37,8 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
 import kotlinx.coroutines.rx3.await
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import timber.log.Timber
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -168,6 +170,12 @@ internal class DeviceManagerImpl(
     private val configDao = appDatabase.configDao()
 
     /**
+     * When clearing devices, [deviceFromMemory] and [deviceFromStorage] will be cleared simultaneously and may be updated twice.
+     * Causing first connect and immediately close. A bug that prevents the device from truly disconnecting.
+     */
+    private val clearDeviceMutex = Mutex()
+
+    /**
      * Manually control the current device
      */
     private val deviceFromMemory: MutableStateFlow<ConnectorDevice?> = MutableStateFlow(null)
@@ -224,19 +232,23 @@ internal class DeviceManagerImpl(
             //Connect or disconnect when device changed
             userInfoRepository.flowCurrent.combine(flowDevice) { user, device ->
                 ConnectionParam(user, device)
-            }.collect {
-                if (it.device == null || it.user == null) {
-                    connector.close()
-                } else {
-                    connector.connect(
-                        address = it.device.address,
-                        userId = it.user.id.toString(),
-                        bindOrLogin = it.device.isTryingBind,
-                        sex = it.user.sex,
-                        age = it.user.age,
-                        height = it.user.height.toFloat(),
-                        weight = it.user.weight.toFloat(),
-                    )
+            }.collectLatest {
+                Timber.tag(TAG).i("ConnectionParam:%s", it.toString())
+                clearDeviceMutex.withLock {
+                    Timber.tag(TAG).i("ConnectionParam: execute")
+                    if (it.device == null || it.user == null) {
+                        connector.close()
+                    } else {
+                        connector.connect(
+                            address = it.device.address,
+                            userId = it.user.id.toString(),
+                            bindOrLogin = it.device.isTryingBind,
+                            sex = it.user.sex,
+                            age = it.user.age,
+                            height = it.user.height.toFloat(),
+                            weight = it.user.weight.toFloat(),
+                        )
+                    }
                 }
             }
         }
@@ -427,10 +439,18 @@ internal class DeviceManagerImpl(
      * Clear current user's device
      */
     private suspend fun clearDevice() {
-        deviceFromMemory.value = null
-        internalStorage.flowAuthedUserId.value?.let { userId ->
-            configDao.clearDeviceBind(userId)
-        }
+        applicationScope.launch {
+            clearDeviceMutex.withLock {
+                Timber.tag(TAG).i("clear start")
+                internalStorage.flowAuthedUserId.value?.let { userId ->
+                    configDao.clearDeviceBind(userId)
+                }
+                deviceFromMemory.value = null
+                Timber.tag(TAG).i("clear delay")
+                delay(1000)//延迟1秒，让数据库有足够的时间更新，
+                Timber.tag(TAG).i("clear end")
+            }
+        }.join()
     }
 
     override fun getNextRetrySeconds(): Int {
@@ -446,7 +466,7 @@ internal class DeviceManagerImpl(
     override val dataFeature: FcDataFeature = connector.dataFeature()
     override val messageFeature: FcMessageFeature = connector.messageFeature()
     override val specialFeature: FcSpecialFeature = connector.specialFeature()
-    override val sensorGameFeature: FcSensorGameFeature by lazy { connector.sensorGameFeature() }
+    override val sensorGameFeature: FcSensorGameFeature = connector.sensorGameFeature()
 
     override fun disconnect() {
         connector.disconnect()

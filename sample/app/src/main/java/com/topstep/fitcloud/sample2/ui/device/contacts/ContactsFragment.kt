@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.databinding.FragmentContactsBinding
+import com.topstep.fitcloud.sample2.di.Injector
 import com.topstep.fitcloud.sample2.ui.base.BaseFragment
 import com.topstep.fitcloud.sample2.ui.base.Fail
 import com.topstep.fitcloud.sample2.ui.base.Loading
@@ -26,6 +27,7 @@ import com.topstep.fitcloud.sample2.ui.widget.LoadingView
 import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
+import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.settings.FcContacts
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -50,11 +52,12 @@ import timber.log.Timber
  * [FcSettingsFeature.requestContacts] [FcSettingsFeature.setContacts]
  *
  */
-class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
+class ContactsFragment : BaseFragment(R.layout.fragment_contacts), RandomContactsDialogFragment.Listener {
 
     private val viewBind: FragmentContactsBinding by viewBinding()
     private val viewModel: ContactsViewModel by viewModels()
     private lateinit var adapter: ContactsAdapter
+    private val deviceManager = Injector.getDeviceManager()
 
     private val pickContact = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         val uri = result.data?.data
@@ -89,13 +92,24 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
 
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-
+                menuInflater.inflate(R.menu.menu_contacts, menu)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == android.R.id.home) {
                     onBackPressed()
                     return true
+                } else if (menuItem.itemId == R.id.menu_random) {
+                    val limit = if (deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.CONTACTS_100)) {
+                        100
+                    } else {
+                        10
+                    }
+                    val size = adapter.sources?.size ?: 0
+
+                    RandomContactsDialogFragment.newInstance(
+                        limit - size
+                    ).show(childFragmentManager, null)
                 }
                 return false
             }
@@ -123,8 +137,14 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
 
         viewBind.fabAdd.setOnClickListener {
             viewLifecycleScope.launchWhenResumed {
-                if ((adapter.sources?.size ?: 0) >= 10) {
-                    promptToast.showInfo(R.string.ds_contacts_tips1)
+                val limit = if (deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.CONTACTS_100)) {
+                    100
+                } else {
+                    10
+                }
+                val size = adapter.sources?.size ?: 0
+                if (size >= limit) {
+                    promptToast.showInfo("Up to $limit contacts can be added.")
                 } else {
                     PermissionHelper.requestContacts(this@ContactsFragment) { granted ->
                         if (granted) {
@@ -151,7 +171,7 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
                         }
                         is Success -> {
                             val contacts = state.requestContacts()
-                            if (contacts == null || contacts.isEmpty()) {
+                            if (contacts.isNullOrEmpty()) {
                                 viewBind.loadingView.showError(R.string.tip_current_no_data)
                             } else {
                                 viewBind.loadingView.visibility = View.GONE
@@ -194,9 +214,12 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
     }
 
     private val adapterDataObserver = object : RecyclerView.AdapterDataObserver() {
-        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+        override fun onChanged() {
+            super.onChanged()
             if (adapter.itemCount <= 0) {
                 viewBind.loadingView.showError(R.string.tip_current_no_data)
+            } else {
+                viewBind.loadingView.visibility = View.GONE
             }
         }
     }
@@ -212,5 +235,10 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
         } else {
             SetContactsDialogFragment().show(childFragmentManager, null)
         }
+    }
+
+    override fun onDialogRandom(size: Int) {
+        if (size <= 0) return
+        viewModel.randomContacts(size)
     }
 }

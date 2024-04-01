@@ -22,8 +22,12 @@ import com.topstep.fitcloud.sample2.utils.showFailed
 import com.topstep.fitcloud.sample2.utils.viewLifecycle
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
+import com.topstep.fitcloud.sdk.v2.model.data.FcHeartRateData
+import com.topstep.fitcloud.sdk.v2.model.message.FcMessageType
+import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
+import java.util.Date
 
 @StringRes
 fun ConnectorState.toStringRes(): Int {
@@ -61,6 +65,8 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemOtherFeatures.clickTrigger(block = blockClick)
         viewBind.itemVersionInfo.clickTrigger(block = blockClick)
         viewBind.itemSensorGame.clickTrigger(block = blockClick)
+        viewBind.itemCustomCard.clickTrigger(block = blockClick)
+        viewBind.itemEventText.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
             launch {
@@ -107,6 +113,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                     viewBind.itemGpsHotStart.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GPS_HOT_START)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
                     viewBind.itemSensorGame.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GSENSOR_DATA)
+                    viewBind.itemCustomCard.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CUSTOM_CARD)
                 }
             }
             launch {
@@ -130,6 +137,30 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                                 } else {
                                     findNavController().navigate(DeviceFragmentDirections.toHardwareUpgrade(info))
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+            launch {
+                deviceManager.messageFeature.observerMessage().asFlow().collect {
+                    when (it.type) {
+                        FcMessageType.EVENT_BATTERY -> {
+                            val data = it.data as? FcBatteryStatus
+                            if (data != null) {
+                                viewBind.itemEventText.text = "EVENT_BATTERY:$data"
+                            }
+                        }
+                        FcMessageType.EVENT_SPORT_FINISH -> {
+                            viewBind.itemEventText.text = "EVENT_SPORT_FINISH"
+                        }
+                        FcMessageType.EVENT_DIAL_SWITCH -> {
+                            viewBind.itemEventText.text = "EVENT_DIAL_SWITCH"
+                        }
+                        FcMessageType.EVENT_HEART_RATE_MEASURE -> {
+                            val data = it.data as? FcHeartRateData
+                            if (data != null) {
+                                viewBind.itemEventText.text = "EVENT_HEART_RATE_MEASURE:${Date(data.timestamp)}    value:${data.heartRate}"
                             }
                         }
                     }
@@ -192,6 +223,12 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemSensorGame -> {
                 findNavController().navigate(DeviceFragmentDirections.toSensorGame())
+            }
+            viewBind.itemCustomCard -> {
+                findNavController().navigate(DeviceFragmentDirections.toCustomCard())
+            }
+            viewBind.itemEventText -> {
+                findNavController().navigate(DeviceFragmentDirections.toHardwareUpgrade(null))
             }
         }
     }

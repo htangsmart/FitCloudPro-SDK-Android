@@ -8,9 +8,8 @@ import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.entity.SleepItemEntity
 import com.topstep.fitcloud.sample2.utils.FormatterUtil
 import com.topstep.fitcloud.sdk.v2.model.data.FcSleepItem
-import com.topstep.fitcloud.sdk.v2.utils.SleepCalculateHelper
 import kotlinx.coroutines.runBlocking
-import java.util.*
+import java.util.Date
 
 class SleepFragment : DataListFragment<SleepItemEntity>() {
 
@@ -19,11 +18,15 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
     private lateinit var tvDeepSleep: TextView
     private lateinit var tvLightSleep: TextView
     private lateinit var tvAwakeSleep: TextView
+    private lateinit var layoutNapSleep: View
+    private lateinit var tvNapSleep: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         tvDeepSleep = view.findViewById(R.id.tv_deep_sleep)
         tvLightSleep = view.findViewById(R.id.tv_light_sleep)
         tvAwakeSleep = view.findViewById(R.id.tv_awake_sleep)
+        layoutNapSleep = view.findViewById(R.id.layout_nap_sleep)
+        tvNapSleep = view.findViewById(R.id.tv_nap_sleep)
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -39,16 +42,17 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
     }
 
     override fun queryData(date: Date): List<SleepItemEntity>? {
-        val data = runBlocking { syncDataRepository.querySleep(authedUserId, date) }
-        val duration = if (data != null) {
-            SleepCalculateHelper.calculateDuration(data)
+        val record = runBlocking { syncDataRepository.querySleepRecord(authedUserId, date) }
+        tvDeepSleep.text = FormatterUtil.second2Hmm(record?.deepSleep ?: 0)
+        tvLightSleep.text = FormatterUtil.second2Hmm(record?.lightSleep ?: 0)
+        tvAwakeSleep.text = FormatterUtil.second2Hmm(record?.soberSleep ?: 0)
+        if (record?.isSupportSleepNap == true) {
+            tvNapSleep.visibility = View.VISIBLE
+            tvNapSleep.text = FormatterUtil.second2Hmm(record.napSleep)
         } else {
-            IntArray(3)
+            tvNapSleep.visibility = View.GONE
         }
-        tvDeepSleep.text = FormatterUtil.second2Hmm(duration[0])
-        tvLightSleep.text = FormatterUtil.second2Hmm(duration[1])
-        tvAwakeSleep.text = FormatterUtil.second2Hmm(duration[2])
-        return data
+        return runBlocking { syncDataRepository.querySleepItems(authedUserId, date) }
     }
 
 }

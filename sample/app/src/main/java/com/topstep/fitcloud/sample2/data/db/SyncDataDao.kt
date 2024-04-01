@@ -2,6 +2,7 @@ package com.topstep.fitcloud.sample2.data.db
 
 import androidx.room.*
 import com.topstep.fitcloud.sample2.data.entity.*
+import com.topstep.fitcloud.sample2.utils.room.DateConverter
 import com.topstep.fitcloud.sample2.utils.room.TimeConverter
 import com.topstep.fitcloud.sample2.utils.room.UUIDConverter
 import com.topstep.fitcloud.sdk.v2.model.data.*
@@ -14,7 +15,10 @@ abstract class SyncDataDao {
     abstract suspend fun insertStep(items: List<StepItemEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract suspend fun insertSleep(items: List<SleepItemEntity>)
+    abstract suspend fun insertSleepItems(items: List<SleepItemEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract suspend fun insertSleepRecord(record: SleepRecordEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertHeartRate(items: List<HeartRateItemEntity>)
@@ -49,11 +53,14 @@ abstract class SyncDataDao {
     @Query("SELECT * FROM StepItemEntity WHERE userId=:userId AND time BETWEEN :start AND :end ORDER BY time ASC")
     abstract suspend fun queryStepBetween(userId: Long, @TypeConverters(TimeConverter::class) start: Date, @TypeConverters(TimeConverter::class) end: Date): List<StepItemEntity>?
 
-    @Query("DELETE FROM SleepItemEntity WHERE userId=:userId AND time=:time AND startTime>=:start")
-    abstract suspend fun deleteSleepAfter(userId: Long, @TypeConverters(TimeConverter::class) time: Date, @TypeConverters(TimeConverter::class) start: Date)
+    @Query("DELETE FROM SleepItemEntity WHERE userId=:userId AND date=:date AND startTime>=:start")
+    abstract suspend fun deleteSleepItemsAfter(userId: Long, @TypeConverters(DateConverter::class) date: Date, @TypeConverters(TimeConverter::class) start: Date)
 
-    @Query("SELECT * FROM SleepItemEntity WHERE userId=:userId AND time=:time")
-    abstract suspend fun querySleep(userId: Long, @TypeConverters(TimeConverter::class) time: Date): List<SleepItemEntity>?
+    @Query("SELECT * FROM SleepItemEntity WHERE userId=:userId AND date=:date ORDER BY startTime ASC")
+    abstract suspend fun querySleepItems(userId: Long, @TypeConverters(DateConverter::class) date: Date): List<SleepItemEntity>?
+
+    @Query("SELECT * FROM SleepRecordEntity WHERE userId=:userId AND date=:date")
+    abstract suspend fun querySleepRecord(userId: Long, @TypeConverters(DateConverter::class) date: Date): SleepRecordEntity?
 
     @Query("SELECT * FROM HeartRateItemEntity WHERE userId=:userId AND time BETWEEN :start AND :end ORDER BY time ASC")
     abstract suspend fun queryHeartRateBetween(userId: Long, @TypeConverters(TimeConverter::class) start: Date, @TypeConverters(TimeConverter::class) end: Date): List<HeartRateItemEntity>?

@@ -39,6 +39,7 @@
     <string name="action_retry">重试</string>
     <string name="action_select">选择</string>
     <string name="action_add">添加</string>
+    <string name="action_delete">删除</string>
     <string name="action_more">更多</string>
 
     <!--Tips-->
@@ -85,6 +86,7 @@
     <string name="deep_sleep">深睡：</string>
     <string name="light_sleep">浅睡：</string>
     <string name="awake_sleep">清醒：</string>
+    <string name="nap_sleep">零星小睡：</string>
     <string name="ecg_speed">走速<xliff:g id="params">%1$d</xliff:g>mm/s</string>
     <string name="ecg_amplitude">增益<xliff:g id="params">%1$d</xliff:g>mm/mV</string>
     <string name="game_type_0">宠物养成</string>
@@ -265,12 +267,16 @@
     <string name="gps_hot_start_auto_update">手表GPS文件自动更新</string>
     <string name="gps_hot_start_des">用于提升手表GPS位置的准确性</string>
     <string name="gps_hot_start_test">测试</string>
-    <string name="gps_hot_start_test_immediately">立即更新</string>
+    <string name="gps_hot_start_test_immediately">立即更新(Not Force)</string>
     <string name="gps_hot_start_test_delay_1_minute">延迟1分钟更新</string>
-    <string name="gps_hot_start_test_delay_3_minute">延迟3分钟更新</string>
+    <string name="gps_hot_start_test_delay_3_minute">延迟3分钟更新(非强制)</string>
     <string name="gps_hot_start_test_delay_10_minute">延迟10分钟更新</string>
     <string name="gps_hot_start_test_des">延迟时间只是大概时间，并不精准</string>
     <string name="gps_hot_start_updating">GPS文件更新中</string>
+    <string name="gps_hot_start_device_time">手表EPO有效时间</string>
+    <string name="gps_hot_start_last_time">EPO最后更新时间</string>
+    <string name="gps_hot_start_clear">0->未过期，清除</string>
+    <string name="gps_hot_start_overwrite">1->已过期</string>
 
     <!--Cricket-->
     <string name="cricket_match">板球比赛</string>
@@ -476,6 +482,8 @@
     <!--Contacts-->
     <string name="ds_contacts">常用联系人</string>
     <string name="ds_contacts_tips1">最多可添加10位常用联系人。</string>
+    <string name="ds_contacts_random">随机联系人</string>
+    <string name="ds_contacts_random_tips">生成随机联系人</string>
 
     <!--Notification-->
     <string name="notification_channel_core_name">核心</string>
@@ -624,6 +632,9 @@
 
     <!--Device Settings:Game-->
     <string name="ds_sensor_game">体感游戏</string>
+
+    <!--Device Settings:Custom Card-->
+    <string name="ds_custom_card">自定义卡片</string>
 
     <!--Device Settings:Third part app-->
     <string name="ds_notification_config">通知配置</string>

@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.asExecutor
 
 @Database(
-    version = 5,
+    version = 6,
     entities = [
         UserEntity::class,
         DeviceBindEntity::class, ExerciseGoalEntity::class,
@@ -19,7 +19,8 @@ import kotlinx.coroutines.asExecutor
         StepItemEntity::class, SleepItemEntity::class,
         HeartRateItemEntity::class, OxygenItemEntity::class, BloodPressureItemEntity::class, TemperatureItemEntity::class, PressureItemEntity::class,
         EcgRecordEntity::class, GameRecordEntity::class,
-        SportRecordEntity::class, SportGpsEntity::class
+        SportRecordEntity::class, SportGpsEntity::class,
+        SleepRecordEntity::class
     ],
 )
 abstract class AppDatabase : RoomDatabase() {

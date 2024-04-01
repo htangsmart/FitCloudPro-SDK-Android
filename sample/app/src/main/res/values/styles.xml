@@ -23,7 +23,7 @@
 
     <style name="PromptToastTheme" parent="BasePromptDialogTheme">
         <item name="prompt_gravity">bottom</item>
-        <item name="prompt_margin_bottom">48dp</item>
+        <item name="prompt_margin_edge">48dp</item>
         <item name="prompt_layout">@layout/prompt_toast_layout</item>
         <item name="prompt_background">@drawable/prompt_toast_background</item>
         <item name="prompt_text_color">@android:color/white</item>

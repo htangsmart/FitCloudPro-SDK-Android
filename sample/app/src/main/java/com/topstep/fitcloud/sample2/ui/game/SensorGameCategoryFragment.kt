@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.kilnn.tool.ui.DisplayUtil
-import com.github.kilnn.tool.util.LocalUtil
+import com.github.kilnn.tool.util.LocaleUtil
 import com.topstep.fitcloud.sample2.MyApplication
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.databinding.FragmentSensorGameCategoryBinding
@@ -96,7 +96,7 @@ class SensorGameCategoryViewModel : AsyncViewModel<SingleAsyncState<FcSensorGame
         viewModelScope.launch {
             try {
                 //Set Language
-                if (LocalUtil.isZh(MyApplication.instance)) {
+                if (LocaleUtil.isZh(MyApplication.instance)) {
                     deviceManager.sensorGameFeature.setLanguage(FcSensorGameLanguage.CHINESE)
                 } else {
                     deviceManager.sensorGameFeature.setLanguage(FcSensorGameLanguage.ENGLISH)

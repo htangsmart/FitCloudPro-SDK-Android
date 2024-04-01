@@ -1,7 +1,7 @@
 package com.topstep.fitcloud.sample2.data.device
 
 import android.content.Context
-import com.github.kilnn.tool.util.LocalUtil
+import com.github.kilnn.tool.util.LocaleUtil
 import com.topstep.fitcloud.sample2.data.net.ApiService
 import com.topstep.fitcloud.sample2.model.game.push.GamePacket
 import com.topstep.fitcloud.sample2.model.game.push.GamePushParams
@@ -81,7 +81,7 @@ internal class GameRepositoryImpl constructor(
     }
 
     private suspend fun requestGamePackets(hardwareInfo: String): List<GamePacket> {
-        val lang = if (LocalUtil.isZhrCN(context)) "cn" else "en"
+        val lang = if (LocaleUtil.isZhrCN(context)) "cn" else "en"
         val key = RemoteCacheKey(hardwareInfo, lang)
         val cache = remoteCache
         return if (cache != null && key == remoteCacheKey) {

@@ -60,6 +60,9 @@
         <action
             android:id="@+id/toSensorGame"
             app:destination="@id/sensorGameCategoryFragment"/>
+        <action
+            android:id="@+id/toCustomCard"
+            app:destination="@id/customCardFragment"/>
     </fragment>
 
     <fragment
@@ -451,6 +454,12 @@
         android:id="@+id/sensorGameCategoryFragment"
         android:name="com.topstep.fitcloud.sample2.ui.game.SensorGameCategoryFragment"
         android:label="@string/ds_sensor_game"/>
+
+    <fragment
+        android:id="@+id/customCardFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.card.CustomCardFragment"
+        android:label="@string/ds_custom_card"
+        tools:layout="@layout/fragment_custom_card"/>
 
     <fragment
         android:id="@+id/hardwareUpgradeFragment"

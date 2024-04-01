@@ -11,7 +11,12 @@ import com.topstep.fitcloud.sample2.utils.DateTimeUtils
 import com.topstep.fitcloud.sample2.utils.km2Calories
 import com.topstep.fitcloud.sample2.utils.step2Km
 import com.topstep.fitcloud.sdk.v2.model.data.*
-import java.util.*
+import com.topstep.fitcloud.sdk.v2.utils.SleepCalculateHelper
+import timber.log.Timber
+import java.util.Arrays
+import java.util.Calendar
+import java.util.Date
+import java.util.UUID
 
 interface SyncDataRepository {
 
@@ -47,7 +52,9 @@ interface SyncDataRepository {
 
     suspend fun queryTodayStep(userId: Long): TodayStepData?
 
-    suspend fun querySleep(userId: Long, date: Date): List<SleepItemEntity>?
+    suspend fun querySleepRecord(userId: Long, date: Date): SleepRecordEntity?
+
+    suspend fun querySleepItems(userId: Long, date: Date): List<SleepItemEntity>?
 
     suspend fun queryHeartRate(userId: Long, date: Date): List<HeartRateItemEntity>?
 
@@ -118,15 +125,47 @@ internal class SyncDataRepositoryImpl(
     override suspend fun saveSleep(userId: Long, data: List<FcSleepData>?) {
         if (data.isNullOrEmpty()) return
         data.forEach {
-            val time = Date(it.timestamp)
+            //this day
+            val date = Date(it.timestamp)
+
+            //map to database entity
             val entities = it.items.map { item ->
-                SleepItemEntity(0, userId, time, Date(item.startTime), Date(item.endTime), item.status)
+                SleepItemEntity(0, userId, date, Date(item.startTime), Date(item.endTime), item.status)
             }
+
             if (entities.isNotEmpty()) {
                 //Remove data that may conflict on this day, such as data obtained from two different device
+                //Perhaps you have different strategies,
+                //Such as recording which device generated the data. When the device changes, clear the data from the old device.
                 val firstStartTime = entities.first().startTime
-                syncDao.deleteSleepAfter(userId, time, firstStartTime)
-                syncDao.insertSleep(entities)
+                syncDao.deleteSleepItemsAfter(userId, date, firstStartTime)
+                syncDao.insertSleepItems(entities)
+
+                //recalculate
+                val all = syncDao.querySleepItems(userId, date)
+                val record = if (all.isNullOrEmpty()) {
+                    SleepRecordEntity(
+                        userId = userId,
+                        date = date,
+                        deepSleep = 0,
+                        lightSleep = 0,
+                        soberSleep = 0,
+                        napSleep = 0,
+                        isSupportSleepNap = it.isSupportSleepNap
+                    )
+                } else {
+                    val summary = SleepCalculateHelper.calculate(it.timestamp, all, isSorted = true, isSupportSleepNap = it.isSupportSleepNap)
+                    SleepRecordEntity(
+                        userId = userId,
+                        date = date,
+                        deepSleep = summary.deepSeconds,
+                        lightSleep = summary.lightSeconds,
+                        soberSleep = summary.soberSeconds,
+                        napSleep = summary.napSeconds,
+                        isSupportSleepNap = it.isSupportSleepNap
+                    )
+                }
+                syncDao.insertSleepRecord(record)
             }
         }
     }
@@ -216,6 +255,7 @@ internal class SyncDataRepositoryImpl(
      * Data that is too short in time or not exercising enough will not be saved.
      */
     private fun filterSport(sportData: FcSportData): Boolean {
+        Timber.i("sportData[duration:${sportData.duration} , distance:${sportData.distance}  ,displayConfig:${Arrays.toString(sportData.displayConfigs)}")
         if (sportData.duration <= 300) {
             return false
         }
@@ -296,10 +336,12 @@ internal class SyncDataRepositoryImpl(
         return stringTypedDao.getTodayStepData(userId)
     }
 
-    override suspend fun querySleep(userId: Long, date: Date): List<SleepItemEntity>? {
-        val calendar = Calendar.getInstance()
-        val time = DateTimeUtils.getDayStartTime(calendar, date)
-        return syncDao.querySleep(userId, time)
+    override suspend fun querySleepRecord(userId: Long, date: Date): SleepRecordEntity? {
+        return syncDao.querySleepRecord(userId, date)
+    }
+
+    override suspend fun querySleepItems(userId: Long, date: Date): List<SleepItemEntity>? {
+        return syncDao.querySleepItems(userId, date)
     }
 
     /**

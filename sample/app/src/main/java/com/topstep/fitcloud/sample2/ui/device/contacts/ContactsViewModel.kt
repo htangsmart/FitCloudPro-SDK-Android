@@ -8,6 +8,9 @@ import com.topstep.fitcloud.sdk.v2.model.settings.FcContacts
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.await
+import java.util.Random
+import java.util.UUID
+
 
 data class ContactsState(
     val requestContacts: Async<ArrayList<FcContacts>> = Uninitialized,
@@ -61,6 +64,29 @@ class ContactsViewModel : StateEventViewModel<ContactsState, ContactsEvent>(Cont
                     ContactsEvent.Inserted(list.size).newEvent()
                     setContactsAction.execute()
                 }
+            }
+        }
+    }
+
+    fun randomContacts(count: Int) {
+        viewModelScope.launch {
+            val random = Random()
+            val list = state.requestContacts()
+            if (list != null) {
+                repeat(count) {
+                    val sb = StringBuilder()
+                    repeat(10) {
+                        sb.append(random.nextInt(11))
+                    }
+                    list.add(
+                        FcContacts.create(
+                            name = UUID.randomUUID().toString().substring(0, 7),
+                            number = sb.toString()
+                        )!!
+                    )
+                    ContactsEvent.Inserted(list.size).newEvent()
+                }
+                setContactsAction.execute()
             }
         }
     }

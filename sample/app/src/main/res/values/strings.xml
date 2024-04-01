@@ -39,6 +39,7 @@
     <string name="action_retry">Retry</string>
     <string name="action_select">Select</string>
     <string name="action_add">Add</string>
+    <string name="action_delete">Delete</string>
     <string name="action_more">More</string>
 
     <!--Tips-->
@@ -85,6 +86,7 @@
     <string name="deep_sleep">Deep Sleep：</string>
     <string name="light_sleep">Light Sleep：</string>
     <string name="awake_sleep">Awake：</string>
+    <string name="nap_sleep">Nap：</string>
     <string name="ecg_speed">Speed<xliff:g id="params">%1$d</xliff:g>mm/s</string>
     <string name="ecg_amplitude">Amplitude<xliff:g id="params">%1$d</xliff:g>mm/mV</string>
     <string name="game_type_0">Pet development</string>
@@ -265,12 +267,16 @@
     <string name="gps_hot_start_auto_update">Auto update device GPS file</string>
     <string name="gps_hot_start_des">Used to improve the accuracy of watch GPS position</string>
     <string name="gps_hot_start_test">Test</string>
-    <string name="gps_hot_start_test_immediately">Update immediately</string>
+    <string name="gps_hot_start_test_immediately">Update immediately(Not Force)</string>
     <string name="gps_hot_start_test_delay_1_minute">Delay update by 1 minute</string>
-    <string name="gps_hot_start_test_delay_3_minute">Delay update by 3 minute</string>
+    <string name="gps_hot_start_test_delay_3_minute">Delay update by 3 minute(Not Force)</string>
     <string name="gps_hot_start_test_delay_10_minute">Delay update by 10 minute</string>
     <string name="gps_hot_start_test_des">The delay time is only approximate and not precise</string>
     <string name="gps_hot_start_updating">GPS file update in progress</string>
+    <string name="gps_hot_start_device_time">Watch EPO effective time</string>
+    <string name="gps_hot_start_last_time">Last EPO update time</string>
+    <string name="gps_hot_start_clear">0->Not expired, Clear</string>
+    <string name="gps_hot_start_overwrite">1->Expired</string>
 
     <!--Cricket-->
     <string name="cricket_match">Cricket Match</string>
@@ -476,6 +482,8 @@
     <!--Contacts-->
     <string name="ds_contacts">Frequent Contacts</string>
     <string name="ds_contacts_tips1">Up to 10 favorite contacts can be added.</string>
+    <string name="ds_contacts_random">Random Contacts</string>
+    <string name="ds_contacts_random_tips">Generate random contacts</string>
 
     <!--Notification-->
     <string name="notification_channel_core_name">Core</string>
@@ -624,6 +632,9 @@
 
     <!--Device Settings:Game-->
     <string name="ds_sensor_game">Motion Sensing Game</string>
+
+    <!--Device Settings:Custom Card-->
+    <string name="ds_custom_card">Custom Card</string>
 
     <!--Device Settings:Third part app-->
     <string name="ds_notification_config">Notification Config</string>

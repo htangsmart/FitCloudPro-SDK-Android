@@ -151,6 +151,11 @@
             app:preferenceTitle="@string/ds_sensor_game"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_custom_card"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_custom_card"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_other_features"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             app:preferenceTitle="@string/ds_other_features"/>
@@ -159,6 +164,11 @@
             android:id="@+id/item_version_info"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             app:preferenceTitle="@string/version_info"/>
+
+        <TextView
+            android:id="@+id/item_event_text"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:text=""/>
 
     </LinearLayout>
 

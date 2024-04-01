@@ -57,7 +57,7 @@ class MyApplication : MultiDexApplication() {
     private fun initAllProcess() {
         AppLogger.init(this)
         MyCrashHandler()
-        FormatterUtil.init(SystemUtil.getSystemLocal(this))
+        FormatterUtil.init(SystemUtil.getSystemLocale(this))
     }
 
     private lateinit var applicationScope: CoroutineScope
@@ -115,15 +115,16 @@ class MyApplication : MultiDexApplication() {
             }
         }
         applicationScope.launch {
+            val feature = deviceManager.configFeature
             Injector.getGpsHotStartRepository().flowAutoUpdateGps().combine(
-                deviceManager.configFeature.observerDeviceInfo().asFlow()
+                feature.observerDeviceInfo().startWithItem(feature.getDeviceInfo()).asFlow()
             ) { autoUpdate, deviceInfo ->
                 autoUpdate && deviceInfo.isSupportFeature(FcDeviceInfo.Feature.GPS_HOT_START)
             }.debounce(5000).collect {
                 if (it) {
-                    GpsHotStartWorker.cancelPeriodic(applicationContext)
-                } else {
                     GpsHotStartWorker.executePeriodic(applicationContext)
+                } else {
+                    GpsHotStartWorker.cancelPeriodic(applicationContext)
                 }
             }
         }
@@ -140,7 +141,7 @@ class MyApplication : MultiDexApplication() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        FormatterUtil.init(SystemUtil.getSystemLocal(this))
+        FormatterUtil.init(SystemUtil.getSystemLocale(this))
     }
 
     /**

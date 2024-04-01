@@ -47,8 +47,7 @@ class GpsHotStartWorker constructor(
             Timber.tag(TAG).i("executeTestImmediately")
             WorkManager.getInstance(context).enqueueUniqueWork(
                 NAME_ONCE, ExistingWorkPolicy.REPLACE,
-                getWorkBuilder()
-                    .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
+                getWorkBuilder(false)
                     .build()
             )
         }
@@ -67,7 +66,7 @@ class GpsHotStartWorker constructor(
             Timber.tag(TAG).i("executeDelay1")
             WorkManager.getInstance(context).enqueueUniqueWork(
                 NAME_ONCE, ExistingWorkPolicy.REPLACE,
-                getWorkBuilder()
+                getWorkBuilder(false)
                     .setInitialDelay(3, TimeUnit.MINUTES)
                     .build()
             )
@@ -83,16 +82,17 @@ class GpsHotStartWorker constructor(
             )
         }
 
-        private fun getWorkBuilder(): OneTimeWorkRequest.Builder {
+        private fun getWorkBuilder(force: Boolean = true): OneTimeWorkRequest.Builder {
             val constraints = Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED).build()
             return OneTimeWorkRequest.Builder(GpsHotStartWorker::class.java)
                 .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 15, TimeUnit.MINUTES)
                 .setConstraints(constraints)
-                .setInputData(Data.Builder().putBoolean(EXTRA_FORCE, true).build())
+                .setInputData(Data.Builder().putBoolean(EXTRA_FORCE, force).build())
         }
 
         fun cancelPeriodic(context: Context) {
+            Timber.tag(TAG).i("cancelPeriodic")
             WorkManager.getInstance(context).cancelUniqueWork(NAME_PERIODIC)
         }
 

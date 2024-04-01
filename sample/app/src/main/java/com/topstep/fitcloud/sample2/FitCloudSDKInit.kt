@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.MainThread
 import com.polidea.rxandroidble3.LogConstants
 import com.polidea.rxandroidble3.LogOptions
@@ -21,7 +20,6 @@ import io.reactivex.rxjava3.exceptions.CompositeException
 import io.reactivex.rxjava3.exceptions.UndeliverableException
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.plugins.RxJavaPlugins
-import timber.log.Timber
 import java.io.File
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
@@ -151,7 +149,7 @@ private class FcSDKSingletonDelegate : ReadOnlyProperty<Context, FcSDK> {
                                     return Injector.getGpsHotStartRepository().requestGpsEpoInfo()
                                 }
                             },
-                            sensorGameApiKey = "xxxxxxxxxxxxxxxx"
+                            sensorGameApiKey = "xxxxxxxxxxxxxxxx",
                         )
                     )
                     .build()

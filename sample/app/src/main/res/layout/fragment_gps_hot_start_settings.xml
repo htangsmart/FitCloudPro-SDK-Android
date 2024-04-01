@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -25,13 +26,42 @@
             android:text="@string/gps_hot_start_des"/>
 
         <TextView
+            android:id="@+id/tv_device_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            tools:text="@string/gps_hot_start_device_time"/>
+
+        <TextView
+            android:id="@+id/tv_last_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            tools:text="@string/gps_hot_start_last_time"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/gps_hot_start_test"
             android:textAppearance="?textAppearanceSubtitle1"/>
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gps_hot_start_clear"/>
+
+        <Button
+            android:id="@+id/btn_overwrite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gps_hot_start_overwrite"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_test_immediately"

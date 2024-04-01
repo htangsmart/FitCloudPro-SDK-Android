@@ -2,6 +2,14 @@
 
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v2.0.6(2024-04-01)
+1. Fix bug: EPO file download out of sequence
+2. Fix bug: Remove bond fail
+3. Add params `FcPriority` of `syncItem` or `syncData`
+4. Add `distanceMeters` of `FcSportData`,Avoiding errors caused by float accuracy
+5. Add new device LCD support
+
+
 # v2.0.5(2023-09-20)
 1. Add `FcBuiltInFeatures.autoSetTime` settings. You can use the automatic time setting features, or use `FcSettingsFeature.setTime` manual. By default autoSetTime is enabled.
 2. Add `FcConfigFeature.refresh` to refresh configs manual.
