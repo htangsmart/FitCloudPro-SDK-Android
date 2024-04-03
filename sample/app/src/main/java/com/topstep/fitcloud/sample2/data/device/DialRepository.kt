@@ -235,11 +235,11 @@ internal class DialRepositoryImpl constructor(
             }
             //Displayed on the UI in the following order
             val supportList = listOf(
-                SupportStyle("White", com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_white),
-                SupportStyle("Black", com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_black),
-                SupportStyle("Yellow", com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_yellow),
-                SupportStyle("Green", com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_green),
-                SupportStyle("Gray", com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_gray)
+                SupportStyle("White", com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_white),
+                SupportStyle("Black", com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_black),
+                SupportStyle("Yellow", com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_yellow),
+                SupportStyle("Green", com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_green),
+                SupportStyle("Gray", com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_gray)
             )
             val styles: MutableList<DialCustomParams.Style> = ArrayList(supportList.size)
             for (support in supportList) {
@@ -262,7 +262,7 @@ internal class DialRepositoryImpl constructor(
             if (styles.isEmpty()) throw UnSupportDialCustomException()
             DialCustomParams(
                 //Use local image as default background
-                ResourceUtil.getUriFromDrawableResId(context, com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_default_bg),
+                ResourceUtil.getUriFromDrawableResId(context, com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_default_bg),
                 styles
             )
         }

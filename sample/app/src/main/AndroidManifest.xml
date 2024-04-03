@@ -67,7 +67,10 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <!--Used for the song push to read the audio files in the mobile phone-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
 
     <application
         android:name="com.topstep.fitcloud.sample2.MyApplication"

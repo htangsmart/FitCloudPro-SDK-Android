@@ -12,6 +12,10 @@ dependencyResolutionManagement {
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
         maven { url 'https://jitpack.io' }
+        maven {
+            url = uri("http://120.78.153.20:8081/repository/maven-public/")
+            allowInsecureProtocol = true
+        }
     }
 }
 rootProject.name = "sample"

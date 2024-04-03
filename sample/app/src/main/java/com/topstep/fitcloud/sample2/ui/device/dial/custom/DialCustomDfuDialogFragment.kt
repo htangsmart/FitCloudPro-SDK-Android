@@ -23,13 +23,13 @@ import com.topstep.fitcloud.sample2.ui.device.DfuViewModel
 import com.topstep.fitcloud.sample2.ui.device.dial.DialSpacePacketAdapter
 import com.topstep.fitcloud.sample2.ui.device.showDfuFail
 import com.topstep.fitcloud.sample2.utils.*
-import com.topstep.fitcloud.sdk.util.download.FileDownloadException
-import com.topstep.fitcloud.sdk.util.download.FileDownloader
-import com.topstep.fitcloud.sdk.util.download.ProgressResult
 import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
 import com.topstep.fitcloud.sdk.v2.utils.dial.DialDrawer
 import com.topstep.fitcloud.sdk.v2.utils.dial.DialDrawer.Position
 import com.topstep.fitcloud.sdk.v2.utils.dial.DialWriter
+import com.topstep.wearkit.base.download.FileDownloadException
+import com.topstep.wearkit.base.download.FileDownloader
+import com.topstep.wearkit.base.download.ProgressResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine

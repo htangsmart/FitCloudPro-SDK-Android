@@ -211,7 +211,7 @@ internal class DeviceManagerImpl(
      */
     override val flowState = combine(
         flowDevice,
-        fcSDK.observerAdapterEnabled().startWithItem(fcSDK.isAdapterEnabled()).asFlow().distinctUntilChanged(),
+        fcSDK.bluetoothHelper.observerAdapterEnabled().startWithItem(fcSDK.bluetoothHelper.isAdapterEnabled()).asFlow().distinctUntilChanged(),
         connector.observerConnectorState().map { simpleState(it) }.startWithItem(ConnectorState.DISCONNECTED).asFlow().distinctUntilChanged()
     ) { device, isAdapterEnabled, connectorState ->
         //Device trying bind success,save it

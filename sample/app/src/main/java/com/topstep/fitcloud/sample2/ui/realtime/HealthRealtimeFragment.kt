@@ -15,11 +15,11 @@ import com.topstep.fitcloud.sample2.utils.celsius2Fahrenheit
 import com.topstep.fitcloud.sample2.utils.showFailed
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.exception.FcTemperatureRealTimeException
-import com.topstep.fitcloud.sdk.util.FlagUtil
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.data.FcHealthDataResult
 import com.topstep.fitcloud.sdk.v2.model.data.FcHealthDataType
+import com.topstep.wearkit.base.utils.FlagUtil
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.Disposable

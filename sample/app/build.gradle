@@ -12,7 +12,7 @@ android {
         minSdk 21
         targetSdk 32
         versionCode 1
-        versionName "1.0.8"
+        versionName "3.0.1-alpha1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
@@ -43,6 +43,11 @@ android {
     }
     namespace 'com.topstep.fitcloud.sample2'
 
+    configurations.configureEach {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
+
     applicationVariants.all { variant ->
         variant.outputs.all {
             def fileName = "fcsample2-${variant.buildType.name}-v${versionName}.apk"
@@ -55,8 +60,9 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     //Required
-    implementation files('libs/libraryCore_v2.0.6.aar')
-    implementation files('libs/libraryProtocol2_v2.0.6.aar')
+    def weakit_version = "3.0.1-SNAPSHOT"
+    implementation("com.topstep.wearkit:sdk-base:$weakit_version") { changing = true }
+    implementation("com.topstep.wearkit:sdk-fitcloud:$weakit_version") { changing = true }
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.annotation:annotation:$annotation_version"
@@ -64,25 +70,19 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
     implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
     implementation "com.polidea.rxandroidble3:rxandroidble:$rxandroidble_version"
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 
     //Optional. Sensor game function
-    implementation files('libs/librarySensorGame_v2.0.6.aar')
+    implementation("com.topstep.wearkit:ext-sensorgame:1.0.1")
     //Optional. Dfu function for Realtek chip
-    implementation files('libs/libraryDfu8762C_v2.0.6.aar')
+    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.1")
     //Optional. Dfu function for Nordic chip
     implementation 'no.nordicsemi.android:dfu:2.2.2'
-    //Optional. Download files for Dfu function.
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     //Optional. Built-in music control function
     implementation 'androidx.media:media:1.6.0'
-    //Optional. DialWriter and LogoWriter function
-    implementation 'androidx.palette:palette-ktx:1.0.0'
     //Optional. LogoWriter function
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
-
-//    //Optional. Some APIs compatible with 1.x.x are provided to minimize changes during migration.
-//    //Only use for migration, and you need to replace it with new APIs as soon as possible and than remove this dependency.
-//    implementation files(':libraryCompat2')
 
     //Base
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"

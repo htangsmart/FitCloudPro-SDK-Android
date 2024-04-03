@@ -43,11 +43,17 @@ class MyApplication : MultiDexApplication() {
     companion object {
         lateinit var instance: MyApplication
             private set
+
+        //Monitor App foreground/background state,must be init in Application.onCreate
+        lateinit var processLifecycleManager: MyProcessLifecycleManager
+            private set
     }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
+        processLifecycleManager = MyProcessLifecycleManager()
+        ProcessLifecycleOwner.get().lifecycle.addObserver(processLifecycleManager)
         initAllProcess()
         if (SystemUtil.getProcessName(this) == packageName) {
             initMainProcess()

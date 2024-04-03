@@ -1,10 +1,10 @@
 package com.topstep.fitcloud.sample2
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
-import android.os.Bundle
 import androidx.annotation.MainThread
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.polidea.rxandroidble3.LogConstants
 import com.polidea.rxandroidble3.LogOptions
 import com.polidea.rxandroidble3.RxBleClient
@@ -15,6 +15,7 @@ import com.topstep.fitcloud.sdk.v2.features.FcGpsHotStartProvider
 import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsEpoInfo
 import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsLocationInfo
 import com.topstep.fitcloud.sdk.v2.utils.Optional
+import com.topstep.wearkit.base.ProcessLifecycleManager
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.exceptions.CompositeException
 import io.reactivex.rxjava3.exceptions.UndeliverableException
@@ -64,53 +65,25 @@ fun fitCloudSDKInit(application: Application) {
     //If you use other methods, you need to keep the singleton and call the constructor of [FcSDK] here
     application.fcSDK
 
-    //ToNote:3.UI Process state
-    //Some functions in "FitCloudSDK" need to know the foreground/background status of the UI process. You must handle it correctly.
-    //This sample use [ActivityLifecycleCallbacks] to handle this state. You can also use other ways, such as [ProcessLifecycleOwner].
-    //Why not deal with it in the "FitCloudSDK"? Because some apps have multiple processes, it may not use "FitCloudSDK" in UI process.
-    application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
-        var startCount = 0
-        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        }
-
-        override fun onActivityStarted(activity: Activity) {
-            if (startCount == 0) {
-                //At this time, the APP enters the foreground
-                application.fcSDK.isForeground = true
-            }
-            startCount++
-        }
-
-        override fun onActivityResumed(activity: Activity) {
-        }
-
-        override fun onActivityPaused(activity: Activity) {
-        }
-
-        override fun onActivityStopped(activity: Activity) {
-            startCount--
-            if (startCount == 0) {
-                //At this time, the APP enters the background
-                application.fcSDK.isForeground = false
-            }
-        }
-
-        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-        }
-
-        override fun onActivityDestroyed(activity: Activity) {
-        }
-    })
-
-    //ToNote:4.RxJavaPlugins.setErrorHandler
+    //ToNote:3.RxJavaPlugins.setErrorHandler
     //Because rxjava is used in the SDK, some known exceptions that cannot be distributed need to be handled to avoid app crash.
     val ignoreExceptions = HashSet<Class<out Throwable>>()
 //    ignoreExceptions.add(YourAppIgnoredException::class.java)//Exceptions need to be ignored in your own app (maybe not according to your own app)
     ignoreExceptions.addAll(FcSDK.rxJavaPluginsIgnoreExceptions())//Exceptions need to be ignored in the SDK
     RxJavaPlugins.setErrorHandler(RxJavaPluginsErrorHandler(ignoreExceptions))
 
-    //ToNote:5.The connector must be initialized by the main thread
+    //ToNote:4.The connector must be initialized by the main thread
     application.fcSDK.connector
+}
+
+class MyProcessLifecycleManager : ProcessLifecycleManager(), DefaultLifecycleObserver {
+    override fun onStart(owner: LifecycleOwner) {
+        setForeground(true)
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        setForeground(false)
+    }
 }
 
 /**
@@ -127,7 +100,10 @@ private class FcSDKSingletonDelegate : ReadOnlyProperty<Context, FcSDK> {
         return instance ?: synchronized(lock) {
             if (instance == null) {
                 instance = FcSDK
-                    .Builder(thisRef.applicationContext as Application)
+                    .Builder(
+                        application = MyApplication.instance,
+                        processLifecycleObserver = MyApplication.processLifecycleManager
+                    )
                     //ToNote: If no other SDK in your app is also based on "RxAndroidBLE", don't use [RxBleClient.create], please use [FcSDK.rxBleClient] to get the [RxBleClient] instance.
 //                    .setRxBleClient(RxBleClient.create(thisRef.applicationContext))
                     .setTestStrictMode(BuildConfig.DEBUG)

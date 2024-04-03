@@ -99,16 +99,16 @@ class DialSpacePacketAdapter(
             glideLoadDialBackground(
                 context, dialView, ResourceUtil.getUriFromDrawableResId(
                     context,
-                    com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_default_bg
+                    com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_default_bg
                 )
             )
 
             val styleResId = when (item.dialType) {
-                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_WHITE -> com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_white
-                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_BLACK -> com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_black
-                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_YELLOW -> com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_yellow
-                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_GREEN -> com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_green
-                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_GRAY -> com.topstep.fitcloud.sdk.v2.R.drawable.fc_dial_custom_style_gray
+                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_WHITE -> com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_white
+                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_BLACK -> com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_black
+                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_YELLOW -> com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_yellow
+                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_GREEN -> com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_green
+                FcDialSpace.DIAL_TYPE_CUSTOM_STYLE_GRAY -> com.topstep.fitcloud.sdk.R.drawable.fc_dial_custom_style_gray
                 else -> 0
             }
             if (styleResId != 0) {

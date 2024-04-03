@@ -3,7 +3,7 @@ package com.topstep.fitcloud.sample2.worker
 import android.content.Context
 import androidx.work.*
 import com.topstep.fitcloud.sample2.fcSDK
-import com.topstep.fitcloud.sdk.v2.exception.FcGpsHotStartException
+import com.topstep.fitcloud.sdk.exception.FcGpsHotStartException
 import kotlinx.coroutines.rx3.await
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
