@@ -14,8 +14,8 @@ import com.topstep.fitcloud.sdk.v2.features.FcBuiltInFeatures
 import com.topstep.fitcloud.sdk.v2.features.FcGpsHotStartProvider
 import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsEpoInfo
 import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsLocationInfo
-import com.topstep.fitcloud.sdk.v2.utils.Optional
 import com.topstep.wearkit.base.ProcessLifecycleManager
+import com.topstep.wearkit.base.utils.Optional
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.exceptions.CompositeException
 import io.reactivex.rxjava3.exceptions.UndeliverableException

@@ -5,7 +5,7 @@ import com.topstep.fitcloud.sample2.data.net.ApiService
 import com.topstep.fitcloud.sample2.data.storage.InternalStorage
 import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsEpoInfo
 import com.topstep.fitcloud.sdk.v2.model.settings.gps.FcGpsLocationInfo
-import com.topstep.fitcloud.sdk.v2.utils.Optional
+import com.topstep.wearkit.base.utils.Optional
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.flow.Flow
