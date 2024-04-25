@@ -73,14 +73,21 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
     implementation 'androidx.palette:palette-ktx:1.0.0'
 
+    //Optional. Dfu function for Realtek chip
+    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.2")
+
     //Optional. Sensor game function
     implementation("com.topstep.wearkit:ext-sensorgame:1.0.1")
-    //Optional. Dfu function for Realtek chip
-    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.1")
+
+    //Optional. AliAgent function
+    implementation("com.topstep.wearkit:ext-aliagent-ext:1.0.3")
+
     //Optional. Dfu function for Nordic chip
     implementation 'no.nordicsemi.android:dfu:2.2.2'
+
     //Optional. Built-in music control function
     implementation 'androidx.media:media:1.6.0'
+
     //Optional. LogoWriter function
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 
