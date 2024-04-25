@@ -29,16 +29,15 @@ Add dependencies in your app `build.gradle`
     implementation("com.topstep.wearkit:sdk-fitcloud:$weakit_version")
 ```
 
-2. The local libs aar name changed. Now it's called `library_base` and `library_fitcloud`
-3. The sdk init `FcSDK.Builder` params changed.
-4. Api Change: `FlagUtil` package name changed.
-5. Api Change: `BondHelper` package name changed.
-6. Api Change: `FileDownloader` package name changed.
-7. Api Change: `FileDownloadException` package name changed.
-8. Api Change: `ProgressResult` package name changed.
-9. Api Change: `BytesUtil` package name changed.
-10. Api Change: `Optional` package name changed.
-11. Some drawable resources package name changed from `com.topstep.fitcloud.sdk.v2.R` to `com.topstep.fitcloud.sdk.R`
+2. The sdk init `FcSDK.Builder` params changed.
+3. Api Change: `FlagUtil` package name changed.
+4. Api Change: `BondHelper` package name changed.
+5. Api Change: `FileDownloader` package name changed.
+6. Api Change: `FileDownloadException` package name changed.
+7. Api Change: `ProgressResult` package name changed.
+8. Api Change: `BytesUtil` package name changed.
+9. Api Change: `Optional` package name changed.
+10. Some drawable resources package name changed from `com.topstep.fitcloud.sdk.v2.R` to `com.topstep.fitcloud.sdk.R`
 
 # v2.0.6(2024-04-01)
 1. Fix bug: EPO file download out of sequence
