@@ -27,7 +27,6 @@ import com.topstep.fitcloud.sample2.ui.widget.LoadingView
 import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
-import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.settings.FcContacts
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -100,11 +99,7 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts), RandomContact
                     onBackPressed()
                     return true
                 } else if (menuItem.itemId == R.id.menu_random) {
-                    val limit = if (deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.CONTACTS_100)) {
-                        100
-                    } else {
-                        10
-                    }
+                    val limit = deviceManager.fcSDK.contactsAbility.getContactsMaxNumber()
                     val size = adapter.sources?.size ?: 0
 
                     RandomContactsDialogFragment.newInstance(
@@ -137,11 +132,7 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts), RandomContact
 
         viewBind.fabAdd.setOnClickListener {
             viewLifecycleScope.launchWhenResumed {
-                val limit = if (deviceManager.configFeature.getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.CONTACTS_100)) {
-                    100
-                } else {
-                    10
-                }
+                val limit = deviceManager.fcSDK.contactsAbility.getContactsMaxNumber()
                 val size = adapter.sources?.size ?: 0
                 if (size >= limit) {
                     promptToast.showInfo("Up to $limit contacts can be added.")

@@ -22,6 +22,7 @@ import com.topstep.fitcloud.sample2.utils.runCatchingWithLog
 import com.topstep.fitcloud.sdk.connector.FcConnectorState
 import com.topstep.fitcloud.sdk.connector.FcDisconnectedReason
 import com.topstep.fitcloud.sdk.exception.FcSyncBusyException
+import com.topstep.fitcloud.sdk.v2.FcSDK
 import com.topstep.fitcloud.sdk.v2.dfu.FcDfuManager
 import com.topstep.fitcloud.sdk.v2.features.*
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
@@ -141,6 +142,8 @@ interface DeviceManager {
             const val FAIL = 3//同步失败
         }
     }
+
+    val fcSDK: FcSDK
 }
 
 fun DeviceManager.flowStateConnected(): Flow<Boolean> {
@@ -165,7 +168,7 @@ internal class DeviceManagerImpl(
     appDatabase: AppDatabase,
 ) : DeviceManager {
 
-    private val fcSDK = context.fcSDK
+    override val fcSDK = context.fcSDK
     private val connector = fcSDK.connector
     private val configDao = appDatabase.configDao()
 

@@ -5,6 +5,8 @@
 2. Add sleep nap feature if `FcDeviceInfo.isSupport(FcDeviceInfo.Feature.SLEEP_NAP)` is true, and use `SleepCalculateHelper.calculate` to get `SleepSummary` info.
 3. Add ota function for ic type 8873
 4. Add some customer customization features
+5. Add `FcBatteryAbility`,`FcContactsAbility`,`FcNotificationAbility`,`FcFunctionAbility`
+6. Delete `FcDeviceInfo.Feature.CONTACTS_100`, use `fcSDK.contactsAbility.getContactsMaxNumber()` to determine the number of contacts supported by the device
 
 # v3.0.1-beta01(2024-04-12)
 1. Starting from this version, online dependencies can be used for integration. Detailed usage reference sample project.
