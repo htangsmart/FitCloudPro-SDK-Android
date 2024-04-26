@@ -30,7 +30,6 @@ import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
 import com.topstep.fitcloud.sdk.v2.model.data.*
 import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
-import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -335,30 +334,7 @@ internal class DeviceManagerImpl(
         }
     }
 
-    override val flowBattery: StateFlow<FcBatteryStatus?> = flowState
-        .filter { it == ConnectorState.CONNECTED }
-        .flatMapLatest {
-            Observable
-                .interval(1000, 7500, TimeUnit.MILLISECONDS)
-                .flatMap {
-                    connector.settingsFeature().requestBattery().toObservable()
-                }
-                .retryWhen {
-                    it.flatMap { throwable ->
-                        if (throwable is BleDisconnectedException) {
-                            //not retry when disconnected
-                            Observable.error(throwable)
-                        } else {
-                            //retry when failed
-                            Observable.timer(7500, TimeUnit.MILLISECONDS)
-                        }
-                    }
-                }
-                .asFlow()
-                .catch {
-                    //catch avoid crash
-                }
-        }
+    override val flowBattery: StateFlow<FcBatteryStatus?> = fcSDK.batteryAbility.observeBattery().asFlow()
         .stateIn(applicationScope, SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000L), null)
 
     override fun flowWeatherRequire(): Flow<Boolean> {
