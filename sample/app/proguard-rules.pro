@@ -19,3 +19,24 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#####################################sdk-sensorgame###########################
+-keep class com.tenmeter.smlibrary.** { *; }
+-keep class fi.iki.elonen.** { *; }
+
+#####################################sdk-aliagent###########################
+-keep class com.alibaba.aliagentsdk.** { *; }
+-keep class com.google.gson.** { *; }
+-keep class com.fd.aliiot.core.** { *; }
+-keep class org.eclipse.paho.**{*;}
+-keep class com.alibaba.sdk.android.oss.** { *; }
+-keep class com.alibaba.fastjson.**{*; }
+-keep class org.json.** { *; }
+
+-dontwarn okio.**
+-dontwarn com.google.gson.**
+-dontwarn com.alibaba.fastjson.**
+-dontwarn org.apache.commons.codec.binary.**
+
+-keepattributes Signature
+

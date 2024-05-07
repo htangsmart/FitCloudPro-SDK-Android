@@ -60,9 +60,11 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     //Required
-    def weakit_version = "3.0.1-SNAPSHOT"
-    implementation("com.topstep.wearkit:sdk-base:$weakit_version") { changing = true }
-    implementation("com.topstep.wearkit:sdk-fitcloud:$weakit_version") { changing = true }
+//    def weakit_version = "3.0.1-SNAPSHOT"
+//    implementation("com.topstep.wearkit:sdk-base:$weakit_version") { changing = true }
+//    implementation("com.topstep.wearkit:sdk-fitcloud:$weakit_version") { changing = true }
+    implementation files("libs/sdk-base-release")
+    implementation files("libs/sdk-fitcloud-release")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.annotation:annotation:$annotation_version"
@@ -74,13 +76,16 @@ dependencies {
     implementation 'androidx.palette:palette-ktx:1.0.0'
 
     //Optional. Dfu function for Realtek chip
-    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.2")
+//    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.2")
+    implementation files("libs/sdk-realtek-dfu-release")
 
     //Optional. Sensor game function
-    implementation("com.topstep.wearkit:ext-sensorgame:1.0.1")
+//    implementation("com.topstep.wearkit:ext-sensorgame:1.0.1")
+    implementation files("libs/sdk-sensorgame-release")
 
     //Optional. AliAgent function
-    implementation("com.topstep.wearkit:ext-aliagent-ext:1.0.3")
+//    implementation("com.topstep.wearkit:ext-aliagent-ext:1.0.3")
+    implementation files("libs/sdk-aliagent-release")
 
     //Optional. Dfu function for Nordic chip
     implementation 'no.nordicsemi.android:dfu:2.2.2'
