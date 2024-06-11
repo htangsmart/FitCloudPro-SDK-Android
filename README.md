@@ -1,5 +1,15 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta03(2024-06-11)
+1. Support dial function for ic type 8873 and 568x
+2. Fix some ota bugs.
+3. Fix the bug where sleep state may be 0
+4. Add FASTRACK notification type
+5. Add `FcBatteryAbility.isSupportObserve` 
+6. `FcDialSpace.dialNum` may be -1, indicating that there is currently no dial in this space
+7. `FcNotificationAbility` add new method to send app and telephony notification
+8. Fix some other bugs.
+
 # v3.0.1-beta02(2024-04-25)
 1. Add advanced reminder function `FcRemindAbility`, which replaces the `FcSedentaryConfig` and `FcDrinkWaterConfig` functions. Old watches can still use the old API, but if `FcDeviceInfo.isSupport(FcDeviceInfo.Feature.ADVANCED_REMIND)` is true, then `FcRemindAbility` must be used
 2. Add sleep nap feature if `FcDeviceInfo.isSupport(FcDeviceInfo.Feature.SLEEP_NAP)` is true, and use `SleepCalculateHelper.calculate` to get `SleepSummary` info.
