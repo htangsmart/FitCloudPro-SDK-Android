@@ -63,8 +63,8 @@ dependencies {
 //    def weakit_version = "3.0.1-SNAPSHOT"
 //    implementation("com.topstep.wearkit:sdk-base:$weakit_version") { changing = true }
 //    implementation("com.topstep.wearkit:sdk-fitcloud:$weakit_version") { changing = true }
-    implementation files("libs/sdk-base-v3.0.1-beta03")
-    implementation files("libs/sdk-fitcloud-v3.0.1-beta03")
+    implementation files("libs/sdk-base-v3.0.1-beta04")
+    implementation files("libs/sdk-fitcloud-v3.0.1-beta04")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.7.20"
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.annotation:annotation:$annotation_version"

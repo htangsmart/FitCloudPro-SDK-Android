@@ -1,5 +1,9 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta04(2024-06-24)
+1. Fix the bug where the device cannot be paired after being restored to the factory
+2. OTA optimization
+
 # v3.0.1-beta03(2024-06-11)
 1. Support dial function for ic type 8873 and 568x
 2. Fix some ota bugs.
