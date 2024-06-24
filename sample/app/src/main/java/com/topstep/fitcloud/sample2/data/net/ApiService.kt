@@ -70,7 +70,8 @@ interface ApiService {
     @FormUrlEncoded
     suspend fun dialCustomGUI(
         @Field("lcd") lcd: Int,
-        @Field("toolVersion") toolVersion: String
+        @Field("toolVersion") toolVersion: String,
+        @Field("platform") platform: String,
     ): ListNullable<DialPacketComplexBean>
 
     @POST("http://ssmartlink.com/v2/location/getEphemeris")

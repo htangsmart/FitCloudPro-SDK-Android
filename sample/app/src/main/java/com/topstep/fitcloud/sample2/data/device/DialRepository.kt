@@ -5,6 +5,7 @@ import android.net.Uri
 import android.util.SparseArray
 import com.github.kilnn.tool.util.ResourceUtil
 import com.squareup.moshi.Moshi
+import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.UnSupportDialCustomException
 import com.topstep.fitcloud.sample2.data.UnSupportDialLcdException
 import com.topstep.fitcloud.sample2.data.bean.DialPacketComplexBean
@@ -202,7 +203,14 @@ internal class DialRepositoryImpl constructor(
 
     override suspend fun getDialCustomParams(dialPushParams: DialPushParams): DialCustomParams {
         return if (dialPushParams.isSupportGUI) {
-            val list = apiService.dialCustomGUI(dialPushParams.lcd, dialPushParams.toolVersion).data
+            val icType = deviceManager.configFeature.getDeviceInfo().getIcType()
+            val list = apiService.dialCustomGUI(
+                dialPushParams.lcd, dialPushParams.toolVersion, when (icType) {
+                    FcDeviceInfo.IcType.IC_568X -> "gui-5681"
+                    FcDeviceInfo.IcType.IC_8773 -> "gui-8773"
+                    else -> "gui"
+                }
+            ).data
             if (list.isNullOrEmpty()) {
                 throw UnSupportDialCustomException()
             }
