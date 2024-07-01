@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>setQrCode</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            android-sdk-wearkit
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk-fitcloud:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="sdk-fitcloud::com.topstep.fitcloud.sdk.v2.features/FcSettingsFeature/setQrCode/#kotlin.Int#kotlin.String/PointingToDeclaration//1075868924">
+  <div class="breadcrumbs"><a href="../../index.html">sdk-fitcloud</a><span class="delimiter">/</span><a href="../index.html">com.topstep.fitcloud.sdk.v2.features</a><span class="delimiter">/</span><a href="index.html">FcSettingsFeature</a><span class="delimiter">/</span><span class="current">setQrCode</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>set</span><wbr><span>Qr</span><wbr><span><span>Code</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-qr-code.html"><span class="token function">setQrCode</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div><p class="paragraph">Set a QR codes display on device.</p><p class="paragraph">The all QR codes add define in <a href="../../com.topstep.fitcloud.sdk.v2.model.settings/-fc-qr-code-type/index.html">FcQrCodeType</a>, but the device may only support some of them.</p><p class="paragraph">The QR code has four groups:</p><ul><li><p class="paragraph">Collection Code: If <a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/-feature/-companion/-c-o-l-l-e-c-t-i-o-n_-c-o-d-e.html">FcDeviceInfo.Feature.COLLECTION_CODE</a> is support. This groups QR codes <a href="set-qr-code.html">content</a> limit 274 bytes</p></li><li><p class="paragraph">Business Card: If <a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/-feature/-companion/-b-u-s-i-n-e-s-s_-c-a-r-d.html">FcDeviceInfo.Feature.BUSINESS_CARD</a> is support.  This groups QR codes <a href="set-qr-code.html">content</a> limit 274 bytes</p></li><li><p class="paragraph">Nucleic Acid Code: If <a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/-feature/-companion/-n-u-c-l-e-i-c_-a-c-i-d_-c-o-d-e.html">FcDeviceInfo.Feature.NUCLEIC_ACID_CODE</a> is support.  This groups QR codes <a href="set-qr-code.html">content</a> limit 347 bytes</p></li><li><p class="paragraph">Qr Code Extension 1 : If <a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/-feature/-companion/-q-r_-c-o-d-e_-e-x-t-e-n-s-i-o-n_1.html">FcDeviceInfo.Feature.QR_CODE_EXTENSION_1</a> is support.  This groups QR codes <a href="set-qr-code.html">content</a> limit 347 bytes</p></li></ul><p class="paragraph">For example, if you want set <a href="../../com.topstep.fitcloud.sdk.v2.model.settings/-fc-qr-code-type/-companion/-c-o-l-l-e-c-t-i-o-n_-c-o-d-e_-p-a-y-p-a-l.html">FcQrCodeType.COLLECTION_CODE_PAYPAL</a> to device:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">//Check if a certain group of QR codes is supported, such as displaying the settings entry for a certain group of QR codes on the page<br>val isSupport = connector.configFeature().getDeviceInfo().isSupportFeature(FcDeviceInfo.Feature.COLLECTION_CODE)<br>if (!isSupport) return<br><br>//requestSupportQrCodes for detail judgment, determine whether [FcQrCodeType] is supported under a certain group.<br>val types = connector.settingsFeature().requestSupportQrCodes().onErrorReturnItem(emptyList()).blockingGet()<br>if (types.contains(FcQrCodeType.COLLECTION_CODE_PAYPAL)) {<br>    //supported<br>    connector.settingsFeature().setQrCode(FcQrCodeType.COLLECTION_CODE_PAYPAL, "qr codes content").onErrorComplete().subscribe()<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>type</span></span></u></div></span></div><div><div class="title"><p class="paragraph">QR Codes type define in <a href="../../com.topstep.fitcloud.sdk.v2.model.settings/-fc-qr-code-type/index.html">FcQrCodeType</a></p></div></div></div></div><div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>content</span></span></u></div></span></div><div><div class="title"><p class="paragraph">QR Codes connect.</p></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

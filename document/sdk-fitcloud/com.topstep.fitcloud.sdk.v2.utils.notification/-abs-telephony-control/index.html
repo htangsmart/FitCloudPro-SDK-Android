@@ -1,0 +1,153 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AbsTelephonyControl</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            android-sdk-wearkit
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk-fitcloud:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="sdk-fitcloud::com.topstep.fitcloud.sdk.v2.utils.notification/AbsTelephonyControl///PointingToDeclaration//1075868924">
+  <div class="breadcrumbs"><a href="../../index.html">sdk-fitcloud</a><span class="delimiter">/</span><a href="../index.html">com.topstep.fitcloud.sdk.v2.utils.notification</a><span class="delimiter">/</span><span class="current">AbsTelephonyControl</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Abs</span><wbr><span>Telephony</span><wbr><span><span>Control</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">AbsTelephonyControl</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator"> : </span><a href="../-abs-phone-state-listener/index.html">AbsPhoneStateListener</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><span data-unresolved-link="android.content/Context///PointingToDeclaration/">Context</span><span class="token punctuation">, </span></span><span class="parameter ">connector<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2/-fc-connector/index.html">FcConnector</a><span class="token punctuation">, </span></span><span class="parameter ">factory<span class="token operator">: </span><a href="../-phone-state-listener-factory/index.html">PhoneStateListenerFactory</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><p class="paragraph">Monitoring and handling of telephony.</p><p class="paragraph"><strong>External must hold a reference to this object, Because </strong><span data-unresolved-link="android.telephony/PhoneStateListener///PointingToDeclaration/"><strong>PhoneStateListener</strong></span><strong> is held by Weak reference inside the system, the external must be guaranteed not to be garbage collected, otherwise </strong><span data-unresolved-link="android.telephony/PhoneStateListener///PointingToDeclaration/"><strong>PhoneStateListener</strong></span><strong> will become invalid</strong></p><p class="paragraph">See also：https://stackoverflow.com/questions/40183905/telephonymanagers-phonestatelistener-is-not-called-on-nougat</p><p class="paragraph">Permissions:</p><ul><li><p class="paragraph">monitor: <span data-unresolved-link="android/Manifest.permission/READ_CALL_LOG/#/PointingToDeclaration/">Manifest.permission.READ_PHONE_STATE</span></p></li><li><p class="paragraph">hang up: <span data-unresolved-link="android/Manifest.permission/ANSWER_PHONE_CALLS/#/PointingToDeclaration/">Manifest.permission.CALL_PHONE</span></p></li><li><p class="paragraph">query contact name: <span data-unresolved-link="android/Manifest.permission/READ_CONTACTS/#/PointingToDeclaration/">Manifest.permission.READ_CONTACTS</span></p></li><li><p class="paragraph">send sms: <span data-unresolved-link="android/Manifest.permission/SEND_SMS/#/PointingToDeclaration/">Manifest.permission.SEND_SMS</span></p></li></ul><p class="paragraph">ToNote:Known bugs:</p><ol><li><p class="paragraph">Because <span data-unresolved-link="android.telephony/SubscriptionManager/getActiveSubscriptionInfoList/#/PointingToDeclaration/">SubscriptionManager.getActiveSubscriptionInfoList</span> must have <span data-unresolved-link="android/Manifest.permission/READ_PHONE_STATE/#/PointingToDeclaration/">Manifest.permission.READ_PHONE_STATE</span> to obtain a value. Some mobile phones (such as Xiaomi) may return blank permissions, which cannot be determined or monitored in the app. If you manually change the permissions in the system settings, you need to restart the app to take effect</p></li><li><p class="paragraph">Because <span data-unresolved-link="android.telephony/SubscriptionManager/addOnSubscriptionsChangedListener/#android.telephony.SubscriptionManager.OnSubscriptionsChangedListener/PointingToDeclaration/">SubscriptionManager.addOnSubscriptionsChangedListener</span> was not used to listen for changes. So if a dual card dual standby phone changes from one card to two cards, it may need to be restarted to properly listen for incoming calls from both phone cards</p></li></ol></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1464595114%2FConstructors%2F1075868924" anchor-label="AbsTelephonyControl" id="-1464595114%2FConstructors%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-abs-telephony-control.html"><span>Abs</span><wbr><span>Telephony</span><wbr><span><span>Control</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1464595114%2FConstructors%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><span data-unresolved-link="android.content/Context///PointingToDeclaration/">Context</span><span class="token punctuation">, </span></span><span class="parameter ">connector<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2/-fc-connector/index.html">FcConnector</a><span class="token punctuation">, </span></span><span class="parameter ">factory<span class="token operator">: </span><a href="../-phone-state-listener-factory/index.html">PhoneStateListenerFactory</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-343548075%2FClasslikes%2F1075868924" anchor-label="Companion" id="-343548075%2FClasslikes%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-343548075%2FClasslikes%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-116168298%2FFunctions%2F1075868924" anchor-label="checkInitialize" id="-116168298%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="check-initialize.html"><span>check</span><wbr><span><span>Initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-116168298%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="check-initialize.html"><span class="token function">checkInitialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-832664537%2FFunctions%2F1075868924" anchor-label="release" id="-832664537%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="release.html"><span><span>release</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-832664537%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="release.html"><span class="token function">release</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>calculate</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            android-sdk-wearkit
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk-fitcloud:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageids="sdk-fitcloud::com.topstep.fitcloud.sdk.v2.utils/SleepCalculateHelper/calculate/#kotlin.Long#kotlin.collections.List[com.topstep.fitcloud.sdk.v2.utils.ICalculateSleepItem]#kotlin.Boolean#kotlin.Boolean/PointingToDeclaration//1075868924">
+  <div class="breadcrumbs"><a href="../../index.html">sdk-fitcloud</a><span class="delimiter">/</span><a href="../index.html">com.topstep.fitcloud.sdk.v2.utils</a><span class="delimiter">/</span><a href="index.html">SleepCalculateHelper</a><span class="delimiter">/</span><span class="current">calculate</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>calculate</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlin.jvm/JvmStatic///PointingToDeclaration/"><span class="token annotation builtin">JvmStatic</span></span></div></div><span class="token keyword">fun </span><a href="calculate.html"><span class="token function">calculate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dateInMillis<span class="token operator">: </span><span data-unresolved-link="kotlin/Long///PointingToDeclaration/">Long</span><span class="token punctuation">, </span></span><span class="parameter ">items<span class="token operator">: </span><span data-unresolved-link="kotlin.collections/List///PointingToDeclaration/">List</span><span class="token operator">&lt;</span><a href="../-i-calculate-sleep-item/index.html">ICalculateSleepItem</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">isSorted<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span><span class="token punctuation">, </span></span><span class="parameter ">isSupportSleepNap<span class="token operator">: </span><span data-unresolved-link="kotlin/Boolean///PointingToDeclaration/">Boolean</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-sleep-summary/index.html">SleepSummary</a></div><p class="paragraph">zh:将睡眠数据划分为不同的睡眠段。 每段睡眠中的items都已经被修正，去掉了无效的状态，并且在时间上是连续的。 所有睡眠段中的items可能和传入的items差别很大，所有此方法返回的items不适合持久化，因为它不是原始的数据。</p><p class="paragraph">en:Divide sleep data into different sleep segments. The items in each sleep segment have been corrected, removed invalid states, and it is continuous in time. The items in all sleep segments may differ significantly from the items passed in, so the items returned by this method are not suitable for persistence, because it is not the original data.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">Sleep summary data, divides sleep into nighttime or daytime sleep, and divides each segment.</p></span><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>date</span><wbr><span>In</span><wbr><span><span>Millis</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Which date the items belong.</p></div></div></div></div><div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>items</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Sleep items for a certain day.</p></div></div></div></div><div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>is</span><wbr><span><span>Sorted</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The items must be sorted by <a href="../-i-calculate-sleep-item/get-calculate-start-time.html">ICalculateSleepItem.getCalculateStartTime</a> in ascending order. But if you have already sorted, pass true to skip the process of repeating the sorting internally.</p></div></div></div></div><div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>is</span><wbr><span>Support</span><wbr><span>Sleep</span><wbr><span><span>Nap</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Whether the items is obtained from device which support <a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/-feature/-companion/-s-l-e-e-p_-n-a-p.html">FcDeviceInfo.Feature.SLEEP_NAP</a>.</p></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

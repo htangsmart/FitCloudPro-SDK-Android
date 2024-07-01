@@ -1,0 +1,269 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>OTAItemHeader</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            android-sdk-wearkit
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk-fitcloud:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="sdk-fitcloud::com.topstep.fitcloud.sdk.v2.ota/OTAItemHeader///PointingToDeclaration//1075868924">
+  <div class="breadcrumbs"><a href="../../index.html">sdk-fitcloud</a><span class="delimiter">/</span><a href="../index.html">com.topstep.fitcloud.sdk.v2.ota</a><span class="delimiter">/</span><span class="current">OTAItemHeader</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>OTAItem</span><wbr><span><span>Header</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">OTAItemHeader</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>itemLen<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>fileType<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>packType<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>index<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>offset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>size<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>storageAddr<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>version<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>nameLen<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>reserved<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token operator"> = </span>byteArrayOf(0, 0, 0, 0, 0)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>name<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1396580433%2FConstructors%2F1075868924" anchor-label="OTAItemHeader" id="1396580433%2FConstructors%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-o-t-a-item-header.html"><span>OTAItem</span><wbr><span><span>Header</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1396580433%2FConstructors%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">itemLen<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">fileType<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">packType<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span><span class="token punctuation">, </span></span><span class="parameter ">index<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">offset<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">size<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">storageAddr<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">version<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">nameLen<span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span><span class="token punctuation">, </span></span><span class="parameter ">reserved<span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token operator"> = </span>byteArrayOf(0, 0, 0, 0, 0)<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1189390989%2FProperties%2F1075868924" anchor-label="fileType" id="-1189390989%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="file-type.html"><span>file</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1189390989%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="file-type.html">fileType</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">条目文件类型，如固件，UI，Font，表盘等</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1797075233%2FProperties%2F1075868924" anchor-label="index" id="-1797075233%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="--index--.html"><span><span>index</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1797075233%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="--index--.html">index</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">条目文件的序号，一般用在运动、游戏中，如设置该游戏要放在第几个序号中去</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-875225425%2FProperties%2F1075868924" anchor-label="itemLen" id="-875225425%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="item-len.html"><span>item</span><wbr><span><span>Len</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-875225425%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="item-len.html">itemLen</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">该条目的长度，必须是4字节对齐的，条目长度是动态的，随文件名长度而变化</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="909189470%2FProperties%2F1075868924" anchor-label="name" id="909189470%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="name.html"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="909189470%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></div><div class="brief "><p class="paragraph">条目文件名字符串，最大为64字节，若超过则截断，长度必须是4字节对齐的， 名字是 UTF8 格式的， 不足补0，如 name_len = 2 , 说明有效名字为2个字符串，需在最后再补2个字节保证4字 节对齐，如 name_len = 13，则需补3个字节；补充字节全填0； 计算公式为：(name_len + 3)/4*4 ， 当 name_len = 0 时，则 name[]长度为0，即忽略该字段填写；</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1570391513%2FProperties%2F1075868924" anchor-label="nameLen" id="-1570391513%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="name-len.html"><span>name</span><wbr><span><span>Len</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1570391513%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="name-len.html">nameLen</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">有效文件名长度，最大不超过64字节，若无文件名则填0</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="465882454%2FProperties%2F1075868924" anchor-label="offset" id="465882454%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="offset.html"><span><span>offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="465882454%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="offset.html">offset</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">条目文件在整个OTA文件中的偏移位置，该偏移已经包含了头信息</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1444697610%2FProperties%2F1075868924" anchor-label="packType" id="-1444697610%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pack-type.html"><span>pack</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1444697610%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="pack-type.html">packType</a><span class="token operator">: </span><span data-unresolved-link="kotlin/String///PointingToDeclaration/">String</span></div><div class="brief "><p class="paragraph">条目文件的打包方式，如现有表盘是realtek格式打包，固件可以是新协议打包</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1654045343%2FProperties%2F1075868924" anchor-label="reserved" id="-1654045343%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reserved.html"><span><span>reserved</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1654045343%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="reserved.html">reserved</a><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span></div><div class="brief "><p class="paragraph">对齐保留字段必须为0，便于协议扩展</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1952885928%2FProperties%2F1075868924" anchor-label="size" id="1952885928%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="size.html"><span><span>size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1952885928%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="size.html">size</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">条目文件的大小</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1042474779%2FProperties%2F1075868924" anchor-label="storageAddr" id="-1042474779%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="storage-addr.html"><span>storage</span><wbr><span><span>Addr</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1042474779%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="storage-addr.html">storageAddr</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">条目文件在flash中的存储位置，在OTA工具打包时可指定文件存储在哪个地址段中， 若为0，则表示按固件中原有的 mft 定义的分区表地址；不为0时则以该地址段为主； 这样设计是由于当固件、mft、 UI、Font等文件统一打包后升级，原有的mft分区有 可能已被修改了，但新的mft尚未更新，此时需要按照该地址中指定的地址存储； 以前旧的OTA只能每个文件按顺序升级，先升mft，再升UI，所以无法打包成整体</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="35729561%2FProperties%2F1075868924" anchor-label="version" id="35729561%2FProperties%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="version.html"><span><span>version</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="35729561%2FProperties%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="version.html">version</a><span class="token operator">: </span><span data-unresolved-link="kotlin/Int///PointingToDeclaration/">Int</span></div><div class="brief "><p class="paragraph">条目文件的版本号，一般用在固件中，如 V1.08，表示的数值为: 108</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

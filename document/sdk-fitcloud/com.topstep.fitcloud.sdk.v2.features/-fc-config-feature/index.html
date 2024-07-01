@@ -1,0 +1,944 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FcConfigFeature</title>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+                            android-sdk-wearkit
+                    </a>            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":sdk-fitcloud:dokkaHtmlPartial/release">androidJvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="sdk-fitcloud::com.topstep.fitcloud.sdk.v2.features/FcConfigFeature///PointingToDeclaration//1075868924">
+  <div class="breadcrumbs"><a href="../../index.html">sdk-fitcloud</a><span class="delimiter">/</span><a href="../index.html">com.topstep.fitcloud.sdk.v2.features</a><span class="delimiter">/</span><span class="current">FcConfigFeature</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Fc</span><wbr><span>Config</span><wbr><span><span>Feature</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">FcConfigFeature</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1419750880%2FClasslikes%2F1075868924" anchor-label="Companion" id="-1419750880%2FClasslikes%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1419750880%2FClasslikes%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1202103951%2FFunctions%2F1075868924" anchor-label="getBloodPressureAlarmConfig" id="1202103951%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-blood-pressure-alarm-config.html"><span>get</span><wbr><span>Blood</span><wbr><span>Pressure</span><wbr><span>Alarm</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1202103951%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-blood-pressure-alarm-config.html"><span class="token function">getBloodPressureAlarmConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-blood-pressure-alarm-config/index.html">FcBloodPressureAlarmConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2038186186%2FFunctions%2F1075868924" anchor-label="getBloodPressureConfig" id="-2038186186%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-blood-pressure-config.html"><span>get</span><wbr><span>Blood</span><wbr><span>Pressure</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2038186186%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-blood-pressure-config.html"><span class="token function">getBloodPressureConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-blood-pressure-config/index.html">FcBloodPressureConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1903743500%2FFunctions%2F1075868924" anchor-label="getBytes" id="1903743500%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-bytes.html"><span>get</span><wbr><span><span>Bytes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1903743500%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-bytes.html"><span class="token function"><strike>getBytes</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlin/ByteArray///PointingToDeclaration/">ByteArray</span><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-219353089%2FFunctions%2F1075868924" anchor-label="getDeviceInfo" id="-219353089%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-device-info.html"><span>get</span><wbr><span>Device</span><wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-219353089%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-device-info.html"><span class="token function">getDeviceInfo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/index.html">FcDeviceInfo</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1043477915%2FFunctions%2F1075868924" anchor-label="getDNDConfig" id="1043477915%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-d-n-d-config.html"><span>get</span><wbr><span><span>DNDConfig</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1043477915%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-d-n-d-config.html"><span class="token function">getDNDConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-d-n-d-config/index.html">FcDNDConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1373655746%2FFunctions%2F1075868924" anchor-label="getDrinkWaterConfig" id="1373655746%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-drink-water-config.html"><span>get</span><wbr><span>Drink</span><wbr><span>Water</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1373655746%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-drink-water-config.html"><span class="token function">getDrinkWaterConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-drink-water-config/index.html">FcDrinkWaterConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="818612822%2FFunctions%2F1075868924" anchor-label="getExtensionConfig" id="818612822%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-extension-config.html"><span>get</span><wbr><span>Extension</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="818612822%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-extension-config.html"><span class="token function">getExtensionConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-extension-config/index.html">FcExtensionConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1927187625%2FFunctions%2F1075868924" anchor-label="getFunctionConfig" id="1927187625%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-function-config.html"><span>get</span><wbr><span>Function</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1927187625%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-function-config.html"><span class="token function"><strike>getFunctionConfig</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-function-config/index.html">FcFunctionConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="128572207%2FFunctions%2F1075868924" anchor-label="getHandWashingReminderConfig" id="128572207%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-hand-washing-reminder-config.html"><span>get</span><wbr><span>Hand</span><wbr><span>Washing</span><wbr><span>Reminder</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="128572207%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-hand-washing-reminder-config.html"><span class="token function">getHandWashingReminderConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-hand-washing-reminder-config/index.html">FcHandWashingReminderConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1383640489%2FFunctions%2F1075868924" anchor-label="getHealthMonitorConfig" id="-1383640489%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-health-monitor-config.html"><span>get</span><wbr><span>Health</span><wbr><span>Monitor</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1383640489%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-health-monitor-config.html"><span class="token function">getHealthMonitorConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-health-monitor-config/index.html">FcHealthMonitorConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-687597066%2FFunctions%2F1075868924" anchor-label="getHeartRateAlarmConfig" id="-687597066%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-heart-rate-alarm-config.html"><span>get</span><wbr><span>Heart</span><wbr><span>Rate</span><wbr><span>Alarm</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-687597066%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-heart-rate-alarm-config.html"><span class="token function">getHeartRateAlarmConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-heart-rate-alarm-config/index.html">FcHeartRateAlarmConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1382100433%2FFunctions%2F1075868924" anchor-label="getIsolateMonitorConfig" id="1382100433%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-isolate-monitor-config.html"><span>get</span><wbr><span>Isolate</span><wbr><span>Monitor</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1382100433%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-isolate-monitor-config.html"><span class="token function">getIsolateMonitorConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-isolate-monitor-config/-type/index.html">FcIsolateMonitorConfig.Type</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-isolate-monitor-config/index.html">FcIsolateMonitorConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1268469194%2FFunctions%2F1075868924" anchor-label="getNotificationConfig" id="-1268469194%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-notification-config.html"><span>get</span><wbr><span>Notification</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1268469194%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-notification-config.html"><span class="token function">getNotificationConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-notification-config/index.html">FcNotificationConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-922490350%2FFunctions%2F1075868924" anchor-label="getPageConfig" id="-922490350%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page-config.html"><span>get</span><wbr><span>Page</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-922490350%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-page-config.html"><span class="token function">getPageConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-page-config/index.html">FcPageConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1950986294%2FFunctions%2F1075868924" anchor-label="getProtectionReminderConfig" id="1950986294%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-protection-reminder-config.html"><span>get</span><wbr><span>Protection</span><wbr><span>Reminder</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1950986294%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-protection-reminder-config.html"><span class="token function">getProtectionReminderConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-protection-reminder-config/index.html">FcProtectionReminderConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1512994382%2FFunctions%2F1075868924" anchor-label="getScreenVibrateConfig" id="-1512994382%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-screen-vibrate-config.html"><span>get</span><wbr><span>Screen</span><wbr><span>Vibrate</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1512994382%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-screen-vibrate-config.html"><span class="token function">getScreenVibrateConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-screen-vibrate-config/index.html">FcScreenVibrateConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-978934746%2FFunctions%2F1075868924" anchor-label="getSedentaryConfig" id="-978934746%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-sedentary-config.html"><span>get</span><wbr><span>Sedentary</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-978934746%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-sedentary-config.html"><span class="token function">getSedentaryConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-sedentary-config/index.html">FcSedentaryConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-426851785%2FFunctions%2F1075868924" anchor-label="getTurnWristLightingConfig" id="-426851785%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-turn-wrist-lighting-config.html"><span>get</span><wbr><span>Turn</span><wbr><span>Wrist</span><wbr><span>Lighting</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-426851785%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-turn-wrist-lighting-config.html"><span class="token function">getTurnWristLightingConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-turn-wrist-lighting-config/index.html">FcTurnWristLightingConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="961503419%2FFunctions%2F1075868924" anchor-label="getWomenHealthConfig" id="961503419%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-women-health-config.html"><span>get</span><wbr><span>Women</span><wbr><span>Health</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="961503419%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="get-women-health-config.html"><span class="token function">getWomenHealthConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-women-health-config/index.html">FcWomenHealthConfig</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1590593213%2FFunctions%2F1075868924" anchor-label="observerAnyChanged" id="-1590593213%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-any-changed.html"><span>observer</span><wbr><span>Any</span><wbr><span><span>Changed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1590593213%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-any-changed.html"><span class="token function">observerAnyChanged</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlin/Byte///PointingToDeclaration/">Byte</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2040801367%2FFunctions%2F1075868924" anchor-label="observerBloodPressureAlarmConfig" id="2040801367%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-blood-pressure-alarm-config.html"><span>observer</span><wbr><span>Blood</span><wbr><span>Pressure</span><wbr><span>Alarm</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2040801367%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-blood-pressure-alarm-config.html"><span class="token function">observerBloodPressureAlarmConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-blood-pressure-alarm-config/index.html">FcBloodPressureAlarmConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1585561490%2FFunctions%2F1075868924" anchor-label="observerBloodPressureConfig" id="-1585561490%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-blood-pressure-config.html"><span>observer</span><wbr><span>Blood</span><wbr><span>Pressure</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1585561490%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-blood-pressure-config.html"><span class="token function">observerBloodPressureConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-blood-pressure-config/index.html">FcBloodPressureConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-231100473%2FFunctions%2F1075868924" anchor-label="observerDeviceInfo" id="-231100473%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-device-info.html"><span>observer</span><wbr><span>Device</span><wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-231100473%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-device-info.html"><span class="token function">observerDeviceInfo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-device-info/index.html">FcDeviceInfo</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="904551635%2FFunctions%2F1075868924" anchor-label="observerDNDConfig" id="904551635%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-d-n-d-config.html"><span>observer</span><wbr><span><span>DNDConfig</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="904551635%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-d-n-d-config.html"><span class="token function">observerDNDConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-d-n-d-config/index.html">FcDNDConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1035985782%2FFunctions%2F1075868924" anchor-label="observerDrinkWaterConfig" id="-1035985782%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-drink-water-config.html"><span>observer</span><wbr><span>Drink</span><wbr><span>Water</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1035985782%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-drink-water-config.html"><span class="token function">observerDrinkWaterConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-drink-water-config/index.html">FcDrinkWaterConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="602335118%2FFunctions%2F1075868924" anchor-label="observerExtensionConfig" id="602335118%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-extension-config.html"><span>observer</span><wbr><span>Extension</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="602335118%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-extension-config.html"><span class="token function">observerExtensionConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-extension-config/index.html">FcExtensionConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2058758257%2FFunctions%2F1075868924" anchor-label="observerFunctionConfig" id="2058758257%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-function-config.html"><span>observer</span><wbr><span>Function</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2058758257%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-function-config.html"><span class="token function"><strike>observerFunctionConfig</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-function-config/index.html">FcFunctionConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="358388327%2FFunctions%2F1075868924" anchor-label="observerHandWashingReminderConfig" id="358388327%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-hand-washing-reminder-config.html"><span>observer</span><wbr><span>Hand</span><wbr><span>Washing</span><wbr><span>Reminder</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="358388327%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-hand-washing-reminder-config.html"><span class="token function">observerHandWashingReminderConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-hand-washing-reminder-config/index.html">FcHandWashingReminderConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-931015793%2FFunctions%2F1075868924" anchor-label="observerHealthMonitorConfig" id="-931015793%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-health-monitor-config.html"><span>observer</span><wbr><span>Health</span><wbr><span>Monitor</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-931015793%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-health-monitor-config.html"><span class="token function">observerHealthMonitorConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-health-monitor-config/index.html">FcHealthMonitorConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="458866622%2FFunctions%2F1075868924" anchor-label="observerHeartRateAlarmConfig" id="458866622%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-heart-rate-alarm-config.html"><span>observer</span><wbr><span>Heart</span><wbr><span>Rate</span><wbr><span>Alarm</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="458866622%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-heart-rate-alarm-config.html"><span class="token function">observerHeartRateAlarmConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-heart-rate-alarm-config/index.html">FcHeartRateAlarmConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1433169817%2FFunctions%2F1075868924" anchor-label="observerIsolateMonitorConfig" id="1433169817%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-isolate-monitor-config.html"><span>observer</span><wbr><span>Isolate</span><wbr><span>Monitor</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1433169817%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-isolate-monitor-config.html"><span class="token function">observerIsolateMonitorConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-isolate-monitor-config/-type/index.html">FcIsolateMonitorConfig.Type</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-isolate-monitor-config/index.html">FcIsolateMonitorConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1946605058%2FFunctions%2F1075868924" anchor-label="observerNotificationConfig" id="-1946605058%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-notification-config.html"><span>observer</span><wbr><span>Notification</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1946605058%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-notification-config.html"><span class="token function">observerNotificationConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-notification-config/index.html">FcNotificationConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-934237734%2FFunctions%2F1075868924" anchor-label="observerPageConfig" id="-934237734%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-page-config.html"><span>observer</span><wbr><span>Page</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-934237734%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-page-config.html"><span class="token function">observerPageConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-page-config/index.html">FcPageConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1505283586%2FFunctions%2F1075868924" anchor-label="observerProtectionReminderConfig" id="-1505283586%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-protection-reminder-config.html"><span>observer</span><wbr><span>Protection</span><wbr><span>Reminder</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1505283586%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-protection-reminder-config.html"><span class="token function">observerProtectionReminderConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-protection-reminder-config/index.html">FcProtectionReminderConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1060369686%2FFunctions%2F1075868924" anchor-label="observerScreenVibrateConfig" id="-1060369686%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-screen-vibrate-config.html"><span>observer</span><wbr><span>Screen</span><wbr><span>Vibrate</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1060369686%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-screen-vibrate-config.html"><span class="token function">observerScreenVibrateConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-screen-vibrate-config/index.html">FcScreenVibrateConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1195212450%2FFunctions%2F1075868924" anchor-label="observerSedentaryConfig" id="-1195212450%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-sedentary-config.html"><span>observer</span><wbr><span>Sedentary</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1195212450%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-sedentary-config.html"><span class="token function">observerSedentaryConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-sedentary-config/index.html">FcSedentaryConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="292939631%2FFunctions%2F1075868924" anchor-label="observerTurnWristLightingConfig" id="292939631%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-turn-wrist-lighting-config.html"><span>observer</span><wbr><span>Turn</span><wbr><span>Wrist</span><wbr><span>Lighting</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="292939631%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-turn-wrist-lighting-config.html"><span class="token function">observerTurnWristLightingConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-turn-wrist-lighting-config/index.html">FcTurnWristLightingConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-722939917%2FFunctions%2F1075868924" anchor-label="observerWomenHealthConfig" id="-722939917%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observer-women-health-config.html"><span>observer</span><wbr><span>Women</span><wbr><span>Health</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-722939917%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="observer-women-health-config.html"><span class="token function">observerWomenHealthConfig</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Observable///PointingToDeclaration/">Observable</span><span class="token operator">&lt;</span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-women-health-config/index.html">FcWomenHealthConfig</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="688906590%2FFunctions%2F1075868924" anchor-label="refresh" id="688906590%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="refresh.html"><span><span>refresh</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="688906590%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="refresh.html"><span class="token function">refresh</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1861644149%2FFunctions%2F1075868924" anchor-label="setBloodPressureAlarmConfig" id="1861644149%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-blood-pressure-alarm-config.html"><span>set</span><wbr><span>Blood</span><wbr><span>Pressure</span><wbr><span>Alarm</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1861644149%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-blood-pressure-alarm-config.html"><span class="token function">setBloodPressureAlarmConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-blood-pressure-alarm-config/index.html">FcBloodPressureAlarmConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="502949239%2FFunctions%2F1075868924" anchor-label="setBloodPressureConfig" id="502949239%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-blood-pressure-config.html"><span>set</span><wbr><span>Blood</span><wbr><span>Pressure</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="502949239%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-blood-pressure-config.html"><span class="token function">setBloodPressureConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-blood-pressure-config/index.html">FcBloodPressureConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2068812353%2FFunctions%2F1075868924" anchor-label="setDNDConfig" id="2068812353%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-d-n-d-config.html"><span>set</span><wbr><span><span>DNDConfig</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2068812353%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-d-n-d-config.html"><span class="token function">setDNDConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-d-n-d-config/index.html">FcDNDConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="57401941%2FFunctions%2F1075868924" anchor-label="setDrinkWaterConfig" id="57401941%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-drink-water-config.html"><span>set</span><wbr><span>Drink</span><wbr><span>Water</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="57401941%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-drink-water-config.html"><span class="token function">setDrinkWaterConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-drink-water-config/index.html">FcDrinkWaterConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1946935351%2FFunctions%2F1075868924" anchor-label="setExtensionConfig" id="1946935351%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-extension-config.html"><span>set</span><wbr><span>Extension</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1946935351%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-extension-config.html"><span class="token function">setExtensionConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-extension-config/index.html">FcExtensionConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-69356363%2FFunctions%2F1075868924" anchor-label="setFunctionConfig" id="-69356363%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-function-config.html"><span>set</span><wbr><span>Function</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-69356363%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-function-config.html"><span class="token function"><strike>setFunctionConfig</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-function-config/index.html">FcFunctionConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-290575255%2FFunctions%2F1075868924" anchor-label="setHandWashingReminderConfig" id="-290575255%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-hand-washing-reminder-config.html"><span>set</span><wbr><span>Hand</span><wbr><span>Washing</span><wbr><span>Reminder</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-290575255%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-hand-washing-reminder-config.html"><span class="token function">setHandWashingReminderConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-hand-washing-reminder-config/index.html">FcHandWashingReminderConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-544297927%2FFunctions%2F1075868924" anchor-label="setHealthMonitorConfig" id="-544297927%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-health-monitor-config.html"><span>set</span><wbr><span>Health</span><wbr><span>Monitor</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-544297927%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-health-monitor-config.html"><span class="token function">setHealthMonitorConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-health-monitor-config/index.html">FcHealthMonitorConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1926263979%2FFunctions%2F1075868924" anchor-label="setHeartRateAlarmConfig" id="-1926263979%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-heart-rate-alarm-config.html"><span>set</span><wbr><span>Heart</span><wbr><span>Rate</span><wbr><span>Alarm</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1926263979%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-heart-rate-alarm-config.html"><span class="token function">setHeartRateAlarmConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-heart-rate-alarm-config/index.html">FcHeartRateAlarmConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1750937825%2FFunctions%2F1075868924" anchor-label="setIsolateMonitorConfig" id="1750937825%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-isolate-monitor-config.html"><span>set</span><wbr><span>Isolate</span><wbr><span>Monitor</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750937825%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-isolate-monitor-config.html"><span class="token function">setIsolateMonitorConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-isolate-monitor-config/-type/index.html">FcIsolateMonitorConfig.Type</a><span class="token punctuation">, </span></span><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-isolate-monitor-config/index.html">FcIsolateMonitorConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1231801621%2FFunctions%2F1075868924" anchor-label="setNotificationConfig" id="1231801621%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-notification-config.html"><span>set</span><wbr><span>Notification</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1231801621%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-notification-config.html"><span class="token function">setNotificationConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-notification-config/index.html">FcNotificationConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1570999445%2FFunctions%2F1075868924" anchor-label="setPageConfig" id="1570999445%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-page-config.html"><span>set</span><wbr><span>Page</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1570999445%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-page-config.html"><span class="token function">setPageConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-page-config/index.html">FcPageConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2107002923%2FFunctions%2F1075868924" anchor-label="setProtectionReminderConfig" id="-2107002923%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-protection-reminder-config.html"><span>set</span><wbr><span>Protection</span><wbr><span>Reminder</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2107002923%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-protection-reminder-config.html"><span class="token function">setProtectionReminderConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-protection-reminder-config/index.html">FcProtectionReminderConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1079834735%2FFunctions%2F1075868924" anchor-label="setScreenVibrateConfig" id="1079834735%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-screen-vibrate-config.html"><span>set</span><wbr><span>Screen</span><wbr><span>Vibrate</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1079834735%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-screen-vibrate-config.html"><span class="token function">setScreenVibrateConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-screen-vibrate-config/index.html">FcScreenVibrateConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2016123945%2FFunctions%2F1075868924" anchor-label="setSedentaryConfig" id="-2016123945%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-sedentary-config.html"><span>set</span><wbr><span>Sedentary</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2016123945%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-sedentary-config.html"><span class="token function">setSedentaryConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-sedentary-config/index.html">FcSedentaryConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1224961785%2FFunctions%2F1075868924" anchor-label="setTurnWristLightingConfig" id="1224961785%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-turn-wrist-lighting-config.html"><span>set</span><wbr><span>Turn</span><wbr><span>Wrist</span><wbr><span>Lighting</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1224961785%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-turn-wrist-lighting-config.html"><span class="token function">setTurnWristLightingConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-turn-wrist-lighting-config/index.html">FcTurnWristLightingConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="444859009%2FFunctions%2F1075868924" anchor-label="setWomenHealthConfig" id="444859009%2FFunctions%2F1075868924" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":sdk-fitcloud:dokkaHtmlPartial/release" data-filterable-set=":sdk-fitcloud:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-women-health-config.html"><span>set</span><wbr><span>Women</span><wbr><span>Health</span><wbr><span><span>Config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="444859009%2FFunctions%2F1075868924"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":sdk-fitcloud:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="androidx.annotation/CheckResult///PointingToDeclaration/"><span class="token annotation builtin">CheckResult</span></span></div></div><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="set-women-health-config.html"><span class="token function">setWomenHealthConfig</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../../com.topstep.fitcloud.sdk.v2.model.config/-fc-women-health-config/index.html">FcWomenHealthConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="io.reactivex.rxjava3.core/Completable///PointingToDeclaration/">Completable</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
