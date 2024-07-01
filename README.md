@@ -1,5 +1,8 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta05(2024-06-28)
+1. FcDfuManager.start add params `silentMode`, by default use `SilentMode.DEFAULT`
+
 # v3.0.1-beta04(2024-06-24)
 1. Fix the bug where the device cannot be paired after being restored to the factory
 2. OTA optimization
