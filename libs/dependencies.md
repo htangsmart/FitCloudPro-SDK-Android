@@ -4,9 +4,9 @@ How to use local aars?
 ```kotlin
 dependencies {
     //Required
-    implementation("aar/sdk-base-v{latest_version}.aar")
-    implementation("aar/sdk-fitcloud-v{latest_version}.aar")
-    implementation("aar/sdk-realtek-dfu-v{latest_version}.aar")//Use for dfu
+    implementation("libs/sdk-base-v{latest_version}.aar")
+    implementation("libs/sdk-fitcloud-v{latest_version}.aar")
+    implementation("libs/sdk-realtek-dfu-v{latest_version}.aar")//Use for dfu
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.22"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.annotation:annotation:1.5.0")
@@ -18,10 +18,10 @@ dependencies {
     implementation("androidx.palette:palette-ktx:1.0.0")//Use for create watchface bitmap
 
     //Optional. Sensor game function
-    implementation("aar/sdk-sensorgame-v{latest_version}.aar")
+    implementation("libs/sdk-sensorgame-v{latest_version}.aar")
 
     //Optional. AliAgent function
-    implementation("aar/sdk-aliagent-v{latest_version}.aar")
+    implementation("libs/sdk-aliagent-v{latest_version}.aar")
 
     //Optional. Dfu function for Nordic chip
     implementation("no.nordicsemi.android:dfu:2.2.2")
@@ -34,7 +34,7 @@ dependencies {
 
     //Optional. Some APIs compatible with 1.x.x are provided to minimize changes during migration.
     //Only use for migration, and you need to replace it with new APIs as soon as possible and than remove this dependency.
-    implementation("aar/sdk-fitcloud-v1.x.x-compat.aar")
+    implementation("libs/sdk-fitcloud-v1.x.x-compat.aar")
 }
 ```
 
