@@ -166,5 +166,5 @@ dependencies {
 }
 
 fun isDeveloperEnvironment(): Boolean {
-    return project.projectDir.path.toString().contains("android-sdk-wearkit")
+    return !project.projectDir.path.toString().contains("android-sdk-wearkit")
 }
