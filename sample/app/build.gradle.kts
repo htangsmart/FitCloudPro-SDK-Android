@@ -165,6 +165,9 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 }
 
+/**
+ * Developers and authors may use different dependencies
+ */
 fun isDeveloperEnvironment(): Boolean {
     return !project.projectDir.path.toString().contains("android-sdk-wearkit")
 }

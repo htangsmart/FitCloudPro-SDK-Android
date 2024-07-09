@@ -27,3 +27,17 @@ dependencyResolutionManagement {
 
 rootProject.name = "sample"
 include(":app")
+
+if (!isDeveloperEnvironment()) {//Developers ignored this
+    include(":sdk-base")
+    include(":sdk-fitcloud")
+    project(":sdk-base").projectDir = file("../../sdk-base")
+    project(":sdk-fitcloud").projectDir = file("../../sdk-fitcloud")
+}
+
+/**
+ * Developers and authors may use different dependencies
+ */
+fun isDeveloperEnvironment(): Boolean {
+    return !rootProject.projectDir.path.toString().contains("android-sdk-wearkit")
+}
