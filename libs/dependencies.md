@@ -34,7 +34,7 @@ dependencies {
 
     //Optional. Some APIs compatible with 1.x.x are provided to minimize changes during migration.
     //Only use for migration, and you need to replace it with new APIs as soon as possible and than remove this dependency.
-    implementation("libs/sdk-fitcloud-v1.x.x-compat.aar")
+    implementation("libs/sdk-fitcloud-compat-v{latest_version}.aar")
 }
 ```
 
