@@ -387,7 +387,7 @@ internal class DeviceManagerImpl(
         connector.settingsFeature().unbindUser()
             .ignoreElement().onErrorComplete()
             .andThen(
-                connector.settingsFeature().unbindAudioDevice().onErrorComplete()
+                connector.removeBond().ignoreElement().onErrorComplete()
             ).await()
         clearDevice()
     }
