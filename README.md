@@ -1,5 +1,11 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta06(2024-07-16)
+1. `FcNotificationConfig.Flag` add `TITAN`,`GPAY` and `AMAZON`
+2. `FcSportData` add `swimData`, and `displayConfigs` also add config of `DISPLAY_SWIM_STROKE_RATE` and `DISPLAY_SWIM_EFFICIENCY`
+3. Add new device shape support.
+4. Fix some bugs
+
 # v3.0.1-beta05(2024-06-28)
 1. FcDfuManager.start add params `silentMode`, by default use `SilentMode.DEFAULT`
 
