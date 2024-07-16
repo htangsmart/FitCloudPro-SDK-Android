@@ -31,6 +31,9 @@
             android:id="@+id/toContacts"
             app:destination="@id/contactsFragment"/>
         <action
+            android:id="@+id/toContactsEmergency"
+            app:destination="@id/contactsEmergencyFragment"/>
+        <action
             android:id="@+id/toPowerSaveMode"
             app:destination="@id/powerSaveModeFragment"/>
         <action
@@ -380,6 +383,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.contacts.ContactsFragment"
         android:label="@string/ds_contacts"
         tools:layout="@layout/fragment_contacts"/>
+
+    <fragment
+        android:id="@+id/contactsEmergencyFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.contacts.ContactsEmergencyFragment"
+        android:label="@string/ds_contacts_emergency"
+        tools:layout="@layout/fragment_contacts_emergency"/>
 
     <fragment
         android:id="@+id/powerSaveModeFragment"

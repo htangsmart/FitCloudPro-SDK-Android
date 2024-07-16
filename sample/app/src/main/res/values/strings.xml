@@ -481,6 +481,7 @@
 
     <!--Contacts-->
     <string name="ds_contacts">Frequent Contacts</string>
+    <string name="ds_contacts_emergency">Emergency Contacts</string>
     <string name="ds_contacts_tips1">Up to 10 favorite contacts can be added.</string>
     <string name="ds_contacts_random">Random Contacts</string>
     <string name="ds_contacts_random_tips">Generate random contacts</string>

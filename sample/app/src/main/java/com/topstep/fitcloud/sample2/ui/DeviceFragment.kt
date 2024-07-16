@@ -54,6 +54,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemQrCodes.clickTrigger(block = blockClick)
         viewBind.itemAlarm.clickTrigger(block = blockClick)
         viewBind.itemContacts.clickTrigger(block = blockClick)
+        viewBind.itemContactsEmergency.clickTrigger(block = blockClick)
         viewBind.itemPowerSaveMode.clickTrigger(block = blockClick)
         viewBind.itemGamePush.clickTrigger(block = blockClick)
         viewBind.itemSportPush.clickTrigger(block = blockClick)
@@ -106,6 +107,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                             it.isSupportFeature(FcDeviceInfo.Feature.NUCLEIC_ACID_CODE) ||
                             it.isSupportFeature(FcDeviceInfo.Feature.QR_CODE_EXTENSION_1)
                     viewBind.itemContacts.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CONTACTS)
+                    viewBind.itemContactsEmergency.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CONTACTS_EMERGENCY)
                     viewBind.itemPowerSaveMode.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.POWER_SAVE_MODE)
                     viewBind.itemGamePush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GAME_PUSH)
                     viewBind.itemSportPush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SPORT_PUSH)
@@ -189,6 +191,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             viewBind.itemContacts -> {
                 findNavController().navigate(DeviceFragmentDirections.toContacts())
             }
+            viewBind.itemContactsEmergency -> {
+                findNavController().navigate(DeviceFragmentDirections.toContactsEmergency())
+            }
             viewBind.itemPowerSaveMode -> {
                 findNavController().navigate(DeviceFragmentDirections.toPowerSaveMode())
             }
@@ -242,7 +247,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
     }
 
     data class State(
-        val asyncCheckUpgrade: Async<HardwareUpgradeInfo?> = Uninitialized
+        val asyncCheckUpgrade: Async<HardwareUpgradeInfo?> = Uninitialized,
     )
 
 }

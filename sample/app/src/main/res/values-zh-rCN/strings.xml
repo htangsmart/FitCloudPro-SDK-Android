@@ -481,6 +481,7 @@
 
     <!--Contacts-->
     <string name="ds_contacts">常用联系人</string>
+    <string name="ds_contacts_emergency">紧急联系人</string>
     <string name="ds_contacts_tips1">最多可添加10位常用联系人。</string>
     <string name="ds_contacts_random">随机联系人</string>
     <string name="ds_contacts_random_tips">生成随机联系人</string>

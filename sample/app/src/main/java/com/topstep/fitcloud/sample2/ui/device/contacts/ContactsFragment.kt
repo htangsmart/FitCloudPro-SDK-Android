@@ -1,6 +1,7 @@
 package com.topstep.fitcloud.sample2.ui.device.contacts
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -9,6 +10,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
@@ -29,7 +31,6 @@ import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.settings.FcContacts
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 /**
  * **Document**
@@ -59,25 +60,9 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts), RandomContact
     private val deviceManager = Injector.getDeviceManager()
 
     private val pickContact = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        val uri = result.data?.data
-        if (result.resultCode == Activity.RESULT_OK && uri != null) {
-            val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-            val cursor = requireContext().contentResolver.query(uri, projection, null, null, null)
-            if (cursor != null && cursor.moveToFirst()) {
-                val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                var number = cursor.getString(numberIndex)
-                val name = cursor.getString(nameIndex)
-                Timber.i("select contacts result: [$name , $number]")
-                cursor.close()
-                if (!name.isNullOrEmpty() && !number.isNullOrEmpty()) {
-                    number = number.replace(" ".toRegex(), "")
-                    val newContacts = FcContacts.create(name, number)
-                    if (newContacts != null) {
-                        viewModel.addContacts(newContacts)
-                    }
-                }
-            }
+        val contacts = onPickContacts(requireContext(), result)
+        if (contacts != null) {
+            viewModel.addContacts(contacts)
         }
     }
 
@@ -231,5 +216,28 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts), RandomContact
     override fun onDialogRandom(size: Int) {
         if (size <= 0) return
         viewModel.randomContacts(size)
+    }
+
+    companion object {
+        fun onPickContacts(context: Context, result: ActivityResult): FcContacts? {
+            val uri = result.data?.data
+            if (uri == null || result.resultCode != Activity.RESULT_OK) return null
+            val projection = arrayOf(
+                ContactsContract.CommonDataKinds.Phone.NUMBER,
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
+            )
+            context.contentResolver.query(uri, projection, null, null, null)?.use {
+                if (it.moveToFirst()) {
+                    val numberIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                    val nameIndex = it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                    val number = it.getString(numberIndex)?.replace(" ", "")
+                    val name = it.getString(nameIndex)
+                    if (!name.isNullOrEmpty() && !number.isNullOrEmpty()) {
+                        return FcContacts.create(name, number)
+                    }
+                }
+            }
+            return null
+        }
     }
 }
