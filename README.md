@@ -1,5 +1,8 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta07(2024-07-23)
+1. `FcNotificationConfig.Flag` add more new flags
+
 # v3.0.1-beta06(2024-07-16)
 1. `FcNotificationConfig.Flag` add `TITAN`,`GPAY` and `AMAZON`
 2. `FcSportData` add `swimData`, and `displayConfigs` also add config of `DISPLAY_SWIM_STROKE_RATE` and `DISPLAY_SWIM_EFFICIENCY`
