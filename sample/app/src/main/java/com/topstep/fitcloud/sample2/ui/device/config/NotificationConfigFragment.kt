@@ -10,6 +10,7 @@ import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.kilnn.tool.widget.ktx.clickTrigger
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.topstep.fitcloud.sample2.R
 import com.topstep.fitcloud.sample2.data.device.flowStateConnected
@@ -25,6 +26,7 @@ import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.apis.ability.base.FcNotificationAbility
 import com.topstep.fitcloud.sdk.v2.model.config.FcNotificationConfig
 import com.topstep.fitcloud.sdk.v2.model.config.toBuilder
+import com.topstep.fitcloud.sdk.v2.model.message.FcAppType
 import com.topstep.fitcloud.sdk.v2.utils.notification.NotificationListenerServiceUtil
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
@@ -60,6 +62,10 @@ class NotificationConfigFragment : BaseFragment(R.layout.fragment_notification_c
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewBind.btnSend.clickTrigger {
+            showItemsDialog()
+        }
+
         viewBind.recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         viewBind.recyclerView.adapter = adapter
         adapter.listener = listener
@@ -81,6 +87,77 @@ class NotificationConfigFragment : BaseFragment(R.layout.fragment_notification_c
                 }
             }
         }
+    }
+
+    private fun showItemsDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setItems(getAllItemsName(requireContext())) { _, which ->
+                sendAppMockMessage(which)
+            }
+            .show()
+    }
+
+    private fun sendAppMockMessage(flag: Int) {
+        val type = when (flag) {
+            FcNotificationConfig.Flag.TELEPHONY -> {
+                promptToast.showInfo("Please use real telephony feature to test")
+                return
+            }
+            FcNotificationConfig.Flag.SMS -> FcAppType.SMS
+            FcNotificationConfig.Flag.QQ -> FcAppType.QQ
+            FcNotificationConfig.Flag.WECHAT -> FcAppType.WECHAT
+            FcNotificationConfig.Flag.FACEBOOK -> FcAppType.FACEBOOK
+            FcNotificationConfig.Flag.TWITTER -> FcAppType.TWITTER
+            FcNotificationConfig.Flag.LINKEDIN -> FcAppType.LINKEDIN
+            FcNotificationConfig.Flag.INSTAGRAM -> FcAppType.INSTAGRAM
+            FcNotificationConfig.Flag.PINTEREST -> FcAppType.PINTEREST
+            FcNotificationConfig.Flag.WHATSAPP -> FcAppType.WHATSAPP
+            FcNotificationConfig.Flag.LINE -> FcAppType.LINE
+            FcNotificationConfig.Flag.FACEBOOK_MESSENGER -> FcAppType.FACEBOOK_MESSENGER
+            FcNotificationConfig.Flag.KAKAO -> FcAppType.KAKAO
+            FcNotificationConfig.Flag.SKYPE -> FcAppType.SKYPE
+            FcNotificationConfig.Flag.EMAIL -> FcAppType.EMAIL
+            FcNotificationConfig.Flag.TELEGRAM -> FcAppType.TELEGRAM
+            FcNotificationConfig.Flag.VIBER -> FcAppType.VIBER
+            FcNotificationConfig.Flag.CALENDAR -> FcAppType.CALENDAR
+            FcNotificationConfig.Flag.SNAPCHAT -> FcAppType.SNAPCHAT
+            FcNotificationConfig.Flag.HIKE -> FcAppType.HIKE
+            FcNotificationConfig.Flag.YOUTUBE -> FcAppType.YOUTUBE
+            FcNotificationConfig.Flag.APPLE_MUSIC -> FcAppType.APPLE_MUSIC
+            FcNotificationConfig.Flag.ZOOM -> FcAppType.ZOOM
+            FcNotificationConfig.Flag.TIKTOK -> FcAppType.TIKTOK
+            FcNotificationConfig.Flag.GMAIL -> FcAppType.GMAIL
+            FcNotificationConfig.Flag.OUTLOOK -> FcAppType.OUTLOOK
+            FcNotificationConfig.Flag.WHATSAPP_BUSINESS -> FcAppType.WHATSAPP_BUSINESS
+            FcNotificationConfig.Flag.FASTRACK -> FcAppType.FASTRACK
+            FcNotificationConfig.Flag.TITAN -> FcAppType.TITAN
+            FcNotificationConfig.Flag.GPAY -> FcAppType.GPAY
+            FcNotificationConfig.Flag.AMAZON -> FcAppType.AMAZON
+            FcNotificationConfig.Flag.PHONE_PE -> FcAppType.PHONE_PE
+            FcNotificationConfig.Flag.HINGE -> FcAppType.HINGE
+            FcNotificationConfig.Flag.FLIPKART -> FcAppType.FLIPKART
+            FcNotificationConfig.Flag.MY_NTRA -> FcAppType.MY_NTRA
+            FcNotificationConfig.Flag.MEESHO -> FcAppType.MEESHO
+            FcNotificationConfig.Flag.ZIVAME -> FcAppType.ZIVAME
+            FcNotificationConfig.Flag.AJIO -> FcAppType.AJIO
+            FcNotificationConfig.Flag.URBANIC -> FcAppType.URBANIC
+            FcNotificationConfig.Flag.NYKAA -> FcAppType.NYKAA
+            FcNotificationConfig.Flag.HEALTHIFY_ME -> FcAppType.HEALTHIFY_ME
+            FcNotificationConfig.Flag.CULT_FIT -> FcAppType.CULT_FIT
+            FcNotificationConfig.Flag.FLO -> FcAppType.FLO
+            FcNotificationConfig.Flag.BUMBLE -> FcAppType.BUMBLE
+            FcNotificationConfig.Flag.UBER -> FcAppType.UBER
+            FcNotificationConfig.Flag.SWIGGY -> FcAppType.SWIGGY
+            FcNotificationConfig.Flag.ZOMATO -> FcAppType.ZOMATO
+            else -> FcAppType.OTHERS_APP
+        }
+
+        deviceManager.fcSDK.notificationAbility.sendAppNotification(
+            type = type,
+            title = "Title for type$type",
+            content = "This is a test message content!!!",
+            tickerText = null,
+        ).onErrorComplete().subscribe()
     }
 
     private val listener = object : NotificationConfigAdapter.Listener {
@@ -174,6 +251,22 @@ class NotificationConfigFragment : BaseFragment(R.layout.fragment_notification_c
                 "GPay",
                 "Amazon",
                 "Other Apps",
+                "PhonePe",
+                "Hinge",
+                "Flipkart",
+                "MyNTRA",
+                "Meesho",
+                "Zivame",
+                "Ajio",
+                "Urbanic",
+                "Nykaa",
+                "Healthify Me",
+                "CultFit",
+                "Flo",
+                "Bumble",
+                "Uber",
+                "Swiggy",
+                "Zomato",
             )
         }
 
