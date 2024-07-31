@@ -13,6 +13,7 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.topstep.fitcloud.sample2.data.device.DeviceManager
 import com.topstep.fitcloud.sample2.utils.MediaPlayerHelper
 import com.topstep.fitcloud.sample2.utils.NotificationHelper
@@ -63,7 +64,6 @@ class FindPhoneManager constructor(
                     val filter = IntentFilter()
                     filter.addAction(Intent.ACTION_SCREEN_ON)
                     filter.addAction(Intent.ACTION_SCREEN_OFF)
-                    filter.addAction("android.media.VOLUME_CHANGED_ACTION") //AudioManager.VOLUME_CHANGED_ACTION
                     filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
                     filter.addAction(ACTION_STOP_FIND_PHONE)
                     val broadcastReceiver = object : BroadcastReceiver() {
@@ -76,7 +76,7 @@ class FindPhoneManager constructor(
                             }
                         }
                     }
-                    context.registerReceiver(broadcastReceiver, filter)
+                    context.registerReceiver(broadcastReceiver, filter, ContextCompat.RECEIVER_EXPORTED)
                     Timber.tag(TAG).i("registerReceiver")
                     it.invokeOnCancellation {
                         Timber.tag(TAG).i("unregisterReceiver")
