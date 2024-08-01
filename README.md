@@ -1,5 +1,8 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta08(2024-08-01)
+1. Add `FcNotificationConfig.Flag.TIRA` and `FcAppType.TIRA`
+
 # v3.0.1-beta07(2024-07-23)
 1. `FcNotificationConfig.Flag` add more new flags
 
