@@ -149,6 +149,7 @@ class NotificationConfigFragment : BaseFragment(R.layout.fragment_notification_c
             FcNotificationConfig.Flag.UBER -> FcAppType.UBER
             FcNotificationConfig.Flag.SWIGGY -> FcAppType.SWIGGY
             FcNotificationConfig.Flag.ZOMATO -> FcAppType.ZOMATO
+            FcNotificationConfig.Flag.TIRA -> FcAppType.TIRA
             else -> FcAppType.OTHERS_APP
         }
 
@@ -267,6 +268,7 @@ class NotificationConfigFragment : BaseFragment(R.layout.fragment_notification_c
                 "Uber",
                 "Swiggy",
                 "Zomato",
+                "Tira",
             )
         }
 

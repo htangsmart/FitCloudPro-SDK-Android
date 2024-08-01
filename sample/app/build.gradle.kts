@@ -87,8 +87,8 @@ dependencies {
     implementation(libs.okhttp3)
     implementation(libs.androidx.palette)
     if (isDeveloperEnvironment()) {//For developer environment, use remote dependencies
-        implementation("com.topstep.wearkit:sdk-base:3.0.1-beta06")
-        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.1-beta06")
+        implementation("com.topstep.wearkit:sdk-base:3.0.1-beta08")
+        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.1-beta08")
     } else {//For author environment, use local project
         implementation(project(":sdk-base"))
         implementation(project(":sdk-fitcloud"))
