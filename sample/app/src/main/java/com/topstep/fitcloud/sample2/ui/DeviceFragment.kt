@@ -69,6 +69,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemSensorGame.clickTrigger(block = blockClick)
         viewBind.itemCustomCard.clickTrigger(block = blockClick)
         viewBind.itemEventText.clickTrigger(block = blockClick)
+        viewBind.itemFiilTest.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
             launch {
@@ -236,6 +237,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemEventText -> {
                 findNavController().navigate(DeviceFragmentDirections.toHardwareUpgrade(null))
+            }
+            viewBind.itemFiilTest -> {
+                findNavController().navigate(DeviceFragmentDirections.toFiilTest())
             }
         }
     }

@@ -669,4 +669,8 @@
     <string name="ds_device_shutdown">关机</string>
     <string name="ds_device_reset">恢复出厂设置</string>
 
+    <string name="test_rgb_value">当前RGB值：</string>
+    <string name="test_set_rgb_btn">设置RGB值</string>
+    <string name="test_charging_light">充电壁纸常亮</string>
+
 </resources>

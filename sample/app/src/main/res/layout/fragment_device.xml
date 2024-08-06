@@ -161,6 +161,11 @@
             app:preferenceTitle="@string/ds_custom_card"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_fiil_test"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="Fiil Test"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_other_features"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             app:preferenceTitle="@string/ds_other_features"/>

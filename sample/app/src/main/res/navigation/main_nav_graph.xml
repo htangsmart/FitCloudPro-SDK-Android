@@ -66,6 +66,9 @@
         <action
             android:id="@+id/toCustomCard"
             app:destination="@id/customCardFragment"/>
+        <action
+            android:id="@+id/toFiilTest"
+            app:destination="@id/fiilTestFragment"/>
     </fragment>
 
     <fragment
@@ -522,5 +525,11 @@
         android:id="@+id/exerciseGoalFragment"
         android:name="com.topstep.fitcloud.sample2.ui.combine.ExerciseGoalFragment"
         tools:layout="@layout/fragment_exercise_goal"/>
+
+    <fragment
+        android:id="@+id/fiilTestFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.test.FiilTestFragment"
+        android:label="fiil_test"
+        tools:layout="@layout/fragment_fiil_test"/>
 
 </navigation>

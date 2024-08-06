@@ -669,4 +669,8 @@
     <string name="ds_device_shutdown">Device Shutdown</string>
     <string name="ds_device_reset">Device Reset</string>
 
+    <string name="test_rgb_value">Current RGB values:</string>
+    <string name="test_set_rgb_btn">Set RGB values</string>
+    <string name="test_charging_light">Charging wallpaper always on</string>
+
 </resources>
