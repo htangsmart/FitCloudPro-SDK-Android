@@ -75,7 +75,7 @@ interface SyncDataRepository {
 
 internal class SyncDataRepositoryImpl(
     appDatabase: AppDatabase,
-    private val userInfoRepository: UserInfoRepository
+    private val userInfoRepository: UserInfoRepository,
 ) : SyncDataRepository {
 
     private val stringTypedDao = appDatabase.stringTypedDao()
@@ -151,6 +151,7 @@ internal class SyncDataRepositoryImpl(
                         lightSleep = 0,
                         soberSleep = 0,
                         napSleep = 0,
+                        remSleep = 0,
                         isSupportSleepNap = it.isSupportSleepNap
                     )
                 } else {
@@ -162,6 +163,7 @@ internal class SyncDataRepositoryImpl(
                         lightSleep = summary.lightSeconds,
                         soberSleep = summary.soberSeconds,
                         napSleep = summary.napSeconds,
+                        remSleep = summary.remSeconds,
                         isSupportSleepNap = it.isSupportSleepNap
                     )
                 }
