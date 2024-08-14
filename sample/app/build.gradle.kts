@@ -99,7 +99,7 @@ dependencies {
     implementation("com.topstep.wearkit:ext-sensorgame:1.0.3")
 
     //Optional. AliAgent function
-    implementation("com.topstep.wearkit:ext-aliagent-ext:1.0.4")
+    implementation("com.topstep.wearkit:ext-aliagent-ext:1.0.5")
 
     //Optional. Dfu function for Nordic chip
     implementation("no.nordicsemi.android:dfu:2.2.2")
