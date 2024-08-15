@@ -17,6 +17,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("androidx.palette:palette-ktx:1.0.0")//Use for create watchface bitmap
 
+    //Optional
+    implementation("libs/sdk-realtek-bbpro-v{latest_version}.aar")//Use for music/ebook/album file transfer
+    implementation("libs/sdk-realtek-file-v{latest_version}.aar")//Use for music/ebook/album file transfer
+    
     //Optional. Sensor game function
     implementation("libs/sdk-sensorgame-v{latest_version}.aar")
 
@@ -39,7 +43,7 @@ dependencies {
 ```
 
 # sdk-aliagent-v{latest_version}.aar
-When you use this aar, you also need to add some additional dependencies and proguard rules.
+When you use this aar, you also need to add some additional dependencies
 
 ```kotlin
 dependencies {
@@ -51,21 +55,4 @@ dependencies {
     implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
     implementation("com.aliyun.dpa:oss-android-sdk:2.9.13")
 }
-```
-
-```kotlin
--keepattributes Signature
-        
--keep class com.alibaba.aliagentsdk.** { *; }
--keep class com.google.gson.** { *; }
--keep class com.fd.aliiot.core.** { *; }
--keep class org.eclipse.paho.**{*;}
--keep class com.alibaba.sdk.android.oss.** { *; }
--keep class com.alibaba.fastjson.**{*; }
--keep class org.json.** { *; }
-
--dontwarn okio.**
--dontwarn com.google.gson.**
--dontwarn com.alibaba.fastjson.**
--dontwarn org.apache.commons.codec.binary.**
 ```

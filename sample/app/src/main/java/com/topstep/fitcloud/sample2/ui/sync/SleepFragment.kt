@@ -17,6 +17,7 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
 
     private lateinit var tvDeepSleep: TextView
     private lateinit var tvLightSleep: TextView
+    private lateinit var tvREMSleep: TextView
     private lateinit var tvAwakeSleep: TextView
     private lateinit var layoutNapSleep: View
     private lateinit var tvNapSleep: TextView
@@ -24,6 +25,7 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         tvDeepSleep = view.findViewById(R.id.tv_deep_sleep)
         tvLightSleep = view.findViewById(R.id.tv_light_sleep)
+        tvREMSleep = view.findViewById(R.id.tv_rem_sleep)
         tvAwakeSleep = view.findViewById(R.id.tv_awake_sleep)
         layoutNapSleep = view.findViewById(R.id.layout_nap_sleep)
         tvNapSleep = view.findViewById(R.id.tv_nap_sleep)
@@ -45,6 +47,7 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
         val record = runBlocking { syncDataRepository.querySleepRecord(authedUserId, date) }
         tvDeepSleep.text = FormatterUtil.second2Hmm(record?.deepSleep ?: 0)
         tvLightSleep.text = FormatterUtil.second2Hmm(record?.lightSleep ?: 0)
+        tvREMSleep.text = FormatterUtil.second2Hmm(record?.remSleep ?: 0)
         tvAwakeSleep.text = FormatterUtil.second2Hmm(record?.soberSleep ?: 0)
         if (record?.isSupportSleepNap == true) {
             tvNapSleep.visibility = View.VISIBLE

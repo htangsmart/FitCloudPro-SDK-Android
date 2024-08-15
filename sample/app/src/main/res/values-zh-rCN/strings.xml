@@ -86,6 +86,7 @@
     <string name="deep_sleep">深睡：</string>
     <string name="light_sleep">浅睡：</string>
     <string name="awake_sleep">清醒：</string>
+    <string name="rem_sleep">REM：</string>
     <string name="nap_sleep">零星小睡：</string>
     <string name="ecg_speed">走速<xliff:g id="params">%1$d</xliff:g>mm/s</string>
     <string name="ecg_amplitude">增益<xliff:g id="params">%1$d</xliff:g>mm/mV</string>

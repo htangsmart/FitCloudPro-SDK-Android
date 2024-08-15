@@ -86,6 +86,7 @@
     <string name="deep_sleep">Deep Sleep：</string>
     <string name="light_sleep">Light Sleep：</string>
     <string name="awake_sleep">Awake：</string>
+    <string name="rem_sleep">REM：</string>
     <string name="nap_sleep">Nap：</string>
     <string name="ecg_speed">Speed<xliff:g id="params">%1$d</xliff:g>mm/s</string>
     <string name="ecg_amplitude">Amplitude<xliff:g id="params">%1$d</xliff:g>mm/mV</string>
