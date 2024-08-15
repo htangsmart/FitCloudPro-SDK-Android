@@ -9,6 +9,7 @@
     }
     ```
 2. ADD: Add `FcMusicAbility`,`FcEBookAbility`,`FcAlbumAbility`
+3. CHANGED: Add sleep status of `FcSleepItem.STATUS_REM`. `SleepCalculateHelper.calculate` also contains REM info in returned `SleepSummary`.
 
 # v3.0.1-beta08(2024-08-01)
 1. Add `FcNotificationConfig.Flag.TIRA` and `FcAppType.TIRA`
