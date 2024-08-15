@@ -1,5 +1,15 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta09(2024-08-14)
+1. ADD: Add Realtek file transfer dependencies in “sdk-fitcloud”. If there is a compilation error for duplicate classes, exclude them like this
+    ```groovy
+    implementation("com.topstep.wearkit:sdk-fitcloud:$latest_version") {
+        exclude group: "com.topstep.wearkit", module: "ext-realtek-bbpro"
+        exclude group: "com.topstep.wearkit", module: "ext-realtek-file"
+    }
+    ```
+2. ADD: Add `FcMusicAbility`,`FcEBookAbility`,`FcAlbumAbility`
+
 # v3.0.1-beta08(2024-08-01)
 1. Add `FcNotificationConfig.Flag.TIRA` and `FcAppType.TIRA`
 
