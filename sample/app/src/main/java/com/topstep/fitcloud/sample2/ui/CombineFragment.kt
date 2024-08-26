@@ -20,12 +20,15 @@ import com.topstep.fitcloud.sample2.ui.combine.LogShareDialogFragment
 import com.topstep.fitcloud.sample2.utils.*
 import com.topstep.fitcloud.sample2.utils.viewbinding.viewBinding
 import com.topstep.fitcloud.sdk.v2.FcConnector
+import com.topstep.fitcloud.sdk.v2.features.FcLogACKType
 import com.topstep.fitcloud.sdk.v2.features.FcSettingsFeature
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
+import timber.log.Timber
 import java.util.*
 
 /**
@@ -79,6 +82,40 @@ class CombineFragment : BaseFragment(R.layout.fragment_combine) {
                 }
                 LogShareDialogFragment.newInstance(files).show(childFragmentManager, null)
             }
+        }
+        viewBind.itemDeviceLog.clickTrigger {
+            val disposable = viewModel.deviceManager.logFeature.execute(AppLogger.dirLog(requireContext())?.path ?: "")
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnError {
+                    viewBind.tvDeviceLogState.visibility = View.VISIBLE
+                    viewBind.tvDeviceLogState.text = it.message
+                }
+                .onErrorComplete()
+                .subscribe({
+                    when (it.ackType) {
+                        FcLogACKType.LOG_UPGRADE_ING -> {
+                            viewBind.tvDeviceLogState.visibility = View.VISIBLE
+                            viewBind.tvDeviceLogState.text = "获取日志，进度：${it.progress}%"
+                        }
+                        FcLogACKType.LOG_UPGRADE_EMPTY -> {
+                            viewBind.tvDeviceLogState.visibility = View.VISIBLE
+                            viewBind.tvDeviceLogState.text = "未获取到日志！"
+                        }
+                        FcLogACKType.LOG_UPGRADE_SUCCESS -> {
+                            viewBind.tvDeviceLogState.visibility = View.VISIBLE
+                            viewBind.tvDeviceLogState.text = "获取日志完成：${it.filePath}"
+                        }
+                        FcLogACKType.LOG_TIMEOUT_ERROR -> {
+                            viewBind.tvDeviceLogState.visibility = View.VISIBLE
+                            viewBind.tvDeviceLogState.text = "获取数据超时"
+                        }
+                        else -> {
+                            viewBind.tvDeviceLogState.visibility = View.GONE
+                        }
+                    }
+                }, {
+                    Timber.tag("itemDeviceLog").w(it)
+                })
         }
         viewBind.btnSignOut.clickTrigger {
             viewModel.signOut()
@@ -175,7 +212,7 @@ class CombineFragment : BaseFragment(R.layout.fragment_combine) {
 class CombineViewModel : AsyncViewModel<SingleAsyncState<Unit>>(SingleAsyncState()) {
 
     private val authManager = Injector.getAuthManager()
-    private val deviceManager = Injector.getDeviceManager()
+    val deviceManager = Injector.getDeviceManager()
 
     //ToNote:Because convert as val parameter, so need Observable.defer{} to wrap it
     val flowDeviceInfo = Observable.defer {

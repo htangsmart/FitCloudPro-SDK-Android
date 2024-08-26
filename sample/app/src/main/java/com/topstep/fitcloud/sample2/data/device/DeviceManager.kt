@@ -117,6 +117,8 @@ interface DeviceManager {
 
     val sensorGameFeature: FcSensorGameFeature
 
+    val logFeature: FcLogFeature
+
     fun disconnect()
 
     fun reconnect()
@@ -446,6 +448,7 @@ internal class DeviceManagerImpl(
     override val messageFeature: FcMessageFeature = connector.messageFeature()
     override val specialFeature: FcSpecialFeature = connector.specialFeature()
     override val sensorGameFeature: FcSensorGameFeature = connector.sensorGameFeature()
+    override val logFeature: FcLogFeature = connector.logFeature()
 
     override fun disconnect() {
         connector.disconnect()

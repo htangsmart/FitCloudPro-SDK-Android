@@ -43,6 +43,17 @@
                 style="@style/Widget.Sample.PreferenceView.Item.Text"
                 app:preferenceTitle="@string/help_log"/>
 
+            <com.github.kilnn.tool.widget.item.PreferenceItem
+                android:id="@+id/item_device_log"
+                style="@style/Widget.Sample.PreferenceView.Item.Text"
+                app:preferenceTitle="Device Log"/>
+
+            <TextView
+                android:id="@+id/tv_device_log_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/tv_version"
                 android:layout_width="wrap_content"
