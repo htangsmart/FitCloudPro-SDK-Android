@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        maven("https://maven.aliyun.com/nexus/content/groups/public/")
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -11,6 +12,7 @@ plugins {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven("https://maven.aliyun.com/nexus/content/groups/public/")
         maven { url = uri("https://jitpack.io") }
         google()
         mavenCentral()
