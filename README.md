@@ -10,6 +10,26 @@
     ```
 2. ADD: Add `FcMusicAbility`,`FcEBookAbility`,`FcAlbumAbility`
 3. CHANGED: Add sleep status of `FcSleepItem.STATUS_REM`. `SleepCalculateHelper.calculate` also contains REM info in returned `SleepSummary`.
+4. FcSettingsFeature Add:
+  ```
+  /**
+   * Set Lyric Color
+   *
+   * rgb is RGB.888
+   */
+  fun setLyricColor(r: Int, g: Int, b: Int): Completable
+  
+  /**
+   * Request Lyric Color
+   *
+   * list is RGB.888 & size = 3
+   */
+  fun requestLyricColor(): Single<List<Int>>
+
+  fun setChargingLight(isChargingLight: Boolean): Completable
+
+  fun requestChargingLight(): Single<Boolean>
+  ```
 
 # v3.0.1-beta08(2024-08-01)
 1. Add `FcNotificationConfig.Flag.TIRA` and `FcAppType.TIRA`
