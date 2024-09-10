@@ -309,6 +309,7 @@
     <string name="version_note_hardware2">2、请保持手表电量在20%以上。</string>
     <string name="version_dfu_unsupport_flash">暂不支持flash固件升级</string>
     <string name="version_upgrade">升级</string>
+    <string name="version_ota_upgrade">本地OTA升级</string>
 
     <!--Device Settings:Dfu-->
     <string name="ds_push_start">开始推送(<xliff:g id="param">%1$s</xliff:g>)</string>

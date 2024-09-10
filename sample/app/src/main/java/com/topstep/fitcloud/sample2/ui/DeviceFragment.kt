@@ -70,6 +70,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemCustomCard.clickTrigger(block = blockClick)
         viewBind.itemEventText.clickTrigger(block = blockClick)
         viewBind.itemFiilTest.clickTrigger(block = blockClick)
+        viewBind.itemLocalOta.clickTrigger(block = blockClick)
 
         viewLifecycle.launchRepeatOnStarted {
             launch {
@@ -240,6 +241,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemFiilTest -> {
                 findNavController().navigate(DeviceFragmentDirections.toFiilTest())
+            }
+            viewBind.itemLocalOta -> {
+                findNavController().navigate(DeviceFragmentDirections.toHardwareUpgrade(null))
             }
         }
     }

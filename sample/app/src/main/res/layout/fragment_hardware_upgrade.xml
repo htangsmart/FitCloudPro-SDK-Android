@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:windowBackground"
+    android:keepScreenOn="true"
     android:orientation="vertical">
 
     <com.github.kilnn.tool.widget.preference.PreferenceRelativeLayout

@@ -163,7 +163,13 @@
         <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_fiil_test"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
+            android:visibility="gone"
             app:preferenceTitle="Fiil Test"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_local_ota"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/version_ota_upgrade"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_other_features"

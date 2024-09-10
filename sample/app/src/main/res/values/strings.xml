@@ -309,6 +309,7 @@
     <string name="version_note_hardware2">2. Please keep the battery power above 20%.</string>
     <string name="version_dfu_unsupport_flash">Flash firmware upgrade is not supported at this time</string>
     <string name="version_upgrade">Upgrade</string>
+    <string name="version_ota_upgrade">Local OTA Upgrade</string>
 
     <!--Device Settings:Dfu-->
     <string name="ds_push_start">Push(<xliff:g id="param">%1$s</xliff:g>)</string>
