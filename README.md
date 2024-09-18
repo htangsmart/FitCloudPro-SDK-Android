@@ -1,5 +1,11 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta10(2024-09-18)
+1. ADD: Add `FcRopeSkippingData` & `FcRowingMachineData` in `FcSportData`
+2. ADD:Add `heartRateItems` in `FcSportData` Replace with `heartRate` in `FcSportItem`
+3. Add new device shape support.
+4. Fix some other bugs.
+
 # v3.0.1-beta09(2024-08-14)
 1. ADD: Add Realtek file transfer dependencies in “sdk-fitcloud”. If there is a compilation error for duplicate classes, exclude them like this
     ```groovy
