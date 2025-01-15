@@ -1,5 +1,15 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta12(2024-12-31)
+1. Add task function.
+2. Add ZALO App Notification.
+3. Add GPS & 4G Firmware version info.
+4. Fix some bugs.
+
+# v3.0.1-beta11(2024-11-01)
+1.Add WeChat Pay authentication function (optional)
+2. Fix some bugs.
+
 # v3.0.1-beta10(2024-09-18)
 1. ADD: Add `FcRopeSkippingData` & `FcRowingMachineData` in `FcSportData`
 2. ADD:Add `heartRateItems` in `FcSportData` Replace with `heartRate` in `FcSportItem`
