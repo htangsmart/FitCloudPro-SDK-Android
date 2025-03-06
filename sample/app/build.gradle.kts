@@ -87,13 +87,13 @@ dependencies {
     implementation(libs.okhttp3)
     implementation(libs.androidx.palette)
     if (isDeveloperEnvironment()) {//For developer environment, use remote dependencies
-        implementation("com.topstep.wearkit:sdk-base:3.0.1-beta12")
-        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.1-beta12")
+        implementation("com.topstep.wearkit:sdk-base:3.0.1-beta13")
+        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.1-beta13")
     } else {//For author environment, use local project
         implementation(project(":sdk-base"))
         implementation(project(":sdk-fitcloud"))
     }
-    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.2")
+    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.3")
 
     //Optional. Sensor game function
     implementation("com.topstep.wearkit:ext-sensorgame:1.0.3")

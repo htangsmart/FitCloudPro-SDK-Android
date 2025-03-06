@@ -1,5 +1,28 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta13(2024-03-06)
+1. FcSettingsFeature Add: permission status update function
+  ```
+   /**
+     * When the SMS permission of the app changes, the status can be passed in,
+     * the watch will use the passed status as the basis for processing logic
+     *
+     * @param hasPermission
+     */
+    @CheckResult
+    fun setSmsSendPermissionStatus(hasPermission: Boolean): Completable
+
+    /**
+     * When the app permissions change, this method can be called.
+     * The SDK will check the existing permissions and send them to the watch.
+     * Currently supported: SEND_SMS/notification/LOCATION/READ_PHONE_STATE
+     */
+    fun sendPermissionStatusChanged(): Completable
+  ```
+2. Upgrade the Realtek SDK version
+   need to update `ext-realtek-dfu` from 1.0.2 to 1.0.3
+3. Fix some bugs.
+
 # v3.0.1-beta12(2024-12-31)
 1. Add task function.
 2. Add ZALO App Notification.
@@ -7,7 +30,7 @@
 4. Fix some bugs.
 
 # v3.0.1-beta11(2024-11-01)
-1.Add WeChat Pay authentication function (optional)
+1. Add WeChat Pay authentication function (optional)
 2. Fix some bugs.
 
 # v3.0.1-beta10(2024-09-18)
