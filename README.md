@@ -1,7 +1,7 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
 # v3.0.1-beta13(2024-03-06)
-1. FcSettingsFeature Add: permission status update function
+1. `FcSettingsFeature` Add: permission status update function
   ```
    /**
      * When the SMS permission of the app changes, the status can be passed in,
