@@ -1,5 +1,11 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1-beta14(2025-09-24)
+
+1. Adapt to Android 15 and 16k policies
+2. CHANGED: update Realtek sdk version from 1.0.3 to 1.0.4
+3. fix some bugs
+
 # v3.0.1-beta13(2025-03-06)
 1. `FcSettingsFeature` Add: permission status update function
   ```
