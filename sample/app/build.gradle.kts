@@ -9,12 +9,12 @@ kotlin {
 }
 android {
     namespace = "com.topstep.fitcloud.sample2"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.topstep.fitcloud.sample2"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.2.5.3"
         multiDexEnabled = true
@@ -87,16 +87,16 @@ dependencies {
     implementation(libs.okhttp3)
     implementation(libs.androidx.palette)
     if (isDeveloperEnvironment()) {//For developer environment, use remote dependencies
-        implementation("com.topstep.wearkit:sdk-base:3.0.1-beta13")
-        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.1-beta13")
+        implementation("com.topstep.wearkit:sdk-base:3.0.1")
+        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.1")
     } else {//For author environment, use local project
         implementation(project(":sdk-base"))
         implementation(project(":sdk-fitcloud"))
     }
-    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.3")
+    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.4")
 
     //Optional. Sensor game function
-    implementation("com.topstep.wearkit:ext-sensorgame:1.0.3")
+    implementation("com.topstep.wearkit:ext-sensorgame:1.0.4")
 
     //Optional. AliAgent function
     implementation("com.topstep.wearkit:ext-aliagent-ext:1.0.5")

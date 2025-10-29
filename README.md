@@ -1,5 +1,12 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.1(2025-10-29)
+
+1. Optional SDK supports 16k
+2. Add BUSINESS_CARD_ZALO
+3. sensorgame add heartrate
+4. fix some bugs
+
 # v3.0.1-beta14(2025-09-24)
 
 1. Adapt to Android 15 and 16k policies
