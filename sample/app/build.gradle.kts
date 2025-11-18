@@ -183,6 +183,12 @@ dependencies {
     ksp(libs.glide.compiler)
     implementation(libs.glide.okhttp3)
 
+    //sensor game
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.airbnb.lottie)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.espresso.core)

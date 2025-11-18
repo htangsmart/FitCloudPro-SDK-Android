@@ -26,6 +26,7 @@ androidx-annotation = "1.5.0"
 androidx-media = "1.6.0"
 androidx-palette = "1.0.0"
 google-material = "1.9.0"
+androidx-media3 = "1.4.1"
 #Common
 timber = "5.0.1"
 permissionx = "1.7.1"
@@ -45,6 +46,7 @@ retrofit2 = "2.9.0"
 insetter = "0.6.1"
 commons-io = "2.8.0"
 alibaba-fastjson = "1.2.83"
+airbnb-lottie = "6.5.2"
 #Test
 junit = "4.13.2"
 androidx-junit = "1.1.5"
@@ -103,6 +105,9 @@ androidx-annotation = { module = "androidx.annotation:annotation", version.ref =
 androidx-media = { module = "androidx.media:media", version.ref = "androidx-media" }
 androidx-palette = { module = "androidx.palette:palette-ktx", version.ref = "androidx-palette" }
 google-material = { module = "com.google.android.material:material", version.ref = "google-material" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "androidx-media3" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidx-media3" }
+androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "androidx-media3" }
 #Common
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 permissionx = { module = "com.guolindev.permissionx:permissionx", version.ref = "permissionx" }
@@ -126,6 +131,7 @@ retrofit2-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.r
 insetter = { module = "dev.chrisbanes.insetter:insetter", version.ref = "insetter" }
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 alibaba-fastjson = { module = "com.alibaba:fastjson", version.ref = "alibaba-fastjson" }
+airbnb-lottie = { module = "com.airbnb.android:lottie", version.ref = "airbnb-lottie" }
 #Test
 junit = { module = "junit:junit", version.ref = "junit" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
