@@ -18,8 +18,15 @@ dependencyResolutionManagement {
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
         maven {
-            url = uri("http://120.78.153.20:8081/repository/maven-public/")
-            isAllowInsecureProtocol = true
+            url = uri("https://maven.topstepht.com/repository/maven-public/")
+        }
+        //sdk-fitcloud中com.github.artillerymans.Core:paycertification:leadingSmart_1.0.50依赖需要此配置
+        maven {
+            credentials {
+                username = "5ff28ca9ed01613630f9d551"
+                password = "cxN-HwJ]yzST"
+            }
+            url= uri("https://packages.aliyun.com/6718aa5c2c78927f26d82a35/maven/mltcloudai")
         }
         flatDir {
             dir("libs")

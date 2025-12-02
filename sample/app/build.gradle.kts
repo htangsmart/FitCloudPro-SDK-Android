@@ -33,6 +33,13 @@ android {
         viewBinding = true
     }
 
+    packaging {
+        //解决多个第三库里都包含这个so，导致无法编译的问题
+        jniLibs.pickFirsts.add("**/libc++_shared.so")
+        //解决多个"META-INF/INDEX.LIST"文件的问题
+        resources.excludes.add("META-INF/INDEX.LIST")
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
