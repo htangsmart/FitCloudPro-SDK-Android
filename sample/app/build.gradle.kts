@@ -9,12 +9,12 @@ kotlin {
 }
 android {
     namespace = "com.topstep.fitcloud.sample2"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.topstep.fitcloud.sample2"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.2.5.3"
         multiDexEnabled = true
