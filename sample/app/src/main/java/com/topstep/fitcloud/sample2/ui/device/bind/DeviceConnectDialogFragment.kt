@@ -225,6 +225,7 @@ class DeviceConnectDialogFragment : AppCompatDialogFragment() {
                 viewBind.btnAction.setOnClickListener(null)
                 Timber.tag(TAG).w("Error reason:%s", reason)
             }
+            else -> {}
         }
     }
 
