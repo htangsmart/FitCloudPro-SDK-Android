@@ -100,7 +100,7 @@ dependencies {
         implementation(project(":sdk-base"))
         implementation(project(":sdk-fitcloud"))
     }
-    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.4.1")
+    implementation("com.topstep.wearkit:ext-realtek-dfu:1.0.5")
 
     //Optional. Sensor game function
     implementation("com.topstep.wearkit:ext-sensorgame:1.0.4")
