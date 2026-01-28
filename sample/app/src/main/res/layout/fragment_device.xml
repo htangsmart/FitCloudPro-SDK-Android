@@ -121,6 +121,11 @@
             app:preferenceTitle="@string/ds_sport_push"/>
 
         <com.github.kilnn.tool.widget.item.PreferenceItem
+            android:id="@+id/item_sport_edit"
+            style="@style/Widget.Sample.PreferenceView.Item.Text"
+            app:preferenceTitle="@string/ds_sport_ui_editor"/>
+
+        <com.github.kilnn.tool.widget.item.PreferenceItem
             android:id="@+id/item_game_push"
             style="@style/Widget.Sample.PreferenceView.Item.Text"
             app:preferenceTitle="@string/ds_game_push"/>

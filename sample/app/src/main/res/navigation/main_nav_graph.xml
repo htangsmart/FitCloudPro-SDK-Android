@@ -43,6 +43,9 @@
             android:id="@+id/toSportPush"
             app:destination="@id/sportPushFragment"/>
         <action
+            android:id="@+id/toSportUiEditor"
+            app:destination="@id/sportUiEditorFragment"/>
+        <action
             android:id="@+id/toDialHomePage"
             app:destination="@id/dialHomePageFragment"/>
         <action
@@ -422,6 +425,11 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.sport.push.SportPushFragment"
         android:label="@string/ds_sport_push"
         tools:layout="@layout/fragment_sport_push"/>
+    <fragment
+        android:id="@+id/sportUiEditorFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.sport.editor.SportUiEditorFragment"
+        android:label="@string/ds_sport_ui_editor"
+        tools:layout="@layout/fragment_sport_ui_editor"/>
     <fragment
         android:id="@+id/gamePushFragment"
         android:name="com.topstep.fitcloud.sample2.ui.device.game.push.GamePushFragment"

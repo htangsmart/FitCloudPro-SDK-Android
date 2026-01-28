@@ -499,6 +499,7 @@
 
     <!--Device Settings:Sport push-->
     <string name="ds_sport_push">运动推送</string>
+    <string name="ds_sport_ui_editor">运动编辑</string>
     <string name="ds_sport_push_error_position">无可用推送位置</string>
     <string name="sport_ui_category_000">全部运动</string>
     <string name="sport_ui_category_001">常见</string>

@@ -4,7 +4,7 @@ import android.content.Context
 import com.topstep.fitcloud.sample2.BuildConfig
 import com.topstep.fitcloud.sample2.model.sport.push.SportPacket
 import timber.log.Timber
-import java.util.*
+import java.util.Locale
 
 class SportUiHelper {
     val categoryAll = 0
@@ -194,6 +194,11 @@ class SportUiHelper {
     fun getTypeName(context: Context, item: SportPacket): String {
         val name = "sport_ui_type_${String.format(Locale.US, "%03d", item.sportUiType)}"
         return getStringFromResourceName(context, name) ?: item.sportUiName
+    }
+
+    fun getTypeName(context: Context, sportUiType: Int): String {
+        val name = "sport_ui_type_${String.format(Locale.US, "%03d", sportUiType)}"
+        return getStringFromResourceName(context, name) ?: "Sport Type $sportUiType"
     }
 
 }

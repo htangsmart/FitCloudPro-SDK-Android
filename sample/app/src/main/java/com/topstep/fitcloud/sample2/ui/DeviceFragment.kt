@@ -1,7 +1,6 @@
 package com.topstep.fitcloud.sample2.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
@@ -59,6 +58,7 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
         viewBind.itemPowerSaveMode.clickTrigger(block = blockClick)
         viewBind.itemGamePush.clickTrigger(block = blockClick)
         viewBind.itemSportPush.clickTrigger(block = blockClick)
+        viewBind.itemSportEdit.clickTrigger(block = blockClick)
         viewBind.itemDial.clickTrigger(block = blockClick)
         viewBind.itemCamera.clickTrigger(block = blockClick)
         viewBind.itemModifyLogo.clickTrigger(block = blockClick)
@@ -114,12 +114,12 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
                     viewBind.itemPowerSaveMode.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.POWER_SAVE_MODE)
                     viewBind.itemGamePush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GAME_PUSH)
                     viewBind.itemSportPush.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SPORT_PUSH)
+                    viewBind.itemSportEdit.isVisible = deviceManager.fcSDK.sportUIAbility.isSupportSportUIEditor()
                     viewBind.itemCricket.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CRICKET_MATCH)
                     viewBind.itemGpsHotStart.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GPS_HOT_START)
                     viewBind.itemVersionInfo.getTextView().text = it.hardwareInfoDisplay()
                     viewBind.itemSensorGame.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.GSENSOR_DATA)
                     viewBind.itemCustomCard.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.CUSTOM_CARD)
-                    Log.e("Kilnn"," it.isSupportFeature(FcDeviceInfo.Feature.CUSTOM_CARD):"+ it.isSupportFeature(FcDeviceInfo.Feature.ISOLATE_MONITOR_CONFIG))
                 }
             }
             launch {
@@ -206,6 +206,9 @@ class DeviceFragment : BaseFragment(R.layout.fragment_device), DeviceConnectDial
             }
             viewBind.itemSportPush -> {
                 findNavController().navigate(DeviceFragmentDirections.toSportPush())
+            }
+            viewBind.itemSportEdit -> {
+                findNavController().navigate(DeviceFragmentDirections.toSportUiEditor())
             }
             viewBind.itemDial -> {
                 findNavController().navigate(DeviceFragmentDirections.toDialHomePage())

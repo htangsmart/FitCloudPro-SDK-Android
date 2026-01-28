@@ -499,6 +499,7 @@
 
     <!--Device Settings:Sport push-->
     <string name="ds_sport_push">Sports push</string>
+    <string name="ds_sport_ui_editor">Sports Edit</string>
     <string name="ds_sport_push_error_position">No push locations available</string>
     <string name="sport_ui_category_000">All Sports</string>
     <string name="sport_ui_category_001">Common</string>
