@@ -11,14 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="@string/account_input_username_hint"/>
+        android:hint="@string/account_input_username_hint"
+        android:text="test"/>
 
     <EditText
         android:id="@+id/edit_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/account_input_password_hint"/>
+        android:hint="@string/account_input_password_hint"
+        android:text="123456"/>
 
     <Button
         android:id="@+id/btn_sign_in"

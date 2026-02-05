@@ -28,13 +28,10 @@ import com.topstep.fitcloud.sdk.v2.FcConnector
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.message.FcMessageType
 import com.topstep.fitcloud.sdk.v2.utils.notification.PhoneStateListenerFactory
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.rx3.asFlow
-import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withTimeout
 import timber.log.Timber
 import kotlin.coroutines.resume
 
@@ -57,6 +54,16 @@ class MyApplication : MultiDexApplication() {
         initAllProcess()
         if (SystemUtil.getProcessName(this) == packageName) {
             initMainProcess()
+            //Create a mock user
+            val manager = Injector.getAuthManager()
+            runBlocking {
+                if (!manager.hasAuthedUser()) {
+                    runCatching {
+                        manager.signUp("test", "123456", 180, 75, false, 20)
+                        manager.signIn("test", "123456")
+                    }
+                }
+            }
         }
     }
 
