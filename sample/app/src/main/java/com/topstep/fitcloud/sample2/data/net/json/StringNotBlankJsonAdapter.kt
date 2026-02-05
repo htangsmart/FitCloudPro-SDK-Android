@@ -4,7 +4,6 @@ import com.squareup.moshi.*
 import timber.log.Timber
 import java.lang.reflect.Type
 
-@Retention(AnnotationRetention.RUNTIME)
 @JsonQualifier
 annotation class StringNotBlank
 
