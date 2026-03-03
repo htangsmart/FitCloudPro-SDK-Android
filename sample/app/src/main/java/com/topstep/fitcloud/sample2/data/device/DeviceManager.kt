@@ -28,7 +28,9 @@ import com.topstep.fitcloud.sdk.v2.features.*
 import com.topstep.fitcloud.sdk.v2.model.config.FcDeviceInfo
 import com.topstep.fitcloud.sdk.v2.model.config.FcFunctionConfig
 import com.topstep.fitcloud.sdk.v2.model.config.FcWomenHealthConfig
-import com.topstep.fitcloud.sdk.v2.model.data.*
+import com.topstep.fitcloud.sdk.v2.model.data.FcSyncData
+import com.topstep.fitcloud.sdk.v2.model.data.FcSyncDataType
+import com.topstep.fitcloud.sdk.v2.model.data.FcSyncState
 import com.topstep.fitcloud.sdk.v2.model.settings.FcBatteryStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
@@ -40,7 +42,6 @@ import kotlinx.coroutines.rx3.await
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import timber.log.Timber
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 interface DeviceManager {
@@ -510,7 +511,11 @@ internal class DeviceManagerImpl(
                 syncDataRepository.saveStep(userId, data.toStep(), data.deviceInfo.isSupportFeature(FcDeviceInfo.Feature.STEP_EXTRA))
             }
 
-            FcSyncDataType.SLEEP -> syncDataRepository.saveSleep(userId, data.toSleep())
+            FcSyncDataType.SLEEP -> syncDataRepository.saveSleep(userId, data.toSleep().also { list ->
+                list?.forEach { item ->
+                    Timber.tag(TAG).i("sync FcSleepData(timestamp=%d,score=%d,efficiency=%d)", item.timestamp, item.score, item.efficiency)
+                }
+            })
 
             FcSyncDataType.HEART_RATE -> syncDataRepository.saveHeartRate(userId, data.toHeartRate())
             FcSyncDataType.HEART_RATE_MEASURE -> syncDataRepository.saveHeartRate(userId, data.toHeartRateMeasure())
@@ -533,8 +538,18 @@ internal class DeviceManagerImpl(
 
             FcSyncDataType.GAME -> syncDataRepository.saveGame(userId, data.toGame())
 
-            FcSyncDataType.SPORT -> syncDataRepository.saveSport(userId, data.toSport())
+            FcSyncDataType.SPORT -> syncDataRepository.saveSport(userId, data.toSport().also { list ->
+                list?.forEach { item ->
+                    Timber.tag(TAG).i("sync sport data:%s", item)
+                }
+            })
             FcSyncDataType.GPS -> syncDataRepository.saveGps(userId, data.toGps())
+
+            FcSyncDataType.VITALITY -> data.toVitality().also { list ->
+                list?.forEach { item ->
+                    Timber.tag(TAG).i("sync FcVitalityData(timestamp=%d,vitality=%f)", item.timestamp, item.vitality)
+                }
+            }
 
             FcSyncDataType.TODAY_TOTAL_DATA -> syncDataRepository.saveTodayStep(userId, data.toTodayTotal())
         }

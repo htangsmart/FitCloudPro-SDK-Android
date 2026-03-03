@@ -152,7 +152,9 @@ internal class SyncDataRepositoryImpl(
                         soberSleep = 0,
                         napSleep = 0,
                         remSleep = 0,
-                        isSupportSleepNap = it.isSupportSleepNap
+                        isSupportSleepNap = it.isSupportSleepNap,
+                        score = 0,
+                        efficiency = 0,
                     )
                 } else {
                     val summary = SleepCalculateHelper.calculate(it.timestamp, all, isSorted = true, isSupportSleepNap = it.isSupportSleepNap)
@@ -164,7 +166,9 @@ internal class SyncDataRepositoryImpl(
                         soberSleep = summary.soberSeconds,
                         napSleep = summary.napSeconds,
                         remSleep = summary.remSeconds,
-                        isSupportSleepNap = it.isSupportSleepNap
+                        isSupportSleepNap = it.isSupportSleepNap,
+                        score = it.score,
+                        efficiency = it.efficiency,
                     )
                 }
                 syncDao.insertSleepRecord(record)

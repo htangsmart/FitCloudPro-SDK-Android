@@ -88,6 +88,8 @@
     <string name="awake_sleep">Awake：</string>
     <string name="rem_sleep">REM：</string>
     <string name="nap_sleep">Nap：</string>
+    <string name="sleep_score">Score：</string>
+    <string name="sleep_efficiency">Efficiency：</string>
     <string name="ecg_speed">Speed<xliff:g id="params">%1$d</xliff:g>mm/s</string>
     <string name="ecg_amplitude">Amplitude<xliff:g id="params">%1$d</xliff:g>mm/mV</string>
     <string name="game_type_0">Pet development</string>

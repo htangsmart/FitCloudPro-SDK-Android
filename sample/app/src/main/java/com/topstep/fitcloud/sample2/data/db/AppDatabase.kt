@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.asExecutor
 
 @Database(
-    version = 7,
+    version = 8,
     entities = [
         UserEntity::class,
         DeviceBindEntity::class, ExerciseGoalEntity::class,

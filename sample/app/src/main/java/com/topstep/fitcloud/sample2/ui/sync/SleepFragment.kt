@@ -21,6 +21,8 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
     private lateinit var tvAwakeSleep: TextView
     private lateinit var layoutNapSleep: View
     private lateinit var tvNapSleep: TextView
+    private lateinit var tvSleepScore: TextView
+    private lateinit var tvSleepEfficiency: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         tvDeepSleep = view.findViewById(R.id.tv_deep_sleep)
@@ -29,6 +31,8 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
         tvAwakeSleep = view.findViewById(R.id.tv_awake_sleep)
         layoutNapSleep = view.findViewById(R.id.layout_nap_sleep)
         tvNapSleep = view.findViewById(R.id.tv_nap_sleep)
+        tvSleepScore = view.findViewById(R.id.tv_sleep_score)
+        tvSleepEfficiency = view.findViewById(R.id.tv_sleep_efficiency)
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -55,6 +59,8 @@ class SleepFragment : DataListFragment<SleepItemEntity>() {
         } else {
             tvNapSleep.visibility = View.GONE
         }
+        tvSleepScore.text = record?.score.toString()
+        tvSleepEfficiency.text = record?.efficiency.toString()
         return runBlocking { syncDataRepository.querySleepItems(authedUserId, date) }
     }
 
