@@ -158,6 +158,27 @@ internal class SyncDataRepositoryImpl(
                     )
                 } else {
                     val summary = SleepCalculateHelper.calculate(it.timestamp, all, isSorted = true, isSupportSleepNap = it.isSupportSleepNap)
+                    val fmt = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm", java.util.Locale.getDefault())
+                    Timber.tag("SleepSummary").i("----------------------------------------")
+                    Timber.tag("SleepSummary")
+                        .i("deepSeconds=${summary.deepSeconds}, lightSeconds=${summary.lightSeconds}, soberSeconds=${summary.soberSeconds}, remSeconds=${summary.remSeconds}, napSeconds=${summary.napSeconds}")
+                    summary.nighttime?.forEachIndexed { sIdx, segment ->
+                        Timber.tag("SleepSummary").i("\n")
+                        Timber.tag("SleepSummary")
+                            .i("  nighttime[$sIdx] start=${fmt.format(segment.startTime)}, end=${fmt.format(segment.endTime)}, duration=${segment.endTime - segment.startTime}, deep=${segment.deepSeconds}s, light=${segment.lightSeconds}s, rem=${segment.remSeconds}s")
+                        segment.items.forEachIndexed { iIdx, item ->
+                            Timber.tag("SleepSummary").i("    item[$iIdx] status=${item.status}, start=${fmt.format(item.startTime)}, end=${fmt.format(item.endTime)}")
+                        }
+                    }
+                    summary.daytime?.forEachIndexed { sIdx, segment ->
+                        Timber.tag("SleepSummary").i("\n")
+                        Timber.tag("SleepSummary")
+                            .i("  daytime[$sIdx] start=${fmt.format(segment.startTime)}, end=${fmt.format(segment.endTime)}, duration=${segment.endTime - segment.startTime}")
+                        segment.items.forEachIndexed { iIdx, item ->
+                            Timber.tag("SleepSummary").i("    item[$iIdx] status=${item.status}, start=${fmt.format(item.startTime)}, end=${fmt.format(item.endTime)}")
+                        }
+                    }
+                    Timber.tag("SleepSummary").i("----------------------------------------")
                     SleepRecordEntity(
                         userId = userId,
                         date = date,
