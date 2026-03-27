@@ -1,5 +1,9 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.2（2026-01-15）
+
+1. fix some bugs
+
 # v3.0.1(2025-10-29)
 
 1. Optional SDK supports 16k
