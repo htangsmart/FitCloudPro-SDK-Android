@@ -276,6 +276,9 @@
             android:id="@+id/toHealthMonitorConfig"
             app:destination="@id/healthMonitorConfigFragment"/>
         <action
+            android:id="@+id/toHrvConfig"
+            app:destination="@id/hrvConfigFragment"/>
+        <action
             android:id="@+id/toSedentaryConfig"
             app:destination="@id/sedentaryConfigFragment"/>
         <action
@@ -337,6 +340,12 @@
         android:name="com.topstep.fitcloud.sample2.ui.device.config.BpAlarmConfigFragment"
         android:label="@string/ds_blood_pressure_alarm"
         tools:layout="@layout/fragment_bp_alarm_config"/>
+
+    <fragment
+        android:id="@+id/hrvConfigFragment"
+        android:name="com.topstep.fitcloud.sample2.ui.device.config.HRVConfigFragment"
+        android:label="@string/ds_hrv_config"
+        tools:layout="@layout/fragment_hrv_config"/>
 
     <fragment
         android:id="@+id/sedentaryConfigFragment"

@@ -198,6 +198,9 @@
     <string name="ds_disconnect_reminder">断开提醒</string>
     <string name="ds_display_exercise_goal">显示锻炼目标</string>
 
+    <string name="ds_hrv_config">HRV 配置</string>
+    <string name="ds_hrv_remind">HRV 提醒</string>
+
     <string name="ds_health_monitor_config">健康监测配置</string>
     <string name="ds_sedentary_config">久坐提醒配置</string>
     <string name="ds_drink_water_config">喝水提醒配置</string>

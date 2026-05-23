@@ -198,6 +198,9 @@
     <string name="ds_disconnect_reminder">Disconnect Reminder</string>
     <string name="ds_display_exercise_goal">Display Exercise Goal</string>
 
+    <string name="ds_hrv_config">HRV Config</string>
+    <string name="ds_hrv_remind">HRV Remind</string>
+
     <string name="ds_health_monitor_config">Health Monitor Config</string>
     <string name="ds_sedentary_config">Sedentary Reminder Config</string>
     <string name="ds_drink_water_config">Drink Water Reminder Config</string>

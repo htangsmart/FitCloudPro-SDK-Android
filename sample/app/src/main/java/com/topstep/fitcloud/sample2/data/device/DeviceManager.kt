@@ -42,6 +42,8 @@ import kotlinx.coroutines.rx3.await
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 interface DeviceManager {
@@ -548,6 +550,27 @@ internal class DeviceManagerImpl(
             FcSyncDataType.VITALITY -> data.toVitality().also { list ->
                 list?.forEach { item ->
                     Timber.tag(TAG).i("sync FcVitalityData(timestamp=%d,vitality=%f)", item.timestamp, item.vitality)
+                }
+            }
+
+            FcSyncDataType.HRV -> data.toHRV().also { list ->
+                val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+                list?.forEach { item ->
+                    Timber.tag(TAG).i("sync FcHRVData(timestamp=%s,hrv=%d)", format.format(item.timestamp), item.hrv)
+                }
+            }
+
+            FcSyncDataType.HRV_DAILY -> data.toHRVDaily().also { list ->
+                val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+                list?.forEach { item ->
+                    Timber.tag(TAG).i(
+                        "sync FcHRVDaily(timestamp=%s,baselineMin=%d,baselineMax=%d,baselineCenter=%d,hrvAvg=%d)",
+                        format.format(item.timestamp),
+                        item.baselineMin,
+                        item.baselineMax,
+                        item.baselineCenter,
+                        item.hrvAvg,
+                    )
                 }
             }
 

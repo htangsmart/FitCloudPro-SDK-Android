@@ -30,6 +30,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
         viewBind.itemNotification.clickTrigger(block = blockClick)
         viewBind.itemFunction.clickTrigger(block = blockClick)
         viewBind.itemHealthMonitor.clickTrigger(block = blockClick)
+        viewBind.itemHrv.clickTrigger(block = blockClick)
         viewBind.itemSedentary.clickTrigger(block = blockClick)
         viewBind.itemDrinkWater.clickTrigger(block = blockClick)
         viewBind.itemBloodPressure.clickTrigger(block = blockClick)
@@ -48,6 +49,7 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
                     deviceManager.configFeature.getDeviceInfo()
                 ).asFlow().collect {
                     viewBind.itemPage.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SETTING_PAGE_CONFIG)
+                    viewBind.itemHrv.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.HRV)
                     viewBind.itemBloodPressure.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE) and !it.isSupportFeature(FcDeviceInfo.Feature.BLOOD_PRESSURE_AIR_PUMP)
                     viewBind.itemDnd.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.DND)
                     viewBind.itemScreenVibrate.isVisible = it.isSupportFeature(FcDeviceInfo.Feature.SCREEN_VIBRATE)
@@ -69,6 +71,9 @@ class DeviceConfigFragment : BaseFragment(R.layout.fragment_device_config) {
             }
             viewBind.itemHealthMonitor -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toHealthMonitorConfig())
+            }
+            viewBind.itemHrv -> {
+                findNavController().navigate(DeviceConfigFragmentDirections.toHrvConfig())
             }
             viewBind.itemSedentary -> {
                 findNavController().navigate(DeviceConfigFragmentDirections.toSedentaryConfig())
