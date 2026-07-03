@@ -16,7 +16,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.2.5.3"
+        versionName = "1.2.6.0"
         multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -94,8 +94,8 @@ dependencies {
     implementation(libs.okhttp3)
     implementation(libs.androidx.palette)
     if (isDeveloperEnvironment()) {//For developer environment, use remote dependencies
-        implementation("com.topstep.wearkit:sdk-base:3.0.2.3-SNAPSHOT")
-        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.2.3-SNAPSHOT")
+        implementation("com.topstep.wearkit:sdk-base:3.0.2.4")
+        implementation("com.topstep.wearkit:sdk-fitcloud:3.0.2.4")
     } else {//For author environment, use local project
         implementation(project(":sdk-base"))
         implementation(project(":sdk-fitcloud"))

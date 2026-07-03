@@ -1,5 +1,11 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.2.4（2026-07-02）
+
+1. fix some bugs
+2. Add NO_SCREEN_DEVICE flag to FcDeviceInfo
+3. Add humidity level to weather
+
 # v3.0.2（2026-01-15）
 
 1. fix some bugs
