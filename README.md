@@ -5,6 +5,7 @@
 1. fix some bugs
 2. Add NO_SCREEN_DEVICE flag to FcDeviceInfo
 3. Add humidity level to weather
+4. Add generateAIHealthGuidance in [FcSpeechAigcAbility]
 
 # v3.0.2（2026-01-15）
 
