@@ -115,7 +115,7 @@ dependencies {
     implementation(libs.androidx.media)
 
     //Optional. LogoWriter function
-    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.25")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.32")
 
     //Base
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android")

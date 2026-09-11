@@ -34,7 +34,7 @@ dependencies {
     implementation(libs.androidx.media)
 
     //Optional. LogoWriter function
-    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.25")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.32")
 
     //Optional. Some APIs compatible with 1.x.x are provided to minimize changes during migration.
     //Only use for migration, and you need to replace it with new APIs as soon as possible and than remove this dependency.
