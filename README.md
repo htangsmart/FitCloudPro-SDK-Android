@@ -1,5 +1,17 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.2.7（2026-09-17）
+
+1. ADD: Add ASR text send for recording in `FcSpeechAiAbility.Record.sendTextSource`
+2. ADD: Add pause / resume / duration APIs in `FcSpeechAiAbility.Record`
+3. ADD: Add `FcSpecialFeature.setUGreenConfig` / `getUGreenConfig` with `FcUGreenConfig`
+4. ADD: Add third-party data exchange in `FcDeviceAbility` (`observeThirdPartyData` / `sendThirdPartyData`), currently `FcThirdPartyData.Type.STAR_BURST`
+5. CHANGE: Improve `FcSpeechAiMessage.Type.ASK_SWITCH_MODEL` AI model naming
+6. FIX: Drop duplicate device frames by sequence to fix sync failure during calls (ONES#200945)
+7. FIX: Fix weather hourly encoding for firmware that parses a fixed 14-byte item
+8. FIX: Fix wrong `DIAL_COMPONENT` feature flag on 8AA9 project
+9. FIX: Update android-gif-drawable for 16k page-size support
+
 # v3.0.2.4（2026-07-02）
 
 1. fix some bugs
