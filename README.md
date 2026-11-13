@@ -1,5 +1,26 @@
 # [Wiki](https://github.com/htangsmart/FitCloudPro-SDK-Android/wiki)
 
+# v3.0.2.9（2026-11-13）
+
+1. ADD: Add `FcRealtimeLogFeature` realtime log channel (`setConfig` / `observeLog` / `setSync` / `getLogFiles` / `clearLogFiles`)
+2. ADD: Add `FcConfigFeature.requestNotificationConfig` and `setNotificationConfig(config, preserveRawBytes)` for device notification remind status
+3. ADD: Add heart rate alarm event `FcMessageType.HEART_RATE_ALARM` with `FcHeartRateAlarm`; optimize heart rate alarm types via `getHeartRateAlarmTypes`
+4. ADD: Add HSD motor strength `FcSpecialFeature.getMotorLevels` / `setMotorLevels` with `FcMotorLevels`
+5. FIX: Fix auth handshake dropping response when ACK and reply arrive together (subscribe before send)
+6. FIX: Extend offline map `getAuthInfo` timeout to 30s; fix OperationQueue deadlock between auth wait and HTTP proxy replies
+7. FIX: ScoReader reconnects on SCO state jitter; do not release active speech session when device exits a non-active scene
+8. FIX: Fix some bugs
+
+# v3.0.2.8（2026-10-15）
+
+1. ADD: Add `FcSettingsFeature.requestNewSchedules` / `setNewSchedules` with `FcNewSchedule`
+2. ADD: Add `FcMessageType.SLEEP_START`
+3. ADD: Add `FcDataFeature.openEcgMeasure` with `FcEcgMeasureEvent`
+4. ADD: Add `FcDataFeature.requestSportRealTimeDisplayConfigs`
+5. FIX: Prevent crash when `getRemoteDevice` receives an invalid address on some phones
+6. FIX: Fix OpusWriter unsubscribing `setupNotification` too early, causing missing ACK
+7. FIX: Fix some bugs
+
 # v3.0.2.7（2026-09-17）
 
 1. ADD: Add ASR text send for recording in `FcSpeechAiAbility.Record.sendTextSource`
