@@ -2,7 +2,7 @@
 
 # v3.0.2.9（2026-11-13）
 
-1. ADD: Add `FcRealtimeLogFeature` realtime log channel (`setConfig` / `observeLog` / `setSync` / `getLogFiles` / `clearLogFiles`)
+1. ADD: Add `FcRealtimeLogFeature.observeLog(types)` realtime log channel (`isSupport`). Raw bytes are emitted while subscribed; the SDK does not save files (use `RealtimeLogFileWriter`). Includes `FcRealtimeLogType.DUMP_INFO`
 2. ADD: Add `FcConfigFeature.requestNotificationConfig` and `setNotificationConfig(config, preserveRawBytes)` for device notification remind status
 3. ADD: Add heart rate alarm event `FcMessageType.HEART_RATE_ALARM` with `FcHeartRateAlarm`; optimize heart rate alarm types via `getHeartRateAlarmTypes`
 4. ADD: Add HSD motor strength `FcSpecialFeature.getMotorLevels` / `setMotorLevels` with `FcMotorLevels`
